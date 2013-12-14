@@ -1,0 +1,82 @@
+;; This basic metaphor model is basically identical to the hyperbole model with uniform utterance costs
+;; Anologically speaking, "species category" is to "fierceness feature" as "actual price" is to
+;; "valence".
+
+(define categories (list 'lion 'man))
+
+;; Define prior of john belonging to a category
+(define (categories-prior) (multinomial categories '(0.0001 0.9999)))
+
+;; All possible utterances someone could say ("John is a lion" "John is a man")
+(define utterances (list 'lion 'man))
+
+;; Define utterance costs (set as uniform for now)
+(define (utterance-prior) (multinomial utterances '(0.5 0.5)))
+
+;; List of features
+(define fierceness (list 'fierce 'weak))
+
+;; Conditional probability, for each category, that a member of that category is fierce 
+(define fierceness-prior (list (list 'lion '0.9) (list 'man '0.5)))
+
+;; Domain-independent parameters
+(define depth 1)
+(define hardness 1)
+
+;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
+(define goals (list 'just-category 'just-fierceness 'both-category-and-fierceness))
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+
+(define (sample-fierceness category prior)
+  (let ((current-category-fierceness-pair (first prior)))
+    (if (equal? category (first current-category-fierceness-pair))
+        (if (flip (second current-category-fierceness-pair))
+            'fierce
+            'weak)
+        (sample-fierceness category (rest prior)))))
+
+
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+
+(define (goal-satisfied? goal listener-category-fierceness-pair speaker-category speaker-fierceness)
+  (case goal
+    (('both-category-and-fierceness) (if (equal? 
+                           (first listener-category-fierceness-pair) speaker-category) 
+     (equal? (second listener-category-fierceness-pair) speaker-fierceness)))
+    (('just-category) (equal? (first listener-category-fierceness-pair) speaker-category))
+    (('just-fierceness) (equal? (second listener-category-fierceness-pair) speaker-fierceness))))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+  (mem (lambda (category fierceness goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) category fierceness)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define category (categories-prior))
+   (define fierceness (sample-fierceness category fierceness-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list category fierceness)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance category)
+       (equal? utterance
+               (apply multinomial (speaker category fierceness speaker-goal (- depth 1)))))
+   ))))
+
+(define (sample-one utterance) 
+  (listener utterance depth))
+
+;; The interpretation pair (lion weak) means the utterance is interpreted as "John is weak and a lion."
+
+(sample-one 'lion)
+;(sample-one 'man)

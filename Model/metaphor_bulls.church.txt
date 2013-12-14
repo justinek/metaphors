@@ -1,0 +1,95 @@
+;; This basic metaphor model is basically identical to the hyperbole model with uniform utterance costs
+;; Analogically speaking, "species category" is to "fierceness feature" as "actual price" is to
+;; "valence".
+
+(define categories (list 'bull 'man))
+
+;; Define prior of john belonging to a category
+(define (categories-prior) (multinomial categories '(0.00001 0.9999)))
+
+;; All possible utterances someone could say ("John is a lion" "John is a man" "John is a blah")
+(define utterances (list 'bull 'man))
+
+;; Define utterance costs (set as uniform for now)
+(define (utterance-prior) (multinomial utterances '(0.1 0.1)))
+
+;; List of features
+(define strength (list 'strong 'weak))
+(define gender (list 'male 'female))
+
+;; Conditional probability, for each category, that a member of that category is fierce 
+(define strength-prior (list (list 'bull '0.9) (list 'man '0.5)))
+(define gender-prior (list (list 'bull '0.99999) (list 'man '0.9999)))
+
+;; Parameters
+(define depth 1)
+(define hardness 1)
+
+;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
+(define goals (list 'just-category 'just-strength 'just-gender))
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+;(define goals (list 'just-strength 'just-gender))
+;(define (goal-prior) (multinomial goals '(0.5 0.5)))
+
+(define (sample-strength category prior)
+  (let ((current-category-strength-pair (first prior)))
+    (if (equal? category (first current-category-strength-pair))
+        (if (flip (second current-category-strength-pair))
+            'strong
+            'weak)
+        (sample-strength category (rest prior)))))
+
+(define (sample-gender category prior)
+  (let ((current-category-gender-pair (first prior)))
+    (if (equal? category (first current-category-gender-pair))
+        (if (flip (second current-category-gender-pair))
+            'male
+            'female)
+        (sample-gender category (rest prior)))))
+
+
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+
+(define (goal-satisfied? goal listener-category-strength-gender-tripple speaker-category speaker-strength speaker-gender)
+  (case goal
+    (('just-category) (equal? (first listener-category-strength-gender-tripple) speaker-category))
+    (('just-strength) (equal? (second listener-category-strength-gender-tripple) speaker-strength))
+    (('just-gender) (equal? (third listener-category-strength-gender-tripple) speaker-gender))
+   ))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+  (mem (lambda (category strength gender goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) category strength gender)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define category (categories-prior))
+   (define strength (sample-strength category strength-prior))
+   (define gender (sample-gender category gender-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list category strength gender speaker-goal)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance category)
+       (equal? utterance
+               (apply multinomial (speaker category strength gender speaker-goal (- depth 1)))))
+   ))))
+
+(define (sample-one utterance) 
+  (listener utterance depth))
+
+;; The interpretation pair (bull weak female just-category) means the utterance is interpreted as 
+;; "John is weak and a bull and female, and the communicative goal was just-category."
+
+(sample-one 'bull)
+;(sample-one 'man)

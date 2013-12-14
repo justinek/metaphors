@@ -1,0 +1,1 @@
+(((lion meek fat) (lion meek skinny) (lion fierce fat) (lion fierce skinny) (man meek fat) (man meek skinny) (man fierce fat) (man fierce skinny)) (3.684534377495285e-7 3.684534377495285e-7 0.000005684710182421293 0.000005684710182421293 0.1842082962028768 0.1842082962028768 0.3157856506335031 0.3157856506335031))

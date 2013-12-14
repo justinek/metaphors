@@ -1,0 +1,1 @@
+(((lion meek cowardly) (lion meek brave) (lion fierce cowardly) (lion fierce brave) (man meek cowardly) (man meek brave) (man fierce cowardly) (man fierce brave)) (3.254409524087872e-8 8.46269070652339e-7 8.462690706523369e-7 0.000014533798497359303 0.08135210207838665 0.23505123437368713 0.235051234373687 0.4485291702935053))
