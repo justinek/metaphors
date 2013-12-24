@@ -1,8 +1,10 @@
 <html>
 <head>
   <title>Animals</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script src="https://stanford.edu/~justinek/mmturkey.js"></script>
+<script src="https://www.stanford.edu/~dco/common/jquery.min.js"></script>
+<script src="https://www.stanford.edu/~dco/common/mmturkey.0.5.js?nowarn"></script>
+
+
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -104,7 +106,7 @@ function pressEnter(e) {
 </div>
 
 <div class="slide" id="instructions">
-  <img src="images/stanford.png" alt="Stanford University">
+  <img src="https://www.stanford.edu/~justinek/metaphor_exp/feature/images/stanford.png" alt="Stanford University">
     <p id='logo-text'>Stanford Computation and Cognition Lab</p>
   <p class="block-text">
   Thank you very much for participating in our experiment. In this experiment, we are interested in
@@ -147,10 +149,15 @@ and not nouns or verbs.</p>
   </br>
   <div id="form">
   <form name="adjective">
+  <!--
   <input type="text" name="adj" runat=server onkeypress="return pressEnter(event)"/><span>
+  -->
+  <input type="text" name="adj"/><span>
   </br>
   <button type="button" id="next" onclick="this.blur(); if (ValidateText(document.adjective.adj)) {experiment.next();}">Next</button>
+  <!--
   <p>or press enter</p>
+  -->
   </form>
 </div>
 </div>
