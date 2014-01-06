@@ -29,5 +29,5 @@ for animal in sorted(featureDict.iterkeys()):
     features = []
     for feature in sorted(d, key=d.get, reverse=True):
           features.append(feature)
-    print '{"categoryID":' + str(categoryID) + '","animal":"' + animal + '","f1":"' + features[0] + '","f2":"' + features[1] + '","f3":"' + features[2] + '"},' 
+    print '{"categoryID":' + str(categoryID) + ',"question":"' + "Is he " + features[0] + "?" + '","answer":"' + "Yes." + '","animal":"' + animal +'","f1":"' + features[0] + '","f2":"' + features[1] + '","f3":"' + features[2] + '"},' 
     categoryID = categoryID + 1

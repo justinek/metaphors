@@ -1,15 +1,14 @@
 <html>
 <head>
   <title>Metaphors</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script src="http://stanford.edu/~louyang/mmturkey.0.5.js?nowarn"></script>
+<script src="https://www.stanford.edu/~dco/common/jquery.min.js"></script>
+<script src="https://www.stanford.edu/~dco/common/mmturkey.0.5.js?nowarn"></script>
 <link rel="stylesheet" href="style.css" />
 <link type="text/css" rel="stylesheet" href="sliders/jquery-ui.css" /></p>
 <script src="sliders/jquery.min.js"></script> <script src="sliders/jquery-ui.min.js"></script>
 </head>
 <body>
 <script LANGUAGE="JavaScript">
-
 
 function ValidateForm(form){
     var valid = 0;
@@ -146,8 +145,7 @@ function ValidateSliderForm(form){
 <div class="slide" id="description">
 <p id='logo-text'>Instructions</p>
 <p class="block-text"> You will see <span id="tot-num">{{}}</span> scenarios where someone is describing
-a person to his or her friend.
-Each scenario is about a different person. 
+a person to his friend.
 After reading each scenario, please rate how likely it is that the person described has certain attributes.</p>
 </br>
 <div id="form">
@@ -158,51 +156,81 @@ After reading each scenario, please rate how likely it is that the person descri
 
 <div class="slide" id="stage">
 <div id="form">
-<p id="statement"><span id="speaker1">{{}}</span> and his friend are having a conversation.</p>
-<p id="statement">The friend says, "I heard you met <span id="person">{{}}</span> yesterday. What is he like?"</p>
-<p id="statement"><span id="speaker2">{{}}</span> says, "He's <span id="det">{{}}</span> <span id="animal">{{}}</span>."</p>
-<p id="question">Please rate how likely it is that the person described has the following attributes:   
+<p id="statement"><span id="speaker1">{{}}</span> and his friend are talking about a
+person that <span id="speaker2">{{{}}</span> recently met.</p>
+<p id="statement">The friend asks, "<span id="question">{{}}</span>"</p>
+<p id="statement"><span id="speaker3">{{}}</span> says, "<span id="answer">{{}}</span>"</p>
+<p id="testQuestion">Please rate how likely it is that the person described has the following attributes:   
 
-    <form name= "affectForm">
+    <form name= "featureForm">
     
-    <input type="hidden" name="hSlider0" id="hiddenSliderValue0" />
     <input type="hidden" name="hSlider1" id="hiddenSliderValue1" />
     <input type="hidden" name="hSlider2" id="hiddenSliderValue2" />
     <input type="hidden" name="hSlider3" id="hiddenSliderValue3" />
-    <input type="hidden" name="hSlider4" id="hiddenSliderValue4" />
-    <input type="hidden" name="hSlider5" id="hiddenSliderValue5" />
-    <input type="hidden" name="hSlider6" id="hiddenSliderValue6" />
-    <input type="hidden" name="hSlider7" id="hiddenSliderValue7" />
-    <input type="hidden" name="hSlider8" id="hiddenSliderValue8" />
-    <input type="hidden" name="hSlider9" id="hiddenSliderValue9" />
-    
-    <input type="hidden" name="hSlider10" id="hiddenSliderValue10" />
     </br>
     
     <table width="700" cellspacing="0" cellpadding="0" border="0" align="center"><tbody>
     <tr><td colspan="6">&nbsp;<br /></td></tr>
     <tr>
-    	<td width="140"><span class="attributes" id="attr1">{{}}</span></td>
+    	<td width="140"><span class="attributes" id="f1">{{}}</span></td>
       <td align="center" colspan="5">
       
-      <div id="slider10"> &nbsp;</div></td>
+      <div id="slider1"> &nbsp;</div></td>
+    </tr><tr>
+    
+      <td width="140"></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale"> </span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale"> </span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale"> </span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale"> </span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale"> </span></td>
+      
+    </tr>
+    <tr>
+    	<td width="140"><span class="attributes" id="f2">{{}}</span></td>
+      <td align="center" colspan="5">
+      
+      <div id="slider2"> &nbsp;</div></td>
     </tr><tr>
       <td width="140"></td>
       <td width="140" valign="top" align="center">|<br />
-      Impossible</td>
+      <span id="scale"> </span></td>
       <td width="140" valign="top" align="center">|<br />
-      Not very likely</td>
+      <span id="scale"> </span></td>
       <td width="140" valign="top" align="center">|<br />
-      Neutral</td>
+      <span id="scale"> </span></td>
       <td width="140" valign="top" align="center">|<br />
-      Very Likely</td>
+      <span id="scale"> </span></td>
       <td width="140" valign="top" align="center">|<br />
-      Absolutely certain</td>
+      <span id="scale"> </span></td>
+    </tr>
+    <tr>
+    	<td width="140"><span class="attributes" id="f3">{{}}</span></td>
+      <td align="center" colspan="5">
+      
+      <div id="slider3"> &nbsp;</div></td>
+    </tr><tr>
+      <td width="140"></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale">Impossible</span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale">Not very likely</span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale">Neutral</span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale">Very Likely</span></td>
+      <td width="140" valign="top" align="center">|<br />
+      <span id="scale">Absolutely certain</span></td>
     </tr>    
     </tbody></table>
     
     </form>
-    <button type="button" id="next" onclick="this.blur(); experiment.next();">Next</button>
+    <button type="button" id="next" onclick="this.blur(); if(ValidateSliderForm(document.featureForm)) {experiment.next();}">Next</button>
     </div>
 </div>
 
@@ -264,7 +292,7 @@ After reading each scenario, please rate how likely it is that the person descri
 <div class="slide" id="finished">
   You're finished - thanks for participating! Submitting to Mechanical Turk...
 </div>
-<script src="experiment.js"></script>
+<script src="experiment-within.js"></script>
 
 </body>
 </html>
