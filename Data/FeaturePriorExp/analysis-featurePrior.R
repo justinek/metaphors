@@ -165,6 +165,21 @@ colnames(fp.set.marginal.present)[2] <- "category"
 fp.set.marginal.present <- fp.set.marginal.present[with(fp.set.marginal.present, 
                                                         order(categoryID, category, featureNum)), ]
 
+# plot average marginal probabilities
+fp.set.marginal.summary <- summarySE(fp.set.marginal.present, measurevar="normalizedProb",
+                                     groupvars=c("category", "featureNum"))
+
+ggplot(fp.set.marginal.summary, aes(x=category, y=normalizedProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  geom_errorbar(aes(ymin=normalizedProb-se, ymax=normalizedProb+se), width=0.2, position=position_dodge(0.9)) +
+  #facet_grid(.~category) +
+  theme_bw() +
+  xlab("") +
+  ylab("Probability of feature given category") +
+  scale_x_discrete(labels=c("Animal category", "Person category")) +
+  #scale_fill_brewer(palette="RdGy", name="Feature")
+  scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"))
+
 write.csv(fp.set.marginal.present, "featurePriors-set-marginal.csv", row.names=FALSE)
 
 # an example with marginal prob

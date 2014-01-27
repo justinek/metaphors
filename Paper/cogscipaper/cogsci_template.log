@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  26 JAN 2014 16:44
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  26 JAN 2014 18:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -244,50 +244,70 @@ Underfull \hbox (badness 1490) in paragraph at lines 78--80
 \OT1/ptm/m/n/10 sat-is-fied can be ac-com-plished by min-i-miz-ing the goals
  []
 
-
-Underfull \hbox (badness 1097) in paragraph at lines 104--105
-\OT1/ptm/m/n/10 To eval-u-ate our model against hu-man in-ter-pre-ta-tions of
- []
-
-
-Underfull \hbox (badness 4726) in paragraph at lines 104--105
-\OT1/ptm/m/n/10 a male hu-man is the tar-get and a non-human an-i-
- []
-
-
-Underfull \hbox (badness 2735) in paragraph at lines 104--105
-\OT1/ptm/m/n/10 mal is the source, e.g. ``He is a shark." We took
- []
-
-
-Underfull \hbox (badness 5050) in paragraph at lines 104--105
-\OT1/ptm/m/n/10 a list of $\OT1/ptmcm/m/n/10 32$ \OT1/ptm/m/n/10 an-i-mal cat-e
--gories in-spired by the En-
- []
-
 [2]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 113.
 
- <Plots/human_bar.pdf, id=16, 463.7325pt x 289.08pt>
-File: Plots/human_bar.pdf Graphic file (type pdf)
-
-<use Plots/human_bar.pdf>
-Package pdftex.def Info: Plots/human_bar.pdf used on input line 130.
+ <Plots/prior.pdf, id=16, 463.7325pt x 289.08pt>
+File: Plots/prior.pdf Graphic file (type pdf)
+ <use Plots/prior.pdf>
+Package pdftex.def Info: Plots/prior.pdf used on input line 122.
 (pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
 
-Overfull \hbox (34.33038pt too wide) in paragraph at lines 130--131
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 122--123
  [] 
  []
 
-[3 <./Plots/human_bar.pdf>] [4
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Plots/human_bar.pdf, id=17, 463.7325pt x 289.08pt>
+File: Plots/human_bar.pdf Graphic file (type pdf)
+ <use Plots/human_bar.pdf>
+Package pdftex.def Info: Plots/human_bar.pdf used on input line 138.
+(pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
+
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 138--139
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./Plots/prior.pdf>] <Plots/model_bar.pdf, id=27, 463.7325pt x 289.08pt>
+File: Plots/model_bar.pdf Graphic file (type pdf)
+
+<use Plots/model_bar.pdf>
+Package pdftex.def Info: Plots/model_bar.pdf used on input line 152.
+(pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
+
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 152--153
+ [] 
+ []
+
+<Plots/scatter_full.pdf, id=28, 463.7325pt x 289.08pt>
+File: Plots/scatter_full.pdf Graphic file (type pdf)
+
+<use Plots/scatter_full.pdf>
+Package pdftex.def Info: Plots/scatter_full.pdf used on input line 161.
+(pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
+
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 161--162
+ [] 
+ []
+
+[4 <./Plots/human_bar.pdf> <./Plots/model_bar.pdf> <./Plots/scatter_full.pdf>]
+[5
 
 ] (./cogsci_template.aux) ) 
 Here is how much of TeX's memory you used:
- 1763 strings out of 493488
- 25358 string characters out of 3141326
- 83476 words of memory out of 3000000
- 5041 multiletter control sequences out of 15000+200000
+ 1779 strings out of 493488
+ 25680 string characters out of 3141326
+ 85484 words of memory out of 3000000
+ 5054 multiletter control sequences out of 15000+200000
  32982 words of font info for 63 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,9n,23p,1756b,256s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -299,10 +319,10 @@ y10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></u
 sr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/t
 exlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/201
 2/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cogsci_template.pdf (4 pages, 87539 bytes).
+Output written on cogsci_template.pdf (5 pages, 111745 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -85,7 +85,7 @@ ggplot(d.summary.summary, aes(x=qudLabel, y=featureProb, fill=featureLabel)) +
   facet_grid(.~metaphorLabel) +
   theme_bw() +
   xlab("") +
-  ylab("Probability of feature") +
+  ylab("Probability of feature given utterance") +
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature")
 
@@ -155,8 +155,10 @@ ggplot(m.met.summary.summary, aes(x=qudLabel, y=modelProb, fill=featureLabel)) +
   geom_bar(stat="identity", color="black", position=position_dodge()) +
   geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2, position=position_dodge(0.9)) +
   theme_bw() +
-  scale_fill_brewer(palette="Accent", name="Feature") +
-  xlab("")
+  #scale_fill_brewer(palette="Accent", name="Feature") +
+  scale_fill_manual(values=my.colors, name="Feature") +
+  xlab("") +
+  ylab("Probability of feature given utterance")
 
 d.m.met.compare <- join(d.met.summary, m.met.summary, by=c("categoryID", "featureNum", "qud"))
 # add feature labels
@@ -183,9 +185,9 @@ ggplot(d.m.met.compare, aes(x=modelProb, y=featureProb, shape=qud, fill=featureN
   geom_point(size=4) +
   #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
   #geom_text(aes(label=featureLabel, color=qud)) +
-  scale_shape_manual(values=c(21, 24)) +
+  scale_shape_manual(values=c(21, 24), name=) +
   theme_bw() +
-  scale_fill_brewer(palette="RdGy", name="Feature") +
+  scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3")) +
   xlab("Model") +
   ylab("Human")
 
@@ -215,7 +217,7 @@ with(d.m.met.compare.f1.qud, cor.test(personPrior, featureProb))
 with(d.m.met.compare.f1.qud, cor.test(animalPrior, featureProb))
 with(d.m.met.compare.f1.qud, cor.test(modelProb, featureProb))
 
-ggplot(d.m.met.compare.f1, aes(x=personPrior, y=featureProb, color=qud)) +
+ggplot(d.m.met.compare.f1, aes(x=animalPrior, y=featureProb, color=qud)) +
   geom_point(size=2) +
   #geom_text(aes(label=labels)) +
   scale_shape_manual(values=c(0, 19)) +
@@ -223,8 +225,8 @@ ggplot(d.m.met.compare.f1, aes(x=personPrior, y=featureProb, color=qud)) +
 
 
 # Correlate with just feature priors
-with(d.m.met.compare, cor.test(featureProb, animalPrior))
-with(d.m.met.compare, cor.test(featureProb, personPrior))
+with(d.m.met.compare.f1, cor.test(featureProb, animalPrior))
+with(d.m.met.compare.f1, cor.test(featureProb, personPrior))
 d.m.met.compare$averagePrior <- (d.m.met.compare$animalPrior + d.m.met.compare$personPrior) / 2
 with(d.m.met.compare, cor.test(featureProb, averagePrior))
 with(d.m.met.compare, cor.test(featureProb, modelProb))

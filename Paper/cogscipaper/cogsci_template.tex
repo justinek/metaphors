@@ -53,7 +53,7 @@ language understanding; metaphor; pragmatics; computational models
 
 
 \section{Introduction}
-Nonliteral language is, quite literally, everywhere. Human communication is laden with metaphor, irony, and hyperbole, often creating poetic or humorous effects and adding rich social dimensions to language. Of the various types of nonliteral language, metaphor has inspired a particularly abundant amount of research in cognitive science, ranging from how metaphors structure and shape our thoughts (cite), whether metaphor processing recruits the same strategies as standard language processing (cite), and what factors determine the meaning and aptness of a novel metaphor (cite). The overwhelming amount of interest in metaphor research is due in part to the ubiquity of metaphor in everyday language as well as the increasingly popular belief that metaphor may be critical for helping us understand how the mind creates meaning. 
+Nonliteral language is, quite literally, everywhere. Human communication is laden with metaphor, irony, and hyperbole, often creating poetic or humorous effects that add rich and important dimensions to language. Of the various types of nonliteral language, metaphor has inspired a particularly abundant amount of research in cognitive science, ranging from how metaphors structure and shape our thoughts (cite), whether metaphor processing recruits the same strategies as standard language processing (cite), and what factors determine the meaning and aptness of a novel metaphor (cite). The overwhelming amount of interest in metaphor research is due in part to the ubiquity of metaphor in everyday language as well as the increasingly popular belief that metaphor may be critical for helping us understand how the mind creates meaning. 
 
 One area of research focuses on the pragmatic principals that listeners utilize to infer meaning from metaphorical utterances in context. Rather than viewing metaphor as a separate mode of communication that requires specialized language processing strategies, this approach argues that basic principles of communication drive the meaning that a listener infers from a metaphorical sentence. Relevance theory, in particular, explains metaphor understanding and communication in general with the assumption that human cognition is shaped by evolution to maximize relevance. Based on this theory, a listener interprets an utterance with the assumption that it is the most relevant utterance that the communicator chose to produce. Relevance theorists argue that this principle explains how listeners infer the intended meaning from a novel metaphor. To interpret the sentence ``My lawyer is a shark," for example, the listener assumes that the speaker only aims to communicate features of ``a shark" that are relevant to the topic ``my lawyer." Under such a view, metaphors are a subset of the more general phenomenon of ``loose talk", where speakers can use a term loosely with the expectation that the principle of relevance will help listeners infer the correct meaning. 
 
@@ -94,7 +94,7 @@ Note that the listener needs to consider the following prior probabilities:
 \end{itemize}
 
 \section{Behavioral Experiments}
-To evaluate our model against human interpretations of metaphors, we constructed a set of metaphors in which a male human is the target and a non-human animal is the source, e.g. ``He is a shark." We took a list of $32$ animal categories inspired by the English Club (http://www.englishclub.com/vocabulary/animal-terms.htm). Using this list, we conducted Experiment 1A to elicit a set of three salient features for each animal category. We conducted Experiment 1B to elicit the feature priors $P_F(f | c)$ described in the model section (see Table 1). Finally, we conducted Experiment 2 to measure people's interpretations of the set of metaphors. 
+In order to obtain human metaphorical interpretations that we can compare against our model, we focused on a set of metaphors in which a male human is the target and a non-human animal is the source. We selected $32$ common non-human animal categories. Using this list, we conducted Experiment 1A to elicit a set of three salient features for each animal category. We conducted Experiment 1B to elicit the feature priors $P_F(f | c)$ described in the model section (see Table 1). Finally, we conducted Experiment 2 to measure people's interpretations of the set of metaphors. 
 
 \subsection{Experiment 1A: Feature Elicitation}
 \subsubsection{Materials and Methods}
@@ -108,7 +108,15 @@ We used Wordnet to construct antonyms for each of the adjective features produce
 $60$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk for the second part of the feature prior elicitation experiment. Each subject completed $16$ randomly selected trials in random order. Each trial consisted of the eight feature combinations for a particular animal category (e.g. \emph{ant}). Using slider bars ranging from ``Impossible" to ``Absolutely certain," subjects were asked to rate how likely it is for a member of the animal category to have each of the eight feature combinations. Subjects also rated the probabilities of the feature combinations for a male person.
 
 \subsubsection{Results} 
-We make the simplifying assumption that the eight feature combinations presented in each trial represent all possible features combinations of a member of a particular category. As a result, we normalized each subject's ratings for the eight feature combinations of a member of a category to sum up to 1. Averaging across subjects' normalized ratings, we obtained the feature priors $P_F(f | c)$ for $c = c_a$ (animal) and $c = c_p$ (person). For ease of interpretation, in Table 1 we present the marginal probabilities for each of the three features instead of the joint probabilities.
+We make the simplifying assumption that the eight feature combinations presented in each trial represent all possible features combinations of a member of a particular category. As a result, we normalized each subject's ratings for the eight feature combinations of a member of a category to sum up to 1. Averaging across subjects' normalized ratings, we obtained the feature priors $P_F(f | c)$ for $c = c_a$ (animal) and $c = c_p$ (person). For ease of interpretation, in Table 1 we present the marginal probabilities for each of the three features instead of the joint probabilities. Figure~\ref{prior} shows the average marginal probabilities of features given an animal category versus a person category. We see that by design, features are rated as significantly more likely to be present given the animal category than the person category.
+
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.6}{\includegraphics{Plots/prior.pdf}}
+\end{center}
+\caption{This is a figure.} 
+\label{prior}
+\end{figure}
 
 \subsection{Experiment 2: Metaphor Understanding}
 \subsubsection{Materials and Methods}
@@ -117,7 +125,7 @@ We created $32$ scenarios using the animal categories. In each scenario, a perso
 $49$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each subject completed $32$ trials in random order. The $32$ trials were randomly and evenly assigned to one of the four conditions, i.e. each subject read $8$ scenarios for each condition. For each trial, subjects used sliders to indicate the probabilities that the person described has features $f_1$, $f_2$, and $f_3$.
 
 \subsubsection{Results}
-For each condition of each scenario, we obtained the average probability ratings for each of the features under consideration. Figure \ref{human_bar} shows the average ratings for each feature across animal categories given a vague or specific QUD and a literal or metaphorical utterance. We see that when the speaker gives a literal statement affirming the presence of $f_1$, subjects rate $f_1$ as significantly more likely than when the speaker gives a metaphorical statement. However, subjects rate $f_2$ and $f_3$, the un-mentioned features, as significantly more likely when the speaker produces a metaphorical utterance. 
+For each condition of each scenario, we obtained the average probability ratings for each of the features under consideration. Figure \ref{human_bar} shows the average ratings for each feature across animal categories given a vague or specific QUD and a literal or metaphorical utterance. We see that when the speaker gives a literal statement directly affirming the presence of $f_1$, subjects rate $f_1$ as significantly more likely than when the speaker gives a metaphorical statement. However, subjects rate $f_2$ and $f_3$ as significantly more likely when the speaker produces a metaphorical utterance. We also see an effect of the QUD for metaphorical utterances. Given a specific question about $f_1$, subjects interpret the speaker's metaphorical utterance as being relevant to the question and rates the probability of $f_1$ as significantly higher than when the QUD is vague. On the other hand, the probabilities of $f_2$ and $f_3$ are not significantly different given a vague or specific QUD about $f_1$.
 \begin{figure}[h]
 \begin{center}
 \scalebox{0.6}{\includegraphics{Plots/human_bar.pdf}}
@@ -125,11 +133,36 @@ For each condition of each scenario, we obtained the average probability ratings
 \caption{This is a figure.} 
 \label{human_bar}
 \end{figure}
+
 \section{Model Comparison}
+We used the feature priors obtained in Experiment 1B to compute model interpretations of the $32$ metaphors.
+For the category prior $P_C(c)$, we assumed that given the common ground set up by the conversation, it is extremely unlikely for the person described to actually belong to the animal category $(P_C(c_a) = 0.0001)$ and extremely likely for him to belong to the person category $(P_C(c_p) = 0.9999)$. We model the effect of relevance to the question under discussion by assuming that the goal prior $P_G(g | c, f)$ varies given vague or specific QUDs. When the QUD is vague, we set the distribution as uniform over goals that are consistent with $c, f$. When the QUD specifically addresses $f_1$, we set the distribution as having a much higher probability for $g_1$ and equal probability for $g_2$ and $g_3$.
 
-Compare model predictions to behavioral results. Scatter plot.
+Using these prior settings and the model we described, we obtained feature probabilities for each of the $32$ metaphors. Figure~\ref{model_bar} shows the average marginal feature probabilities for the $32$ metaphors given a vague or specific QUD. We see that the model captures the QUD effect, where $f_1$ receives a significantly higher probability when the speaker is a priori more likely to be informative about $f_1$.
+% should show results for "literal" statement where it's just the prior.
+\begin{figure}[ht]
+\begin{center}
+\scalebox{0.6}{\includegraphics{Plots/model_bar.pdf}}
+\end{center}
+\caption{This is a figure.} 
+\label{model_bar}
+\end{figure}
 
-Compare with baseline models such as just animal prior or just human prior. Compare with baseline that does not have QUD.
+To quantitatively evaluate the model's performance on metaphorical utterances, we correlated model predictions with human ratings for each of the features given a metaphorical utterance and a vague or specific QUD. We first focused on the model's performance on features that are $f_1$s, namely the most salient features and ones that are sometimes specifically under discussion. Correlation between human ratings and the model's marginal posterior probabilities for $f_1$ across the $32$ metaphors and vague/specific QUD conditions is $0.73$ (add Spearman prophecy formula), suggesting that the model captures a significant amount of the reliable variance in the human data. We then compare this with baseline models that only consider feature priors of the source (animal category) or target (person category). A baseline model consisting of only feature priors for the animal categories yields a non-significant correlation ($r=-0.03, p > 0.05$). A baseline model consisting of only feature priors for the person category yields a significant correlation ($r=0.59, p < 0.01$), but one that is significantly worse than the model predictions ($p < 0.001$ with a Cox test). A linear regression model that takes both sets of priors as predictors still yield a significantly worse fit than our model. This suggests that our model adequately combines prior knowledge about the source and target domains to produce metaphor interpretations that closely fit that of humans.
+\begin{figure}[ht]
+\begin{center}
+\scalebox{0.6}{\includegraphics{Plots/scatter_full.pdf}}
+\end{center}
+\caption{This is a figure.} 
+\label{scatter_full}
+\end{figure}
+
+We then evaluate the model's performance on all three types of features. Correlation between human ratings and the model's marginal posterior probabilities for $f_1$, $f_2$, and $f_3$ across the $32$ metaphors and vague/specific QUD conditions is $0.56$ (add Spearman prophecy formula). Figure~\ref{scatter_full} shows the model predictions against human ratings for the three features of each metaphor given a vague or specific QUD. While our model still captures a significant amount of reliable variance in the human data, we see that there are certain features, particularly $f_2$ and $f_3$, for which the model performance is significantly worse. We analyze these metaphors and features in more detail in the following section.
+
+
+
+
+
 
 \section{Discussion}
 Discuss implication of results on the pragmatics of metaphor; discuss other effects we could explore using the modeling framework; suggest future directions.
@@ -139,36 +172,25 @@ In this paper we focus on developing a computational model of pragmatics that ex
 \subsection{Footnotes}
 
 
-\subsection{Tables}
+%\subsection{Tables}
 
-\begin{table}[!ht]
-\begin{center} 
-\caption{Sample table title.} 
-\label{sample-table} 
-\vskip 0.12in
-\begin{tabular}{ll} 
-\hline
-Error type    &  Example \\
-\hline
-Take smaller        &   63 - 44 = 21 \\
-Always borrow~~~~   &   96 - 42 = 34 \\
-0 - N = N           &   70 - 47 = 37 \\
-0 - N = 0           &   70 - 47 = 30 \\
-\hline
-\end{tabular} 
-\end{center} 
-\end{table}
-
-
-\subsection{Figures}
-
-\begin{figure}[ht]
-\begin{center}
-\fbox{CoGNiTiVe ScIeNcE}
-\end{center}
-\caption{This is a figure.} 
-\label{sample-figure}
-\end{figure}
+%\begin{table}[!ht]
+%\begin{center} 
+%\caption{Sample table title.} 
+%\label{sample-table} 
+%\vskip 0.12in
+%\begin{tabular}{ll} 
+%\hline
+%Error type    &  Example \\
+%\hline
+%Take smaller        &   63 - 44 = 21 \\
+%Always borrow~~~~   &   96 - 42 = 34 \\
+%0 - N = N           &   70 - 47 = 37 \\
+%0 - N = 0           &   70 - 47 = 30 \\
+%\hline
+%\end{tabular} 
+%\end{center} 
+%\end{table}
 
 
 \section{Acknowledgments}
