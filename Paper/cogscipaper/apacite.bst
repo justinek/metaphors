@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 1994-2009 Erik Meijer and any individual authors listed
+%% Copyright (C) 1994-2007 Erik Meijer and any individual authors listed
 %% elsewhere in this file.
 %% 
 %% This file is part of the `apacite' package.
@@ -27,9 +27,9 @@
 %% The `apacite' package consists of the files apacite.dtx and
 %% apacite.ins, and the following generated files:
 %% apacite.sty, apacite.bst, apacitex.bst, apa5ex.bib,
-%% apacite.drv, apacdoc.sty, apacann.bst,  apacannx.bst,
-%% english.apc, dutch.apc,   finnish.apc,  french.apc,  german.apc,
-%% ngerman.apc, greek.apc,   norsk.apc,   spanish.apc,  swedish.apc.
+%% apacite.drv, apacdoc.sty,
+%% english.apc, dutch.apc,   finnish.apc,  german.apc, ngerman.apc,
+%% greek.apc,   norsk.apc,   spanish.apc,  swedish.apc.
 %% 
 %% This work has the LPPL maintenance status `maintained'
 %% 
@@ -41,14 +41,16 @@
 %% the generated files.
 %% 
 %% apacite.bst
-%%   [2009/03/01 v4.05 APA bibliography style]
+%%   [2007/09/03 v4.00 APA bibliography style]
+
+
 %% apacite.bst : reference list according to APA manual
 %% Written by Erik Meijer
 
 FUNCTION {identify.apacite.version}
 { % Put identifying string in the .blg file
   "apacite.bst"
-  " [2009/03/01 v4.05 APA bibliography style]"
+  " [2007/09/03 v4.00 APA bibliography style]"
   * top$
 }
 
@@ -57,8 +59,7 @@ FUNCTION {identify.apacite.version}
 
 ENTRY
   { address
-    annote       % only used for annotated version
-    annotate     % only used for annotated version
+    annote       % not used
     author
     booktitle    % for articles in books
     chair        % for lectures
@@ -1336,15 +1337,6 @@ FUNCTION {definitive.cite.num.names.3.or.more}
                                             }
                                           if$
                                         }
-                                      if$
-                                    }
-                                    {   %
-                                        % Different 5th author: citing 5 authors is
-                                        % sufficient for this comparison.
-                                        %
-                                      cite.num.names.short #5 <
-                                        { #5 'cite.num.names.short := }
-                                        'skip$
                                       if$
                                     }
                                   if$
@@ -3604,7 +3596,7 @@ FUNCTION {format.bvolume.check}
 FUNCTION {format.edition.check}
 { duplicate$ empty$
     'skip$
-    { "\PrintOrdinal{" swap$ * "}" *
+    { "\PrintCardinal{" swap$ * "}" *
       "\BEd" connect.with.space.check
     }
   if$

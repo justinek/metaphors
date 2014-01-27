@@ -164,7 +164,7 @@ colnames(fp.set.marginal.present)[2] <- "category"
 
 fp.set.marginal.present <- fp.set.marginal.present[with(fp.set.marginal.present, 
                                                         order(categoryID, category, featureNum)), ]
-
+write.csv(fp.set.marginal.present, "featurePriors-set-marginal.csv", row.names=FALSE)
 # plot average marginal probabilities
 fp.set.marginal.summary <- summarySE(fp.set.marginal.present, measurevar="normalizedProb",
                                      groupvars=c("category", "featureNum"))
@@ -180,7 +180,29 @@ ggplot(fp.set.marginal.summary, aes(x=category, y=normalizedProb, fill=featureNu
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"))
 
-write.csv(fp.set.marginal.present, "featurePriors-set-marginal.csv", row.names=FALSE)
+# marginal probabilities of f2 and f3 given f1 FOR PEOPLE!!!!
+fp.set.long.summary.givenf1 <- subset(fp.set.long.summary, f1==1 & type=="person")
+# find renormalizing factors
+fp.set.long.summary.givenf1.normalize <- aggregate(data=fp.set.long.summary.givenf1, 
+                                                   normalizedProb ~ categoryID, FUN=sum)
+colnames(fp.set.long.summary.givenf1.normalize)[2] <- "factor"
+fp.set.long.summary.givenf1 <- join(fp.set.long.summary.givenf1, fp.set.long.summary.givenf1.normalize, 
+                                    by=c("categoryID"))
+fp.set.long.summary.givenf1$probGivenf1 <- with(fp.set.long.summary.givenf1, normalizedProb / factor)
+  
+fp.set.long.summary.f2givenf1 <- subset(fp.set.long.summary.givenf1, f2==1)
+fp.set.long.summary.f2givenf1$feature <- "2"
+
+fp.set.long.summary.f3givenf1 <- subset(fp.set.long.summary.givenf1, f3==1)
+fp.set.long.summary.f3givenf1$feature <- "3"
+
+fp.set.long.summary.f2f3givenf1 <- rbind(fp.set.long.summary.f2givenf1, fp.set.long.summary.f3givenf1)
+
+fp.set.long.summary.f2f3givenf1.summary <- summarySE(fp.set.long.summary.f2f3givenf1, 
+                                                   measurevar="probGivenf1", groupvars=c("type", "feature"))
+
+ggplot(fp.set.long.summary.f2f3givenf1.summary, aes(x=type, y=probGivenf1, fill=feature)) +
+  geom_bar(stat="identity", position=position_dodge())
 
 # an example with marginal prob
 fp.set.marginal.present.example <- subset(fp.set.marginal.present, categoryID=="1")

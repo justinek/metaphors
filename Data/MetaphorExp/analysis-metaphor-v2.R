@@ -160,6 +160,53 @@ ggplot(m.met.summary.summary, aes(x=qudLabel, y=modelProb, fill=featureLabel)) +
   xlab("") +
   ylab("Probability of feature given utterance")
 
+#### this part needs analysis-featurePrior.R
+# predictions for the literal utterances equivalent to marginal of priors given f1 is true
+m.lit.qud <- data.frame(categoryID=fp.set.long.summary.f2f3givenf1$categoryID, 
+                    featureNum=fp.set.long.summary.f2f3givenf1$feature,
+                    modelProb=fp.set.long.summary.f2f3givenf1$probGivenf1,
+                    modelZ=fp.set.long.summary.f2f3givenf1$probGivenf1)
+m.lit.noqud <- m.lit.qud
+
+m.lit.f1 <- data.frame(categoryID=fp.set.long.summary.f2f3givenf1$categoryID)
+m.lit.f1$featureNum <- "1"
+m.lit.f1$modelProb <- 1
+m.lit.f1$modelZ <- 1
+
+m.lit.qud <- rbind(m.lit.qud, m.lit.f1)
+m.lit.qud$qud <- "1"
+m.lit.noqud <- rbind(m.lit.noqud, m.lit.f1)
+m.lit.noqud$qud <- "0"
+
+m.lit <- rbind(m.lit.qud, m.lit.noqud)
+m.lit$dummy <- "1"
+m.lit$metaphor <- "0"
+m.met.summary$metaphor <- "1"
+
+m.met.lit <- rbind(m.met.summary, m.lit)
+m.met.lit.summary <- summarySE(m.met.lit, measurevar="modelProb", 
+                               groupvars=c("featureNum", "metaphor", "qud"))
+
+m.met.lit.summary$metaphor <- factor(m.met.lit.summary$metaphor, 
+                                     labels=c("Literal utterance", "Metaphorical utterance"))
+ggplot(m.met.lit.summary, aes(x=qud, y=modelProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2, position=position_dodge(0.9)) +
+  theme_bw() +
+  facet_grid(.~metaphor) +
+  #scale_fill_brewer(palette="Accent", name="Feature") +
+  scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3")) +
+  xlab("") +
+  scale_x_discrete(labels=c("Vague QUD", "Specific QUD")) +
+  ylab("Probability of feature given utterance")
+
+d.m.met.lit.compare <- join(d.summary, m.met.lit, by=c("categoryID", "featureNum", "qud", "metaphor"))
+with(d.m.met.lit.compare, cor.test(modelProb, featureProb))
+ggplot(d.m.met.lit.compare, aes(x=modelProb, y=featureProb, color=metaphor)) +
+  geom_point() +
+  theme_bw()
+
+
 d.m.met.compare <- join(d.met.summary, m.met.summary, by=c("categoryID", "featureNum", "qud"))
 # add feature labels
 features <- read.csv("../FeaturePriorExp/features-only.csv")
@@ -181,11 +228,12 @@ with(d.m.met.compare.f2, cor.test(featureProb, modelProb))
 d.m.met.compare.f3 <- subset(d.m.met.compare,featureNum=="3")
 with(d.m.met.compare.f3, cor.test(featureProb, modelProb))
 
+
 ggplot(d.m.met.compare, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
   geom_point(size=4) +
   #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
   #geom_text(aes(label=featureLabel, color=qud)) +
-  scale_shape_manual(values=c(21, 24), name=) +
+  scale_shape_manual(values=c(21, 24), name="QUD", labels=c("Vague", "Specific")) +
   theme_bw() +
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3")) +
   xlab("Model") +
