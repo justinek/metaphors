@@ -1,3 +1,8 @@
+(define feature1-prior (list (list 'animal '0.99) (list 'person '0.2)))
+(define feature2-prior (list (list 'animal '0.8) (list 'person '0.5)))
+(define feature3-prior (list (list 'animal '0.7) (list 'person '0.5)))
+
+
 ;; This basic metaphor model is identical to the hyperbole model with uniform utterance costs
 ;; Analogically speaking, "species category" is to "fierceness feature" as "actual price" is to
 ;; "valence".
@@ -24,20 +29,12 @@
 ; owl (wise, quiet, nocturnal): 0.8, 0.7, 0.9; 0.5, 0.5, 0.5
 ; zebra (striped, exotic, fast): 0.99, 0.8, 0.7; 0.2, 0.5, 0.5
 
-
-;; Conditional probability, for each category, that a member of that category is fierce 
-(define feature1-prior (list (list 'animal '0.99) (list 'person '0.2)))
-(define feature2-prior (list (list 'animal '0.8) (list 'person '0.5)))
-(define feature3-prior (list (list 'animal '0.7) (list 'person '0.5)))
-
 ;; Parameters
 (define depth 1)
 (define hardness 1)
 
 ;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
 (define goals (list 'goal-feature1 'goal-feature2 'goal-feature3))
-;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
-(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
 
 (define (sample-feature1 category prior)
   (let ((current-category-feature1-pair (first prior)))

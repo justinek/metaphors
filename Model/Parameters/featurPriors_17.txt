@@ -1,0 +1,3 @@
+(define feature1-prior (list (list 'animal '0.698125) (list 'person '0.5575)))
+(define feature2-prior (list (list 'animal '0.6475) (list 'person '0.520625)))
+(define feature3-prior (list (list 'animal '0.664375) (list 'person '0.54375)))
