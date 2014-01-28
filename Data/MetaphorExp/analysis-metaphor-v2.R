@@ -147,6 +147,62 @@ for (i in 1:32) {
 colnames(m.met.summary)[2] <- "modelProb"
 m.met.summary$modelZ <- (m.met.summary$modelProb - mean(m.met.summary$modelProb)) / sd(m.met.summary$modelProb)
 
+######## Get an example for the model ######## ######## ######## 
+m.example.id <- 1
+m.example.noqud <- read.csv(paste("../../Model/AnimalModelsOutput/noQud_", m.example.id, "-set.csv", sep=""), header=FALSE)
+colnames(m.example.noqud) <- c("category", "feature1", "feature2", "feature3", "prob")
+m.example.noqud$featureProb <- m.example.noqud$prob
+m.example.noqud.f1 <- aggregate(data=subset(m.example.noqud, feature1==1), 
+                        featureProb ~ feature1, FUN=sum)
+colnames(m.example.noqud.f1)[1] <- "dummy"
+m.example.noqud.f1$featureNum <- 1
+m.example.noqud.f2 <- aggregate(data=subset(m.example.noqud, feature2==1), 
+                        featureProb ~ feature2, FUN=sum)
+colnames(m.example.noqud.f2)[1] <- "dummy"
+m.example.noqud.f2$featureNum <- 2
+m.example.noqud.f3 <- aggregate(data=subset(m.example.noqud, feature3==1), 
+                        featureProb ~ feature3, FUN=sum)
+colnames(m.example.noqud.f3)[1] <- "dummy"
+m.example.noqud.f3$featureNum <- 3
+
+m.example.noqud.combine <- rbind(m.example.noqud.f1, m.example.noqud.f2, m.example.noqud.f3)
+m.example.noqud.combine$categoryID = i
+m.example.noqud.combine$qud = 0
+
+# with qud
+m.example.qud <- read.csv(paste("../../Model/AnimalModelsOutput/qud_", 
+                                  m.example.id, "-set.csv", sep=""), header=FALSE)
+colnames(m.example.qud) <- c("category", "feature1", "feature2", "feature3", "prob")
+m.example.qud$featureProb <- m.example.qud$prob 
+m.example.qud.f1 <- aggregate(data=subset(m.example.qud, feature1==1), 
+                      featureProb ~ feature1, FUN=sum)
+colnames(m.example.qud.f1)[1] <- "dummy"
+m.example.qud.f1$featureNum <- 1
+m.example.qud.f2 <- aggregate(data=subset(m.example.qud, feature2==1), 
+                      featureProb ~ feature2, FUN=sum)
+colnames(m.example.qud.f2)[1] <- "dummy"
+m.example.qud.f2$featureNum <- 2
+m.example.qud.f3 <- aggregate(data=subset(m.example.qud, feature3==1), 
+                      featureProb ~ feature3, FUN=sum)
+colnames(m.example.qud.f3)[1] <- "dummy"
+m.example.qud.f3$featureNum <- 3
+m.example.qud.combine <- rbind(m.example.qud.f1, m.example.qud.f2, m.example.qud.f3)
+m.example.qud.combine$categoryID = i
+m.example.qud.combine$qud <- 1
+
+# combine qud + noqud
+m.example.combine <- rbind(m.example.noqud.combine, m.example.qud.combine)
+m.example.met.summary <- rbind(m.met.summary, m.combine)
+colnames(m.met.summary)[2] <- "modelProb"
+
+m.met.example <- subset(m.met.summary, categoryID=="1")
+m.met.example$qud <- factor(m.met.example$qud)
+ggplot(m.met.example, aes(x=featureNum, y=modelProb, fill=qud)) +
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  theme_bw()
+######## ######## ######## ######## ######## 
+
+
 # summary statistics
 m.met.summary.summary <- summarySE(m.met.summary, measurevar="modelProb", groupvars=c("featureNum", "qud"))
 m.met.summary.summary$featureLabel <- factor(m.met.summary.summary$featureNum, labels=c("f1", "f2", "f3"))
@@ -228,11 +284,10 @@ with(d.m.met.compare.f2, cor.test(featureProb, modelProb))
 d.m.met.compare.f3 <- subset(d.m.met.compare,featureNum=="3")
 with(d.m.met.compare.f3, cor.test(featureProb, modelProb))
 
-
-ggplot(d.m.met.compare, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
-  geom_point(size=4) +
-  #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
-  #geom_text(aes(label=featureLabel, color=qud)) +
+ggplot(d.m.met.compare.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  #geom_point(size=4) +
+  geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
+  geom_text(aes(label=featureLabel, color=qud)) +
   scale_shape_manual(values=c(21, 24), name="QUD", labels=c("Vague", "Specific")) +
   theme_bw() +
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3")) +

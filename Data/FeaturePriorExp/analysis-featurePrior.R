@@ -131,6 +131,7 @@ fp.set.long$normalizedProb <- fp.set.long$value / fp.set.long$normalizing
 fp.set.long.summary <- summarySE(data=fp.set.long, measurevar="normalizedProb", 
                                  groupvars=c("categoryID", "type", "featureSetNum", "animal"))
 
+
 write.csv(fp.set.long.summary, "featurePriors-set.csv", row.names=FALSE)
 ## visualize an example
 this.ID <- 1
@@ -149,6 +150,41 @@ ggplot(fp.set.example, aes(x=featureSetNum, y=normalizedProb, fill=featureSetNum
 mapping <- read.csv("featureSetMapping.csv")
 mapping$featureSetNum <- factor(mapping$featureSetNum)
 fp.set.long.summary <- join(fp.set.long.summary, mapping, by=c("featureSetNum"))
+
+# check anti-correlations with f1
+fp.set.f1 <- subset(fp.set.long.summary, f1==1)
+fp.set.notf1 <- subset(fp.set.long.summary, f1==0)
+
+# f2 anticorrelations
+fp.set.f2givenf1 <- aggregate(data=fp.set.f1, normalizedProb ~ categoryID + type + f2, FUN=sum)
+colnames(fp.set.f2givenf1)[4] <- "probGivenf1"
+fp.set.f2givennotf1 <- aggregate(data=fp.set.notf1, normalizedProb ~ categoryID + type + f2, FUN=sum)
+colnames(fp.set.f2givennotf1)[4] <- "probGivenNotf1"
+fp.set.f2givenf1.compare <-join(fp.set.f2givenf1, fp.set.f2givennotf1, by=c("categoryID", "type", "f2"))
+fp.set.f2givenf1.compare.person.anti <- subset(fp.set.f2givenf1.compare, type=="person" & f2==1 & probGivenf1 < probGivenNotf1)
+fp.set.f2givenf1.compare.animal.anti <- subset(fp.set.f2givenf1.compare, type=="animal" & f2==1 & probGivenf1 < probGivenNotf1)
+# add feature names
+featureNames <- data.frame(categoryID=fp.summary$categoryID, animal=fp.summary$animal, 
+                           feature1=fp.summary$f1, feature2=fp.summary$f2, feature3=fp.summary$f3)
+fp.set.f2givenf1.compare.person.anti <- join(fp.set.f2givenf1.compare.person.anti, featureNames, by=c("categoryID"), match="first")
+fp.set.f2givenf1.compare.animal.anti <- join(fp.set.f2givenf1.compare.animal.anti, featureNames, by=c("categoryID"), match="first")
+
+# f3 anticorrelations
+fp.set.f3givenf1 <- aggregate(data=fp.set.f1, normalizedProb ~ categoryID + type + f3, FUN=sum)
+colnames(fp.set.f3givenf1)[4] <- "probGivenf1"
+fp.set.f3givennotf1 <- aggregate(data=fp.set.notf1, normalizedProb ~ categoryID + type + f3, FUN=sum)
+colnames(fp.set.f3givennotf1)[4] <- "probGivenNotf1"
+fp.set.f3givenf1.compare <-join(fp.set.f3givenf1, fp.set.f3givennotf1, by=c("categoryID", "type", "f3"))
+fp.set.f3givenf1.compare.person.anti <- subset(fp.set.f3givenf1.compare, type=="person" & f3==1 & probGivenf1 < probGivenNotf1)
+fp.set.f3givenf1.compare.animal.anti <- subset(fp.set.f3givenf1.compare, type=="animal" & f3==1 & probGivenf1 < probGivenNotf1)
+# add feature names
+fp.set.f3givenf1.compare.person.anti <- join(fp.set.f3givenf1.compare.person.anti, featureNames, by=c("categoryID"), match="first")
+fp.set.f3givenf1.compare.animal.anti <- join(fp.set.f3givenf1.compare.animal.anti, featureNames, by=c("categoryID"), match="first")
+
+
+
+
+## compute marginals
 fp.set.marginal.f1 <- aggregate(data=fp.set.long.summary, normalizedProb ~ categoryID + type + f1, FUN=sum) 
 fp.set.marginal.f1$featureNum <- "1"
 colnames(fp.set.marginal.f1)[3] <- "featurePresent"
@@ -193,10 +229,14 @@ fp.set.long.summary.givenf1$probGivenf1 <- with(fp.set.long.summary.givenf1, nor
 fp.set.long.summary.f2givenf1 <- subset(fp.set.long.summary.givenf1, f2==1)
 fp.set.long.summary.f2givenf1$feature <- "2"
 
+
 fp.set.long.summary.f3givenf1 <- subset(fp.set.long.summary.givenf1, f3==1)
 fp.set.long.summary.f3givenf1$feature <- "3"
 
 fp.set.long.summary.f2f3givenf1 <- rbind(fp.set.long.summary.f2givenf1, fp.set.long.summary.f3givenf1)
+fp.set.long.summary.f2f3givenf1 <- fp.set.long.summary.f2f3givenf1[with(fp.set.long.summary.f2f3givenf1, order(categoryID)), ]
+## test
+test <- fp.set.long.summary.f2givenf1[with(fp.set.long.summary.f2givenf1, order(categoryID)),]
 
 fp.set.long.summary.f2f3givenf1.summary <- summarySE(fp.set.long.summary.f2f3givenf1, 
                                                    measurevar="probGivenf1", groupvars=c("type", "feature"))
@@ -223,3 +263,22 @@ ggplot(fp.set.marginal.compare, aes(x=featureProb, y=normalizedProb)) +
   geom_smooth(method=lm) +
   geom_text(aes(label=labels, color=featureNum)) +
   theme_bw()
+
+
+## Create table of features and marginal set priors
+featureList <- read.csv("feature-antonym-list.csv")
+marginalPriors.animal <- subset(fp.set.marginal.present, category=="animal")
+colnames(marginalPriors.animal)[4] <- "animalPriors"
+marginalPriors.person <- subset(fp.set.marginal.present, category=="person")
+colnames(marginalPriors.person)[4] <- "personPriors"
+featureList <- join(featureList, marginalPriors.animal, by=c("categoryID", "featureNum"))
+featureList <- join(featureList, marginalPriors.person, by=c("categoryID", "featureNum"))
+featureList$category <- NULL
+featureList$featurePresent <- NULL
+featureList$category <- NULL
+featureList$featurePresent <- NULL
+wide <- reshape(featureList, v.names=c("feature", "antonym", "animalPriors", "personPriors"),
+                                            timevar="featureNum", idvar=c("categoryID", "animal") , direction="wide")
+# write in a csv
+write.csv(featureList, "feature-antonym-marginals-paper.csv")
+write.csv(wide, "feature-antonym-marginals-wide-paper.csv")

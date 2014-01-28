@@ -4,8 +4,9 @@
 ;; We will define the parameters separately and concatenate with this code.
 
 ;;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
-(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
+;;(define (goal-prior) (multinomial goals '(0.99999 0.00005 0.00005)))
 
+(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
 (define categories (list 'animal 'person))
 
 (define featureSets (list '(1 1 1) '(1 1 0) '(1 0 1) '(1 0 0) '(0 1 1) '(0 1 0) '(0 0 1) '(0 0 0)))
