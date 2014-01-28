@@ -3,14 +3,14 @@
 ;; We will define the parameters separately and concatenate with this code.
 
 ;;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
-(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
+(define (goal-prior) (multinomial goals '(0.999 0.0005 0.0005)))
 
 (define categories (list 'animal 'person))
 
 (define featureSets (list '(1 1 1) '(1 1 0) '(1 0 1) '(1 0 0) '(0 1 1) '(0 1 0) '(0 0 1) '(0 0 0)))
 
 ;; Define prior of john belonging to a category
-(define (categories-prior) (multinomial categories '(0.0001 0.9999)))
+(define (categories-prior) (multinomial categories '(0.00001 0.99999)))
 
 ;; All possible utterances someone could say ("John is a lion" "John is a man" "John is a blah")
 (define utterances (list 'animal 'person))
@@ -19,7 +19,7 @@
 (define (utterance-prior) (multinomial utterances '(0.1 0.1)))
 
 ;; Parameters
-(define depth 1)
+(define depth 2)
 (define hardness 1)
 
 ;; Define communicative goals as wanting to communicate something about John's category vs his fierceness

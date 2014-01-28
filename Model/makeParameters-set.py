@@ -2,7 +2,7 @@
 # concatenate with rest of the church code
 import sys, re, string
 
-f = open("../Data/FeaturePriorExp/featurePriors-set.csv", "r")
+f = open("../Data/FeaturePriorExp/featurePriors-set-transformed.csv", "r")
 qud = sys.argv[2]
 
 animalDict = dict()
@@ -40,7 +40,7 @@ for l in f:
 
 for i in range(1,33):
     churchF = open(sys.argv[1], "r")
-    writeFile = open("AnimalModels/model-" + qud + "_" + str(i) + "-set-multi.church", "w")
+    writeFile = open("AnimalModels/model-" + qud + "_" + str(i) + "-set-transformed-d2.church", "w")
     writeFile.write("(define featureSet-prior (list (list '" + " '".join(animalDict[i].values()) + ") (list '" + " '".join(peopleDict[i].values()) + ")))\n")
     for l in churchF:
         writeFile.write(l)

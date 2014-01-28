@@ -105,11 +105,11 @@ ggplot(fp.example, aes(x=feature, y=featureProb, fill=feature)) +
   #ylim(c(0,1)) +
   ggtitle(animal)
 
-#####################
+############################################################
 # Feature set priors
-######################
+###########################################################
 library(reshape)
-fp.set <- read.csv("data60-set-long.csv")
+fp.set <- read.csv("data60-set-long-zscored.csv")
 
 #fp.set.means <- aggregate(.~ categoryID + animal, data=fp.set, FUN=mean)
 #write.csv(fp.set.means, "featurePriors-set.csv", row.names=FALSE)
@@ -118,9 +118,28 @@ fp.set.long <- melt(fp.set, id=c("workerid", "gender", "age", "income", "categor
 fp.set.long$type <- ifelse(grepl("a_", fp.set.long$variable)==TRUE, "animal", "person")
 fp.set.long$featureSetNum <- unlist(lapply(strsplit(as.character(fp.set.long$variable), "_"), "[", 2))
 
+################################
+# sigmoid transformation
+################################
+fp.set.long$sigProb <- 1 / (1 + exp(1)^(-3*fp.set.long$value))
+
+# normalize for sigmoid
+fp.set.normalizing.sig <- aggregate(data=fp.set.long, sigProb ~ workerid + categoryID + type, FUN=sum)
+colnames(fp.set.normalizing.sig)[4] <- "normalizing"
+fp.set.long <- join(fp.set.long, fp.set.normalizing.sig, by=c("workerid", "categoryID", "type"))
+# filter out rows with 0 as normalizer
+fp.set.long <- subset(fp.set.long, normalizing != 0)
+fp.set.long$normalizedProb <- fp.set.long$sigProb / fp.set.long$normalizing
+
+fp.set.long.summary <- summarySE(data=fp.set.long, measurevar="normalizedProb", 
+                                 groupvars=c("categoryID", "type", "featureSetNum", "animal"))
+
+write.csv(fp.set.long.summary, "featurePriors-set-transformed.csv", row.names=FALSE)
+###################################
+# No sigmoid
+###################################
 # normalize to sum ratings for each person/animal in each trial to 1
 # get noramlizing factor by summing ratigs for each subject/category/type
-
 fp.set.normalizing <- aggregate(data=fp.set.long, value ~ workerid + categoryID + type, FUN=sum)
 colnames(fp.set.normalizing)[4] <- "normalizing"
 fp.set.long <- join(fp.set.long, fp.set.normalizing, by=c("workerid", "categoryID", "type"))
@@ -146,7 +165,9 @@ ggplot(fp.set.example, aes(x=featureSetNum, y=normalizedProb, fill=featureSetNum
   #ylim(c(0,1)) +
   ggtitle(animal)
 
-# compute marginal prob for each feature
+################################
+## compute marginal prob for each feature
+################################
 mapping <- read.csv("featureSetMapping.csv")
 mapping$featureSetNum <- factor(mapping$featureSetNum)
 fp.set.long.summary <- join(fp.set.long.summary, mapping, by=c("featureSetNum"))
@@ -182,9 +203,9 @@ fp.set.f3givenf1.compare.person.anti <- join(fp.set.f3givenf1.compare.person.ant
 fp.set.f3givenf1.compare.animal.anti <- join(fp.set.f3givenf1.compare.animal.anti, featureNames, by=c("categoryID"), match="first")
 
 
-
-
-## compute marginals
+################################
+# compute marginals
+################################
 fp.set.marginal.f1 <- aggregate(data=fp.set.long.summary, normalizedProb ~ categoryID + type + f1, FUN=sum) 
 fp.set.marginal.f1$featureNum <- "1"
 colnames(fp.set.marginal.f1)[3] <- "featurePresent"

@@ -82,6 +82,27 @@ Blasko, D\BPBI G.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
+Clark%
+}{%
+Clark%
+}{%
+{\protect\APACyear{1996}}%
+}]{%
+clark1996using}%
+\APACinsertmetastar{%
+clark1996using}%
+Clark, H\BPBI H.%
+%
+\unskip\
+\newblock
+\APACrefYear{1996}.
+\newblock
+\APACrefbtitle{Using language}{Using language}\ (\BVOL~4).
+\newblock
+\APACaddressPublisher{}{Cambridge University Press Cambridge}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Frank%
 \ \BBA{} Goodman%
 }{%
@@ -104,29 +125,6 @@ Frank, M\BPBI C.%
   games}{Predicting pragmatic reasoning in language games}.\BBCQ{}
 \newblock
 \APACjournalVolNumPages{Science}{336}{6084}{998--998}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-Gibbs%
-}{%
-Gibbs%
-}{%
-{\protect\APACyear{1994}}%
-}]{%
-gibbs1994poetics}%
-\APACinsertmetastar{%
-gibbs1994poetics}%
-Gibbs, R\BPBI W.%
-%
-\unskip\
-\newblock
-\APACrefYear{1994}.
-\newblock
-\APACrefbtitle{The poetics of mind: Figurative thought, language, and
-  understanding}{The poetics of mind: Figurative thought, language, and
-  understanding}.
-\newblock
-\APACaddressPublisher{}{Cambridge University Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
@@ -417,28 +415,6 @@ Pilkington, A.%
   A revelance theory perspective}\ (\BVOL~75).
 \newblock
 \APACaddressPublisher{}{John Benjamins}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-Ricoeur%
-}{%
-Ricoeur%
-}{%
-{\protect\APACyear{2003}}%
-}]{%
-ricoeur2003rule}%
-\APACinsertmetastar{%
-ricoeur2003rule}%
-Ricoeur, P.%
-%
-\unskip\
-\newblock
-\APACrefYear{2003}.
-\newblock
-\APACrefbtitle{The rule of metaphor: The creation of meaning in language}{The
-  rule of metaphor: The creation of meaning in language}.
-\newblock
-\APACaddressPublisher{}{Psychology Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%

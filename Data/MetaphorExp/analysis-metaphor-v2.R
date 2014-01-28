@@ -1,15 +1,11 @@
 source("summarySE.R")
 d <- read.csv("data49-long.csv")
-
-#####
-# Aggregate analysis
-#####
-
-#### Human
 d$qud <- ifelse(d$condition==1 | d$condition==2, 0, 1)
 d$metaphor <- ifelse(d$condition==1 | d$condition==3, 0, 1)
 
+###############################
 ## Human split-half analysis
+################################
 ii <- seq_len(nrow(d)) 
 ind1 <- sample(ii, nrow(d) / 2) 
 ind2 <- ii[!ii %in% ind1] 
@@ -52,8 +48,9 @@ with(subset(splithalf.met.comp, featureNum==1), cor.test(h1prob, h2prob))
 with(subset(splithalf.met.comp, featureNum==2), cor.test(h1prob, h2prob))
 with(subset(splithalf.met.comp, featureNum==3), cor.test(h1prob, h2prob))
 
+##########################
 # turn into long form with feature nums
-
+##########################
 d.f1.summary <- summarySE(d, measurevar="f1prob", groupvars=c("categoryID", "animal", "qud", "metaphor"))
 d.f2.summary <- summarySE(d, measurevar="f2prob", groupvars=c("categoryID", "animal", "qud", "metaphor"))
 d.f3.summary <- summarySE(d, measurevar="f3prob", groupvars=c("categoryID", "animal", "qud", "metaphor"))
@@ -97,7 +94,7 @@ d.met.summary <- subset(d.summary, metaphor=="1")
 m.met.summary <- data.frame(dummy=NULL, featureProb=NULL, featureNum=NULL, categoryID=NULL, qud=NULL)
 
 for (i in 1:32) {
-  filename.noqud <- paste("../../Model/AnimalModelsOutput/noQud_", i, "-set.csv", sep="")
+  filename.noqud <- paste("../../Model/AnimalModelsOutput/noQud_", i, "-set-transformed-d2.csv", sep="")
   m.noqud <- read.csv(filename.noqud, header=FALSE)
   colnames(m.noqud) <- c("category", "feature1", "feature2", "feature3", "prob")
   m.noqud$featureProb <- m.noqud$prob
@@ -119,7 +116,7 @@ for (i in 1:32) {
   m.noqud.combine$qud = 0
   
   # with qud
-  filename.qud <- paste("../../Model/AnimalModelsOutput/qud_", i, "-set.csv", sep="")
+  filename.qud <- paste("../../Model/AnimalModelsOutput/qud_", i, "-set-transformed-d2.csv", sep="")
   m.qud <- read.csv(filename.qud, header=FALSE)
   colnames(m.qud) <- c("category", "feature1", "feature2", "feature3", "prob")
   m.qud$featureProb <- m.qud$prob 
@@ -148,10 +145,18 @@ colnames(m.met.summary)[2] <- "modelProb"
 m.met.summary$modelZ <- (m.met.summary$modelProb - mean(m.met.summary$modelProb)) / sd(m.met.summary$modelProb)
 
 ######## Get an example for the model ######## ######## ######## 
-m.example.id <- 1
-m.example.noqud <- read.csv(paste("../../Model/AnimalModelsOutput/noQud_", m.example.id, "-set.csv", sep=""), header=FALSE)
+m.example.id <- 30
+m.example.noqud <- read.csv("../../Model/AnimalModelsOutput/test.csv", header=FALSE)
+#m.example.noqud <- read.csv(paste("../../Model/AnimalModelsOutput/qud_", m.example.id, "-set-transformed-d2.csv", sep=""), header=FALSE)
 colnames(m.example.noqud) <- c("category", "feature1", "feature2", "feature3", "prob")
 m.example.noqud$featureProb <- m.example.noqud$prob
+m.example.noqud$featureSetVals <- paste(m.example.noqud$feature1, m.example.noqud$feature2,
+                                        m.example.noqud$feature3, sep=",")
+##### Plot example, joint
+ggplot(m.example.noqud, aes(x=featureSetVals, y=featureProb, fill=feature1)) +
+  geom_bar(stat="identity", color="black") +
+  theme_bw()
+
 m.example.noqud.f1 <- aggregate(data=subset(m.example.noqud, feature1==1), 
                         featureProb ~ feature1, FUN=sum)
 colnames(m.example.noqud.f1)[1] <- "dummy"
@@ -256,12 +261,16 @@ ggplot(m.met.lit.summary, aes(x=qud, y=modelProb, fill=featureNum)) +
   scale_x_discrete(labels=c("Vague QUD", "Specific QUD")) +
   ylab("Probability of feature given utterance")
 
+
 d.m.met.lit.compare <- join(d.summary, m.met.lit, by=c("categoryID", "featureNum", "qud", "metaphor"))
 with(d.m.met.lit.compare, cor.test(modelProb, featureProb))
 ggplot(d.m.met.lit.compare, aes(x=modelProb, y=featureProb, color=metaphor)) +
   geom_point() +
   theme_bw()
 
+#######################
+# Combine model and human
+######################
 
 d.m.met.compare <- join(d.met.summary, m.met.summary, by=c("categoryID", "featureNum", "qud"))
 # add feature labels
@@ -271,8 +280,8 @@ d.m.met.compare$featureNum <- factor(d.m.met.compare$featureNum)
 d.m.met.compare$qud <- factor(d.m.met.compare$qud)
 d.m.met.compare$featureProbConverted <- pnorm(d.m.met.compare$featureProb)
 with(d.m.met.compare, cor.test(featureProb, modelProb))
-with(d.m.met.compare, cor.test(featureProbConverted, modelProb))
-#with(d.m.met.compare, cor.test(featureProb, modelZ))
+#with(d.m.met.compare, cor.test(featureProbConverted, modelProb))
+with(d.m.met.compare, cor.test(featureProb, modelZ))
 
 d.m.met.compare$featureLabel <- paste(d.m.met.compare$animal, d.m.met.compare$feature, sep="-")
 d.m.met.compare.f1 <- subset(d.m.met.compare,featureNum=="1")
@@ -284,9 +293,9 @@ with(d.m.met.compare.f2, cor.test(featureProb, modelProb))
 d.m.met.compare.f3 <- subset(d.m.met.compare,featureNum=="3")
 with(d.m.met.compare.f3, cor.test(featureProb, modelProb))
 
-ggplot(d.m.met.compare.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
-  #geom_point(size=4) +
-  geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
+ggplot(d.m.met.compare.f1, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  #geom_point(size=3) +
+  #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
   geom_text(aes(label=featureLabel, color=qud)) +
   scale_shape_manual(values=c(21, 24), name="QUD", labels=c("Vague", "Specific")) +
   theme_bw() +

@@ -13,7 +13,7 @@ Database file #1: metaphor.bib
 apacite.bst [2007/09/03 v4.00 APA bibliography style]
 Warning--No publisher in bergen2012s
 Warning--No address in bergen2012s
-Warning--No address in gibbs1994poetics
+Warning--No address in clark1996using
 Warning--No address in glucksberg2001understanding
 Warning--No journal in glucksberg1993metaphors
 Warning--No publisher in jager2009pragmatic
@@ -21,49 +21,48 @@ Warning--No address in jager2009pragmatic
 Warning--No address in lakoff2009more
 Warning--No address in ortony1993metaphor
 Warning--No address in pilkington2000poetic
-Warning--No address in ricoeur2003rule
 Warning--No publisher in sperber1985loose
 Warning--No address in sperber1985loose
 Warning--No address in stern2000metaphor
-You've used 27 entries,
+You've used 26 entries,
             6345 wiz_defined-function locations,
-            1333 strings with 13353 characters,
-and the built_in function-call counts, 44247 in all, are:
-= -- 5529
-> -- 374
-< -- 1877
-+ -- 1905
-- -- 56
-* -- 2750
-:= -- 7820
-add.period$ -- 113
-call.type$ -- 27
-change.case$ -- 138
+            1331 strings with 13236 characters,
+and the built_in function-call counts, 42370 in all, are:
+= -- 5300
+> -- 365
+< -- 1761
++ -- 1793
+- -- 54
+* -- 2628
+:= -- 7411
+add.period$ -- 109
+call.type$ -- 26
+change.case$ -- 133
 chr.to.int$ -- 0
-cite$ -- 68
-duplicate$ -- 1190
-empty$ -- 1936
-format.name$ -- 601
-if$ -- 8712
+cite$ -- 65
+duplicate$ -- 1159
+empty$ -- 1867
+format.name$ -- 587
+if$ -- 8379
 int.to.chr$ -- 0
-int.to.str$ -- 54
+int.to.str$ -- 52
 missing$ -- 0
-newline$ -- 628
-num.names$ -- 216
-pop$ -- 907
+newline$ -- 607
+num.names$ -- 208
+pop$ -- 855
 preamble$ -- 1
-purify$ -- 108
+purify$ -- 104
 quote$ -- 0
-skip$ -- 2946
+skip$ -- 2849
 stack$ -- 0
-substring$ -- 2172
-swap$ -- 715
+substring$ -- 2054
+swap$ -- 707
 text.length$ -- 74
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 2352
-warning$ -- 14
-while$ -- 198
+type$ -- 2272
+warning$ -- 13
+while$ -- 194
 width$ -- 0
-write$ -- 765
-(There were 14 warnings)
+write$ -- 742
+(There were 13 warnings)
