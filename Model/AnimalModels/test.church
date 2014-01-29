@@ -1,11 +1,11 @@
-(define featureSet-prior (list (list '0.300926375 '0.135482738 '0.184164826 '0.097830233 '0.11272795 '0.059193966 '0.071157615 '0.038516296) (list '0.01 '0.01 '0.01 '0.2 '0.2 '0.01 '0.01 '0.01)))
+(define featureSet-prior (list (list '0.8 '0.05 '0.05 '0.05 '0.05 '0.05 '0.05 '0.05) (list '0.01 '0.01 '0.01 '0.2 '0.2 '0.01 '0.01 '0.01)))
 
 ;; This model will not run as the feature priors are not defined.
 ;; We will define the parameters separately and concatenate with this code.
 
-(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
-;;(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
-;;(define (goal-prior) (multinomial goals '(1 0 0)))
+;;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+;(define (goal-prior) (multinomial goals '(0.9 0.05 0.05)))
+(define (goal-prior) (multinomial goals '(1 0 0)))
 
 (define categories (list 'animal 'person))
 
@@ -22,7 +22,7 @@
 
 ;; Parameters
 (define depth 1)
-(define hardness 1)
+(define alpha 5)
 
 ;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
 (define goals (list 'goal-feature1 'goal-feature2 'goal-feature3))
@@ -71,10 +71,14 @@
    (if (equal? depth 0)
        (literal-interpretation utterance category)
        (equal? utterance
-               (apply multinomial (speaker category feature1 feature2 feature3 speaker-goal (- depth 1)))))
+               (apply multinomial (raise-to-power (speaker category feature1 feature2 feature3 speaker-goal (- depth 1)) alpha ))))
    ))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
 
 (define (sample-one utterance) 
   (listener utterance depth))
 
 (sample-one 'animal)
+;;(speaker)
