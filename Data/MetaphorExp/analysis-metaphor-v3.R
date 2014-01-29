@@ -172,6 +172,7 @@ for (t in seq(1, 100)) {
   h2.summary <- rbind(h2.f1.summary, h2.f2.summary, h2.f3.summary)
   colnames(h2.summary)[6] <- "h2prob"
   splithalf.comp <- join(h1.summary, h2.summary, by=c("categoryID", "animal", "qud", "metaphor", "featureNum"))
+  splithalf.comp[complete.cases(splithalf.comp),]
   # full data
   splithalf.all.sum <- splithalf.all.sum + with(splithalf.comp, cor(h1prob, h2prob))
   # just metaphor
@@ -179,7 +180,7 @@ for (t in seq(1, 100)) {
   splithalf.met.sum <- splithalf.met.sum + with(splithalf.met.comp, cor(h1prob, h2prob))
   splithalf.f1.sum <- with(subset(splithalf.met.comp, featureNum==1), cor(h1prob, h2prob))
   splithalf.f2.sum <- with(subset(splithalf.met.comp, featureNum==2), cor(h1prob, h2prob))
-  splithalf.f2.sum <- with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob))
+  splithalf.f3.sum <- with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob))
 }
 
 
