@@ -118,20 +118,39 @@ with(best.f2, cor.test(featureProb, personPrior))
 with(best.f3, cor.test(featureProb, modelProb))
 with(best.f3, cor.test(featureProb, animalPrior))
 with(best.f3, cor.test(featureProb, personPrior))
+#### No significance test
+with(best, cor(featureProb, modelProb))
+with(best, cor(featureProb, animalPrior))
+with(best, cor(featureProb, personPrior))
+with(best.f1, cor(featureProb, modelProb))
+with(best.f1, cor(featureProb, animalPrior))
+with(best.f1, cor(featureProb, personPrior))
+with(best.f2, cor(featureProb, modelProb))
+with(best.f2, cor(featureProb, animalPrior))
+with(best.f2, cor(featureProb, personPrior))
+with(best.f3, cor(featureProb, modelProb))
+with(best.f3, cor(featureProb, animalPrior))
+with(best.f3, cor(featureProb, personPrior))
 #########################
 # Visualize scatter plot
 #########################
-ggplot(best, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
-  geom_point(size=3) +
+ggplot(best.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  #geom_point(size=3) +
   #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
-  #geom_text(aes(label=labels, color=qud)) +
+  geom_text(aes(label=labels, color=qud)) +
   scale_shape_manual(values=c(21, 24), name="Goal", labels=c("Vague", "Specific")) +
   theme_bw() +
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"), 
                     guide=guide_legend(override.aes=aes(shape=21))) +
   xlab("Model") +
   ylab("Human")
-
+#########################
+# Visualize residuals
+#########################
+fit <- lm(data=best, featureProb ~ modelProb)
+plot(fit)
+best$resid <- residuals(fit)
+best <- best[with(best, order(-abs(resid))), ]
 ########################
 # Human split-half
 ########################
@@ -172,17 +191,30 @@ for (t in seq(1, 100)) {
   h2.summary <- rbind(h2.f1.summary, h2.f2.summary, h2.f3.summary)
   colnames(h2.summary)[6] <- "h2prob"
   splithalf.comp <- join(h1.summary, h2.summary, by=c("categoryID", "animal", "qud", "metaphor", "featureNum"))
-  splithalf.comp[complete.cases(splithalf.comp),]
+  splithalf.comp <- splithalf.comp[complete.cases(splithalf.comp),]
   # full data
   splithalf.all.sum <- splithalf.all.sum + with(splithalf.comp, cor(h1prob, h2prob))
   # just metaphor
   splithalf.met.comp <- subset(splithalf.comp, metaphor=="1")
   splithalf.met.sum <- splithalf.met.sum + with(splithalf.met.comp, cor(h1prob, h2prob))
-  splithalf.f1.sum <- with(subset(splithalf.met.comp, featureNum==1), cor(h1prob, h2prob))
-  splithalf.f2.sum <- with(subset(splithalf.met.comp, featureNum==2), cor(h1prob, h2prob))
-  splithalf.f3.sum <- with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob))
+  splithalf.f1.sum <- splithalf.f1.sum + with(subset(splithalf.met.comp, featureNum==1), cor(h1prob, h2prob))
+  splithalf.f2.sum <- splithalf.f2.sum + with(subset(splithalf.met.comp, featureNum==2), cor(h1prob, h2prob))
+  splithalf.f3.sum <- splithalf.f3.sum + with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob))
 }
+splithalf.all <- splithalf.all.sum / 100
+splithalf.met <- splithalf.met.sum / 100
+splithalf.f1 <- splithalf.f1.sum / 100
+splithalf.f2 <- splithalf.f2.sum / 100
+splithalf.f3 <- splithalf.f3.sum / 100
 
-
+prophet <- function(reliability, length) {
+  prophecy <- length * reliability / (1 + (length - 1)*reliability)
+  return (prophecy)
+}
+prophet(splithalf.all, 2)
+prophet(splithalf.met, 2)
+prophet(splithalf.f1, 2)
+prophet(splithalf.f2, 2)
+prophet(splithalf.f3, 2)
 
   
