@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 JAN 2014 21:20
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 JAN 2014 21:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -491,7 +491,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4005 strings out of 493488
  53624 string characters out of 3141326
- 139349 words of memory out of 3000000
+ 139303 words of memory out of 3000000
  7197 multiletter control sequences out of 15000+200000
  61013 words of font info for 134 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -506,7 +506,7 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on cogsci_metaphor.pdf (7 pages, 149651 bytes).
+Output written on cogsci_metaphor.pdf (7 pages, 149622 bytes).
 PDF statistics:
  91 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream
