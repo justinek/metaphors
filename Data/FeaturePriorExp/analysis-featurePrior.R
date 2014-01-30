@@ -109,7 +109,7 @@ ggplot(fp.example, aes(x=feature, y=featureProb, fill=feature)) +
 # Feature set priors
 ###########################################################
 library(reshape)
-fp.set <- read.csv("data60-set-long-zscored.csv")
+fp.set <- read.csv("data60-set-long.csv")
 
 #fp.set.means <- aggregate(.~ categoryID + animal, data=fp.set, FUN=mean)
 #write.csv(fp.set.means, "featurePriors-set.csv", row.names=FALSE)
@@ -226,14 +226,18 @@ write.csv(fp.set.marginal.present, "featurePriors-set-marginal.csv", row.names=F
 fp.set.marginal.summary <- summarySE(fp.set.marginal.present, measurevar="normalizedProb",
                                      groupvars=c("category", "featureNum"))
 
-ggplot(fp.set.marginal.summary, aes(x=category, y=normalizedProb, fill=featureNum)) +
-  geom_bar(stat="identity", color="black", position=position_dodge()) +
+fp.set.marginal.summary$facet.label <- "Feature priors"
+fp.set.marginal.summary$category <- 
+  factor(fp.set.marginal.summary$category, labels=c("Animal category", "Person category"))
+ggplot(fp.set.marginal.summary, aes(x=featureNum, y=normalizedProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black", position=position_dodge(), width=0.9) +
   geom_errorbar(aes(ymin=normalizedProb-se, ymax=normalizedProb+se), width=0.2, position=position_dodge(0.9)) +
-  #facet_grid(.~category) +
+  facet_grid(.~category) +
   theme_bw() +
   xlab("") +
   ylab("Probability of feature given category") +
-  scale_x_discrete(labels=c("Animal category", "Person category")) +
+  ylim(c(0, 1)) +
+  scale_x_discrete(labels=c("f1", "f2", "f3")) +
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"))
 

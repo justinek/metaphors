@@ -202,6 +202,32 @@ Glucksberg%
 Glucksberg%
 \ \BBA{} Keysar%
 }{%
+{\protect\APACyear{1990}}%
+}]{%
+glucksberg1990understanding}%
+\APACinsertmetastar{%
+glucksberg1990understanding}%
+Glucksberg, S.%
+\BCBT{}\ \BBA{} Keysar, B.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1990}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Understanding metaphorical comparisons: Beyond
+  similarity.}{Understanding metaphorical comparisons: Beyond
+  similarity.}\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Psychological review}{97}{1}{3}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Glucksberg%
+\ \BBA{} Keysar%
+}{%
+Glucksberg%
+\ \BBA{} Keysar%
+}{%
 {\protect\APACyear{1993}}%
 }]{%
 glucksberg1993metaphors}%
@@ -342,6 +368,28 @@ Lakoff, G.%
   than cool reason: A field guide to poetic metaphor}.
 \newblock
 \APACaddressPublisher{}{University of Chicago Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Miller%
+}{%
+Miller%
+}{%
+{\protect\APACyear{1995}}%
+}]{%
+Miller95wordnet:a}%
+\APACinsertmetastar{%
+Miller95wordnet:a}%
+Miller, G\BPBI A.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1995}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{WordNet: A Lexical Database for English}{Wordnet: A
+  lexical database for english}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{COMMUNICATIONS OF THE ACM}{38}{}{39--41}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
@@ -512,6 +560,31 @@ Stern, J\BPBI J.%
 \APACrefbtitle{Metaphor in context}{Metaphor in context}.
 \newblock
 \APACaddressPublisher{}{The MIT Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Sutton%
+\ \BBA{} Barto%
+}{%
+Sutton%
+\ \BBA{} Barto%
+}{%
+{\protect\APACyear{1998}}%
+}]{%
+sutton1998reinforcement}%
+\APACinsertmetastar{%
+sutton1998reinforcement}%
+Sutton, R\BPBI S.%
+\BCBT{}\ \BBA{} Barto, A\BPBI G.%
+%
+\unskip\
+\newblock
+\APACrefYear{1998}.
+\newblock
+\APACrefbtitle{Reinforcement learning: An introduction}{Reinforcement learning:
+  An introduction}\ (\BVOL~1)\ (\BNUM~1).
+\newblock
+\APACaddressPublisher{}{Cambridge Univ Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%

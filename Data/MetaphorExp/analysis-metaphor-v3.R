@@ -24,18 +24,19 @@ d.summary$qud <- factor(d.summary$qud)
 d.summary.summary <- summarySE(d.summary, measurevar="featureProb", 
                                groupvars=c("qud", "metaphor", "featureNum"))
 d.summary.summary$featureLabel <- factor(d.summary.summary$featureNum, labels=c("f1", "f2", "f3"))
-d.summary.summary$qudLabel <- factor(d.summary.summary$qud, labels=c("Vague QUD", "Specific QUD"))
+d.summary.summary$qudLabel <- factor(d.summary.summary$qud, labels=c("Vague goal", "Specific goal"))
 d.summary.summary$metaphorLabel <- factor(d.summary.summary$metaphor, labels=c("Literal utterance", "Metaphorical utterance"))
 my.colors <- c("#990033", "#CC9999", "#FFFFFF")
 ggplot(d.summary.summary, aes(x=qudLabel, y=featureProb, fill=featureLabel)) +
   geom_bar(stat="identity", color="black", position=position_dodge()) +
   geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.2, position=position_dodge(0.9)) +
   facet_grid(.~metaphorLabel) +
+  ylim(c(0, 1)) +
   theme_bw() +
   xlab("") +
   ylab("Probability of feature given utterance") +
   #scale_fill_brewer(palette="RdGy", name="Feature")
-  scale_fill_manual(values=my.colors, name="Feature")
+  scale_fill_manual(values=my.colors, name="Feature", guide=FALSE)
 ######################
 # Metaphor only
 #####################
@@ -74,6 +75,7 @@ for (n in filenames$V1) {
       max.cor <- cor
       max.name <- name.qud
       best <- compare
+      best.model <- m
     }
   }
 }
@@ -109,6 +111,8 @@ with(best.f3, cor.test(featureProb, modelProb))
 with(best, cor.test(featureProb, modelProb))
 with(best, cor.test(featureProb, animalPrior))
 with(best, cor.test(featureProb, personPrior))
+model.fit <- lm(data=best, featureProb ~ modelProb)
+baseline.fit <- lm(data=best, featureProb ~ animalPrior + personPrior + qud)
 with(best.f1, cor.test(featureProb, modelProb))
 with(best.f1, cor.test(featureProb, animalPrior))
 with(best.f1, cor.test(featureProb, personPrior))
@@ -134,10 +138,10 @@ with(best.f3, cor(featureProb, personPrior))
 #########################
 # Visualize scatter plot
 #########################
-ggplot(best.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
-  #geom_point(size=3) +
+ggplot(best, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  geom_point(size=3) +
   #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
-  geom_text(aes(label=labels, color=qud)) +
+  #geom_text(aes(label=labels, color=qud)) +
   scale_shape_manual(values=c(21, 24), name="Goal", labels=c("Vague", "Specific")) +
   theme_bw() +
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"), 
@@ -151,9 +155,38 @@ fit <- lm(data=best, featureProb ~ modelProb)
 plot(fit)
 best$resid <- residuals(fit)
 best <- best[with(best, order(-abs(resid))), ]
-########################
-# Human split-half
-########################
+############################
+# Model analysis
+############################
+########
+# Literalness
+########
+model.literalness <- aggregate(data=best.model, modelProb ~ category + categoryID + qud, FUN=sum)
+model.literalness$qud <- factor(model.literalness$qud)
+model.literalness.summary <- summarySE(model.literalness, measurevar="modelProb",
+                                       groupvars=c("category"))
+ggplot(model.literalness.summary, aes(x=category, y=modelProb, fill=category)) +
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2) +
+  xlab("") +
+  ylab("Probability of category given utterance") +
+  scale_x_discrete(labels=c("Animal", "Person")) +
+  scale_fill_manual(values=c("#003366", "#CCCCCC"), guide=FALSE) +
+  theme_bw()
+#######
+# Aggregate feature stuff
+#######
+best.marginals.summary <- summarySE(best, measurevar="modelProb",
+                                    groupvars=c("featureNum", "qud"))
+ggplot(best.marginals.summary, aes(x=qud, y=modelProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2, position=position_dodge(0.9)) +
+  theme_bw() +
+  scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3")) +
+  xlab("") +
+  ylab("Probability of feature given utterance") +
+  scale_x_discrete(labels=c("Vague goal", "Specific goal"))
+
 ###############################
 ## Human split-half analysis
 ################################

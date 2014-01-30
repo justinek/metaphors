@@ -24,45 +24,46 @@ Warning--No address in pilkington2000poetic
 Warning--No publisher in sperber1985loose
 Warning--No address in sperber1985loose
 Warning--No address in stern2000metaphor
-You've used 26 entries,
+Warning--No address in sutton1998reinforcement
+You've used 29 entries,
             6345 wiz_defined-function locations,
-            1331 strings with 13236 characters,
-and the built_in function-call counts, 42370 in all, are:
-= -- 5300
-> -- 365
-< -- 1761
-+ -- 1793
-- -- 54
-* -- 2628
-:= -- 7411
-add.period$ -- 109
-call.type$ -- 26
-change.case$ -- 133
+            1349 strings with 13596 characters,
+and the built_in function-call counts, 47118 in all, are:
+= -- 5884
+> -- 405
+< -- 1959
++ -- 1996
+- -- 60
+* -- 2933
+:= -- 8247
+add.period$ -- 121
+call.type$ -- 29
+change.case$ -- 148
 chr.to.int$ -- 0
-cite$ -- 65
-duplicate$ -- 1159
-empty$ -- 1867
-format.name$ -- 587
-if$ -- 8379
+cite$ -- 72
+duplicate$ -- 1298
+empty$ -- 2085
+format.name$ -- 649
+if$ -- 9320
 int.to.chr$ -- 0
-int.to.str$ -- 52
+int.to.str$ -- 58
 missing$ -- 0
-newline$ -- 607
-num.names$ -- 208
-pop$ -- 855
+newline$ -- 676
+num.names$ -- 232
+pop$ -- 941
 preamble$ -- 1
-purify$ -- 104
+purify$ -- 116
 quote$ -- 0
-skip$ -- 2849
+skip$ -- 3157
 stack$ -- 0
-substring$ -- 2054
-swap$ -- 707
-text.length$ -- 74
+substring$ -- 2285
+swap$ -- 795
+text.length$ -- 84
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 2272
-warning$ -- 13
-while$ -- 194
+type$ -- 2512
+warning$ -- 14
+while$ -- 215
 width$ -- 0
-write$ -- 742
-(There were 13 warnings)
+write$ -- 825
+(There were 14 warnings)
