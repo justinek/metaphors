@@ -221,6 +221,14 @@ colnames(fp.set.marginal.present)[2] <- "category"
 
 fp.set.marginal.present <- fp.set.marginal.present[with(fp.set.marginal.present, 
                                                         order(categoryID, category, featureNum)), ]
+
+summary(lm(data=fp.set.marginal.present, normalizedProb ~ category))
+mean(subset(fp.set.marginal.present, category=="person")$normalizedProb)
+sd(subset(fp.set.marginal.present, category=="person")$normalizedProb)
+
+mean(subset(fp.set.marginal.present, category=="animal")$normalizedProb)
+sd(subset(fp.set.marginal.present, category=="animal")$normalizedProb)
+
 write.csv(fp.set.marginal.present, "featurePriors-set-marginal.csv", row.names=FALSE)
 # plot average marginal probabilities
 fp.set.marginal.summary <- summarySE(fp.set.marginal.present, measurevar="normalizedProb",
@@ -240,6 +248,7 @@ ggplot(fp.set.marginal.summary, aes(x=featureNum, y=normalizedProb, fill=feature
   scale_x_discrete(labels=c("f1", "f2", "f3")) +
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"))
+
 
 # marginal probabilities of f2 and f3 given f1 FOR PEOPLE!!!!
 fp.set.long.summary.givenf1 <- subset(fp.set.long.summary, f1==1 & type=="person")

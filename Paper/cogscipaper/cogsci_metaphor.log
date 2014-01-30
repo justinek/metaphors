@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 JAN 2014 16:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 JAN 2014 21:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -33,6 +33,10 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -160,7 +164,7 @@ LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \macc@depth=\count94
 \c@MaxMatrixCols=\count95
-\dotsspace@=\muskip10
+\dotsspace@=\muskip11
 \c@parentequation=\count96
 \dspbrk@lvl=\count97
 \tag@help=\toks17
@@ -201,47 +205,95 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count104
 \@thisrulewidth=\dimen126
 )
+(/usr/local/texlive/2012/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen127
+\extrarowheight=\dimen128
+\NC@list=\toks21
+\extratabsurround=\skip51
+\backup@length=\skip52
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+\everycr=\toks22
+\minrowclearance=\skip53
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+\TX@col@width=\dimen129
+\TX@old@table=\dimen130
+\TX@old@col=\dimen131
+\TX@target=\dimen132
+\TX@delta=\dimen133
+\TX@cols=\count105
+\TX@ftn=\toks23
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+\rownum=\count106
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
 (./cogsci_metaphor.aux
-
-LaTeX Warning: Label `scatter_full' multiply defined.
-
 
 LaTeX Warning: Label `scatter_full' multiply defined.
 
 )
 \openout1 = `cogsci_metaphor.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 36.
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 36
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 38
 .
  (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen127
+\scratchcounter=\count107
+\scratchdimen=\dimen134
 \scratchbox=\box28
-\nofMPsegments=\count106
-\nofMParguments=\count107
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen128
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
-\everyMPtoPDFconversion=\toks22
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen135
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -290,7 +342,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@maskedRefs=\count111
+\c@maskedRefs=\count113
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/apacite/english.apc
 File: english.apc 2012/02/25 v6.01 apacite language file
@@ -298,45 +350,45 @@ LaTeX Info: Redefining \BPBI on input line 129.
 LaTeX Info: Redefining \BHBI on input line 130.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 38
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 38
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 38
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
@@ -351,15 +403,13 @@ Underfull \hbox (badness 1783) in paragraph at lines 56--57
 
 
 ]
-Underfull \hbox (badness 1043) in paragraph at lines 85--86
+Underfull \hbox (badness 1043) in paragraph at lines 84--85
 []\OT1/ptm/m/n/10 Intuitively, based on $\OML/ptmcm/m/it/10 S[]$\OT1/ptm/m/n/10
  's un-der-stand-ing of $\OML/ptmcm/m/it/10 L[]$\OT1/ptm/m/n/10 's prior
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 
-Overfull \hbox (46.7837pt too wide) in paragraph at lines 97--121
+Overfull \hbox (11.44595pt too wide) in paragraph at lines 97--119
 [][] 
  []
 
@@ -367,80 +417,71 @@ Overfull \hbox (46.7837pt too wide) in paragraph at lines 97--121
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 145.
 
- <Plots/priors_bar.pdf, id=17, 463.7325pt x 289.08pt>
+ [3] <Plots/priors_bar.pdf, id=21, 463.7325pt x 289.08pt>
 File: Plots/priors_bar.pdf Graphic file (type pdf)
 
 <use Plots/priors_bar.pdf>
-Package pdftex.def Info: Plots/priors_bar.pdf used on input line 154.
+Package pdftex.def Info: Plots/priors_bar.pdf used on input line 156.
 (pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
 
-Overfull \hbox (34.33038pt too wide) in paragraph at lines 154--155
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 156--157
  [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-<Plots/human_bar.pdf, id=21, 463.7325pt x 289.08pt>
+<Plots/human_bar.pdf, id=22, 463.7325pt x 289.08pt>
 File: Plots/human_bar.pdf Graphic file (type pdf)
  <use Plots/human_bar.pdf>
-Package pdftex.def Info: Plots/human_bar.pdf used on input line 167.
+Package pdftex.def Info: Plots/human_bar.pdf used on input line 168.
 (pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
 
-Overfull \hbox (34.33038pt too wide) in paragraph at lines 167--168
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 168--169
  [] 
  []
 
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 180.
 
-Overfull \hbox (11.96678pt too wide) in paragraph at lines 180--190
+Overfull \hbox (11.96672pt too wide) in paragraph at lines 180--190
 [][] 
  []
 
-<Plots/model_literal.pdf, id=22, 361.35pt x 289.08pt>
+<Plots/model_literal.pdf, id=23, 361.35pt x 289.08pt>
 File: Plots/model_literal.pdf Graphic file (type pdf)
 
 <use Plots/model_literal.pdf>
-Package pdftex.def Info: Plots/model_literal.pdf used on input line 199.
+Package pdftex.def Info: Plots/model_literal.pdf used on input line 196.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
  [4 <./Plots/priors_bar.pdf> <./Plots/human_bar.pdf>]
-Underfull \hbox (badness 1184) in paragraph at lines 208--209
+Underfull \hbox (badness 1184) in paragraph at lines 206--207
 []\OT1/ptm/m/n/10 Using these pa-ram-e-ters and the model we de-scribed,
- []
-
-<Plots/model_bar.pdf, id=37, 463.7325pt x 289.08pt>
-File: Plots/model_bar.pdf Graphic file (type pdf)
- <use Plots/model_bar.pdf>
-Package pdftex.def Info: Plots/model_bar.pdf used on input line 212.
-(pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
-
-Overfull \hbox (34.33038pt too wide) in paragraph at lines 212--213
- [] 
  []
 
 <Plots/scatter_full.pdf, id=38, 463.7325pt x 289.08pt>
 File: Plots/scatter_full.pdf Graphic file (type pdf)
 
 <use Plots/scatter_full.pdf>
-Package pdftex.def Info: Plots/scatter_full.pdf used on input line 220.
+Package pdftex.def Info: Plots/scatter_full.pdf used on input line 218.
 (pdftex.def)             Requested size: 463.73135pt x 289.07928pt.
 
-Overfull \hbox (34.33038pt too wide) in paragraph at lines 220--221
+Overfull \hbox (34.33038pt too wide) in paragraph at lines 218--219
  [] 
  []
 
-[5 <./Plots/model_literal.pdf> <./Plots/model_bar.pdf> <./Plots/scatter_full.pd
-f>]
-Underfull \hbox (badness 1796) in paragraph at lines 237--238
+[5 <./Plots/model_literal.pdf> <./Plots/scatter_full.pdf>]
+Underfull \hbox (badness 1796) in paragraph at lines 235--236
 \OT1/ptm/m/n/10 be-tween lis-tener and speaker, the com-mu-nica-tive goals
  []
 
 (./cogsci_metaphor.bbl
 Missing character: There is no Õ in font ptmr7t!
+
+Underfull \vbox (badness 1442) has occurred while \output is active []
+
  [6]
 Missing character: There is no Ô in font ptmr7t!
 Missing character: There is no Õ in font ptmr7t!
-) [7
+)
+[7
 
 ] (./cogsci_metaphor.aux)
 
@@ -448,26 +489,27 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3334 strings out of 493488
- 45642 string characters out of 3141326
- 118983 words of memory out of 3000000
- 6557 multiletter control sequences out of 15000+200000
- 56780 words of font info for 126 fonts, out of 3000000 for 9000
+ 4005 strings out of 493488
+ 53624 string characters out of 3141326
+ 139349 words of memory out of 3000000
+ 7197 multiletter control sequences out of 15000+200000
+ 61013 words of font info for 134 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,12n,24p,1599b,260s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,13n,35p,1892b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texm
-f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on cogsci_metaphor.pdf (7 pages, 142734 bytes).
+e/2012/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2012/t
+exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texmf-dist/f
+onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
+/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on cogsci_metaphor.pdf (7 pages, 149630 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 91 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

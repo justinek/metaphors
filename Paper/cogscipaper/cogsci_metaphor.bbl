@@ -202,32 +202,6 @@ Glucksberg%
 Glucksberg%
 \ \BBA{} Keysar%
 }{%
-{\protect\APACyear{1990}}%
-}]{%
-glucksberg1990understanding}%
-\APACinsertmetastar{%
-glucksberg1990understanding}%
-Glucksberg, S.%
-\BCBT{}\ \BBA{} Keysar, B.%
-%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1990}{}{}.
-\newblock
-\BBOQ{}\APACrefatitle{Understanding metaphorical comparisons: Beyond
-  similarity.}{Understanding metaphorical comparisons: Beyond
-  similarity.}\BBCQ{}
-\newblock
-\APACjournalVolNumPages{Psychological review}{97}{1}{3}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-Glucksberg%
-\ \BBA{} Keysar%
-}{%
-Glucksberg%
-\ \BBA{} Keysar%
-}{%
 {\protect\APACyear{1993}}%
 }]{%
 glucksberg1993metaphors}%

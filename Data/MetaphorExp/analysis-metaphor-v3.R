@@ -38,6 +38,16 @@ ggplot(d.summary.summary, aes(x=qudLabel, y=featureProb, fill=featureLabel)) +
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature", guide=FALSE)
 ######################
+# Human stats
+#####################
+summary(lm(data=d.f1.summary, featureProb ~ metaphor))
+summary(lm(data=d.f2.summary, featureProb ~ metaphor))
+summary(lm(data=d.f3.summary, featureProb ~ metaphor))
+summary(lm(data=subset(d.f1.summary, metaphor==1), featureProb ~ qud))
+summary(lm(data=subset(d.f2.summary, metaphor==1), featureProb ~ qud))
+summary(lm(data=subset(d.f3.summary, metaphor==1), featureProb ~ qud))
+
+######################
 # Metaphor only
 #####################
 d.met.summary <- subset(d.summary, metaphor=="1")
@@ -112,7 +122,7 @@ with(best, cor.test(featureProb, modelProb))
 with(best, cor.test(featureProb, animalPrior))
 with(best, cor.test(featureProb, personPrior))
 model.fit <- lm(data=best, featureProb ~ modelProb)
-baseline.fit <- lm(data=best, featureProb ~ animalPrior + personPrior + qud)
+baseline.fit <- lm(data=best, featureProb ~ animalPrior + personPrior + qud + featureNum)
 with(best.f1, cor.test(featureProb, modelProb))
 with(best.f1, cor.test(featureProb, animalPrior))
 with(best.f1, cor.test(featureProb, personPrior))
