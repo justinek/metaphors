@@ -38,16 +38,6 @@ ggplot(d.summary.summary, aes(x=qudLabel, y=featureProb, fill=featureLabel)) +
   #scale_fill_brewer(palette="RdGy", name="Feature")
   scale_fill_manual(values=my.colors, name="Feature", guide=FALSE)
 ######################
-# Human stats
-#####################
-summary(lm(data=d.f1.summary, featureProb ~ metaphor))
-summary(lm(data=d.f2.summary, featureProb ~ metaphor))
-summary(lm(data=d.f3.summary, featureProb ~ metaphor))
-summary(lm(data=subset(d.f1.summary, metaphor==1), featureProb ~ qud))
-summary(lm(data=subset(d.f2.summary, metaphor==1), featureProb ~ qud))
-summary(lm(data=subset(d.f3.summary, metaphor==1), featureProb ~ qud))
-
-######################
 # Metaphor only
 #####################
 d.met.summary <- subset(d.summary, metaphor=="1")
@@ -98,8 +88,32 @@ priors.animal <- subset(priors, category=="animal")
 priors.person <- subset(priors, category=="person")
 colnames(priors.animal)[4] <- "animalPrior"
 colnames(priors.person)[4] <- "personPrior"
+d.summary <- join(d.summary, priors.animal, by=c("categoryID", "featureNum"))
+d.summary <- join(d.summary, priors.person, by=c("categoryID", "featureNum"))
 best <- join(best, priors.animal, by=c("categoryID", "featureNum"))
 best <- join(best, priors.person, by=c("categoryID", "featureNum"))
+######################
+# Human stats
+#####################
+summary(lm(data=d.f1.summary, featureProb ~ metaphor))
+summary(lm(data=d.f2.summary, featureProb ~ metaphor))
+summary(lm(data=d.f3.summary, featureProb ~ metaphor))
+summary(lm(data=subset(d.f1.summary, metaphor==1), featureProb ~ qud))
+summary(lm(data=subset(d.f2.summary, metaphor==1), featureProb ~ qud))
+summary(lm(data=subset(d.f3.summary, metaphor==1), featureProb ~ qud))
+summary(lm(data=subset(d.f1.summary, metaphor==0), featureProb ~ qud))
+summary(lm(data=subset(d.f2.summary, metaphor==0), featureProb ~ qud))
+summary(lm(data=subset(d.f3.summary, metaphor==0), featureProb ~ qud))
+with(subset(d.summary, metaphor=="0" & featureNum=="1"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="0" & featureNum=="2"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="0" & featureNum=="3"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="1"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="2"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="3"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="1" & qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="2" & qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
+with(subset(d.summary, metaphor=="1" & featureNum=="3"& qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
+
 ############################## 
 # Add feature labels
 ################################
@@ -122,7 +136,7 @@ with(best, cor.test(featureProb, modelProb))
 with(best, cor.test(featureProb, animalPrior))
 with(best, cor.test(featureProb, personPrior))
 model.fit <- lm(data=best, featureProb ~ modelProb)
-baseline.fit <- lm(data=best, featureProb ~ animalPrior + personPrior + qud + featureNum)
+baseline.fit <- lm(data=best, featureProb ~ animalPrior + personPrior + qud)
 with(best.f1, cor.test(featureProb, modelProb))
 with(best.f1, cor.test(featureProb, animalPrior))
 with(best.f1, cor.test(featureProb, personPrior))
@@ -148,10 +162,10 @@ with(best.f3, cor(featureProb, personPrior))
 #########################
 # Visualize scatter plot
 #########################
-ggplot(best, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
-  geom_point(size=3) +
-  #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
-  #geom_text(aes(label=labels, color=qud)) +
+ggplot(best.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  #geom_point(size=3) +
+  geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
+  geom_text(aes(label=labels, color=qud)) +
   scale_shape_manual(values=c(21, 24), name="Goal", labels=c("Vague", "Specific")) +
   theme_bw() +
   scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"), 
@@ -186,6 +200,13 @@ ggplot(model.literalness.summary, aes(x=category, y=modelProb, fill=category)) +
 #######
 # Aggregate feature stuff
 #######
+########
+# Model qualitative stats
+########
+summary(lm(data=subset(best, featureNum=="1"), modelProb ~ qud))
+summary(lm(data=subset(best, featureNum=="2"), modelProb ~ qud))
+summary(lm(data=subset(best, featureNum=="3"), modelProb ~ qud))
+
 best.marginals.summary <- summarySE(best, measurevar="modelProb",
                                     groupvars=c("featureNum", "qud"))
 ggplot(best.marginals.summary, aes(x=qud, y=modelProb, fill=featureNum)) +
@@ -205,7 +226,8 @@ splithalf.met.sum <- 0
 splithalf.f1.sum <- 0
 splithalf.f2.sum <- 0
 splithalf.f3.sum <- 0
-for (t in seq(1, 100)) {
+splithalf.cors <- data.frame(all=NULL, met=NULL, f1=NULL, f2=NULL, f3=NULL)            
+for (t in seq(1, 1000)) {
   ii <- seq_len(nrow(d))
   ind1 <- sample(ii, nrow(d) / 2) 
   ind2 <- ii[!ii %in% ind1] 
@@ -236,19 +258,24 @@ for (t in seq(1, 100)) {
   splithalf.comp <- join(h1.summary, h2.summary, by=c("categoryID", "animal", "qud", "metaphor", "featureNum"))
   splithalf.comp <- splithalf.comp[complete.cases(splithalf.comp),]
   # full data
-  splithalf.all.sum <- splithalf.all.sum + with(splithalf.comp, cor(h1prob, h2prob))
+  all <- prophet(with(splithalf.comp, cor(h1prob, h2prob)), 2)
   # just metaphor
   splithalf.met.comp <- subset(splithalf.comp, metaphor=="1")
-  splithalf.met.sum <- splithalf.met.sum + with(splithalf.met.comp, cor(h1prob, h2prob))
-  splithalf.f1.sum <- splithalf.f1.sum + with(subset(splithalf.met.comp, featureNum==1), cor(h1prob, h2prob))
-  splithalf.f2.sum <- splithalf.f2.sum + with(subset(splithalf.met.comp, featureNum==2), cor(h1prob, h2prob))
-  splithalf.f3.sum <- splithalf.f3.sum + with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob))
+  met <- prophet(with(splithalf.met.comp, cor(h1prob, h2prob)), 2)
+  f1 <- prophet(with(subset(splithalf.met.comp, featureNum==1), cor(h1prob, h2prob)), 2)
+  f2 <- prophet(with(subset(splithalf.met.comp, featureNum==2), cor(h1prob, h2prob)), 2)
+  f3 <- prophet(with(subset(splithalf.met.comp, featureNum==3), cor(h1prob, h2prob)), 2)
+  this.frame <- data.frame(all=all,
+                           met=met,
+                           f1=f1,
+                           f2=f2,
+                           f3=f3)
+  splithalf.cors <- rbind(splithalf.cors, this.frame)
 }
-splithalf.all <- splithalf.all.sum / 100
-splithalf.met <- splithalf.met.sum / 100
-splithalf.f1 <- splithalf.f1.sum / 100
-splithalf.f2 <- splithalf.f2.sum / 100
-splithalf.f3 <- splithalf.f3.sum / 100
+
+splithalf.all <- summarySE(splithalf.cors, measurevar="all", groupvars=NULL)
+splithalf.met <- summarySE(splithalf.cors, measurevar="met", groupvars=NULL)
+splithalf.f1 <- summarySE(splithalf.cors, measurevar="f1", groupvars=NULL)
 
 prophet <- function(reliability, length) {
   prophecy <- length * reliability / (1 + (length - 1)*reliability)
@@ -260,4 +287,15 @@ prophet(splithalf.f1, 2)
 prophet(splithalf.f2, 2)
 prophet(splithalf.f3, 2)
 
-  
+##########################
+# Ant Ox Strong error analysis
+#########################
+d.ant <- read.csv("../../Model/CogSciModel/ant.csv", header=FALSE)
+colnames(d.ant) <- c("category", "f1", "f2", "f3", "modelProb")
+d.ant.ox <- read.csv("../../Model/CogSciModel/ant-ox.csv", header=FALSE)  
+colnames(d.ant.ox) <- c("category", "f1", "f2", "f3", "modelProb")
+
+sum(subset(d.ant,f2==1)$modelProb)
+sum(subset(d.ant.ox,f2==1)$modelProb)
+sum(subset(d.ant,f1==1)$modelProb)
+sum(subset(d.ant.ox,f1==1)$modelProb)

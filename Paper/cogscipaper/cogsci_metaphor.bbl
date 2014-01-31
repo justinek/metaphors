@@ -1,36 +1,12 @@
 \begin{thebibliography}{}
+\small
 
 \bibitem[\protect\citeauthoryear{%
-B.~Bergen%
-\ \BBA{} Binsted%
-}{%
-B.~Bergen%
-\ \BBA{} Binsted%
-}{%
-{\protect\APACyear{2003}}%
-}]{%
-bergen2003cognitive}%
-\APACinsertmetastar{%
-bergen2003cognitive}%
-Bergen, B.%
-\BCBT{}\ \BBA{} Binsted, K.%
-%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2003}{}{}.
-\newblock
-\BBOQ{}\APACrefatitle{The cognitive linguistics of scalar humor}{The cognitive
-  linguistics of scalar humor}.\BBCQ{}
-\newblock
-\APACjournalVolNumPages{Language, culture, and mind}{}{}{79--92}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-L.~Bergen%
+Bergen%
 , Goodman%
 \BCBL{}\ \BBA{} Levy%
 }{%
-L.~Bergen%
+Bergen%
 \ \protect\BOthers{.}}{%
 {\protect\APACyear{2012}}%
 }]{%
@@ -388,36 +364,6 @@ Ortony, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
-Ortony%
-, Schallert%
-, Reynolds%
-\BCBL{}\ \BBA{} Antos%
-}{%
-Ortony%
-\ \protect\BOthers{.}}{%
-{\protect\APACyear{1978}}%
-}]{%
-ortony1978interpreting}%
-\APACinsertmetastar{%
-ortony1978interpreting}%
-Ortony, A.%
-, Schallert, D\BPBI L.%
-, Reynolds, R\BPBI E.%
-\BCBL{}\ \BBA{} Antos, S\BPBI J.%
-%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1978}{}{}.
-\newblock
-\BBOQ{}\APACrefatitle{Interpreting metaphors and idioms: Some effects of
-  context on comprehension}{Interpreting metaphors and idioms: Some effects of
-  context on comprehension}.\BBCQ{}
-\newblock
-\APACjournalVolNumPages{Journal of Verbal Learning and Verbal
-  Behavior}{17}{4}{465--477}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
 Pilkington%
 }{%
 Pilkington%
@@ -513,27 +459,6 @@ Sperber, D.%
 \newblock
 \APACjournalVolNumPages{The Cambridge handbook of metaphor and
   thought}{}{}{84--105}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-Stern%
-}{%
-Stern%
-}{%
-{\protect\APACyear{2000}}%
-}]{%
-stern2000metaphor}%
-\APACinsertmetastar{%
-stern2000metaphor}%
-Stern, J\BPBI J.%
-%
-\unskip\
-\newblock
-\APACrefYear{2000}.
-\newblock
-\APACrefbtitle{Metaphor in context}{Metaphor in context}.
-\newblock
-\APACaddressPublisher{}{The MIT Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
