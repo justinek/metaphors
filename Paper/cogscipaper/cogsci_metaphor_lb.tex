@@ -19,34 +19,27 @@
 %% producing a letter-format document.
 
 \documentclass[10pt,letterpaper]{article}
+\usepackage{url}
 \usepackage{graphicx}
 \usepackage{cogsci}
 \usepackage{pslatex}
 \usepackage{apacite}
 \usepackage{amssymb,amsfonts,amsmath}
-\usepackage{booktabs}
+\usepackage{booktabs, colortbl, tabularx}
+\usepackage[table]{xcolor}
 
 \title{The Pragmatics of Metaphor Understanding: A Computational Approach}
  
-\author{{\large \bf Justine T. Kao (justinek@stanford.edu)} \\
-  Department of Psychology\\
-  Stanford, CA, USA
-   \AND {\large \bf Leon Bergen (bergen@mit.edu)} \\
-  Department of Brain and Cognitive Sciences\\
- MIT, USA
-  \AND {\large \bf Noah D. Goodman (ngoodman@stanford.edu)} \\
-  Department of Psychology\\
-  Stanford, CA, USA}
 
+  \author{{\large {\bf Justine T. Kao$^1$} (justinek@stanford.edu)}, {\large {\bf Leon Bergen$^2$} (bergen@mit.edu)}, {\large {\bf Noah D.~Goodman$^1$} (ngoodman@stanford.edu)}\\
+  $^1$Department of Psychology, Stanford University. $^2$Department of Brain and Cognitive Science, MIT. }
+ 
 
 \begin{document}
 
 \maketitle
-
-
 \begin{abstract}
-Abstract goes here.
-%Metaphor understanding has been widely studied in psychology, linguistics, philosophy, and computer science. One account of metaphor understanding is pragmatics. Some metaphor interpretations arise from pragmatics. Here we present a computational model of pragmatics that accounts for 
+While the ubiquity and importance of nonliteral language are clear, people's ability to use and understand it remains a mystery. Metaphor in particular has been studied extensively across many disciplines in cognitive science. One approach focuses on the pragmatic principles that listeners utilize to infer meaning from metaphorical utterances. While this approach has generated a number of insights about how people understand metaphor, to our knowledge there is no formal model showing that effects in metaphor understanding can arise from basic principles of communication. Building upon recent advances in formal models of pragmatics, we describe a computational model that uses pragmatic reasoning to interpret metaphorical utterances. We conduct behavioral experiments to evaluate the model's performance and show that our model produces metaphorical interpretations that closely fit behavioral data. We discuss implications of the model on metaphor understanding, principles of communication, and formal models of language understanding.
 
 \textbf{Keywords:} 
 language understanding; metaphor; pragmatics; computational models
@@ -54,208 +47,202 @@ language understanding; metaphor; pragmatics; computational models
 
 
 \section{Introduction}
-From ``Juliet is the sun" to ``No man is an island," nonliteral language is, quite literally, everywhere. Human communication is laden with metaphor and hyperbole, often creating poetic or humorous effects that add rich and important dimensions to language \cite{glucksberg2001understanding, pilkington2000poetic, lakoff2009more, roberts1994people, bergen2003cognitive}. Metaphor has inspired a particularly abundant amount of research in cognitive science, spanning topics such as how metaphors structure and shape our thoughts \cite{ortony1993metaphor, lakoff1993contemporary, thibodeau2011metaphors}, whether metaphor processing recruits the same strategies as standard language processing \cite{giora1997understanding, ortony1978interpreting, gibbs2002new, glucksberg1993metaphors} and what factors determine the meaning and aptness of a novel metaphor \cite{blasko1993effects, tourangeau1981aptness, kintsch2002metaphor}. The overwhelming interest in metaphor research is due in part to the ubiquity of metaphor in everyday language as well as the belief that metaphor may be critical for helping us understand how the mind creates meaning. 
+From ``Juliet is the sun" to ``That woman is a bombshell," nonliteral language is, quite literally, everywhere. Metaphor, hyperbole, and sarcasm are ubiquitous features of human communication, often creating poetic or humorous effects that add rich dimensions to language \cite{glucksberg2001understanding, pilkington2000poetic, lakoff2009more, roberts1994people}. Metaphor has inspired a particularly large amount of research in cognitive science, spanning topics such as how metaphors structure and shape our thoughts \cite{ortony1993metaphor, lakoff1993contemporary, thibodeau2011metaphors}, whether metaphor processing recruits the same strategies as standard language processing \cite{giora1997understanding, gibbs2002new, glucksberg1993metaphors} and what factors determine the meaning and aptness of a novel metaphor \cite{blasko1993effects, tourangeau1981aptness, kintsch2002metaphor}. The overwhelming interest in metaphor research is due in part to the ubiquity of metaphor in everyday language as well as the belief that metaphor may be critical for helping us understand how the mind creates meaning. 
 
-One approach to studying metaphor focuses on the pragmatic principals that listeners utilize to infer meaning from metaphorical utterances \cite{tendahl2008complementary, stern2000metaphor}. Rather than view metaphor as a separate mode of communication that requires specialized language processing strategies, this approach argues that basic principles of communication drive the meaning that a listener infers from a metaphor \cite{sperber2008deflationary}. Relevance theory, in particular, posits that listeners interpret utterances with the assumption that speakers produced them because they are maximally relevant. Relevance theorists argue that this principle explains how listeners infer the meaning of a novel metaphor as well as other forms of loose talk where the meaning of the utterance is underspecified \cite{wilson2002relevance, wilson2006metaphor, sperber1985loose}. When interpreting the metaphor ``My lawyer is a shark," for example, the listener assumes that the speaker aims to communicate features of  ``a shark" that are relevant to the person under discussion (``my lawyer"), and thus do not access shark features such as \emph{has fins} or \emph{swims}.
+One approach to studying metaphor focuses on the pragmatic principles that listeners utilize to infer meaning from metaphorical utterances \cite{tendahl2008complementary}. Rather than view metaphor as a separate mode of communication that requires specialized language processing strategies, this approach argues that basic principles of communication drive the meaning that a listener infers from a metaphor \cite{sperber2008deflationary, wilson2006metaphor}. Relevance theory, in particular, posits that listeners interpret utterances with the assumption that speakers produced them because they are maximally relevant \cite{wilson2002relevance}. Relevance theorists argue that this principle explains how listeners infer the meaning of a novel metaphor as well as other forms of loose talk where the meaning of an utterance is underspecified  \cite{sperber1985loose}. When interpreting the metaphor ``My lawyer is a shark," for example, the listener assumes that the speaker aims to communicate features of  ``a shark" that are relevant to the person under discussion (``my lawyer") and do not make use of other shark features such as \emph{has fins} or \emph{swims}.
 
-While many linguists and psychologists have argued for the benefits of studying metaphor using a pragmatics framework, to our knowledge there is no formal model showing that effects in metaphor understanding may arise from basic principles of communication. On the other hand, a recent body of work presents a series of computational models for pragmatic reasoning, where speaker and listener reason about each other to communicate effectively \cite{frank2012predicting, jager2009pragmatic}. By formalizing principals of communication, these Rational Speech Act models are able to quantitatively explain a range of phenomena in language understanding, such as scalar implicature and the effect of alternative utterances \cite{goodman2013knowledge, bergen2012s}. However, a limitation of these models is that they are unable to predict interpretations of an utterance that are false under its literal meaning. In this paper, we extend the model to consider communicative goals established by context that may be optimally satisfied by metaphorical utterances. A listener assumes that the speaker chooses an utterance to maximize informativeness about a subject along dimensions that are relevant to the conversation. This makes it possible for a literally false utterance to be optimal as long as it is informative along the target dimension. This framework closely aligns with the relevance-theoretic view that a listener considers the relevance of a meaning to the question under discussion in order to infer what the speaker intended to communicate. 
+While many linguists and psychologists have argued for the benefits of studying metaphor using a pragmatics framework, to our knowledge there is no formal model showing that effects in metaphor understanding may arise from basic principles of communication. On the other hand, a recent body of work presents a series of computational models for pragmatic reasoning, where speaker and listener reason about each other to communicate effectively \cite{frank2012predicting, jager2009pragmatic}. By formalizing principles of communication, these models are able to make quantitative predictions about a range of phenomena in language understanding, such as scalar implicature and the effect of alternative utterances \cite{goodman2013knowledge, bergen2012s}. However, a limitation of these models is that they are unable to explain the use of utterances which are known to have false literal interpretations. More recent work extends these models to consider affective goals in communication that may be optimally satisfied by nonliteral utterances such as hyperbole (under review). In this paper, we will be considering the role of communicative goals in the interpretation of metaphorical utterances. In our formalization, a listener assumes that the speaker chooses an utterance to maximize informativeness about a subject along dimensions that are relevant to the conversation and consistent with the speaker's communicative goal. This makes it possible for a literally false utterance to be optimal as long as it is informative along the target dimension. Our framework closely aligns with the relevance-theoretic view that a listener considers the relevance of a potential meaning to the speaker's goal in order to infer what the speaker intended to communicate. 
 
-Although metaphor understanding is a complex phenomenon that calls for a variety of approaches, we we present a computational model to argue that the interpretation of at least some types of metaphor are shaped at least in part by basic principals of pragmatics. To reasonably limit the scope of our work, we focus on metaphors of the classic form ``$X$ is a $Y$." We describe a computational model that can interpret such sentences metaphorically and conduct behavioral experiments to evaluate the model's performance. We show that a listener's interpretation of a metaphor is driven by context and the question under discussion, and that this effect is captured by our formalization of the relevance principal. Finally, we also show that metaphors often communicate information more efficiently than literal statements and hence can be optimal and rational speech acts. [Or whatever we end up focusing on in the error analysis]
+Although metaphor understanding is a complex phenomenon that calls for a variety of approaches, we present a computational model to argue that the interpretation of at least some types of metaphor are shaped by principles of pragmatics. To reasonably limit the scope of our work, we focus on metaphors of the classic form ``$X$ is a $Y$." We describe a computational model that can interpret such sentences metaphorically and conduct behavioral experiments to evaluate the model's performance. We show that peoples' interpretations of metaphors are driven by conversational context and that our model captures this effect. Finally, we show that our model predictions correlate significantly with people's fine-grained interpretations of metaphorical utterances.
 
 \section{Computational Model}
-At the core of basic Rational Speech Act models, a listener and a speaker recursively reason about each other to arrive at pragmatically enriched meanings. Given an intended meaning, a speaker reasons about a literal listener and chooses an utterance based on its informativeness. A pragmatic listener then reasons about the speaker and uses Bayes's Rule to infer the meaning given the utterance. To account for nonliteral interpretation, we extend this model by considering the idea that a speaker may have a range of different communicative goals \cite{}. Intuitively, an utterance is optimally informative and relevant if it satisfies the speaker's communicative goal. Since the speaker's precise communicative goal may be unknown to the listener, the listener performs joint inference on the goal as well as the intended meaning.By introducing multiple potential goals for communication, we open up the possibility for a speaker to produce an utterance that is literally false but still satisfies her goal. The speaker achieves this in part by exploiting her and the listener's prior knowledge---their common ground \cite{clark1996using}---to reason about what information the listener would gain if he takes the utterance literally. 
+In the basic Rational Speech Act model of \cite{frank2012predicting}, a listener and a speaker recursively reason about each other to arrive at pragmatically enriched meanings. Given an intended meaning, a speaker reasons about a literal listener and chooses an utterance based on its informativeness. A pragmatic listener then reasons about the speaker and uses Bayes' rule to infer the meaning given the utterance. To account for nonliteral interpretation, we extend this model by considering the idea that a speaker may have a range of different communicative goals. Intuitively, an utterance is optimally informative and relevant if it satisfies the speaker's communicative goal. Since the speaker's precise communicative goal may be unknown to the listener, the listener performs joint inference on the goal as well as the intended meaning. By introducing multiple potential goals for communication, we open up the possibility for a speaker to produce an utterance that is literally false but still satisfies her goal. The speaker achieves this in part by exploiting her own and the listener's prior knowledge---their common ground \cite{clark1996using}---to reason about what information the listener would gain if he takes the utterance literally. 
 
-To illustrate this idea concretely and demonstrate how it is implemented in our model, we will use the metaphor ``John is a shark" as an example. For simplicity, in this model we restrict the number of possible categories to which a member may belong to $c_a$ and $c_p$, denoting an animal category or a person category, respectively. We also restrict the possible features of John under consideration to a vector of size three: $\vec f = [f_1, f_2, f_3]$, where $f_i$ is either $0$ or $1$. We denote a possible communicative goal that a speaker may have as $g_{i,j}$, where $1 \leq i \leq 3$ and $j \in \{0,1\}$. $g_{i,j}$ is a function such that $g_{i,j} (\vec f) = 1$ if $f_i = j$, and $0$ otherwise. 
+To illustrate this idea more concretely and demonstrate how it is implemented in our model, we will use the metaphor ``John is a shark" as an example. For simplicity, in this model we restrict the number of possible categories to which a member may belong to $c_a$ and $c_p$, denoting an animal category or a person category, respectively. We also restrict the possible features of John under consideration to a vector of size three: $\vec f = [f_1, f_2, f_3]$, where $f_i$ is either $0$ or $1$. We denote a possible communicative goal that a speaker may have as $g_{i,j}$, where $1 \leq i \leq 3$ and $j \in \{0,1\}$. $g_{i,j}$ is a function such that $g_{i,j} (\vec f) = 1$ if $f_i = j$, and $0$ otherwise, meaning a goal is satisfied if the listener correctly infers the value of a particular feature that the speaker cares to communicate about. 
 
-Suppose the speaker $S_1$'s goal is to communicate that John has feature $f_1 =1$, where $f_1$ is the property \emph{scary}. $S_1$ reasons about a literal listener $L_0$ who will interpret an utterance ``John is a shark" as meaning that John is literally a member of the category ``shark." The literal listener is modeled as:
-
+Suppose the speaker $S$'s goal is to communicate that John has feature $f_1 =1$, where $f_1$ is the property \emph{scary}. $S_1$ reasons about a literal listener $L_0$ who will interpret an utterance ``John is a shark" as meaning that John is literally a member of the category ``shark." The literal listener is modeled as:
 \[ L_0(c, \vec f |u) = \left\{ 
   \begin{array}{l l}
     P(\vec f | c) & \quad \text{if $c$ = $u$}\\
     0 & \quad \text{otherwise}
   \end{array} \right.\]
-where $P(\vec f | c)$ is the prior probability that a member of a category $c$ (in this case ``shark" or "person") has feature values $\vec f$.
+where $P(\vec f | c)$ is the prior probability that a member of category $c$ (in this case ``shark" or ``person") has feature vector $\vec f$.
 
-Based on $S_1$'s understanding of $L_0$'s prior knowledge, she knows that $L_0$ will very likely believe that John, whom $L_0$ believes is literally a shark, is \emph{scary}. Since $S_1$'s goal is satisfied if the listener believes that John is fierce, %should this be "believes that John is scary"?
-$S_1$ is motivated to produce that utterance. Optimizing the probability of the speaker's goal being satisfied can be accomplished by minimizing the goal's information-theoretic surprisal given an utterance. Given an utterance $u$, the listener $L_n$ will guess that the meaning is $c, \vec f$ with probability $L_n (c, \vec f|u)$. The probability of the speaker's goal being satisfied is therefore the following:
-$$
-\sum_{c, \vec f}{L_n (c, \vec f|u) g(\vec f)}
-$$
-Since the utility of an utterance is composed of both the negative surprisal of the goal and the negative of the utterance cost, using a uniform utterance cost, we can model $S_1$ as follows:
-$$
-S_1 (u | g) \propto \sum_{c,\vec f}{L_0 (c,\vec f|u) g(\vec f)}
-$$
-%the relationship between these quantities and surprisal might not be totally obvious -- it's probably worth at least noting that there are some computations not being shown here
+Given her goal, $S$ chooses an utterance $u$ according to a softmax decision rule that describes an approximately rational planner \cite{sutton1998reinforcement}. $S_1$'s probability of producing utterance $u$ is therefore modeled as follows: 
 
-A pragmatic listener $L_1$ now reasons about such a speaker. Based on prior knowledge, $L_1$ knows that John is extremely unlikely to be literally a member of the shark category. On the other hand, $L_1$ knows that the speaker $S_1$ is fairly likely to want to communicate about John's scariness. $L_1$ also knows that $S_1$ knows that \emph{scary} is a high-probability feature of sharks. The listener $L_1$ performs Bayesian inference to guess the intended meaning given prior knowledge and his internal model of the speaker. To determine the speaker's intended meaning, $L_1$ will marginalize over the possible goals under consideration.
+\begin{equation}
+S_n(u | g) \propto e^{\lambda U(u |  g)}
+\end{equation}
+where $U(u | g)$ describes the speaker's utility for producing $u$ given that she has goal $g$, and $\lambda$ is an optimality parameter. Intuitively, $U(u |  g)$ can be quantified as the probability that the speaker's goal is satisfied subtracted by the cost of producing the utterance. Given an utterance $u$, the listener $L_{n-1}$ will guess that the meaning is $c, \vec f$ with probability $L_{n-1} (c, \vec f|u)$. Since the goal function selects only certain meanings as relevant, the probability that the speaker's goal is satisfied by the utterance is $
+\sum_{c, \vec f}{L_{n-1} (c, \vec f|u) g(\vec f)}$. Optimizing the probability of the speaker's goal being satisfied can be accomplished by minimizing the goal's information-theoretic surprisal given an utterance. Using the information-theoretic definition of surprisal and a uniform utterance cost, equation (1) now becomes the following:
+
+\begin{equation}
+S_n (u | g) \propto ( \sum_{c,\vec f}{L_{n-1} (c,\vec f|u) g(\vec f)}) ^\lambda
+\end{equation}
+
+Intuitively, based on $S_1$'s understanding of $L_0$'s prior knowledge, she knows that if she produces the utterance ``John is a shark," $L_0$ will believe that John is literally a shark and hence very likely to be \emph{scary}. Since $S_1$'s goal is satisfied if the listener believes that John is scary, $S_1$ is motivated to produce such a metaphorical utterance. 
+
+A pragmatic listener $L_n$ now reasons about such a speaker. Based on prior knowledge, $L_n$ knows that John is extremely unlikely to be literally a member of the shark category. On the other hand, $L_n$ knows that the speaker $S_n$ is fairly likely to want to communicate about John's scariness. $L_n$ also knows that $S_n$ knows that \emph{scary} is a high-probability feature of sharks. The listener $L_n$ performs Bayesian inference to guess the intended meaning given prior knowledge and his internal model of the speaker. To determine the speaker's intended meaning, $L_n$ will marginalize over the possible speaker goals under consideration.
 $$
-L_1 (c, \vec f | u) \propto \sum_{g}{P(c) P(\vec f | c) P (g|\vec f) S_{1} (u|g)}
+L_n (c, \vec f | u) \propto P(c) P(\vec f | c) \sum_{g}{P (g|\vec f) S_{n} (u|g)}
 $$
 
-Given $L_1$'s prior knowledge, his model of the speaker, and the utterance she produces, he infers that the meaning of the utterance is likely to be that John is a scary person. Note that while speaker and listener can continue to recursively reason about each other indefinitely, in this paper we present interpretation results for $L_1$.
+Given $L_n$'s prior knowledge, his model of the speaker, and the utterance she produces, he infers that the meaning of the utterance is likely to be that John is a scary person. While speaker and listener can continue to reason about each other recursively, in this paper we present interpretation results for $L_1$.
 
-To arrive at an interpretation, the listener needs to consider the following prior probabilities: 
+% Table 1
+\definecolor{Gray}{gray}{0.85}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\begin{table*}[t]
+\tabcolsep=0.05cm
+\fontsize{8}{7.2}\selectfont
+\begin{tabular}{a c c c c c c | a c c c c c c}
+\toprule
+Animal & $f_1=1$ & $f_2=1$ & $f_3=1$ & $f_1=0$ & $f_2=0$ & $f_3=0$ & Animal & $f_1=1$ & $f_2=1$ & $f_3=1$ & $f_1=0$ & $f_2=0$ & $f_3=0$ \\\hline
+ant & small & strong & busy & large & weak & idle & goose & loud & mean & annoying & quiet & nice & agreeable \\
+bat & scary & blind & nocturnal & unalarming & sighted & diurnal & horse & fast & strong & beautiful & slow & weak & ugly \\
+bear & scary & big & fierce & unalarming & small & nonviolent & kangaroo & jumpy & bouncy & cute & relaxed & inelastic & unattractive \\
+bee & busy & small & angry & idle & large & unangry & lion & ferocious & scary & strong & nonviolent & unalarming & weak \\
+bird & free & graceful & small & unfree & awkward & large & monkey & funny & smart & playful & humorless & stupid & unplayful \\
+buffalo & big & strong & wild & small & weak & tame & owl & wise & quiet & nocturnal & foolish & loud & diurnal \\
+cat & independent & lazy & soft & dependent & fast & hard & ox & strong & big & slow & weak & small & fast \\
+cow & fat & dumb & lazy & thin & smart & fast & penguin & cold & cute & funny & hot & unattractive & humorless \\
+dog & loyal & friendly & happy & disloyal & unfriendly & unhappy & pig & dirty & fat & smelly & clean & thin & fragrant \\
+dolphin & smart & friendly & playful & stupid & unfriendly & unplayful & rabbit & fast & furry & cute & slow & hairless & unattractive \\
+duck & loud & cute & quacking & quiet & unattractive & non-quacking & shark & scary & dangerous & mean & unalarming & safe & nice \\
+elephant & huge & smart & heavy & small & stupid & light & sheep & wooly & fluffy & dumb & hairless & hard & smart \\
+fish & scaly & wet & smelly & smooth & dry & fragrant & tiger & striped & fierce & scary & unpatterned & nonviolent & unalarming \\
+fox & sly & smart & pretty & artless & stupid & ugly & whale & large & graceful & majestic & small & awkward & inferior \\
+frog & slimy & noisy & jumpy & nonslippery & quiet & relaxed & wolf & scary & mean & angry & unalarming & nice & unangry \\
+goat & funny & hungry & loud & humorless & full & quiet & zebra & striped & exotic & fast & unpatterned & native & slow \\
+\bottomrule
+
+\end{tabular}
+\caption{$32$ animal categories, feature adjectives, and their antonyms. Feature adjectives were elicited from Experiment 1a and indicate when a feature is present ($f_i = 1$). Antonyms were generated using WordNet and indicate when a feature is not present ($f_i = 0$). Feature sets shown in Experiment 1b were created with this table, where $\vec f = [1, 0, 0]$ for category ``ant" is represented by the words $\{$small, weak, idle$\}$. There are $2^3 = 8$ possible feature combinations for each animal category.}
+\end{table*}
+% End of Table 1
+
+Based on this formulation, the listener needs to consider the following prior probabilities to arrive at an interpretation: 
 \begin{itemize}
-\item[(1)] $P(c)$, the prior probability that $X$ belongings to category $c$.
-\item[(2)] $P(\vec f | c)$, the prior probability that a member of category $c$ has feature values $\vec f$. We obtain this empirically in Experiment 1.
-\item[(3)] $P(g | \vec f)$, the prior probability that given that a speaker knows the value of the feature vector $\vec f$, she wishes to communicate goal $g$. We assume that this prior can change given the question under discussion, i.e. the context that a question sets up. 
+\item[(1)] $P(c)$: the prior probability that $X$ belongings to category $c$. We assume that the listener s extremely confident that the person under discussion (e.g. John) is a person, but that there is a non-zero probability that John is actually a non-human animal. We fit $P(c_a)$ to data with the assumption that $10^{-4} \leq P(c_a) \leq 10^{-1}$.
+\item[(2)] $P(\vec f | c)$: the prior probability that a member of category $c$ has feature values $\vec f$. This is empirically estimated in Experiment 1.
+\item[(3)] $P(g | \vec f)$: the probability that given that a speaker knows the value of the feature vector $\vec f$, she wishes to communicate goal $g$. This prior can change based on the conversational context that a question sets up. For example, if the speaker is responding to a vague question about John, e.g. ``What is John like?", the prior over goals is uniform. If the question targets a specific features, such as ``Is John scary?", then she is much more likely to have the goal of communicating John's scariness. However, she may still want to communicate other features about John that were not asked about. We assume that when the question is specific, the prior probability that $S_n$'s goal is to answer the specific question is greater than $0.5$ and fit the exact value to data.
 \end{itemize}
 
+
 \section{Behavioral Experiments}
-To obtain human metaphorical interpretations that we can compare against our model, we focused on a set of $32$ metaphors comparing human males to different non-human animals. We selected $32$ common non-human animal categories from English Club (url). Using this list, we conducted Experiment 1A to elicit a set of three salient features for each animal category. We conducted Experiment 1B to elicit the feature priors $P_F(f | c)$ described in the model section (see Table 1). Finally, we conducted Experiment 2 to measure people's interpretations for the set of metaphors. 
+To evaluate our model's interpretation of metaphorical utterances, we focused on a set of $32$ metaphors comparing human males to different non-human animals. We conducted Experiment 1a and 1b to elicit feature probabilities for the categories of interest. We then conducted Experiment 2 to measure people's interpretations of the set of metaphors. 
 
-\subsection{Experiment 1A: Feature Elicitation}
-\subsubsection{Materials and Methods}
-$100$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each subject read $32$ animal category names presented in random order, e.g. ``whale", ``ant", ``sheep". For each animal category, subjects were asked to type the first adjective that came to mind in a text box. 
+\subsection{Experiment 1a: Feature Elicitation}
+\subsubsection{Materials}
+We selected $32$ common non-human animal categories from an online resource for learning English (\url{www.englishclub.com}). The full list is shown in Table $1$.
+\subsubsection{Methods}
+$100$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each participant read $32$ animal category names presented in random order, e.g. ``whale", ``ant", ``sheep". For each animal category, participants were asked to type the first adjective that came to mind in a text box. 
 \subsubsection{Results}
-Using subjects' responses, we constructed a list of adjectives for each animal category and ordered them by the number of times they were given by a different subject (i.e. their popularity). We removed all color adjectives, such as ``brown" and ``black." To avoid constructing a set of features that have roughly equivalent meanings such as ``big", ``huge", and ``large", we used Wordnet to identify synonymous adjectives and only kept the most popular adjective among a set of synonyms. We then took the top three most popular adjectives for each animal category and used them as the set of features. Note that $f1$ is the most popular adjective, $f2$ the second, and $f3$ the third. Table 1 shows the animal categories and their respective features.
-\subsection{Experiment 1B: Feature Prior Elicitation}
-\subsubsection{Materials and Methods}
-We used Wordnet to construct antonyms for each of the adjective features produced in Experiment 1A. When multiple antonyms existed or when no antonym could be found on Wordnet, the first author used her judgment to choose the appropriate antonym. Table 1 shows the resulting list of antonyms. For each animal category, eight possible feature combinations were constructed from the three features and their antonyms. For example, the possible feature combinations for a member of the category ``ant" are \{small, strong, busy\}, \{small, strong, idle\}, \{small, weak, busy\}, and so on.
+Using participants' responses, we constructed a list of adjectives for each animal category and ordered them by the number of times they were given by a different subject (i.e. their popularity). We removed all color adjectives, such as ``brown" and ``black." To avoid constructing a set of features that have roughly equivalent meanings such as ``big", ``huge", and ``large", we used WordNet \cite{Miller95wordnet:a} to identify synonymous adjectives and only kept the most popular adjective among a set of synonyms. We then took the top three most popular adjectives for each animal category and used them as the set of features. In what follows, $f_1$ is the most popular adjective, $f_2$ the second, and $f_3$ the third. Table 1 shows the animal categories and their respective features.
 
-$60$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each subject completed $16$ trials in random order. Each trial consisted of the eight feature combinations for a particular animal category. Using slider bars with ends marked by ``Impossible" and ``Absolutely certain," subjects were asked to rate how likely it is for a member of the animal category to have each of the eight feature combinations. Subjects also rated the probabilities of the feature combinations for a male person.
+\subsection{Experiment 1b: Feature Prior Elicitation}
+\subsubsection{Materials}
+Using the features collected from Experiment 1a, we elicit the prior probability of a feature vector given an animal or person category (i.e. $P(\vec f | c)$). We assume that the adjective corresponding to a feature (e.g. \emph{scary}) indicates that the value of that feature is $1$ (present), while the adjective's antonym indicates that the value of that feature is $0$ (not present). We used WordNet to construct antonyms for each of the adjective features produced in Experiment 1a. When multiple antonyms existed or when no antonym could be found on WordNet, the first author used her judgment to choose the appropriate antonym. Table 1 shows the resulting list of antonyms. For each animal category, eight possible feature combinations were constructed from the three features and their antonyms. For example, the possible feature combinations for a member of the category ``ant" are \{small, strong, busy\}, \{small, strong, idle\}, \{small, weak, busy\}, and so on.
 
-\begin{table*}[t]
-\tabcolsep=0.15cm
-\small
-\begin{tabular}{l lllllllll}
-
-\toprule
-Animal & $f_1$ & $P(f_1 | c_a)$ & $P(f_1 | c_p)$ & $f_2$ & $P(f_2 | c_a)$ & $P(f_2 | c_p)$ & $f_3$ & $P(f_3 | c_a)$ & $P(f_3 | c_p)$ \\
-\midrule
-ant & small & 0.69 & 0.48 & strong & 0.59 & 0.51 & busy & 0.62 & 0.50 \\
-bat & scary & 0.52 & 0.46 & blind & 0.60 & 0.44 & nocturnal & 0.70 & 0.43 \\
-bear & scary & 0.60 & 0.49 & big & 0.58 & 0.51 & fierce & 0.56 & 0.48 \\
-bee & busy & 0.62 & 0.53 & small & 0.61 & 0.49 & angry & 0.50 & 0.48 \\
-bird & free & 0.61 & 0.59 & graceful & 0.58 & 0.49 & small & 0.51 & 0.48 \\
-buffalo & big & 0.66 & 0.50 & strong & 0.64 & 0.53 & wild & 0.59 & 0.47 \\
-cat & independent & 0.58 & 0.50 & lazy & 0.52 & 0.50 & soft & 0.70 & 0.51 \\
-cow & fat & 0.68 & 0.48 & dumb & 0.56 & 0.48 & lazy & 0.61 & 0.52 \\
-dog & loyal & 0.62 & 0.51 & friendly & 0.55 & 0.53 & happy & 0.56 & 0.49 \\
-dolphin & smart & 0.71 & 0.55 & friendly & 0.59 & 0.54 & playful & 0.59 & 0.50 \\
-duck & loud & 0.59 & 0.51 & cute & 0.55 & 0.49 & quacking & 0.60 & 0.30 \\
-elephant & huge & 0.67 & 0.47 & smart & 0.58 & 0.50 & heavy & 0.79 & 0.54 \\
-fish & scaly & 0.55 & 0.28 & wet & 0.66 & 0.47 & smelly & 0.65 & 0.51 \\
-fox & sly & 0.61 & 0.51 & smart & 0.63 & 0.52 & pretty & 0.60 & 0.50 \\
-frog & slimy & 0.69 & 0.33 & noisy & 0.53 & 0.49 & jumpy & 0.56 & 0.49 \\
-goat & funny & 0.49 & 0.51 & hungry & 0.52 & 0.50 & loud & 0.55 & 0.51 \\
-goose & loud & 0.63 & 0.50 & mean & 0.53 & 0.48 & annoying & 0.64 & 0.53 \\
-horse & fast & 0.53 & 0.47 & strong & 0.60 & 0.54 & beautiful & 0.57 & 0.49 \\
-kangaroo & jumpy & 0.53 & 0.46 & bouncy & 0.61 & 0.51 & cute & 0.54 & 0.49 \\
-lion & ferocious & 0.60 & 0.39 & scary & 0.62 & 0.47 & strong & 0.64 & 0.52 \\
-monkey & funny & 0.55 & 0.51 & smart & 0.59 & 0.52 & playful & 0.56 & 0.51 \\
-owl & wise & 0.61 & 0.50 & quiet & 0.54 & 0.51 & nocturnal & 0.65 & 0.42 \\
-ox & strong & 0.62 & 0.53 & big & 0.62 & 0.50 & slow & 0.59 & 0.52 \\
-penguin & cold & 0.74 & 0.50 & cute & 0.56 & 0.52 & funny & 0.55 & 0.51 \\
-pig & dirty & 0.62 & 0.49 & fat & 0.66 & 0.49 & smelly & 0.64 & 0.54 \\
-rabbit & fast & 0.64 & 0.49 & furry & 0.68 & 0.34 & cute & 0.57 & 0.50 \\
-shark & scary & 0.66 & 0.49 & dangerous & 0.66 & 0.48 & mean & 0.66 & 0.49 \\
-sheep & wooly & 0.67 & 0.33 & fluffy & 0.62 & 0.37 & dumb & 0.56 & 0.50 \\
-tiger & striped & 0.68 & 0.27 & fierce & 0.61 & 0.48 & scary & 0.63 & 0.48 \\
-whale & large & 0.66 & 0.51 & graceful & 0.59 & 0.47 & majestic & 0.63 & 0.48 \\
-wolf & scary & 0.61 & 0.50 & mean & 0.56 & 0.50 & angry & 0.49 & 0.45 \\
-zebra & striped & 0.80 & 0.24 & exotic & 0.54 & 0.46 & fast & 0.61 & 0.50 \\
-
-\bottomrule
-\end{tabular}
-\end{table*}
-
-
-\begin{figure}[h]
-\begin{center}
-\scalebox{0.6}{\includegraphics{Plots/prior.pdf}}
-\end{center}
-\caption{This is a figure.} 
-\label{prior}
-\end{figure}
+\subsubsection{Methods}
+$60$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each participant completed $16$ trials in random order. Each trial consisted of the eight feature combinations for a particular animal category. Using slider bars with ends marked by ``Impossible" and ``Absolutely certain," participants were asked to rate how likely it is for a member of the animal category to have each of the eight feature combinations. Participants also rated the probabilities of the feature combinations for a male person. We only elicited priors for males to minimize gender variation and to maintain consistency with Experiment 2.
 
 \subsubsection{Results} 
-We make the simplifying assumption that the eight feature combinations presented in each trial exhaustively describe a member of a particular category. As a result, we normalized each subject's ratings for the eight feature combinations in a trial to sum up to 1. Averaging across subjects' normalized ratings, we obtained the feature priors $P_F(\vec f | c)$ for $c = c_a$ (animal) and $c = c_p$ (person), assuming that $f_i = 1$ is represented by the feature adjective and $f_i = 0$ is represented by the antonym. 
+We normalized each participant's ratings for the eight feature combinations in a trial to sum up to 1 based on the assumption that the feature combinations exhaustively describe a member of a particular category. Using the Spearman-Brown prediction equation, reliability of the ratings was  $0.941$ ($95\%$ CI $=[0.9408, 0.9414] $). Averaging across participants' normalized ratings, we obtained feature priors $P(\vec f | c)$ for $c = c_a$ (animal) and $c = c_p$ (person).
+%, where $f_i = 1$ is represented by the feature adjective and $f_i = 0$ is represented by its antonym. 
+%Figure~\ref{prior} shows the average marginal probabilities of features being present given an animal category and a person category. 
+Since the features were created using the animal categories in Experiment 1a, by construction features are rated as significantly more likely to be present in the animal category than in the person category ($F(1, 190) = 207.1$, $p < 0.0001$). These results confirm that participants are fairly confident that each animal category has certain distinguishing features (mean$= 0.61$, sd$=0.06$), while those same features are rated as appearing in people less often (mean$=0.48$, sd$=0.06$).
 
-For ease of interpretation, in Table 1 we present the marginal probabilities of each of the three features instead of the joint probabilities. Figure~\ref{prior} shows the average marginal probabilities of features given an animal category versus a person category. We see that by design, features are rated as significantly more likely to be present given the animal category than the person category.
+%\begin{figure}[t]
+%\begin{center}
+%\scalebox{0.6}{\includegraphics{Plots/priors_bar.pdf}}
+%\end{center}
+%\caption{Average marginal prior probability ratings for the three features given an animal category or a person category. Error bars are standard error over the $32$ items.} 
+%\label{prior}
+%\end{figure}
 
 \subsection{Experiment 2: Metaphor Understanding}
-\subsubsection{Materials and Methods}
-We created $32$ scenarios based on the animal categories and results from Experiment 1. In each scenario, a person (e.g. Bob) is having a conversation with his friend about a person that he recently met. Since we are interested in how relevance to the question under discussion (QUD) affects metaphor interpretation as well as the effectiveness of metaphorical versus literal utterances, we created four conditions for each scenario by crossing vague/specific QUD and literal/metaphorical statements. In vague QUD conditions, Bob's friend asks a vague question about the person Bob recently met: ``What is he like?" In specific QUD conditions, Bob's friend asks a specific question about the person: ``Is he $f1$?" Where $f1$ is the most popular adjective for a given animal category $c_a$ in Experiment 1A. In literal conditions, Bob replies with a literal utterance,, either by saying ``He is $f1$" to the question ``What is he like?" or ``Yes" to the question ``Is he $f1$?". In Metaphorical conditions, Bob replies with a metaphorical statement, e.g. ``He is a $c_a$" where $c_a$ is an animal category. See Table 2 for examples.
- 
-\subsubsection{Results}
-\begin{figure}[ht]
+\subsubsection{Materials}
+We created $32$ scenarios based on the animal categories and results from Experiment 1. In each scenario, a person (e.g. Bob) is having a conversation with his friend about a person that he recently met. Since we are interested in how the communicative goals set up by context affect metaphor interpretation as well as the effectiveness of metaphorical versus literal utterances, we created four conditions for each scenario by crossing vague/specific goals and literal/metaphorical utterances. In vague goal conditions, Bob's friend asks a vague question about the person Bob recently met: ``What is he like?" In specific goal conditions, Bob's friend targets $f_1$ and asks a specific question about the person: ``Is he $f_1$?," where $f_1$ is the most popular adjective for a given animal category $c_a$. In literal conditions, Bob replies with a literal utterance, either by saying ``He is $f_1$." to the question ``What is he like?" or ``Yes." to the question ``Is he $f_1$?". In Metaphorical conditions, Bob replies with a metaphorical statement, e.g. ``He is a $c_a$." where $c_a$ is an animal category. See Table 2 for examples of each condition.
+
+\begin{figure}[t]
 \begin{center}
-\scalebox{0.6}{\includegraphics{Plots/human_bar.pdf}}
+\scalebox{0.55}{\includegraphics{Plots/human_bar.pdf}}
 \end{center}
-\caption{This is a figure.} 
+\caption{Average probability ratings for the three features given a vague/specific goal and a literal/metaphorical utterance. Error bars are standard error over the $32$ items.} 
 \label{human_bar}
 \end{figure}
 
-$49$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each subject completed $32$ trials in random order. The $32$ trials were randomly and evenly assigned to one of the four conditions, i.e. each subject read $8$ scenarios for each condition. For each trial, subjects used sliders to indicate the probabilities that the person described has features $f1$, $f2$, and $f3$.
+\begin{table}[h]
+\tabcolsep=0.2cm
+\small
+\begin{tabular}{llll}
+\toprule
+Goal & Utterance & Example question & Example utterance \\
+\midrule
+Vague & Literal & ``What is he like?" & ``He is scary." \\
+Specific  & Literal & ``Is he scary?" & ``Yes." \\
+Vague & Metaphorical & ``What is he like?" & ``He is a shark." \\
+Specific & Metaphorical & ``Is he scary?" & ``He is a shark." \\
+\bottomrule
+\end{tabular}
+\caption{Example scenarios given the four experimental conditions in Experiment 2.s}
+\end{table}
 
-For each condition of each scenario, we obtained the average probability ratings for the three features. Figure~\ref{human_bar} shows the average ratings for each feature across animal categories given a vague or specific QUD and a literal or metaphorical utterance. We see that when the speaker gives a literal statement directly affirming the presence of $f1$, subjects rate $f1$ as significantly more likely than when the speaker gives a metaphorical statement. However, subjects rate $f2$ and $f3$ as significantly more likely when the speaker produces a metaphorical utterance. We also see an effect of the QUD on the interpretation of metaphorical utterances. Given a specific question about $f1$, subjects interpret the speaker's metaphorical utterance as being relevant to the question and rates the probability of $f1$ as significantly higher than when the QUD is vague. On the other hand, the probabilities of $f2$ and $f3$ are not significantly different given a vague QUD or a specific QUD about $f1$.
+\subsubsection{Methods}
+$49$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each participant completed $32$ trials in random order. The $32$ trials were randomly and evenly assigned to one of the four conditions, i.e. each participant read $8$ scenarios for each condition. For each trial, participants used sliders to indicate the probabilities that the person described has features $f_1$, $f_2$, and $f_3$, respectively.
 
-%\section{Model Comparison}
+
+
+\subsubsection{Results}
 %\begin{figure}[ht]
+%\begin{center}
+%\scalebox{0.6}{\includegraphics{Plots/model_literal.pdf}}
+%\end{center}
+%\caption{Model's average marginal category probabilities given a metaphorical utterance ($P(c | u)$). Model's prediction for the animal category is close to $0$ and close to $1$ for the person category. Error bars are standard error over the $32$ items.} 
+%\label{scatter_full}
+%\end{figure}
+
+For each condition of each scenario, we obtained the average probability ratings for the three features. Figure~\ref{human_bar} shows the average ratings for each feature across animal categories given a vague or specific goal and a literal or metaphorical utterance. When the speaker gives a literal statement directly affirming the presence of $f_1$, participants rate $f_1$ as significantly more likely than when the speaker gives a metaphorical statement ($F(1, 126) = 52.6$, $p < 0.00001$). However, participants rate $f_2$ and $f_3$ as significantly more likely when the speaker produces a metaphorical utterance than when the utterance is literal ($F(1, 126) = 23.7$, $p < 0.0001$; $F(1, 126) =13.66$, $p < 0.0005$). Comparing feature probability ratings in Experiment 2 to the feature priors obtained in Experiment 1b, we can measure how literal and metaphorical utterances change listeners' inferences about a person's features. Given a literal utterance that directly confirms the existence of $f_1$, probability ratings for $f_1$ are significantly higher than the prior probabilities of $f_1$ for a person ($t(63) = 59.19, p < 0.00001$). However, probability ratings for $f_2$ and $f_3$ are not significantly different from their prior probabilities ($t(63) = -0.13, p = 0.89$; $t(63) = 0.03, p = 0.97$). Given a metaphorical utterance, probability ratings for all three features are significantly higher than the prior probabilities ($t(63) = 15.74, p < 0.0001$; $t(63) = 7.29, p < 0.0001$; $t(63) = 5.91, p < 0.0001$). While preliminary, this analysis suggests that metaphorical utterances may convey richer information and update listeners' beliefs along more dimensions than literal utterances.
+
+We now analyze the effect of the speaker's communicative goal on the interpretation of literal or metaphorical utterances. When the speaker's utterance is literal, the probability ratings for $f_1$, $f_2$, and $f_3$ are not significantly different given a vague or a specific question ($(F(1, 62)= 2.73, p =0.1; F(1, 62)=0.0001, p = 0.99; F(1, 62) < 0.0001, p = 0.99$). For metaphorical utterances, however, the question type has an effect on participants' interpretations: participants rate the probability of $f_1$ as significantly higher when the question is specifically about $f_1$ than when it is vague ($F(1, 62) = 10.16$, $p < 0.005$). The probabilities of $f_2$ and $f_3$ are not significantly different given a vague question or a specific question about $f_1$ ($F(1, 62) = 0.04$, $p > 0.05$; $F(1, 62) = 0.8285$, $p > 0.05$). This suggests that people's interpretation of metaphor may be more sensitive to the communicative goals set up by context than their interpretation of literal utterances.
+
+\section{Model Evaluation}
+We used the feature priors obtained in Experiment 1b to compute model interpretations of the $32$ metaphors. As discussed in the previous section, the behavioral results in Experiment 2 show evidence that the context set up by a question changes participants' interpretation of a metaphor. Our model naturally accounts for this using the speaker's prior over communicative goals $P(g | \vec f)$. When a speaker is responding to a vague question, we set the prior distribution for $P(g | \vec f)$ as uniform. When the speaker is responding to a question specifically about $f_1$, we assume that $P(g_1 | \vec f) > 0.5$ and equal between $P(g_2 | \vec f) = P(g_3 | \vec f)$ (with a slight abuse of notation for goals). Fitting the goal prior parameter to data yields a prior of $P(g_1 | \vec f) = 0.6$ when responding to a specific question about $f_1$. We fit the category prior $P(c_a) = 0.01$ and the speaker optimality parameter $\lambda = 3$. %note that saying "g_1" is a slight abuse of notation given the model definitions above. 
+
+Using these parameters and the model we described, we obtained interpretation probabilities for each of the $32$ metaphors under both vague and specific goal conditions. For each metaphor and goal condition, the model produces a joint posterior distribution $P(c, \vec f | u)$. We first show a basic but important qualitative result, which is that the model is able to interpret utterances metaphorically. Marginalized over values of $\vec f$, the probability of the person category given the utterance is close to one ($P(c_p | u) = 0.994$), indicating that the pragmatic listener successfully infers that the person described is actually a person and not an animal. This shows that the model is able to combine prior knowledge and reason about the speaker's communicative goal to arrive at nonliteral interpretations of utterances.
+
+%\begin{figure}[t]
 %\begin{center}
 %\scalebox{0.6}{\includegraphics{Plots/model_bar.pdf}}
 %\end{center}
-%\caption{This is a figure.} 
-%\label{model_bar}
+%\caption{Model's average } 
+%\label{scatter_full}
 %\end{figure}
 
-We used the feature priors obtained in Experiment 1B to compute model interpretations of the $32$ metaphors.
-For the category prior $P_C(c)$, we assumed that given the common ground set up by the conversation, it is extremely unlikely for the person described to actually belong to the animal category $(P_C(c_a) = 0.0001)$ and extremely likely for him to belong to the person category $(P_C(c_p) = 0.9999)$. We model the effect of relevance to the question under discussion by assuming that the goal prior $P_G(g | \vec f)$ varies given vague or specific QUDs. When the QUD is vague, we set the distribution as uniform over goals that are consistent with $\vec f$. When the QUD specifically addresses $f_1$, we set the distribution as having a much higher probability for $g_1$ and equal probability for $g_2$ and $g_3$.
-
-Using these prior settings and the model we described, we obtained feature probabilities for each of the $32$ metaphors. Figure~\ref{model_bar} shows the average marginal feature probabilities for the $32$ metaphors given a vague or specific QUD. We see that the model captures the QUD effect, where $f1$ receives a significantly higher probability when the speaker is a priori more likely to be informative about $f1$. (Need to describe results for "literal" statement where it's just the prior.)
-
-To quantitatively evaluate the model's performance on metaphorical utterances, we correlated model predictions with human ratings for each of the features given a metaphorical utterance and a vague or specific QUD. We first focused on the model's performance on $f1$ features, namely the most salient features and ones that can be specifically under discussion. Correlation between human ratings and the model's marginal posterior probabilities for $f1$ across the $32$ metaphors and vague/specific QUD conditions is $0.73$ (add Spearman prophecy formula), suggesting that the model captures a significant amount of the reliable variance in the human data. We then compare this performance with baseline models that only consider feature priors of the source (animal category) or target (person category). A baseline model consisting of only feature priors for the animal categories yields a non-significant correlation ($r=-0.03, p > 0.05$). A baseline model consisting of only feature priors for the person category yields a significant correlation ($r=0.59, p < 0.01$), but one that is significantly worse than the model predictions ($p < 0.001$ with a Cox test). A linear regression model that takes both sets of priors as predictors still yields a significantly worse fit than our model. This suggests that our model adequately combines prior knowledge about the source and target domains to produce metaphor interpretations that closely fit humans'.
-\begin{figure}[ht]
+\begin{figure}[t]
 \begin{center}
 \scalebox{0.6}{\includegraphics{Plots/scatter_full.pdf}}
 \end{center}
-\caption{This is a figure.} 
+\caption{Model predictions ($x$ axis) vs participants' probability ratings ($y$ axis) for $192$ items ($32$ metaphors $\times$ $3$ features $\times$ $2$ goal conditions). Shape of points indicates goal condition and color indicates feature number.} 
 \label{scatter_full}
 \end{figure}
 
-We now evaluate the model's performance on all three types of features. Correlation between human ratings and the model's marginal posterior probabilities for $f1$, $f2$, and $f3$ across the $32$ metaphors and vague/specific QUD conditions is $0.56$ (add Spearman prophecy formula). Figure~\ref{scatter_full} shows the model predictions against human ratings for the three features of each metaphor given a vague or specific QUD. While our model still captures a significant amount of reliable variance in the human data, we see that there are certain features, particularly $f2$ and $f3$, for which the model performance is significantly worse. We analyze these metaphors and features in more detail in the following section.
+We now turn to the second component of the interpretation, $P(\vec f | u)$. 
+%Figure X shows the average marginal feature probabilities given a vague or specific goal. The model's interpretations are shaped by the communicative goal set up by context, where $f_1$ receives significantly higher marginal probabilities when the speaker is responding to a specific question about $f_1$ ($F(1, 62) =17.92$, $p<0.0001$). This qualitatively matches behavioral results in Figure X. 
+To quantitatively evaluate the model's performance, we correlated model predictions with human interpretations of the metaphorical utterances. Given a metaphorical utterance and a vague or specific goal condition, we computed the model's marginal posterior probabilities for $f_1$, $f_2$, and $f_3$. We then correlate these posterior probabilities with participants' probability ratings from Experiment 2. Figure~\ref{scatter_full} plots model interpretations for all metaphors, features, and goal conditions against human judgments. Correlation across the $192$ items ($32$ metaphors $\times$ $3$ features $\times$ $2$ goal conditions) is $0.6$ ($p < 0.001$). The predicted reliability of participants' ratings using the Spearman-Brown prediction formula is $0.828$ ($95\%$ CI $=[0.827, 0.829]$), suggesting first that people do not agree perfectly on metaphorical interpretations, and second that our model captures a significant amount of the reliable variance in the behavioral data. In particular, our model does especially well at predicting participants' judgments of $f_1$, which are the most salient features of the animal categories and were targeted by specific questions in Experiment 2. Correlation between model predictions and human judgments for $f_1$ is $0.7$ ($p < 0.0001$), while the predicted reliability of participants' ratings for $f_1$ is $0.82$ ($95\%$ CI $=[0.818, 0.823]$). 
 
+We now compare our model's performance to a baseline model that also considers the feature priors and the conversational context. We constructed a linear regression model that takes the marginal feature priors for the animal category, the marginal feature priors for the person category, and the vague or specific goal as predictors of participants' ratings. With four parameters, this model produced a fit of $r= 0.45$, which is significantly worse than our model ($p < 0.0001$ on a Cox test). This suggests that our computational model adequately combines people's prior knowledge as well as principals of pragmatics to produce metaphorical interpretations that closely fit behavioral data.
 
-
-
-
+While our model predictions provide a close fit to behavioral data, some residual variance can be further addressed. Previous work has shown that alternative utterances---what the speaker could have said---can strongly affect listeners' interpretation of what the speaker \emph{did} say \cite{bergen2012s}. Our model currently does not take into account the range of alternative utterances (both literal and metaphorical) that a listener considers when interpreting a speaker's utterance. We posit that this may account for some of the variance in the data that our model does not capture. Consider the metaphor ``He is an ant" and the corresponding features \emph{small, strong}, and \emph{busy}. Our model currently assigns a high probability to the feature \emph{strong} given the metaphor, while participants assign it a lower probability. Indeed, this feature has the highest residual in our model fit. To demonstrate that alternative utterances may account for this discrepancy, we construct a model that has ``He is an ox" as an alternative utterance. ``Ox" has features that roughly align with the features of ``ant": \emph{strong, big}, and \emph{slow}. Since \emph{strong} is a higher probability feature for ``ox" than for ``ant," the listener reasons that if the speaker had intended to communicate the feature \emph{strong}, she would have said ``He is an ox" since it optimally satisfies that goal. Since the speaker did \emph{not} produce the utterance ``He is an ox," the listener infers that \emph{strong} is a less probable feature. Adding this alternative utterance to the model lowers the marginal posterior probability of \emph{strong} given the utterance ``He is an ant." As a result, we posit that adding alternative utterances across all animal categories may significantly improve model performance. Given the difficulty of constructing alternative utterances using our current set of metaphors because the feature combinations are not aligned across animal categories (i.e., different animal categories have different feature sets, and not all features are shared by multiple animals), we aim to address the role of alternative utterances more specifically in future work.
 
 \section{Discussion}
-Discuss implication of results on the pragmatics of metaphor; discuss other effects we could explore using the modeling framework; suggest future directions.
+We have presented a computational model that predicts rich metaphorical interpretations using general communicative principles. Besides going beyond the literal meaning of an utterance to infer non-literal interpretations (e.g., John is a person and not a shark), our model provides quantitative judgments about the person's features (e.g., John is very likely scary, dangerous, and mean). Furthermore, behavioral results show that the interpretation of a metaphor is shaped in part by the conversational context, which our model naturally accounts for using communicative goals. Together these results suggest that basic principles of communication may be an important driver of metaphor understanding.
 
-In this paper we focus on developing a computational model of pragmatics that explains a range of effects in metaphor understanding, with the goal of advancing our understanding of the computational basis of metaphor and nonliteral language understanding.
+Our model captures several intuitions about communication, including the importance of common ground between listener and speaker, the context-dependence of communicative goals, and the idea that speakers choose to produce utterances that maximize informativeness about features relevant to their communicative goal. Each of these components inspire research questions that can be further investigated using both our modeling framework and experimental paradigm. For example, are listeners less likely to interpret an utterance metaphorically when there is little common ground between speaker and listener? What additional communicative goals are metaphors able to satisfy more effectively than literal utterances? We aim to address these questions in future research to further clarify how communication principals interact to produce metaphorical meaning. We believe that our computational framework advances understanding of the computational basis of metaphor and of communication more generally, and we hope that it will continue to shed metaphorical light on related questions.
 
-Building upon Rational Speech Act models, we present a computational model that predicts rich metaphorical interpretations using basic pragmatic reasoning.
-
-\subsection{Footnotes}
-
-
-%\subsection{Tables}
-
-%\begin{table}[!ht]
-%\begin{center} 
-%\caption{Sample table title.} 
-%\label{sample-table} 
-%\vskip 0.12in
-%\begin{tabular}{ll} 
-%\hline
-%Error type    &  Example \\
-%\hline
-%Take smaller        &   63 - 44 = 21 \\
-%Always borrow~~~~   &   96 - 42 = 34 \\
-%0 - N = N           &   70 - 47 = 37 \\
-%0 - N = 0           &   70 - 47 = 30 \\
-%\hline
-%\end{tabular} 
-%\end{center} 
-%\end{table}
-
-
-\section{Acknowledgments}
-
-Place acknowledgments (including funding information) in a section at
-the end of the paper.
+%\section{Acknowledgments}
+%Place acknowledgments (including funding information) in a section at the end of the paper.
 
 
 
