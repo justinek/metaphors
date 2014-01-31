@@ -145,6 +145,34 @@ colnames(fp.set.normalizing)[4] <- "normalizing"
 fp.set.long <- join(fp.set.long, fp.set.normalizing, by=c("workerid", "categoryID", "type"))
 # filter out rows with 0 as normalizer
 fp.set.long <- subset(fp.set.long, normalizing != 0)
+####################################
+# Split half
+####################################
+fp.cors <- data.frame(cors=NULL, proph=NULL)            
+for (t in seq(1, 2)) {
+  ii <- seq_len(nrow(fp.set.long))
+  ind1 <- sample(ii, nrow(fp.set.long) / 2) 
+  ind2 <- ii[!ii %in% ind1] 
+  p1 <- fp.set.long[ind1, ] 
+  p2 <- fp.set.long[ind2, ]
+  #p1.summary <- summarySE(fp.set.long, measurevar="normalizedProb", groupvars=c("categoryID", "type", "featureSetNum"))
+  p1.summary <- summarySE(p1, measurevar="normalizedProb", groupvars=c("categoryID", "type", "featureSetNum"))
+  p2.summary <- summarySE(p2, measurevar="normalizedProb", groupvars=c("categoryID", "type", "featureSetNum"))
+  colnames(p1.summary)[5] <- "p1prob"
+  colnames(p2.summary)[5] <- "p2prob"
+  fp.splithalf.comp <- join(p1.summary, p2.summary, by=c("categoryID", "type", "featureSetNum"))
+  fp.splithalf.comp <- fp.splithalf.comp[complete.cases(fp.splithalf.comp),]
+  this.cor <- with(fp.splithalf.comp, cor(p1prob, p2prob))
+  fp.cor <- data.frame(cors=this.cor, proph=prophet(this.cor, 2))
+  fp.cors <- rbind(fp.cor, fp.cors)
+}
+
+
+
+
+
+
+
 fp.set.long$normalizedProb <- fp.set.long$value / fp.set.long$normalizing
 
 fp.set.long.summary <- summarySE(data=fp.set.long, measurevar="normalizedProb", 
