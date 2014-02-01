@@ -61,7 +61,7 @@ In the basic Rational Speech Act model of \cite{frank2012predicting, goodman2013
 
 To illustrate this idea more concretely and demonstrate how it is implemented in our model, we will use the metaphor ``John is a shark" as an example. For simplicity, in this model we restrict the number of possible categories to which a member may belong to $c_a$ and $c_p$, denoting an animal category or a person category, respectively. We also restrict the possible features of John under consideration to a vector of size three: $\vec f = [f_1, f_2, f_3]$, where $f_i$ is either $0$ or $1$ (for example, the three features could be scary, sleek, and finned).
 The literal listener $L_0$ will interpret the utterance ``John is a shark" as meaning that John is literally a member of the category ``shark" and has corresponding features. Formally, if $u$ is the uttered category:
-\[ L_0(c, \vec f |u) \propto \left\{ 
+\[ L_0(c, \vec f |u) = \left\{ 
   \begin{array}{l l}
     P(\vec f | c) & \quad \text{if $c$ = $u$}\\
     0 & \quad \text{otherwise}
