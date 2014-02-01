@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  31 JAN 2014 00:38
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  31 JAN 2014 17:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -464,13 +464,16 @@ Overfull \hbox (34.33038pt too wide) in paragraph at lines 225--226
 
 [5 <./Plots/scatter_full.pdf>] (./cogsci_metaphor_lb.bbl
 Missing character: There is no Õ in font ptmr7t!
+
+Underfull \vbox (badness 4467) has occurred while \output is active []
+
  [6]
 Missing character: There is no Ô in font ptmr7t!
 Missing character: There is no Õ in font ptmr7t!
-) [7
+)
+[7
 
-]
-(./cogsci_metaphor_lb.aux) ) 
+] (./cogsci_metaphor_lb.aux) ) 
 Here is how much of TeX's memory you used:
  3982 strings out of 493488
  53123 string characters out of 3141326
@@ -478,18 +481,18 @@ Here is how much of TeX's memory you used:
  7176 multiletter control sequences out of 15000+200000
  61013 words of font info for 134 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,13n,35p,2240b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips
-/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmex10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local
-/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-
-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cogsci_metaphor_lb.pdf (7 pages, 143309 bytes).
+ 38i,13n,35p,2215b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvi
+ps/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/courier/ucrr8a.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/loc
+al/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texm
+f-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cogsci_metaphor_lb.pdf (7 pages, 143292 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream
