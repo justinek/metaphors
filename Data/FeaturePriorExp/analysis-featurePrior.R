@@ -149,7 +149,7 @@ fp.set.long <- subset(fp.set.long, normalizing != 0)
 # Split half
 ####################################
 fp.cors <- data.frame(cors=NULL, proph=NULL)            
-for (t in seq(1, 2)) {
+for (t in seq(1, 1000)) {
   ii <- seq_len(nrow(fp.set.long))
   ind1 <- sample(ii, nrow(fp.set.long) / 2) 
   ind2 <- ii[!ii %in% ind1] 

@@ -1,0 +1,15 @@
+Butcher
+Doctor
+Gardener
+Lawyer
+Mechanic
+Plumber
+Politician
+Policeman
+Postman
+Secretary
+Soldier
+Tailor
+Translator
+Traffic warden
+Window cleaner

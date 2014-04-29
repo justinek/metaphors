@@ -1,0 +1,102 @@
+(define categories (list 'whale 'swan 'person))
+(define utterances (list 'whale 'swan 'person))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1 0.1)))
+(define (categories-prior) (multinomial categories '(0.0001 0.0001 0.9998)))
+(define featureSet-prior (list (list '0.8 '0.05 '0.05 '0.05 '0.05 '0.05 '0.05 '0.05
+	'0.01 '0.01 '0.01 '0.01 '0.01 '0.01 '0.01 '0.01) 
+                               (list '0.001 '0.001 '0.001 '0.001 '0.001 '0.001 '0.001 '0.001
+                               	'0.05 '0.05 '0.05 '0.05 '0.05 '0.8 '0.05 '0.05) 
+                               (list '0.5 '0.5 '0.5 '0.5 '0.5 '0.5 '0.5 '0.5
+                               	'0.5 '0.5 '0.5 '0.5 '0.5 '0.5 '0.5 '0.5)))
+                               
+                              ;9547996997 '0.225987627552912 '0.132824554126545 '0.0709937119996337 '0.0508191337139657 '0.058718057100408 '0.0550322994351732) (list '0.227882409009554 '0.0928451766994602 '0.103262899561703 '0.071682064768999 '0.218971396319519 '0.110907383620615 '0.100770455769828 '0.073678214250321) (list '0.30592786494628 '0.138078454222818 '0.179114768847673 '0.13098781834847 '0.0947267162507846 '0.0531420411185539 '0.0601520520596695 '0.0378702842057509) ))
+;; This model will not run as the feature priors are not defined.
+;; We will define the parameters separately and concatenate with this code.
+
+(define (filter pred lst)
+ (fold (lambda (x y)
+         (if (pred x)
+             (pair x y)
+             y))
+       '()
+       lst))
+
+(define (zip a b)
+  (if (equal? (length a) 0)
+      '()
+      (pair (list (first a) (first b)) (zip (rest a) (rest b)))))
+
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.33 0.33)))
+
+(define alpha 3.0)
+                               ; large, graceful, magnificent
+
+(define featureSets (list '(1 1 1 0) '(1 1 0 0) '(1 0 1 0) '(1 0 0 0) '(0 1 1 0) '(0 1 0 0) '(0 0 1 0) '(0 0 0 0)
+	'(1 1 1 1) '(1 1 0 1) '(1 0 1 1) '(1 0 0 1) '(0 1 1 1) '(0 1 0 1) '(0 0 1 1) '(0 0 0 1)))
+
+;; Parameters
+(define depth 1)
+
+;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
+(define goals (list 'goal-feature1 'goal-feature2 'goal-feature3 'goal-feature4))
+
+(define (sample-featureSet category prior all-categories)
+(if (equal? category (first all-categories))
+(multinomial featureSets (first prior))
+(sample-featureSet category (rest prior) (rest all-categories))
+)
+)
+
+(define (literal-interpretation utterance category)
+(equal? utterance category))
+
+
+(define (goal-satisfied? goal listener-category-feature1-feature2-feature3-feature4 
+	speaker-category speaker-feature1 speaker-feature2 speaker-feature3 speaker-feature4)
+(case goal
+(('goal-feature1) (equal? (second listener-category-feature1-feature2-feature3-feature4) speaker-feature1))
+(('goal-feature2) (equal? (third listener-category-feature1-feature2-feature3-feature4) speaker-feature2))
+(('goal-feature3) (equal? (fourth listener-category-feature1-feature2-feature3-feature4) speaker-feature3))
+(('goal-feature4) (equal? (fifth listener-category-feature1-feature2-feature3-feature4) speaker-feature4))
+
+))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+(mem (lambda (category feature1 feature2 feature3 feature4 goal depth)
+(enumeration-query
+(define utterance (utterance-prior))
+utterance
+(goal-satisfied? goal (apply multinomial (listener utterance depth)) category feature1 feature2 feature3 feature4)
+))))
+
+(define listener
+(mem (lambda (utterance depth)
+(enumeration-query	
+(define category (categories-prior))
+(define featureSet (sample-featureSet category featureSet-prior categories))
+(define feature1 (first featureSet))
+(define feature2 (second featureSet))
+(define feature3 (third featureSet))
+(define feature4 (fourth featureSet))
+(define speaker-goal (goal-prior))
+
+;(list category fierceness skinniness)
+(list category feature1 feature2 feature3 feature4)
+
+(if (equal? depth 0)
+(literal-interpretation utterance category)
+(equal? utterance
+(apply multinomial (raise-to-power (speaker category feature1 feature2 feature3 feature4 speaker-goal (- depth 1)) alpha))))
+))))
+
+(define (raise-to-power speaker-dist alpha)
+(list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+(define (sample-one utterance)
+(listener utterance depth))
+
+;(filter (lambda (x) 
+;          (equal? (second (first x)) 1)) 
+        (zip(first (sample-one 'whale)) (second (sample-one 'whale)));)

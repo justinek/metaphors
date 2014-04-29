@@ -1,0 +1,33 @@
+Accountant
+Butcher
+Carpenter
+Dentist
+Doctor
+Electrician
+Engineer
+Florist
+Gardener
+Hairdresser
+Lawyer
+Mechanic
+Optician
+Pharmacist
+Plumber
+Politician
+Policeman
+Postman
+Real estate agent
+Receptionist
+Scientist
+Secretary
+Shop assistant
+Soldier
+Tailor
+Taxi driver
+Teacher
+Translator
+Traffic warden
+Travel agent
+Veterinary doctor
+Waiter
+Window cleaner

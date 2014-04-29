@@ -1,0 +1,210 @@
+That butcher is a doctor.
+That butcher is a gardener.
+That butcher is a lawyer.
+That butcher is a mechanic.
+That butcher is a plumber.
+That butcher is a politician.
+That butcher is a policeman.
+That butcher is a postman.
+That butcher is a secretary.
+That butcher is a soldier.
+That butcher is a tailor.
+That butcher is a translator.
+That butcher is a traffic warden.
+That butcher is a window cleaner.
+That doctor is a butcher.
+That doctor is a gardener.
+That doctor is a lawyer.
+That doctor is a mechanic.
+That doctor is a plumber.
+That doctor is a politician.
+That doctor is a policeman.
+That doctor is a postman.
+That doctor is a secretary.
+That doctor is a soldier.
+That doctor is a tailor.
+That doctor is a translator.
+That doctor is a traffic warden.
+That doctor is a window cleaner.
+That gardener is a butcher.
+That gardener is a doctor.
+That gardener is a lawyer.
+That gardener is a mechanic.
+That gardener is a plumber.
+That gardener is a politician.
+That gardener is a policeman.
+That gardener is a postman.
+That gardener is a secretary.
+That gardener is a soldier.
+That gardener is a tailor.
+That gardener is a translator.
+That gardener is a traffic warden.
+That gardener is a window cleaner.
+That lawyer is a butcher.
+That lawyer is a doctor.
+That lawyer is a gardener.
+That lawyer is a mechanic.
+That lawyer is a plumber.
+That lawyer is a politician.
+That lawyer is a policeman.
+That lawyer is a postman.
+That lawyer is a secretary.
+That lawyer is a soldier.
+That lawyer is a tailor.
+That lawyer is a translator.
+That lawyer is a traffic warden.
+That lawyer is a window cleaner.
+That mechanic is a butcher.
+That mechanic is a doctor.
+That mechanic is a gardener.
+That mechanic is a lawyer.
+That mechanic is a plumber.
+That mechanic is a politician.
+That mechanic is a policeman.
+That mechanic is a postman.
+That mechanic is a secretary.
+That mechanic is a soldier.
+That mechanic is a tailor.
+That mechanic is a translator.
+That mechanic is a traffic warden.
+That mechanic is a window cleaner.
+That plumber is a butcher.
+That plumber is a doctor.
+That plumber is a gardener.
+That plumber is a lawyer.
+That plumber is a mechanic.
+That plumber is a politician.
+That plumber is a policeman.
+That plumber is a postman.
+That plumber is a secretary.
+That plumber is a soldier.
+That plumber is a tailor.
+That plumber is a translator.
+That plumber is a traffic warden.
+That plumber is a window cleaner.
+That politician is a butcher.
+That politician is a doctor.
+That politician is a gardener.
+That politician is a lawyer.
+That politician is a mechanic.
+That politician is a plumber.
+That politician is a policeman.
+That politician is a postman.
+That politician is a secretary.
+That politician is a soldier.
+That politician is a tailor.
+That politician is a translator.
+That politician is a traffic warden.
+That politician is a window cleaner.
+That policeman is a butcher.
+That policeman is a doctor.
+That policeman is a gardener.
+That policeman is a lawyer.
+That policeman is a mechanic.
+That policeman is a plumber.
+That policeman is a politician.
+That policeman is a postman.
+That policeman is a secretary.
+That policeman is a soldier.
+That policeman is a tailor.
+That policeman is a translator.
+That policeman is a traffic warden.
+That policeman is a window cleaner.
+That postman is a butcher.
+That postman is a doctor.
+That postman is a gardener.
+That postman is a lawyer.
+That postman is a mechanic.
+That postman is a plumber.
+That postman is a politician.
+That postman is a policeman.
+That postman is a secretary.
+That postman is a soldier.
+That postman is a tailor.
+That postman is a translator.
+That postman is a traffic warden.
+That postman is a window cleaner.
+That secretary is a butcher.
+That secretary is a doctor.
+That secretary is a gardener.
+That secretary is a lawyer.
+That secretary is a mechanic.
+That secretary is a plumber.
+That secretary is a politician.
+That secretary is a policeman.
+That secretary is a postman.
+That secretary is a soldier.
+That secretary is a tailor.
+That secretary is a translator.
+That secretary is a traffic warden.
+That secretary is a window cleaner.
+That soldier is a butcher.
+That soldier is a doctor.
+That soldier is a gardener.
+That soldier is a lawyer.
+That soldier is a mechanic.
+That soldier is a plumber.
+That soldier is a politician.
+That soldier is a policeman.
+That soldier is a postman.
+That soldier is a secretary.
+That soldier is a tailor.
+That soldier is a translator.
+That soldier is a traffic warden.
+That soldier is a window cleaner.
+That tailor is a butcher.
+That tailor is a doctor.
+That tailor is a gardener.
+That tailor is a lawyer.
+That tailor is a mechanic.
+That tailor is a plumber.
+That tailor is a politician.
+That tailor is a policeman.
+That tailor is a postman.
+That tailor is a secretary.
+That tailor is a soldier.
+That tailor is a translator.
+That tailor is a traffic warden.
+That tailor is a window cleaner.
+That translator is a butcher.
+That translator is a doctor.
+That translator is a gardener.
+That translator is a lawyer.
+That translator is a mechanic.
+That translator is a plumber.
+That translator is a politician.
+That translator is a policeman.
+That translator is a postman.
+That translator is a secretary.
+That translator is a soldier.
+That translator is a tailor.
+That translator is a traffic warden.
+That translator is a window cleaner.
+That traffic warden is a butcher.
+That traffic warden is a doctor.
+That traffic warden is a gardener.
+That traffic warden is a lawyer.
+That traffic warden is a mechanic.
+That traffic warden is a plumber.
+That traffic warden is a politician.
+That traffic warden is a policeman.
+That traffic warden is a postman.
+That traffic warden is a secretary.
+That traffic warden is a soldier.
+That traffic warden is a tailor.
+That traffic warden is a translator.
+That traffic warden is a window cleaner.
+That window cleaner is a butcher.
+That window cleaner is a doctor.
+That window cleaner is a gardener.
+That window cleaner is a lawyer.
+That window cleaner is a mechanic.
+That window cleaner is a plumber.
+That window cleaner is a politician.
+That window cleaner is a policeman.
+That window cleaner is a postman.
+That window cleaner is a secretary.
+That window cleaner is a soldier.
+That window cleaner is a tailor.
+That window cleaner is a translator.
+That window cleaner is a traffic warden.

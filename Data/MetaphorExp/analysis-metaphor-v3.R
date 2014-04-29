@@ -36,7 +36,8 @@ ggplot(d.summary.summary, aes(x=qudLabel, y=featureProb, fill=featureLabel)) +
   xlab("") +
   ylab("Probability of feature given utterance") +
   #scale_fill_brewer(palette="RdGy", name="Feature")
-  scale_fill_manual(values=my.colors, name="Feature", guide=FALSE)
+  scale_fill_manual(values=my.colors, name="Feature") +
+  theme(legend.position=c(0.9,0.8))
 ######################
 # Metaphor only
 #####################
@@ -54,7 +55,7 @@ max.name <- ""
 for (n in filenames$V1) {
   if (grepl("g", n)) {
     name.qud <- n
-    name.noQud <- paste("noQud-a", as.list(strsplit(name, "a"))[[1]][2], sep="")
+    name.noQud <- paste("noQud-a", as.list(strsplit(n, "a"))[[1]][2], sep="")
     m.qud <- read.csv(paste("../../Model/CogSciModel/CombinedOutput/", name.qud, sep=""), header=FALSE)
     m.noQud <- read.csv(paste("../../Model/CogSciModel/CombinedOutput/",name.noQud, sep=""), header=FALSE)
     m.qud$qud <- "1"
@@ -113,6 +114,9 @@ with(subset(d.summary, metaphor=="1" & featureNum=="3"), t.test(featureProb, per
 with(subset(d.summary, metaphor=="1" & featureNum=="1" & qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
 with(subset(d.summary, metaphor=="1" & featureNum=="2" & qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
 with(subset(d.summary, metaphor=="1" & featureNum=="3"& qud=="1"), t.test(featureProb, personPrior, paired=TRUE))
+d.summary$featureType <- ifelse(d.summary$featureNum==1, 1, 0)
+d.summary$featureType <- factor(d.summary$featureType)
+anova(lm(data=d.summary, featureProb ~ metaphor * featureType))
 
 ############################## 
 # Add feature labels
