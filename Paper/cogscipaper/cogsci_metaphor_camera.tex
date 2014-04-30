@@ -95,7 +95,7 @@ The listener $L_1$ performs Bayesian inference to guess the intended meaning giv
 $$
 L_1 (c, \vec f | u) \propto P(c) P(\vec f | c) \sum_{g}{P (g) S_1 (u|g, \vec f)}
 $$
-While speaker and listener could continue to reason about each other recursively, resulting in $L_n$, we restrict ourselves to $L_1$ for present purposes. Past work has shown that this first level of pragmatic reasoning is often a good model of human comprehension.
+While speaker and listener could continue to reason about each other recursively, resulting in $L_n$, we restrict ourselves to $L_1$ for present purposes. Past work has shown that this first level of pragmatic reasoning is often a good model of human comprehension.\footnote{The current model does not robustly predict metaphorical interpretations at recursion depths greater than 1. Future work will investigate which features of the model lead to this prediction, and whether alternative model definitions change this prediction.}
 If listener $L_1$ thinks it is likely that speaker $S_1$'s goal is to convey scariness but believes it is \emph{a priori} very unlikely that John is actually a shark, she will determine that $S_1$ is using shark metaphorically---that John is a scary person.
 
 % Table 1
@@ -145,7 +145,7 @@ We selected $32$ common non-human animal categories from an online resource for 
 \subsubsection{Methods}
 $100$ native English speakers with IP addresses in the United States were recruited on Amazon's Mechanical Turk. Each participant read $32$ animal category names presented in random order, e.g. ``whale", ``ant", ``sheep". For each animal category, participants were asked to type the first adjective that came to mind in a text box. 
 \subsubsection{Results}
-Using participants' responses, we constructed a list of adjectives for each animal category and ordered them by the number of times they were given by a different subject (i.e. their popularity). We removed all color adjectives, such as ``white" and ``black," to eliminate the possibility of interpreting these adjectives as racial descriptions. To avoid constructing a set of features that have roughly equivalent meanings such as ``big", ``huge", and ``large", we used WordNet \cite{Miller95wordnet:a} to identify synonymous adjectives and only kept the most popular adjective among a set of synonyms. We then took the top three most popular adjectives for each animal category and used them as the set of features. In what follows, $f_1$ is the most popular adjective, $f_2$ the second, and $f_3$ the third. Table 1 shows the animal categories and their respective features.
+Using participants' responses, we constructed a list of adjectives for each animal category and ordered them by the number of times they were given by a different subject (i.e. their popularity). We removed all color adjectives, such as ``white" and ``black," to eliminate the possibility of interpreting these adjectives as racial descriptions. To avoid redundancy in the feature set, we used WordNet \cite{Miller95wordnet:a} to identify synonymous adjectives and only kept the most popular adjective among a set of synonyms. We then took the three most popular adjectives for each animal category and used them as the set of features. In what follows, $f_1$ is the most popular adjective, $f_2$ the second, and $f_3$ the third. Table 1 shows the animal categories and their respective features.
 
 \subsection{Experiment 1b: Feature Prior Elicitation}
 \subsubsection{Materials}
@@ -193,7 +193,7 @@ Vague & Metaphorical & ``What is he like?" & ``He is a shark." \\
 Specific & Metaphorical & ``Is he scary?" & ``He is a shark." \\
 \bottomrule
 \end{tabular}
-\caption{Example scenarios given the four experimental conditions in Experiment 2.s}
+\caption{Example scenarios given the four experimental conditions in Experiment 2.}
 \end{table}
 
 \subsubsection{Methods}
@@ -203,7 +203,7 @@ $49$ native English speakers with IP addresses in the United States were recruit
 
 \subsubsection{Results}
 %\begin{figure}[ht]
-%\begin{center}
+%\begin{center}f
 %\scalebox{0.6}{\includegraphics{Plots/model_literal.pdf}}
 %\end{center}
 %\caption{Model's average marginal category probabilities given a metaphorical utterance ($P(c | u)$). Model's prediction for the animal category is close to $0$ and close to $1$ for the person category. Error bars are standard error over the $32$ items.} 
@@ -249,7 +249,7 @@ We have presented a computational model that predicts rich metaphorical interpre
 Our model captures several intuitions about communication, including the importance of common ground between listener and speaker, the context-dependence of communicative goals, and the idea that speakers choose to produce utterances that maximize informativeness about features relevant to their communicative goal. Each of these components inspire research questions that can be further investigated using both our modeling framework and experimental paradigm. For example, are listeners less likely to interpret an utterance metaphorically when there is little common ground between speaker and listener? What additional communicative goals are metaphors able to satisfy more effectively than literal utterances? We aim to address these questions in future research to further clarify how communication principles interact to produce metaphorical meaning. In addition, previous work has shown that conventional metaphors such as ``He is a pig" may be processed differently from novel metaphors \cite{bowdle2005career}, which introduces a set of interesting questions to investigate with our model. We believe that our computational framework advances understanding of the computational basis of metaphor and of communication more generally, and we hope that it will continue to shed metaphorical light on related questions.
 
 \section{Acknowledgments}
-This work was supported in part by an NSF Graduate Research Fellowships to JTK and LB and by a John S. McDonnell Foundation Scholar Award and grants from the ONR to NDG.
+This work was supported in part by NSF Graduate Research Fellowships to JTK and LB and by a John S. McDonnell Foundation Scholar Award and grants from the ONR to NDG.
 
 \bibliographystyle{apacite}
 
