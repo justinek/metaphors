@@ -1,0 +1,5 @@
+date,workerid,amount
+Mon Jan 25 14:02:34 PST 2016,A3GMT4AGHPT362,1.0
+,total paid to workers:,=SUM(c2:c2)
+,10% paid to Amazon:,=.1*c3
+,total:,=SUM(c3:c4

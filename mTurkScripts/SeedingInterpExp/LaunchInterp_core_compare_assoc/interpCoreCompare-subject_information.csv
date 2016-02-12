@@ -1,0 +1,21 @@
+workerid,language,enjoyment,gender,age,comments,asses,education
+0,English ,1,Female,22,,Yes,2
+1,english,1,Male,55,,Yes,2
+2,English,2,Male,23,,Yes,3
+3,english,1,Male,32,,Yes,3
+4,english,2,Female,32,,Yes,3
+5,English,2,,,none,NA,-1
+6,English,1,Male,40,It took 10 minutes to do properly.,Yes,3
+7,english,2,Male,26,,Yes,4
+8,English,2,Male,60,,Yes,2
+9,ENGLISH,2,Male,36,,Yes,2
+10,English,1,Male,33,,Yes,1
+11,English,1,Male,27,,Yes,3
+12,English,2,Male,34,No comments,Yes,3
+13,english,2,Female,53,"if someone calls someone a whale, they&quotecharre probably not referring to the majesty of the animal.",Yes,3
+14,English,2,Male,21,This hit was very interesting.,Yes,2
+15,English,1,Female,21,,Yes,2
+16,English,0,Female,36,,Confused,3
+17,English,2,,27,,NA,2
+18,english,1,Male,31,,Yes,2
+19,English,2,Male,30,Thank you!,Yes,2

@@ -1,0 +1,20 @@
+.slider {
+  /* default is width 400 and margin 10 */
+	width: 400;
+	margin: 10px;
+}
+
+.dialogue {
+	border:2px solid #04abe3;
+	margin: 1em;
+}
+
+.questions {
+	border:2px solid gray;
+	margin: 1em;
+}
+
+.question {
+	font-size: 18px;
+	text-decoration: underline;
+}

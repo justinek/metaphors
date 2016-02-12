@@ -80,6 +80,11 @@ for animal in sorted(featureDict.iterkeys()):
             print thisInfo
         featureNum = featureNum + 1
     #print "},\n",
-   
+    if animal[0] in vowels:
+        det = "an"
+    else:
+        det = "a"
+    print information + '"alternative":"' + animal + '","det":"' + det + '","featureNum":' + str(0) + '},'
+    print information + '"alternative":"' + "person" + '","det":"' + "a" + '","featureNum":' + str(0) + '},'
     categoryID = categoryID + 1
 

@@ -259,6 +259,9 @@ var experiment = {
     	trial = allTrialOrders[shuffledOrder[numComplete]];
     	speaker = allSpeakers[shuffledSpeakerOrder[numComplete]];
       showSlide("stage");
+
+
+      var 
       $("#f1-animal").html(trial.set1);
       $("#f2-animal").html(trial.set2);
       $("#f3-animal").html(trial.set3);

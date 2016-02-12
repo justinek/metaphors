@@ -106,6 +106,7 @@ function getRadioCheckedValue(formNum, radio_name)
 var allConditions = 
 [
 [
+/*
 {"categoryID":1,"animal":"ANT"},
 {"categoryID":2,"animal":"BAT"},
 {"categoryID":3,"animal":"BEAR"},
@@ -128,7 +129,9 @@ var allConditions =
 {"categoryID":20,"animal":"LION"},
 {"categoryID":21,"animal":"MONKEY"},
 {"categoryID":22,"animal":"OWL"},
+*/
 {"categoryID":23,"animal":"OX"},
+/*
 {"categoryID":24,"animal":"PENGUIN"},
 {"categoryID":25,"animal":"PIG"},
 {"categoryID":26,"animal":"RABBIT"},
@@ -138,6 +141,7 @@ var allConditions =
 {"categoryID":30,"animal":"WOLF"},
 {"categoryID":31,"animal":"ZEBRA"},
 {"categoryID":32,"animal":"SHARK"},
+*/
 ]
 ];
 
@@ -148,7 +152,7 @@ if(debug) { allConditions = debugConditions; }
 var numConditions = allConditions.length;
 var chooseCondition = random(0, numConditions-1);
 var allTrialOrders = allConditions[chooseCondition];
-var numTrials = allTrialOrders.length/16;
+var numTrials = allTrialOrders.length;
 var shuffledOrder = shuffledSampleArray(allTrialOrders.length, numTrials);
 var currentTrialNum = 0;
 var trial;

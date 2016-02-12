@@ -130,6 +130,7 @@ var debugConditions =
 var allConditions = 
 [
 [
+/*
 {"categoryID":1,"determiner":"an","animal":"ant", "set1":"small, strong, busy", "set2":"small, strong, idle", "set3":"small, weak, busy", "set4":"small, weak, idle", "set5":"large, strong, busy", "set6":"large, strong, idle", "set7":"large, weak, busy", "set8":"large, weak, idle", },
 {"categoryID":2,"determiner":"a","animal":"bat", "set1":"scary, blind, nocturnal", "set2":"scary, blind, diurnal", "set3":"scary, sighted, nocturnal", "set4":"scary, sighted, diurnal", "set5":"unalarming, blind, nocturnal", "set6":"unalarming, blind, diurnal", "set7":"unalarming, sighted, nocturnal", "set8":"unalarming, sighted, diurnal", },
 {"categoryID":3,"determiner":"a","animal":"bear", "set1":"scary, big, fierce", "set2":"scary, big, nonviolent", "set3":"scary, small, fierce", "set4":"scary, small, nonviolent", "set5":"unalarming, big, fierce", "set6":"unalarming, big, nonviolent", "set7":"unalarming, small, fierce", "set8":"unalarming, small, nonviolent", },
@@ -152,7 +153,9 @@ var allConditions =
 {"categoryID":20,"determiner":"a","animal":"lion", "set1":"ferocious, scary, strong", "set2":"ferocious, scary, weak", "set3":"ferocious, unalarming, strong", "set4":"ferocious, unalarming, weak", "set5":"nonviolent, scary, strong", "set6":"nonviolent, scary, weak", "set7":"nonviolent, unalarming, strong", "set8":"nonviolent, unalarming, weak", },
 {"categoryID":21,"determiner":"a","animal":"monkey", "set1":"funny, smart, playful", "set2":"funny, smart, unplayful", "set3":"funny, stupid, playful", "set4":"funny, stupid, unplayful", "set5":"humorless, smart, playful", "set6":"humorless, smart, unplayful", "set7":"humorless, stupid, playful", "set8":"humorless, stupid, unplayful", },
 {"categoryID":22,"determiner":"an","animal":"owl", "set1":"wise, quiet, nocturnal", "set2":"wise, quiet, diurnal", "set3":"wise, loud, nocturnal", "set4":"wise, loud, diurnal", "set5":"foolish, quiet, nocturnal", "set6":"foolish, quiet, diurnal", "set7":"foolish, loud, nocturnal", "set8":"foolish, loud, diurnal", },
+*/
 {"categoryID":23,"determiner":"an","animal":"ox", "set1":"strong, big, slow", "set2":"strong, big, fast", "set3":"strong, small, slow", "set4":"strong, small, fast", "set5":"weak, big, slow", "set6":"weak, big, fast", "set7":"weak, small, slow", "set8":"weak, small, fast", },
+/*
 {"categoryID":24,"determiner":"a","animal":"penguin", "set1":"cold, cute, funny", "set2":"cold, cute, humorless", "set3":"cold, unattractive, funny", "set4":"cold, unattractive, humorless", "set5":"hot, cute, funny", "set6":"hot, cute, humorless", "set7":"hot, unattractive, funny", "set8":"hot, unattractive, humorless", },
 {"categoryID":25,"determiner":"a","animal":"pig", "set1":"dirty, fat, smelly", "set2":"dirty, fat, fragrant", "set3":"dirty, thin, smelly", "set4":"dirty, thin, fragrant", "set5":"clean, fat, smelly", "set6":"clean, fat, fragrant", "set7":"clean, thin, smelly", "set8":"clean, thin, fragrant", },
 {"categoryID":26,"determiner":"a","animal":"rabbit", "set1":"fast, furry, cute", "set2":"fast, furry, unattractive", "set3":"fast, hairless, cute", "set4":"fast, hairless, unattractive", "set5":"slow, furry, cute", "set6":"slow, furry, unattractive", "set7":"slow, hairless, cute", "set8":"slow, hairless, unattractive", },
@@ -161,7 +164,9 @@ var allConditions =
 {"categoryID":29,"determiner":"a","animal":"tiger", "set1":"striped, fierce, scary", "set2":"striped, fierce, unalarming", "set3":"striped, nonviolent, scary", "set4":"striped, nonviolent, unalarming", "set5":"unpatterned, fierce, scary", "set6":"unpatterned, fierce, unalarming", "set7":"unpatterned, nonviolent, scary", "set8":"unpatterned, nonviolent, unalarming", },
 {"categoryID":30,"determiner":"a","animal":"whale", "set1":"large, graceful, majestic", "set2":"large, graceful, inferior", "set3":"large, awkward, majestic", "set4":"large, awkward, inferior", "set5":"small, graceful, majestic", "set6":"small, graceful, inferior", "set7":"small, awkward, majestic", "set8":"small, awkward, inferior", },
 {"categoryID":31,"determiner":"a","animal":"wolf", "set1":"scary, mean, angry", "set2":"scary, mean, unangry", "set3":"scary, nice, angry", "set4":"scary, nice, unangry", "set5":"unalarming, mean, angry", "set6":"unalarming, mean, unangry", "set7":"unalarming, nice, angry", "set8":"unalarming, nice, unangry", },
-{"categoryID":32,"determiner":"a","animal":"zebra", "set1":"striped, exotic, fast", "set2":"striped, exotic, slow", "set3":"striped, native, fast", "set4":"striped, native, slow", "set5":"unpatterned, exotic, fast", "set6":"unpatterned, exotic, slow", "set7":"unpatterned, native, fast", "set8":"unpatterned, native, slow", },]
+{"categoryID":32,"determiner":"a","animal":"zebra", "set1":"striped, exotic, fast", "set2":"striped, exotic, slow", "set3":"striped, native, fast", "set4":"striped, native, slow", "set5":"unpatterned, exotic, fast", "set6":"unpatterned, exotic, slow", "set7":"unpatterned, native, fast", "set8":"unpatterned, native, slow", },
+*/
+]
 ];
 
 var debug = false;
@@ -171,7 +176,7 @@ if(debug) { allConditions = debugConditions; }
 var numConditions = allConditions.length;
 var chooseCondition = random(0, numConditions-1);
 var allTrialOrders = allConditions[chooseCondition];
-var numTrials = allTrialOrders.length / 2;
+var numTrials = allTrialOrders.length;
 var shuffledOrder = shuffledSampleArray(allTrialOrders.length, numTrials);
 var currentTrialNum = 0;
 var trial;

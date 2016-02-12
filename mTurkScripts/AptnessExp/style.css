@@ -205,24 +205,10 @@ button[disabled] {
 }
        
 
-#slider1 { width: 560px;
+#slider1 { width: 400px;
                height: 12px;
                position: relative;
                margin: 5px; }
 #slider1 .ui-slider-handle {
                background: #FAFAFA; }
                
-#slider2 { width: 560px;
-               height: 12px;
-               position: relative;
-               margin: 5px; }
-#slider2 .ui-slider-handle {
-               background: #FAFAFA; }
-
-#slider3 { width: 560px;
-               height: 12px;
-               position: relative;
-               margin: 5px; }
-#slider3 .ui-slider-handle {
-               background: #FAFAFA; }
-
