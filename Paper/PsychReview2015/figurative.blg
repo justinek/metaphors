@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: figurative.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibliography.bib.bib
+Warning--I didn't find a database entry for "jorgensen1984test"
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--No journal in krifka2007approximate
+Warning--No journal in lakoff1993contemporary
+You've used 87 entries,
+            6951 wiz_defined-function locations,
+            1729 strings with 21546 characters,
+and the built_in function-call counts, 140714 in all, are:
+= -- 17890
+> -- 1071
+< -- 5889
++ -- 5781
+- -- 174
+* -- 8293
+:= -- 24175
+add.period$ -- 363
+call.type$ -- 87
+change.case$ -- 1486
+chr.to.int$ -- 0
+cite$ -- 176
+duplicate$ -- 3777
+empty$ -- 6192
+format.name$ -- 1647
+if$ -- 28180
+int.to.chr$ -- 0
+int.to.str$ -- 261
+missing$ -- 0
+newline$ -- 2032
+num.names$ -- 698
+pop$ -- 2697
+preamble$ -- 1
+purify$ -- 348
+quote$ -- 0
+skip$ -- 10235
+stack$ -- 0
+substring$ -- 6500
+swap$ -- 2204
+text.length$ -- 212
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 7408
+warning$ -- 2
+while$ -- 569
+width$ -- 0
+write$ -- 2365
+(There were 3 warnings)

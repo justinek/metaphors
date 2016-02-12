@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: metaphor-cogsci.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Database file #1: metaphor.bib
+apacite.bst [2007/09/03 v4.00 APA bibliography style]
+Warning--No publisher in bergen2012s
+Warning--No address in bergen2012s
+Warning--No address in clark1996using
+Warning--No address in glucksberg2001understanding
+Warning--No journal in glucksberg1993metaphors
+Warning--No publisher in jager2009pragmatic
+Warning--No address in jager2009pragmatic
+Warning--No address in lakoff2009more
+Warning--No address in ortony1993metaphor
+Warning--No address in pilkington2000poetic
+Warning--No publisher in sperber1985loose
+Warning--No address in sperber1985loose
+Warning--No address in sutton1998reinforcement
+You've used 27 entries,
+            6345 wiz_defined-function locations,
+            1341 strings with 13280 characters,
+and the built_in function-call counts, 43016 in all, are:
+= -- 5380
+> -- 372
+< -- 1759
++ -- 1762
+- -- 56
+* -- 2669
+:= -- 7489
+add.period$ -- 113
+call.type$ -- 27
+change.case$ -- 138
+chr.to.int$ -- 0
+cite$ -- 67
+duplicate$ -- 1166
+empty$ -- 1927
+format.name$ -- 586
+if$ -- 8559
+int.to.chr$ -- 0
+int.to.str$ -- 54
+missing$ -- 0
+newline$ -- 628
+num.names$ -- 216
+pop$ -- 860
+preamble$ -- 1
+purify$ -- 108
+quote$ -- 0
+skip$ -- 2930
+stack$ -- 0
+substring$ -- 2019
+swap$ -- 732
+text.length$ -- 80
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2352
+warning$ -- 13
+while$ -- 188
+width$ -- 0
+write$ -- 764
+(There were 13 warnings)

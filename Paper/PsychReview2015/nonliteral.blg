@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: nonliteral.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibliography.bib.bib
+Warning--I didn't find a database entry for "blahblah"
+Warning--I didn't find a database entry for "colston1997salting"
+Warning--I didn't find a database entry for "gibbs2000irony"
+Warning--I didn't find a database entry for "kao2014figurative"
+Warning--I didn't find a database entry for "sutton1998reinforcement"
+Warning--I didn't find a database entry for "russell1980circumplex"
+Warning--I didn't find a database entry for "ekman1992argument"
+Warning--I didn't find a database entry for "gibbs2002new"
+Warning--I didn't find a database entry for "glucksberg1993metaphors"
+Warning--I didn't find a database entry for "blasko1993effects"
+Warning--I didn't find a database entry for "kintsch2002metaphor"
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--No journal in bergenstrategic
+Warning--No journal in clark1984pretense
+Warning--No journal in cruse2004meaning
+Warning--`others' not consistent with 6th ed. of the APA Manual
+Warning--No journal in lanham1991handlist
+Warning--No journal in sperber1986relevance
+Warning--No journal in tesslersome
+You've used 85 entries,
+            6951 wiz_defined-function locations,
+            1721 strings with 21561 characters,
+and the built_in function-call counts, 139550 in all, are:
+= -- 17719
+> -- 1051
+< -- 5949
++ -- 5955
+- -- 174
+* -- 8325
+:= -- 24285
+add.period$ -- 351
+call.type$ -- 85
+change.case$ -- 1424
+chr.to.int$ -- 0
+cite$ -- 176
+duplicate$ -- 3734
+empty$ -- 6018
+format.name$ -- 1639
+if$ -- 27743
+int.to.chr$ -- 0
+int.to.str$ -- 255
+missing$ -- 0
+newline$ -- 1990
+num.names$ -- 680
+pop$ -- 2584
+preamble$ -- 1
+purify$ -- 338
+quote$ -- 0
+skip$ -- 9954
+stack$ -- 0
+substring$ -- 6719
+swap$ -- 2184
+text.length$ -- 207
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 7120
+warning$ -- 7
+while$ -- 561
+width$ -- 0
+write$ -- 2321
+(There were 18 warnings)
