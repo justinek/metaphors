@@ -1,4 +1,8 @@
-source("summarySE.R")
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library(lme4)
+source("~/Dropbox/Work/Grad_school/Research/Utilities/summarySE.R")
 d <- read.csv("data49-long.csv")
 d$qud <- ifelse(d$condition==1 | d$condition==2, 0, 1)
 d$metaphor <- ifelse(d$condition==1 | d$condition==3, 0, 1)
@@ -81,6 +85,132 @@ for (n in filenames$V1) {
   }
 }
 with(best, cor.test(featureProb, modelProb))
+
+#######################
+# Lion example
+#######################
+name.qud <- max.name
+name.noQud <- paste("noQud-a", as.list(strsplit(n, "a"))[[1]][2], sep="")
+m.qud <- read.csv(paste("../../Model/CogSciModel/CombinedOutput/", name.qud, sep=""), header=FALSE)
+m.noQud <- read.csv(paste("../../Model/CogSciModel/CombinedOutput/",name.noQud, sep=""), header=FALSE)
+m.qud$qud <- "1"
+m.noQud$qud <- "0"
+m <- rbind(m.qud, m.noQud)
+colnames(m) <- c("category", "f1", "f2", "f3", "modelProb", "categoryID", "qud")
+
+lion <- subset(m, categoryID==20)
+lion$features <- paste(lion$f1, lion$f2, lion$f3, sep=",")
+lion.noqud <- subset(lion, qud=="0")
+lion.qud <- subset(lion, qud=="1")
+# show metaphor effect for no qud only
+lion.metaphor <- aggregate(data=lion.noqud, modelProb ~ category, FUN=sum)
+ggplot(lion.metaphor, aes(x=category, y=modelProb)) +
+  geom_bar(stat="identity", color="black", position=position_dodge(), fill="#99CCFF") +
+  theme_bw() +
+  xlab("Category") +
+  ylab("Probability") +
+  scale_x_discrete(labels=c("Lion", "Person")) +
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=14),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=14))
+
+# show marginal feature interpretation for no qud only
+getMarginalFeatures <- function(modelResult) {
+  f1 <- aggregate(data=subset(modelResult, f1==1), modelProb ~ qud, FUN=sum)
+  f1$featureNum <- 1
+  f2 <- aggregate(data=subset(modelResult, f2==1), modelProb ~ qud, FUN=sum)
+  f2$featureNum <- 2
+  f3 <- aggregate(data=subset(modelResult, f3==1), modelProb ~ qud, FUN=sum)
+  f3$featureNum <- 3
+  marginal <- rbind(f1, f2, f3)
+  return (marginal)
+}
+
+lion.marginal.noqud <- getMarginalFeatures(lion.noqud)
+lion.marginal.noqud$featureNum <- factor(lion.marginal.noqud$featureNum)
+ggplot(lion.marginal.noqud, aes(x=featureNum, y=modelProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black") +
+  theme_bw() +
+  xlab("Feature") +
+  ylab("Probability") +
+  scale_x_discrete(labels=c("ferocious", "scary", "strong")) +
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=14),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=14)) +
+  scale_fill_manual(values=c("#003366", "#006699", "#99ccff"), guide="none")
+  #scale_fill_brewer(palette="Blues")
+
+lion.marginal.qud <- getMarginalFeatures(lion.qud)
+lion.marginal.qud$featureNum <- factor(lion.marginal.qud$featureNum)
+ggplot(lion.marginal.qud, aes(x=featureNum, y=modelProb, fill=featureNum)) +
+  geom_bar(stat="identity", color="black") +
+  theme_bw() +
+  xlab("Feature") +
+  ylab("Probability") +
+  scale_x_discrete(labels=c("ferocious", "scary", "strong")) +
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=14),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=14)) +
+  scale_fill_manual(values=c("#003366", "#006699", "#99ccff"), guide="none")
+
+# Show cluster of features for qud
+lion.noqud$featureSetNum <- c(1, 2, 3, 4, 5, 6, 7, 8)
+lion.noqud$featureSetNum <- factor(lion.noqud$featureSetNum,
+                                 labels=c("1,1,1","1,1,0","1,0,1","1,0,0",
+                                         "0,1,1","0,1,0","0,0,1","0,0,0"))
+ggplot(lion.noqud, aes(x=featureSetNum, y=modelProb, fill=featureSetNum)) +
+  geom_bar(stat="identity", color="black") +
+  theme_bw() +
+  xlab("Feature vector") +
+  ylab("Probability") +
+  ylim(0,0.3) +
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=14),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=14)) +
+  scale_fill_manual(values=c("#0570b0","#6baed6","#bdd7e7","#eff3ff",
+                             "#f7f7f7","#cccccc","#969696","#525252"), 
+                    guide="none")
+
+priors.joint <- read.csv("../FeaturePriorExp/featurePriors-set.csv")
+personPriors.joint.lion <- subset(priors.joint, categoryID==20 & type=="person")
+personPriors.joint.lion.f1present <- subset(personPriors.joint.lion, featureSetNum <=4)
+normalizer <- sum(personPriors.joint.lion.f1present$normalizedProb)
+personPriors.joint.lion.f1present$probGivenF1 <- 
+  personPriors.joint.lion.f1present$normalizedProb / normalizer
+
+personPriors.joint.lion.f1notpresent <- data.frame(categoryID=c(20,20,20,20),
+                                                   type=c("person","person","person","person"),
+                                                   featureSetNum=c(5,6,7,8),
+                                                   animal=c("lion","lion","lion","lion"),
+                                                   N=c(35,35,35,35),
+                                                   normalizedProb=c(0,0,0,0),
+                                                   sd=c(0,0,0,0),
+                                                   se=c(0,0,0,0),
+                                                   ci=c(0,0,0,0),
+                                                   probGivenF1=c(0,0,0,0))
+personPriors.joint.lion.all <- rbind(personPriors.joint.lion.f1present,
+                                     personPriors.joint.lion.f1notpresent)
+personPriors.joint.lion.all$featureSetNum <- 
+  factor(personPriors.joint.lion.all$featureSetNum,
+                                 labels=c("1,1,1","1,1,0","1,0,1","1,0,0",
+                                          "0,1,1","0,1,0","0,0,1","0,0,0"))
+ggplot(personPriors.joint.lion.all, aes(x=featureSetNum, y=probGivenF1, fill=featureSetNum)) +
+  geom_bar(stat="identity", color="black") +
+  theme_bw() +
+  xlab("Feature vector") +
+  ylab("Probability") +
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=14),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=14)) +
+  scale_fill_manual(values=c("#0570b0","#6baed6","#bdd7e7","#eff3ff",
+                             "#f7f7f7","#cccccc","#969696","#525252"), 
+                    guide="none")
+
 ##########################
 # Add feature priors
 ##########################
@@ -166,7 +296,7 @@ with(best.f3, cor(featureProb, personPrior))
 #########################
 # Visualize scatter plot
 #########################
-ggplot(best.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+ggplot(best, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
   #geom_point(size=3) +
   geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
   geom_text(aes(label=labels, color=qud)) +
@@ -180,7 +310,7 @@ ggplot(best.f2, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
 # Visualize residuals
 #########################
 fit <- lm(data=best, featureProb ~ modelProb)
-plot(fit)
+#plot(fit)
 best$resid <- residuals(fit)
 best <- best[with(best, order(-abs(resid))), ]
 ############################
@@ -280,6 +410,8 @@ for (t in seq(1, 1000)) {
 splithalf.all <- summarySE(splithalf.cors, measurevar="all", groupvars=NULL)
 splithalf.met <- summarySE(splithalf.cors, measurevar="met", groupvars=NULL)
 splithalf.f1 <- summarySE(splithalf.cors, measurevar="f1", groupvars=NULL)
+splithalf.f2 <- summarySE(splithalf.cors, measurevar="f2", groupvars=NULL)
+splithalf.f3 <- summarySE(splithalf.cors, measurevar="f3", groupvars=NULL)
 
 prophet <- function(reliability, length) {
   prophecy <- length * reliability / (1 + (length - 1)*reliability)

@@ -63,10 +63,44 @@ for (n in filenames$V1) {
   }
 }
 with(best, cor.test(featureProb, modelProb))
-
+with(subset(best, featureNum=="1"), cor.test(featureProb, modelProb))
+with(subset(best, featureNum=="2"), cor.test(featureProb, modelProb))
+with(subset(best, featureNum=="3"), cor.test(featureProb, modelProb))
 
 my.colors <- c("#990033", "#CC9999", "#FFFFFF")
 ggplot(best, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
+  geom_point(size=4) +
+  #geom_text(aes(label=animal)) +
+  #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +
+  scale_shape_manual(values=c(21, 24), name="Goal", labels=c("Vague", "Specific")) +
+  theme_bw() +
+  scale_fill_manual(values=my.colors, name="Feature", labels=c("f1", "f2", "f3"), 
+                    guide=guide_legend(override.aes=aes(shape=21))) +
+  xlab("Model") +
+  ylab("Human")
+
+###########################
+# Test individual parameters
+###########################
+
+m.qud <- read.csv("../../Model/Alternatives/CombinedOutput/g0.6-a3.0.csv", header=FALSE)
+m.noQud <- read.csv("../../Model/Alternatives/CombinedOutput/g0.6-a3.0.csv", header=FALSE)
+m.qud$qud <- "1"
+m.noQud$qud <- "0"
+m <- rbind(m.qud, m.noQud)
+colnames(m) <- c("category", "f1", "f2", "f3", "modelProb", "categoryID", "qud")
+# compute marginals
+m.f1 <- aggregate(data=subset(m, f1==1), modelProb ~ categoryID + qud, FUN=sum)
+m.f1$featureNum <- "1"
+m.f2 <- aggregate(data=subset(m, f2==1), modelProb ~ categoryID + qud, FUN=sum)
+m.f2$featureNum <- "2"
+m.f3 <- aggregate(data=subset(m, f3==1), modelProb ~ categoryID + qud, FUN=sum)
+m.f3$featureNum <- "3"
+m.marginals <- rbind(m.f1, m.f2, m.f3)
+compare <- join(d.met.summary, m.marginals, by=c("categoryID", "featureNum", "qud"))
+cor <- with(compare, cor(featureProb, modelProb))
+
+ggplot(compare, aes(x=modelProb, y=featureProb, shape=qud, fill=featureNum)) +
   geom_point(size=3) +
   geom_text(aes(label=animal)) +
   #geom_errorbar(aes(ymin=featureProb-se, ymax=featureProb+se), width=0.01, color="grey") +

@@ -1,0 +1,36 @@
+featureID,feature,animals,numAnimals,superlative
+1,small,turtle;hippo;donkey;bee;jaguar;monkey;cow;dolphin;deer;dog;pig;hyena;ant;lion;cat;cheetah;beaver;mule;mouse;bird;man,21,smallest
+2,industrious,jaguar;monkey;cat;ant;beaver;cheetah;bee;mouse;bird;man,10,most industrious
+3,big,turtle;sloth;donkey;eagle;deer;pig;lion;mouse;panda;horse;monkey;elephant;cheetah;bird;hippo;bear;mule;tiger;armadillo;kitten;whale;man;jaguar;cow;dog;cat;gorilla,27,biggest
+4,majestic,turtle;eagle;horse;monkey;cow;hippo;elephant;dog;bear;cat;gorilla;lion;armadillo;kitten;whale;panda;man,17,most majestic
+5,fast,turtle;sloth;donkey;eagle;fish;dolphin;deer;pig;ant;lion;zebra;beaver;cat;mouse;horse;monkey;eel;cougar;elephant;cheetah;bird;hippo;bear;mule;tiger;giraffe;snake;rabbit;kitten;whale;man;jaguar;cow;dog;bee;hyena;gorilla,37,fastest
+6,hard,turtle;eagle;horse;jaguar;monkey;cow;sloth;kitten;dog;bear;cat;tiger;gorilla;lion;armadillo;hippo;elephant;cheetah;whale;panda;man,21,hardest
+7,cute,turtle;sloth;donkey;hippo;fish;dolphin;deer;pig;ant;lion;mouse;panda;horse;monkey;eel;cougar;elephant;cheetah;man;bird;eagle;bear;mule;snake;rabbit;kitten;whale;penguin;jaguar;cow;dog;cat;hyena;gorilla,34,cutest
+8,funny,beaver;ant;penguin;jaguar;monkey;dolphin;deer;dog;bear;bee;hyena;gorilla;lion;kitten;cheetah;whale;cat;mouse;bird;elephant;man,21,funniest
+9,smart,fish;dolphin;deer;ant;lion;beaver;bee;mouse;horse;monkey;eel;cougar;elephant;cheetah;man;bird;bear;snake;kitten;whale;penguin;jaguar;dog;cat;hyena;gorilla,26,smartest
+10,tall,sloth;horse;giraffe;snake;man,5,tallest
+11,long,sloth;horse;jaguar;eel;fish;dolphin;cat;cougar;giraffe;snake;cheetah;man,12,longest
+12,agile,turtle;donkey;fish;dolphin;deer;pig;ant;zebra;beaver;bee;mouse;horse;monkey;gorilla;cougar;elephant;cheetah;bird;hippo;bear;mule;tiger;snake;rabbit;kitten;man;jaguar;cow;dog;cat;eel,31,most agile
+13,slow,turtle;sloth;donkey;deer;pig;mouse;horse;elephant;cheetah;bird;hippo;bear;mule;giraffe;armadillo;snake;kitten;whale;man;jaguar;cow;dog;cat;gorilla,24,slowest
+14,strong,turtle;sloth;donkey;eagle;fish;dolphin;deer;pig;lion;zebra;mouse;horse;monkey;eel;cougar;elephant;cheetah;bird;hippo;bear;mule;tiger;giraffe;armadillo;snake;whale;man;jaguar;cow;dog;cat;hyena;gorilla,33,strongest
+15,fierce,eagle;horse;jaguar;monkey;dog;bear;cat;tiger;gorilla;lion;zebra;hyena;elephant;cheetah;whale;bird;man,17,fiercest
+16,quiet,turtle;hippo;donkey;jaguar;monkey;cow;deer;dog;mule;cat;ant;cheetah;beaver;pig;mouse;bird;man,17,most quiet
+17,busy,jaguar;monkey;bee;ant;cheetah;beaver;mouse;man,8,busiest
+18,proud,eagle;horse;cat;lion;elephant;whale;man,7,proudest
+19,sleek,turtle;donkey;fish;dolphin;deer;pig;ant;zebra;beaver;bee;mouse;horse;monkey;gorilla;cougar;elephant;cheetah;bird;hippo;bear;mule;tiger;snake;rabbit;kitten;man;jaguar;cow;dog;cat;eel,31,sleekest
+20,lazy,turtle;sloth;donkey;hippo;fish;dolphin;deer;pig;ant;lion;mouse;panda;horse;monkey;eel;cougar;elephant;cheetah;man;bird;eagle;bear;mule;giraffe;armadillo;snake;rabbit;kitten;whale;penguin;jaguar;cow;dog;cat;hyena;gorilla,36,laziest
+21,loyal,turtle;sloth;donkey;dolphin;deer;pig;lion;mouse;panda;monkey;elephant;cheetah;penguin;bird;hippo;mule;rabbit;kitten;whale;man;jaguar;cow;dog;cat;hyena,25,most loyal
+22,friendly,turtle;sloth;donkey;dolphin;deer;pig;lion;mouse;panda;monkey;elephant;cheetah;penguin;bird;hippo;mule;rabbit;kitten;whale;man;jaguar;cow;dog;cat;hyena,25,friendliest
+23,playful,sloth;jaguar;monkey;elephant;dog;cat;hyena;rabbit;kitten;cheetah;whale;man;panda;penguin,14,most playful
+24,loud,monkey;dolphin;dog;cat;hyena;lion;kitten;man;bird;penguin,10,loudest
+25,happy,horse;jaguar;monkey;eel;fish;dolphin;dog;cat;hyena;cougar;snake;cheetah;bird;man,14,happiest
+26,slithery,sloth;horse;jaguar;eel;fish;dolphin;cat;cougar;giraffe;snake;cheetah;man,12,most slithery
+27,dumb,turtle;hippo;donkey;jaguar;monkey;cow;deer;dog;mule;cat;cheetah;pig;mouse;bird;man,15,dumbest
+28,hairy,turtle;sloth;horse;jaguar;monkey;bear;cat;tiger;gorilla;lion;elephant;cheetah;whale;man,14,hairiest
+29,striped,horse;jaguar;bear;tiger;gorilla;lion;zebra;elephant;cheetah;man,10,most striped
+30,slippery,horse;jaguar;cougar;fish;dolphin;cat;eel;snake;cheetah;man,10,slipperiest
+31,slimy,horse;jaguar;eel;fish;dolphin;cat;cougar;snake;cheetah;man,10,slimiest
+32,scaly,horse;jaguar;cougar;fish;dolphin;cat;eel;snake;cheetah;man,10,most scaly
+33,stubborn,turtle;hippo;donkey;jaguar;cow;sloth;deer;dog;mule;cat;cheetah;pig;mouse;bird;man,15,most stubborn
+34,fat,turtle;hippo;donkey;jaguar;cow;pig;deer;dog;mule;elephant;cheetah;whale;cat;mouse;bird;man,16,fattest
+35,dirty,turtle;hippo;donkey;jaguar;cow;deer;dog;mule;pig;cheetah;cat;mouse;bird;man,14,dirtiest

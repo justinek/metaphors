@@ -1,0 +1,161 @@
+workerID,gender,age,income,language,condition,order,categoryID,speaker,animal,f1,f2,f3,att1,att2,att3
+8,F,35,6,english,1,4,1,Luke,ant,small,strong,busy,meek,small stature,agreeable
+5,F,25,4,Spanish,1,7,2,Barry,bat,scary,blind,nocturnal,cranky,scary,mysterious
+9,M,35,4,English,1,5,2,Ivan,bat,scary,blind,nocturnal,night person,poor vision,good hearing
+15,F,35,6,English,1,2,2,Luke,bat,scary,blind,nocturnal,black,mysterious,fast
+17,F,55,6,english,1,3,2,Tom,bat,scary,blind,nocturnal,partier,neutral,little social
+19,M,45,4,English,1,7,2,Nathan,bat,scary,blind,nocturnal,insomniac,jittery,bad vision
+11,F,17,8,English,1,5,3,Zach,bear,scary,big,fierce,hairy,fat,tall
+13,F,45,6,english,1,3,3,Patrick,bear,scary,big,fierce,calm,friendly,fury
+14,F,45,4,Englsih,1,3,3,David,bear,scary,big,fierce,big,harry,tuff
+1,F,45,8,English,1,8,4,Ethan,bee,busy,small,angry,active,hyper,talkative
+9,M,35,4,English,1,2,4,Daniel,bee,busy,small,angry,wandering,slow,defensive
+10,M,35,8,english,1,6,4,Harry,bee,busy,small,angry,swift,stings,flies
+14,F,45,4,Englsih,1,5,5,Patrick,bird,small,graceful,free,graceful,sharp eye,no nonsense
+17,F,55,6,english,1,6,5,Owen,bird,small,graceful,free,quiet,beautiful,friendly
+1,F,45,8,English,1,4,6,Zach,buffalo,big,strong,wild,large,strong,solid
+5,F,25,4,Spanish,1,6,6,Nathan,buffalo,big,strong,wild,big,lazy,fat
+8,F,35,6,english,1,7,6,Frank,buffalo,big,strong,wild,stalwart,solid,fat
+12,F,65,6,ENGLISH,1,2,6,Robert,buffalo,big,strong,wild,slow,strong,dumb
+10,M,35,8,english,1,5,8,Robert,cow,fat,lazy,dumb,large,hungry,slow
+13,F,45,6,english,1,7,8,Robert,cow,fat,lazy,dumb,annoying,slow,interrupts
+4,F,35,4,English,1,6,9,Ivan,dog,loyal,friendly,happy,furry,loyal,jerk
+16,M,35,4,English,1,4,9,Matt,dog,loyal,friendly,happy,loyal,friendly,active
+9,M,35,4,English,1,8,10,Henry,dolphin,smart,friendly,playful,clever,playful,talkative
+14,F,45,4,Englsih,1,6,10,Daniel,dolphin,smart,friendly,playful,smart,friendly,fast
+16,M,35,4,English,1,1,10,Kenneth,dolphin,smart,friendly,playful,friendly,hyperactive,helpful
+18,M,25,4,English,1,4,11,Kenneth,duck,loud,cute,quacking,nurturing,docile,friendly
+1,F,45,8,English,1,6,12,Calvin,elephant,huge,smart,heavy,wise,kind,large
+6,F,25,4,english,1,8,12,Luke,elephant,huge,smart,heavy,big,tall,old
+10,M,35,8,english,1,2,12,George,elephant,huge,smart,heavy,big,large,slow
+12,F,65,6,ENGLISH,1,6,12,Ethan,elephant,huge,smart,heavy,loud,big,strong
+14,F,45,4,Englsih,1,4,12,Gary,elephant,huge,smart,heavy,doesn't forget,big,has big ears
+19,M,45,4,English,1,6,12,Gary,elephant,huge,smart,heavy,obese,good memory,thirty
+4,F,35,4,English,1,5,13,Victor,fish,scaly,wet,smelly,wet,small,scaley
+8,F,35,6,english,1,6,13,Gary,fish,scaly,wet,smelly,sneaky,absent-minded,fast
+10,M,35,8,english,1,4,13,Jake,fish,scaly,wet,smelly,amphibian,quick ,water
+11,F,17,8,English,1,4,13,Bob,fish,scaly,wet,smelly,stinky,cold,smooth
+12,F,65,6,ENGLISH,1,7,13,Harry,fish,scaly,wet,smelly,cold,dull,unnoticeable
+7,M,35,4,English,1,1,14,Luke,fox,sly,smart,cunning,sneaky,handsome,mysterious
+17,F,55,6,english,1,1,14,Jeff,fox,sly,smart,cunning,bad friend,flirtatious,liar
+3,M,25,4,English,1,2,15,Harry,frog,slimy,noisy,jumpy,lazy,slovenly,jumpy
+11,F,17,8,English,1,7,15,Patrick,frog,slimy,noisy,jumpy,agile,noisy,slimy
+7,M,35,4,English,1,8,16,George,goat,funny,hungry,loud,hoggish,aggressive,rugged
+11,F,17,8,English,1,2,16,Calvin,goat,funny,hungry,loud,noisy,agile,small
+12,F,65,6,ENGLISH,1,5,16,Quinn,goat,funny,hungry,loud,goteed,cute,agile
+19,M,45,4,English,1,4,16,Zach,goat,funny,hungry,loud,vegetarian,hard-working,insatiable hunger
+3,M,25,4,English,1,4,17,Winston,goose,loud,mean,annoying,loud,pesky,nosy
+7,M,35,4,English,1,7,17,Victor,goose,loud,mean,annoying,goofy,dumb,clumsy
+15,F,35,6,English,1,6,18,Albert,horse,fast,strong,beautiful,eats alot,an asshole,long hair
+20,F,65,4,English,1,1,18,Matt,horse,fast,strong,beautiful,hungry,athletic,big
+7,M,35,4,English,1,6,19,Daniel,kangaroo,jumpy,bouncy,cute,athletic,quick,smart
+1,F,45,8,English,1,1,20,Patrick,lion,scary,strong,ferocious,strong,tough,loud
+3,M,25,4,English,1,1,20,George,lion,scary,strong,ferocious,hungry,violent,prideful
+14,F,45,4,Englsih,1,1,20,Eric,lion,scary,strong,ferocious,big,loud,tuff
+20,F,65,4,English,1,6,20,Bob,lion,scary,strong,ferocious,regal ,leader,special
+1,F,45,8,English,1,2,21,Harry,monkey,funny,smart,playful,funny,active,quirky
+13,F,45,6,english,1,4,21,Fred,monkey,funny,smart,playful,fast,flexible,tricky
+19,M,45,4,English,1,3,21,Steve,monkey,funny,smart,playful,humorous,adventurous,jittery
+2,F,25,4,English,1,5,22,Patrick,owl,wise,quiet,nocturnal,observant,stays up late,aggressive
+8,F,35,6,english,1,1,22,Winston,owl,wise,quiet,nocturnal,glasses,smart,nerd
+10,M,35,8,english,1,7,22,Patrick,owl,wise,quiet,nocturnal,night,upside down,none
+11,F,17,8,English,1,3,22,Albert,owl,wise,quiet,nocturnal,nocturnal,noisy,observant
+13,F,45,6,english,1,6,22,Charles,owl,wise,quiet,nocturnal,night person,smart,tired
+19,M,45,4,English,1,1,22,Tom,owl,wise,quiet,nocturnal,stays up at night,googly eyes,bookworm
+20,F,65,4,English,1,4,23,Winston,ox,strong,big,slow,sturdy,unflappable,reliable
+1,F,45,8,English,1,3,24,Luke,penguin,cold,cute,funny,short,round,sweet
+2,F,25,4,English,1,4,24,Fred,penguin,cold,cute,funny,uptight,awkward,shy
+3,M,25,4,English,1,8,24,Ethan,penguin,cold,cute,funny,proud,sociable,stout
+19,M,45,4,English,1,8,24,Luke,penguin,cold,cute,funny,cute,quiet,funny gait
+20,F,65,4,English,1,8,24,Steve,penguin,cold,cute,funny,amusing,uneven gait,careful
+6,F,25,4,english,1,4,26,Ethan,rabbit,fast,furry,cute,fuzzy,cute,sex addict
+10,M,35,8,english,1,1,26,Nathan,rabbit,fast,furry,cute,quick,fast ,animal
+15,F,35,6,English,1,4,26,Jake,rabbit,fast,furry,cute,hairy,likes carrots,jump a lot
+17,F,55,6,english,1,2,26,Matt,rabbit,fast,furry,cute,gentile,good,friendly
+13,F,45,6,english,1,1,27,Barry,shark,scary,mean,dangerous,sharp,fast,smart
+17,F,55,6,english,1,8,27,Patrick,shark,scary,mean,dangerous,furious,fast,smart
+4,F,35,4,English,1,8,28,Fred,sheep,wooly,fluffy,dumb,soft,furry,smelly
+8,F,35,6,english,1,8,28,Jake,sheep,wooly,fluffy,dumb,bashful,shy,follower
+12,F,65,6,ENGLISH,1,8,28,Winston,sheep,wooly,fluffy,dumb,follower,submissive,dumb
+18,M,25,4,English,1,7,28,Jeff,sheep,wooly,fluffy,dumb,naive,a follower,uncreative
+3,M,25,4,English,1,5,29,Barry,tiger,striped,fierce,scary,determined,ferocious,aggressive
+4,F,35,4,English,1,7,29,Calvin,tiger,striped,fierce,scary,furry,dangerous,scary
+17,F,55,6,english,1,7,29,Jake,tiger,striped,fierce,scary,fast,smart,fierce
+7,M,35,4,English,1,3,30,Gary,whale,large,graceful,majestic,fat,clumsy,stupid
+6,F,25,4,english,1,2,31,Zach,wolf,scary,mean,angry,mean,tough,sharp
+11,F,17,8,English,1,8,31,Tom,wolf,scary,mean,angry,loner,quiet,observant
+9,M,35,4,English,1,6,32,Winston,zebra,striped,exotic,fast,likes striped clothes,horse faced,likes hot climates
+13,F,45,6,english,1,8,32,Ethan,zebra,striped,exotic,fast,funny,jumpy,wild
+15,F,35,6,English,2,1,1,Frank,ant,small,strong,busy,short,small,stouty
+18,M,25,4,English,2,8,1,Winston,ant,small,strong,busy,puny,weak,short
+20,F,65,4,English,2,7,1,Daniel,ant,small,strong,busy,smallish,hardworking,drone
+3,M,25,4,English,2,7,2,Albert,bat,scary,blind,nocturnal,nocturnal,scary,?
+3,M,25,4,English,2,3,3,Robert,bear,scary,big,fierce,large,hairy,lazy
+5,F,25,4,Spanish,2,3,3,Victor,bear,scary,big,fierce,aggressive,big,hairy
+2,F,25,4,English,2,7,4,Albert,bee,busy,small,angry,busy,hard-working,focused
+16,M,35,4,English,2,3,4,Quinn,bee,busy,small,angry,very busy,always in a hurry,hyperactive
+18,M,25,4,English,2,2,4,Barry,bee,busy,small,angry,ambitious,dedicated,hard working
+6,F,25,4,english,2,3,5,Jake,bird,small,graceful,free,free,light-hearted,small
+8,F,35,6,english,2,5,5,Robert,bird,small,graceful,free,jittery,creative,busy
+9,M,35,4,English,2,1,5,Tom,bird,small,graceful,free,tiny,flighty,quick
+4,F,35,4,English,2,3,6,Winston,buffalo,big,strong,wild,fat,dangerous,big
+16,M,35,4,English,2,2,6,David,buffalo,big,strong,wild,obese,high strength,high endurance
+20,F,65,4,English,2,2,6,George,buffalo,big,strong,wild,facial hair,obese,deep voice
+2,F,25,4,English,2,2,8,Harry,cow,fat,lazy,dumb,fat,lazy,eats a lot
+5,F,25,4,Spanish,2,4,8,Calvin,cow,fat,lazy,dumb,ugly,no self control,lazy
+9,M,35,4,English,2,4,8,Zach,cow,fat,lazy,dumb,overweight,plodding,dumb
+16,M,35,4,English,2,8,8,Luke,cow,fat,lazy,dumb,obese,strong,lazy
+7,M,35,4,English,2,4,9,Nathan,dog,loyal,friendly,happy,friendly,dense,social
+5,F,25,4,Spanish,2,1,10,Kenneth,dolphin,smart,friendly,playful,smart,popular,good looking
+6,F,25,4,english,2,1,10,Steve,dolphin,smart,friendly,playful,animal,fins,swimmer
+11,F,17,8,English,2,6,10,David,dolphin,smart,friendly,playful,smooth,quick,intelligent
+13,F,45,6,english,2,5,11,Albert,duck,loud,cute,quacking,noisy,talkative,annoying
+15,F,35,6,English,2,7,12,Robert,elephant,huge,smart,heavy,tall,fat,wide
+18,M,25,4,English,2,1,12,Harry,elephant,huge,smart,heavy,obesity,insecurity,low self-esteem
+5,F,25,4,Spanish,2,5,13,Quinn,fish,scaly,wet,smelly,ugly,follower,smelly
+6,F,25,4,english,2,7,13,Albert,fish,scaly,wet,smelly,slimey,scaley,swimmer
+9,M,35,4,English,2,3,13,Jake,fish,scaly,wet,smelly,slippery,quick,elusive
+15,F,35,6,English,2,3,13,Owen,fish,scaly,wet,smelly,good swimmer,stays hydrated,lives on beach
+12,F,65,6,ENGLISH,2,1,14,Nathan,fox,sly,smart,cunning,cleverness,stealth,confidence
+20,F,65,4,English,2,5,14,Quinn,fox,sly,smart,cunning,conniving,selfish,untrustworthy
+7,M,35,4,English,2,5,15,Henry,frog,slimy,noisy,jumpy,stinky,unkempt,ugly
+12,F,65,6,ENGLISH,2,3,15,Jake,frog,slimy,noisy,jumpy,seedy,uncommitted,untrustworthy
+15,F,35,6,English,2,5,15,Fred,frog,slimy,noisy,jumpy,likes water,dirty,eats bugs
+19,M,45,4,English,2,5,15,Eric,frog,slimy,noisy,jumpy,player,phony,shady
+20,F,65,4,English,2,3,15,Harry,frog,slimy,noisy,jumpy,limber,elusive,jumpy
+2,F,25,4,English,2,3,16,Zach,goat,funny,hungry,loud,humerous,energetic,personable
+5,F,25,4,Spanish,2,8,16,Harry,goat,funny,hungry,loud,annoying,weird,outgoing
+14,F,45,4,Englsih,2,8,16,Nathan,goat,funny,hungry,loud,grazes,slow moving,content
+4,F,35,4,English,2,4,17,Robert,goose,loud,mean,annoying,feathery,small,annoying
+8,F,35,6,english,2,3,17,Calvin,goose,loud,mean,annoying,obnoxious,opinionated,loud
+10,M,35,8,english,2,3,18,Victor,horse,fast,strong,beautiful,big,strong,dumb
+12,F,65,6,ENGLISH,2,4,18,Henry,horse,fast,strong,beautiful,speedy,spirited,strong
+16,M,35,4,English,2,5,18,Victor,horse,fast,strong,beautiful,tempermental,fast,focused
+19,M,45,4,English,2,2,18,Owen,horse,fast,strong,beautiful,athletic,endurance,quick
+1,F,45,8,English,2,7,19,Tom,kangaroo,jumpy,bouncy,cute,fidgety,sweet,funny
+6,F,25,4,english,2,5,19,George,kangaroo,jumpy,bouncy,cute,jumpy,extroverted,fighter
+14,F,45,4,Englsih,2,2,19,Robert,kangaroo,jumpy,bouncy,cute,startles easy,nervous,scared
+2,F,25,4,English,2,1,20,Frank,lion,scary,strong,ferocious,dominant,energetic,outgoing
+9,M,35,4,English,2,7,21,Ethan,monkey,funny,smart,playful,amusing,playful,not serious
+17,F,55,6,english,2,4,23,Luke,ox,strong,big,slow,strong,high,fit
+6,F,25,4,english,2,6,25,Fred,pig,dirty,fat,smelly,dirty,unclean,impure
+18,M,25,4,English,2,5,25,Calvin,pig,dirty,fat,smelly,messy,disorganized,unsanitary
+2,F,25,4,English,2,6,26,Jeff,rabbit,fast,furry,cute,quick,agile,spooks easily
+4,F,35,4,English,2,1,26,Steve,rabbit,fast,furry,cute,furry,small,cute
+18,M,25,4,English,2,6,26,Eric,rabbit,fast,furry,cute,agile,quick,nimble
+15,F,35,6,English,2,8,27,Barry,shark,scary,mean,dangerous,mean,aggressive ,asshole
+18,M,25,4,English,2,3,27,Victor,shark,scary,mean,dangerous,intimidating,aggressive,mean-spirited
+11,F,17,8,English,2,1,28,Daniel,sheep,wooly,fluffy,dumb,noisy,cute,cuddly
+16,M,35,4,English,2,6,28,Robert,sheep,wooly,fluffy,dumb,thick skinned,skiddish,follower
+8,F,35,6,english,2,2,29,Owen,tiger,striped,fierce,scary,athletic,slim,fierce
+10,M,35,8,english,2,8,29,Gary,tiger,striped,fierce,scary,strong,alpha,colorful
+2,F,25,4,English,2,8,30,Tom,whale,large,graceful,majestic,fat,slow,tall
+13,F,45,6,english,2,2,30,Frank,whale,large,graceful,majestic,obese,slow,tall
+1,F,45,8,English,2,5,31,Winston,wolf,scary,mean,angry,sneaky,mean,sly
+4,F,35,4,English,2,2,31,George,wolf,scary,mean,angry,furry,scary,dangerous
+7,M,35,4,English,2,2,31,Jake,wolf,scary,mean,angry,agressive,bulky,smart
+14,F,45,4,Englsih,2,7,31,Victor,wolf,scary,mean,angry,cautious ,predator,keen eye
+16,M,35,4,English,2,7,31,Harry,wolf,scary,mean,angry,intimidating,tight-knit social group,fierce
+3,M,25,4,English,2,6,32,Nathan,zebra,striped,exotic,fast,?,?,?
+5,F,25,4,Spanish,2,2,32,Eric,zebra,striped,exotic,fast,flamboyant,flashy,follower
+17,F,55,6,english,2,5,32,Eric,zebra,striped,exotic,fast,anxious,agile,fast

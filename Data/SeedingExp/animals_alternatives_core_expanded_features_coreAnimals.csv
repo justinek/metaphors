@@ -1,0 +1,13 @@
+animal,alternatives,coreFeatures,expandedFeatures,numAlts,numFeatures
+ant,ant;beaver;mouse;monkey;man,small;industrious,funny;busy;quiet;smart,5,4
+whale,eagle;whale;horse;lion;elephant;man,big;majestic,hard;proud;fast;fierce;strong,6,5
+bird,ant;cheetah;mouse;jaguar;bird;man,fast;small,industrious;agile;quiet;sleek,6,4
+elephant,turtle;whale;armadillo;elephant;man,big;hard,majestic;slow;strong,5,3
+panda,elephant;dog;cat;kitten;whale;panda;man,cute;big,lazy;hard;playful;loyal;majestic;friendly,7,6
+monkey,hyena;dog;dolphin;monkey;cat;man,funny;smart,lazy;cute;loyal;loud;friendly;happy,6,6
+penguin,monkey;dog;cat;hyena;kitten;penguin;man,funny;cute,lazy;playful;loyal;loud;friendly;smart,7,6
+giraffe,horse;giraffe;snake;man,tall;long,slithery;strong;fast,4,3
+cheetah,cheetah;deer;jaguar;monkey;cat;man,fast;agile,funny;lazy;cute;fast;sleek;dumb;smart,6,7
+turtle,turtle;sloth;horse;bear;gorilla;elephant;man,slow;strong,hairy;lazy;big;hard;fast,7,5
+lion,horse;bear;tiger;gorilla;lion;elephant;man,fierce;strong,hairy;big;hard;fast;striped,7,5
+rabbit,jaguar;dog;cat;rabbit;kitten;cheetah;man,fast;cute,lazy;agile;sleek;playful;loyal;friendly,7,6

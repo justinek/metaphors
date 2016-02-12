@@ -1,0 +1,2401 @@
+workerID,gender,age,income,language,order,item,dimension,bin,prior
+1,F,25,4,English,1,turtle,speed,0,0.375
+1,F,25,4,English,1,turtle,speed,1,0.33984375
+1,F,25,4,English,1,turtle,speed,5,0.28515625
+1,F,25,4,English,1,turtle,speed,10,0.0
+1,F,25,4,English,1,turtle,speed,12,0.0
+1,F,25,4,English,1,turtle,speed,14,0.0
+1,F,25,4,English,1,turtle,speed,16,0.0
+1,F,25,4,English,1,turtle,speed,18,0.0
+1,F,25,4,English,1,turtle,speed,20,0.0
+1,F,25,4,English,1,turtle,speed,60,0.0
+1,F,25,4,English,2,giraffe,height,0,0.105485232068
+1,F,25,4,English,2,giraffe,height,0.5,0.105485232068
+1,F,25,4,English,2,giraffe,height,4,0.102320675105
+1,F,25,4,English,2,giraffe,height,4.5,0.105485232068
+1,F,25,4,English,2,giraffe,height,5,0.105485232068
+1,F,25,4,English,2,giraffe,height,5.5,0.105485232068
+1,F,25,4,English,2,giraffe,height,6,0.105485232068
+1,F,25,4,English,2,giraffe,height,6.5,0.105485232068
+1,F,25,4,English,2,giraffe,height,7,0.0907172995781
+1,F,25,4,English,2,giraffe,height,15,0.0685654008439
+1,F,25,4,English,3,man,speed,0,0.191570881226
+1,F,25,4,English,3,man,speed,1,0.191570881226
+1,F,25,4,English,3,man,speed,5,0.168582375479
+1,F,25,4,English,3,man,speed,10,0.13601532567
+1,F,25,4,English,3,man,speed,12,0.11877394636
+1,F,25,4,English,3,man,speed,14,0.0900383141762
+1,F,25,4,English,3,man,speed,16,0.0747126436782
+1,F,25,4,English,3,man,speed,18,0.0287356321839
+1,F,25,4,English,3,man,speed,20,0.0
+1,F,25,4,English,3,man,speed,60,0.0
+1,F,25,4,English,4,woman,speed,0,0.217391304348
+1,F,25,4,English,4,woman,speed,1,0.217391304348
+1,F,25,4,English,4,woman,speed,5,0.173913043478
+1,F,25,4,English,4,woman,speed,10,0.126086956522
+1,F,25,4,English,4,woman,speed,12,0.1
+1,F,25,4,English,4,woman,speed,14,0.0739130434783
+1,F,25,4,English,4,woman,speed,16,0.054347826087
+1,F,25,4,English,4,woman,speed,18,0.0369565217391
+1,F,25,4,English,4,woman,speed,20,0.0
+1,F,25,4,English,4,woman,speed,60,0.0
+1,F,25,4,English,5,elephant,weight,0,0.112994350282
+1,F,25,4,English,5,elephant,weight,10,0.112994350282
+1,F,25,4,English,5,elephant,weight,100,0.112994350282
+1,F,25,4,English,5,elephant,weight,120,0.112994350282
+1,F,25,4,English,5,elephant,weight,140,0.112994350282
+1,F,25,4,English,5,elephant,weight,160,0.112994350282
+1,F,25,4,English,5,elephant,weight,180,0.112994350282
+1,F,25,4,English,5,elephant,weight,200,0.112994350282
+1,F,25,4,English,5,elephant,weight,220,0.0757062146893
+1,F,25,4,English,5,elephant,weight,10000,0.0203389830508
+1,F,25,4,English,6,woman,height,0,0.219298245614
+1,F,25,4,English,6,woman,height,0.5,0.201754385965
+1,F,25,4,English,6,woman,height,4,0.197368421053
+1,F,25,4,English,6,woman,height,4.5,0.168859649123
+1,F,25,4,English,6,woman,height,5,0.118421052632
+1,F,25,4,English,6,woman,height,5.5,0.0592105263158
+1,F,25,4,English,6,woman,height,6,0.0263157894737
+1,F,25,4,English,6,woman,height,6.5,0.00877192982456
+1,F,25,4,English,6,woman,height,7,0.0
+1,F,25,4,English,6,woman,height,15,0.0
+1,F,25,4,English,7,man,height,0,0.201207243461
+1,F,25,4,English,7,man,height,0.5,0.201207243461
+1,F,25,4,English,7,man,height,4,0.191146881288
+1,F,25,4,English,7,man,height,4.5,0.177062374245
+1,F,25,4,English,7,man,height,5,0.130784708249
+1,F,25,4,English,7,man,height,5.5,0.0583501006036
+1,F,25,4,English,7,man,height,6,0.0301810865191
+1,F,25,4,English,7,man,height,6.5,0.010060362173
+1,F,25,4,English,7,man,height,7,0.0
+1,F,25,4,English,7,man,height,15,0.0
+1,F,25,4,English,8,woman,weight,0,0.185185185185
+1,F,25,4,English,8,woman,weight,10,0.166666666667
+1,F,25,4,English,8,woman,weight,100,0.151851851852
+1,F,25,4,English,8,woman,weight,120,0.135185185185
+1,F,25,4,English,8,woman,weight,140,0.109259259259
+1,F,25,4,English,8,woman,weight,160,0.0925925925926
+1,F,25,4,English,8,woman,weight,180,0.0796296296296
+1,F,25,4,English,8,woman,weight,200,0.0574074074074
+1,F,25,4,English,8,woman,weight,220,0.0222222222222
+1,F,25,4,English,8,woman,weight,10000,0.0
+1,F,25,4,English,9,cheetah,speed,0,0.113250283126
+1,F,25,4,English,9,cheetah,speed,1,0.113250283126
+1,F,25,4,English,9,cheetah,speed,5,0.113250283126
+1,F,25,4,English,9,cheetah,speed,10,0.113250283126
+1,F,25,4,English,9,cheetah,speed,12,0.113250283126
+1,F,25,4,English,9,cheetah,speed,14,0.113250283126
+1,F,25,4,English,9,cheetah,speed,16,0.113250283126
+1,F,25,4,English,9,cheetah,speed,18,0.113250283126
+1,F,25,4,English,9,cheetah,speed,20,0.0872027180068
+1,F,25,4,English,9,cheetah,speed,60,0.00679501698754
+1,F,25,4,English,10,bird,weight,0,1.0
+1,F,25,4,English,10,bird,weight,10,0.0
+1,F,25,4,English,10,bird,weight,100,0.0
+1,F,25,4,English,10,bird,weight,120,0.0
+1,F,25,4,English,10,bird,weight,140,0.0
+1,F,25,4,English,10,bird,weight,160,0.0
+1,F,25,4,English,10,bird,weight,180,0.0
+1,F,25,4,English,10,bird,weight,200,0.0
+1,F,25,4,English,10,bird,weight,220,0.0
+1,F,25,4,English,10,bird,weight,10000,0.0
+1,F,25,4,English,11,man,weight,0,0.174520069808
+1,F,25,4,English,11,man,weight,10,0.162303664921
+1,F,25,4,English,11,man,weight,100,0.137870855148
+1,F,25,4,English,11,man,weight,120,0.129144851658
+1,F,25,4,English,11,man,weight,140,0.115183246073
+1,F,25,4,English,11,man,weight,160,0.108202443281
+1,F,25,4,English,11,man,weight,180,0.0855148342059
+1,F,25,4,English,11,man,weight,200,0.0610820244328
+1,F,25,4,English,11,man,weight,220,0.0261780104712
+1,F,25,4,English,11,man,weight,10000,0.0
+1,F,25,4,English,12,hamster,height,0,1.0
+1,F,25,4,English,12,hamster,height,0.5,0.0
+1,F,25,4,English,12,hamster,height,4,0.0
+1,F,25,4,English,12,hamster,height,4.5,0.0
+1,F,25,4,English,12,hamster,height,5,0.0
+1,F,25,4,English,12,hamster,height,5.5,0.0
+1,F,25,4,English,12,hamster,height,6,0.0
+1,F,25,4,English,12,hamster,height,6.5,0.0
+1,F,25,4,English,12,hamster,height,7,0.0
+1,F,25,4,English,12,hamster,height,15,0.0
+2,M,25,4,English,1,elephant,weight,0,0.0
+2,M,25,4,English,1,elephant,weight,10,0.0
+2,M,25,4,English,1,elephant,weight,100,0.0
+2,M,25,4,English,1,elephant,weight,120,0.0320855614973
+2,M,25,4,English,1,elephant,weight,140,0.0427807486631
+2,M,25,4,English,1,elephant,weight,160,0.0588235294118
+2,M,25,4,English,1,elephant,weight,180,0.0641711229947
+2,M,25,4,English,1,elephant,weight,200,0.0695187165775
+2,M,25,4,English,1,elephant,weight,220,0.229946524064
+2,M,25,4,English,1,elephant,weight,10000,0.502673796791
+2,M,25,4,English,2,man,weight,0,0.0
+2,M,25,4,English,2,man,weight,10,0.0
+2,M,25,4,English,2,man,weight,100,0.00709219858156
+2,M,25,4,English,2,man,weight,120,0.0307328605201
+2,M,25,4,English,2,man,weight,140,0.236406619385
+2,M,25,4,English,2,man,weight,160,0.236406619385
+2,M,25,4,English,2,man,weight,180,0.236406619385
+2,M,25,4,English,2,man,weight,200,0.236406619385
+2,M,25,4,English,2,man,weight,220,0.016548463357
+2,M,25,4,English,2,man,weight,10000,0.0
+2,M,25,4,English,3,turtle,speed,0,0.909090909091
+2,M,25,4,English,3,turtle,speed,1,0.0636363636364
+2,M,25,4,English,3,turtle,speed,5,0.0181818181818
+2,M,25,4,English,3,turtle,speed,10,0.0
+2,M,25,4,English,3,turtle,speed,12,0.0
+2,M,25,4,English,3,turtle,speed,14,0.0
+2,M,25,4,English,3,turtle,speed,16,0.00909090909091
+2,M,25,4,English,3,turtle,speed,18,0.0
+2,M,25,4,English,3,turtle,speed,20,0.0
+2,M,25,4,English,3,turtle,speed,60,0.0
+2,M,25,4,English,4,bird,weight,0,1.0
+2,M,25,4,English,4,bird,weight,10,0.0
+2,M,25,4,English,4,bird,weight,100,0.0
+2,M,25,4,English,4,bird,weight,120,0.0
+2,M,25,4,English,4,bird,weight,140,0.0
+2,M,25,4,English,4,bird,weight,160,0.0
+2,M,25,4,English,4,bird,weight,180,0.0
+2,M,25,4,English,4,bird,weight,200,0.0
+2,M,25,4,English,4,bird,weight,220,0.0
+2,M,25,4,English,4,bird,weight,10000,0.0
+2,M,25,4,English,5,giraffe,height,0,0.0
+2,M,25,4,English,5,giraffe,height,0.5,0.0
+2,M,25,4,English,5,giraffe,height,4,0.0
+2,M,25,4,English,5,giraffe,height,4.5,0.0
+2,M,25,4,English,5,giraffe,height,5,0.00289855072464
+2,M,25,4,English,5,giraffe,height,5.5,0.0144927536232
+2,M,25,4,English,5,giraffe,height,6,0.234782608696
+2,M,25,4,English,5,giraffe,height,6.5,0.255072463768
+2,M,25,4,English,5,giraffe,height,7,0.246376811594
+2,M,25,4,English,5,giraffe,height,15,0.246376811594
+2,M,25,4,English,6,woman,height,0,0.0
+2,M,25,4,English,6,woman,height,0.5,0.011811023622
+2,M,25,4,English,6,woman,height,4,0.0590551181102
+2,M,25,4,English,6,woman,height,4.5,0.165354330709
+2,M,25,4,English,6,woman,height,5,0.295275590551
+2,M,25,4,English,6,woman,height,5.5,0.228346456693
+2,M,25,4,English,6,woman,height,6,0.153543307087
+2,M,25,4,English,6,woman,height,6.5,0.0708661417323
+2,M,25,4,English,6,woman,height,7,0.0157480314961
+2,M,25,4,English,6,woman,height,15,0.0
+2,M,25,4,English,7,woman,weight,0,0.0
+2,M,25,4,English,7,woman,weight,10,0.148367952522
+2,M,25,4,English,7,woman,weight,100,0.148367952522
+2,M,25,4,English,7,woman,weight,120,0.148367952522
+2,M,25,4,English,7,woman,weight,140,0.148367952522
+2,M,25,4,English,7,woman,weight,160,0.148367952522
+2,M,25,4,English,7,woman,weight,180,0.13649851632
+2,M,25,4,English,7,woman,weight,200,0.105341246291
+2,M,25,4,English,7,woman,weight,220,0.0163204747774
+2,M,25,4,English,7,woman,weight,10000,0.0
+2,M,25,4,English,8,cheetah,speed,0,0.1
+2,M,25,4,English,8,cheetah,speed,1,0.1
+2,M,25,4,English,8,cheetah,speed,5,0.1
+2,M,25,4,English,8,cheetah,speed,10,0.1
+2,M,25,4,English,8,cheetah,speed,12,0.1
+2,M,25,4,English,8,cheetah,speed,14,0.1
+2,M,25,4,English,8,cheetah,speed,16,0.1
+2,M,25,4,English,8,cheetah,speed,18,0.1
+2,M,25,4,English,8,cheetah,speed,20,0.1
+2,M,25,4,English,8,cheetah,speed,60,0.1
+2,M,25,4,English,9,man,speed,0,0.182481751825
+2,M,25,4,English,9,man,speed,1,0.182481751825
+2,M,25,4,English,9,man,speed,5,0.182481751825
+2,M,25,4,English,9,man,speed,10,0.166058394161
+2,M,25,4,English,9,man,speed,12,0.129562043796
+2,M,25,4,English,9,man,speed,14,0.102189781022
+2,M,25,4,English,9,man,speed,16,0.0383211678832
+2,M,25,4,English,9,man,speed,18,0.0164233576642
+2,M,25,4,English,9,man,speed,20,0.0
+2,M,25,4,English,9,man,speed,60,0.0
+2,M,25,4,English,10,woman,speed,0,0.243309002433
+2,M,25,4,English,10,woman,speed,1,0.243309002433
+2,M,25,4,English,10,woman,speed,5,0.228710462287
+2,M,25,4,English,10,woman,speed,10,0.165450121655
+2,M,25,4,English,10,woman,speed,12,0.0827250608273
+2,M,25,4,English,10,woman,speed,14,0.036496350365
+2,M,25,4,English,10,woman,speed,16,0.0
+2,M,25,4,English,10,woman,speed,18,0.0
+2,M,25,4,English,10,woman,speed,20,0.0
+2,M,25,4,English,10,woman,speed,60,0.0
+2,M,25,4,English,11,man,height,0,0.00613496932515
+2,M,25,4,English,11,man,height,0.5,0.0306748466258
+2,M,25,4,English,11,man,height,4,0.0460122699387
+2,M,25,4,English,11,man,height,4.5,0.0644171779141
+2,M,25,4,English,11,man,height,5,0.138036809816
+2,M,25,4,English,11,man,height,5.5,0.239263803681
+2,M,25,4,English,11,man,height,6,0.208588957055
+2,M,25,4,English,11,man,height,6.5,0.168711656442
+2,M,25,4,English,11,man,height,7,0.0981595092025
+2,M,25,4,English,11,man,height,15,0.0
+2,M,25,4,English,12,hamster,height,0,0.372670807453
+2,M,25,4,English,12,hamster,height,0.5,0.621118012422
+2,M,25,4,English,12,hamster,height,4,0.0
+2,M,25,4,English,12,hamster,height,4.5,0.0
+2,M,25,4,English,12,hamster,height,5,0.0
+2,M,25,4,English,12,hamster,height,5.5,0.0
+2,M,25,4,English,12,hamster,height,6,0.0
+2,M,25,4,English,12,hamster,height,6.5,0.0
+2,M,25,4,English,12,hamster,height,7,0.00621118012422
+2,M,25,4,English,12,hamster,height,15,0.0
+3,M,25,4,English,1,turtle,speed,0,1.0
+3,M,25,4,English,1,turtle,speed,1,0.0
+3,M,25,4,English,1,turtle,speed,5,0.0
+3,M,25,4,English,1,turtle,speed,10,0.0
+3,M,25,4,English,1,turtle,speed,12,0.0
+3,M,25,4,English,1,turtle,speed,14,0.0
+3,M,25,4,English,1,turtle,speed,16,0.0
+3,M,25,4,English,1,turtle,speed,18,0.0
+3,M,25,4,English,1,turtle,speed,20,0.0
+3,M,25,4,English,1,turtle,speed,60,0.0
+3,M,25,4,English,2,man,weight,0,0.0
+3,M,25,4,English,2,man,weight,10,0.11190053286
+3,M,25,4,English,2,man,weight,100,0.117229129663
+3,M,25,4,English,2,man,weight,120,0.138543516874
+3,M,25,4,English,2,man,weight,140,0.138543516874
+3,M,25,4,English,2,man,weight,160,0.152753108348
+3,M,25,4,English,2,man,weight,180,0.154529307282
+3,M,25,4,English,2,man,weight,200,0.1243339254
+3,M,25,4,English,2,man,weight,220,0.0621669626998
+3,M,25,4,English,2,man,weight,10000,0.0
+3,M,25,4,English,3,hamster,height,0,0.884955752212
+3,M,25,4,English,3,hamster,height,0.5,0.115044247788
+3,M,25,4,English,3,hamster,height,4,0.0
+3,M,25,4,English,3,hamster,height,4.5,0.0
+3,M,25,4,English,3,hamster,height,5,0.0
+3,M,25,4,English,3,hamster,height,5.5,0.0
+3,M,25,4,English,3,hamster,height,6,0.0
+3,M,25,4,English,3,hamster,height,6.5,0.0
+3,M,25,4,English,3,hamster,height,7,0.0
+3,M,25,4,English,3,hamster,height,15,0.0
+3,M,25,4,English,4,woman,weight,0,0.0117647058824
+3,M,25,4,English,4,woman,weight,10,0.0490196078431
+3,M,25,4,English,4,woman,weight,100,0.154901960784
+3,M,25,4,English,4,woman,weight,120,0.172549019608
+3,M,25,4,English,4,woman,weight,140,0.172549019608
+3,M,25,4,English,4,woman,weight,160,0.164705882353
+3,M,25,4,English,4,woman,weight,180,0.139215686275
+3,M,25,4,English,4,woman,weight,200,0.0843137254902
+3,M,25,4,English,4,woman,weight,220,0.0509803921569
+3,M,25,4,English,4,woman,weight,10000,0.0
+3,M,25,4,English,5,elephant,weight,0,0.0
+3,M,25,4,English,5,elephant,weight,10,0.0390804597701
+3,M,25,4,English,5,elephant,weight,100,0.0551724137931
+3,M,25,4,English,5,elephant,weight,120,0.0528735632184
+3,M,25,4,English,5,elephant,weight,140,0.131034482759
+3,M,25,4,English,5,elephant,weight,160,0.163218390805
+3,M,25,4,English,5,elephant,weight,180,0.163218390805
+3,M,25,4,English,5,elephant,weight,200,0.195402298851
+3,M,25,4,English,5,elephant,weight,220,0.197701149425
+3,M,25,4,English,5,elephant,weight,10000,0.00229885057471
+3,M,25,4,English,6,cheetah,speed,0,0.103626943005
+3,M,25,4,English,6,cheetah,speed,1,0.103626943005
+3,M,25,4,English,6,cheetah,speed,5,0.102590673575
+3,M,25,4,English,6,cheetah,speed,10,0.103626943005
+3,M,25,4,English,6,cheetah,speed,12,0.103626943005
+3,M,25,4,English,6,cheetah,speed,14,0.103626943005
+3,M,25,4,English,6,cheetah,speed,16,0.103626943005
+3,M,25,4,English,6,cheetah,speed,18,0.103626943005
+3,M,25,4,English,6,cheetah,speed,20,0.103626943005
+3,M,25,4,English,6,cheetah,speed,60,0.0683937823834
+3,M,25,4,English,7,woman,height,0,0.0
+3,M,25,4,English,7,woman,height,0.5,0.035447761194
+3,M,25,4,English,7,woman,height,4,0.139925373134
+3,M,25,4,English,7,woman,height,4.5,0.166044776119
+3,M,25,4,English,7,woman,height,5,0.169776119403
+3,M,25,4,English,7,woman,height,5.5,0.167910447761
+3,M,25,4,English,7,woman,height,6,0.151119402985
+3,M,25,4,English,7,woman,height,6.5,0.132462686567
+3,M,25,4,English,7,woman,height,7,0.0373134328358
+3,M,25,4,English,7,woman,height,15,0.0
+3,M,25,4,English,8,man,speed,0,0.373134328358
+3,M,25,4,English,8,man,speed,1,0.373134328358
+3,M,25,4,English,8,man,speed,5,0.253731343284
+3,M,25,4,English,8,man,speed,10,0.0
+3,M,25,4,English,8,man,speed,12,0.0
+3,M,25,4,English,8,man,speed,14,0.0
+3,M,25,4,English,8,man,speed,16,0.0
+3,M,25,4,English,8,man,speed,18,0.0
+3,M,25,4,English,8,man,speed,20,0.0
+3,M,25,4,English,8,man,speed,60,0.0
+3,M,25,4,English,9,bird,weight,0,0.613496932515
+3,M,25,4,English,9,bird,weight,10,0.386503067485
+3,M,25,4,English,9,bird,weight,100,0.0
+3,M,25,4,English,9,bird,weight,120,0.0
+3,M,25,4,English,9,bird,weight,140,0.0
+3,M,25,4,English,9,bird,weight,160,0.0
+3,M,25,4,English,9,bird,weight,180,0.0
+3,M,25,4,English,9,bird,weight,200,0.0
+3,M,25,4,English,9,bird,weight,220,0.0
+3,M,25,4,English,9,bird,weight,10000,0.0
+3,M,25,4,English,10,giraffe,height,0,0.0
+3,M,25,4,English,10,giraffe,height,0.5,0.0
+3,M,25,4,English,10,giraffe,height,4,0.0450819672131
+3,M,25,4,English,10,giraffe,height,4.5,0.0881147540984
+3,M,25,4,English,10,giraffe,height,5,0.0860655737705
+3,M,25,4,English,10,giraffe,height,5.5,0.0901639344262
+3,M,25,4,English,10,giraffe,height,6,0.120901639344
+3,M,25,4,English,10,giraffe,height,6.5,0.159836065574
+3,M,25,4,English,10,giraffe,height,7,0.204918032787
+3,M,25,4,English,10,giraffe,height,15,0.204918032787
+3,M,25,4,English,11,man,height,0,0.0182555780933
+3,M,25,4,English,11,man,height,0.5,0.052738336714
+3,M,25,4,English,11,man,height,4,0.0973630831643
+3,M,25,4,English,11,man,height,4.5,0.119675456389
+3,M,25,4,English,11,man,height,5,0.150101419878
+3,M,25,4,English,11,man,height,5.5,0.170385395538
+3,M,25,4,English,11,man,height,6,0.170385395538
+3,M,25,4,English,11,man,height,6.5,0.170385395538
+3,M,25,4,English,11,man,height,7,0.0486815415822
+3,M,25,4,English,11,man,height,15,0.00202839756592
+3,M,25,4,English,12,woman,speed,0,0.416666666667
+3,M,25,4,English,12,woman,speed,1,0.416666666667
+3,M,25,4,English,12,woman,speed,5,0.166666666667
+3,M,25,4,English,12,woman,speed,10,0.0
+3,M,25,4,English,12,woman,speed,12,0.0
+3,M,25,4,English,12,woman,speed,14,0.0
+3,M,25,4,English,12,woman,speed,16,0.0
+3,M,25,4,English,12,woman,speed,18,0.0
+3,M,25,4,English,12,woman,speed,20,0.0
+3,M,25,4,English,12,woman,speed,60,0.0
+4,M,35,6,English,1,hamster,height,0,0.897959183673
+4,M,35,6,English,1,hamster,height,0.5,0.0816326530612
+4,M,35,6,English,1,hamster,height,4,0.0102040816327
+4,M,35,6,English,1,hamster,height,4.5,0.0
+4,M,35,6,English,1,hamster,height,5,0.0102040816327
+4,M,35,6,English,1,hamster,height,5.5,0.0
+4,M,35,6,English,1,hamster,height,6,0.0
+4,M,35,6,English,1,hamster,height,6.5,0.0
+4,M,35,6,English,1,hamster,height,7,0.0
+4,M,35,6,English,1,hamster,height,15,0.0
+4,M,35,6,English,2,elephant,weight,0,0.0352303523035
+4,M,35,6,English,2,elephant,weight,10,0.070460704607
+4,M,35,6,English,2,elephant,weight,100,0.0785907859079
+4,M,35,6,English,2,elephant,weight,120,0.0921409214092
+4,M,35,6,English,2,elephant,weight,140,0.0948509485095
+4,M,35,6,English,2,elephant,weight,160,0.113821138211
+4,M,35,6,English,2,elephant,weight,180,0.111111111111
+4,M,35,6,English,2,elephant,weight,200,0.143631436314
+4,M,35,6,English,2,elephant,weight,220,0.254742547425
+4,M,35,6,English,2,elephant,weight,10000,0.00542005420054
+4,M,35,6,English,3,man,height,0,0.0
+4,M,35,6,English,3,man,height,0.5,0.0
+4,M,35,6,English,3,man,height,4,0.0338983050847
+4,M,35,6,English,3,man,height,4.5,0.122881355932
+4,M,35,6,English,3,man,height,5,0.233050847458
+4,M,35,6,English,3,man,height,5.5,0.360169491525
+4,M,35,6,English,3,man,height,6,0.152542372881
+4,M,35,6,English,3,man,height,6.5,0.0677966101695
+4,M,35,6,English,3,man,height,7,0.0296610169492
+4,M,35,6,English,3,man,height,15,0.0
+4,M,35,6,English,4,bird,weight,0,0.776
+4,M,35,6,English,4,bird,weight,10,0.2
+4,M,35,6,English,4,bird,weight,100,0.016
+4,M,35,6,English,4,bird,weight,120,0.0
+4,M,35,6,English,4,bird,weight,140,0.0
+4,M,35,6,English,4,bird,weight,160,0.008
+4,M,35,6,English,4,bird,weight,180,0.0
+4,M,35,6,English,4,bird,weight,200,0.0
+4,M,35,6,English,4,bird,weight,220,0.0
+4,M,35,6,English,4,bird,weight,10000,0.0
+4,M,35,6,English,5,giraffe,height,0,0.0
+4,M,35,6,English,5,giraffe,height,0.5,0.0
+4,M,35,6,English,5,giraffe,height,4,0.00316455696203
+4,M,35,6,English,5,giraffe,height,4.5,0.0632911392405
+4,M,35,6,English,5,giraffe,height,5,0.0727848101266
+4,M,35,6,English,5,giraffe,height,5.5,0.0822784810127
+4,M,35,6,English,5,giraffe,height,6,0.107594936709
+4,M,35,6,English,5,giraffe,height,6.5,0.158227848101
+4,M,35,6,English,5,giraffe,height,7,0.224683544304
+4,M,35,6,English,5,giraffe,height,15,0.287974683544
+4,M,35,6,English,6,cheetah,speed,0,0.0986920332937
+4,M,35,6,English,6,cheetah,speed,1,0.0998810939358
+4,M,35,6,English,6,cheetah,speed,5,0.0975029726516
+4,M,35,6,English,6,cheetah,speed,10,0.0998810939358
+4,M,35,6,English,6,cheetah,speed,12,0.0986920332937
+4,M,35,6,English,6,cheetah,speed,14,0.101070154578
+4,M,35,6,English,6,cheetah,speed,16,0.101070154578
+4,M,35,6,English,6,cheetah,speed,18,0.101070154578
+4,M,35,6,English,6,cheetah,speed,20,0.101070154578
+4,M,35,6,English,6,cheetah,speed,60,0.101070154578
+4,M,35,6,English,7,man,weight,0,0.0
+4,M,35,6,English,7,man,weight,10,0.0
+4,M,35,6,English,7,man,weight,100,0.0
+4,M,35,6,English,7,man,weight,120,0.108695652174
+4,M,35,6,English,7,man,weight,140,0.242753623188
+4,M,35,6,English,7,man,weight,160,0.25
+4,M,35,6,English,7,man,weight,180,0.235507246377
+4,M,35,6,English,7,man,weight,200,0.115942028986
+4,M,35,6,English,7,man,weight,220,0.0471014492754
+4,M,35,6,English,7,man,weight,10000,0.0
+4,M,35,6,English,8,turtle,speed,0,0.5
+4,M,35,6,English,8,turtle,speed,1,0.5
+4,M,35,6,English,8,turtle,speed,5,0.0
+4,M,35,6,English,8,turtle,speed,10,0.0
+4,M,35,6,English,8,turtle,speed,12,0.0
+4,M,35,6,English,8,turtle,speed,14,0.0
+4,M,35,6,English,8,turtle,speed,16,0.0
+4,M,35,6,English,8,turtle,speed,18,0.0
+4,M,35,6,English,8,turtle,speed,20,0.0
+4,M,35,6,English,8,turtle,speed,60,0.0
+4,M,35,6,English,9,woman,height,0,0.0
+4,M,35,6,English,9,woman,height,0.5,0.0
+4,M,35,6,English,9,woman,height,4,0.0
+4,M,35,6,English,9,woman,height,4.5,0.137566137566
+4,M,35,6,English,9,woman,height,5,0.433862433862
+4,M,35,6,English,9,woman,height,5.5,0.312169312169
+4,M,35,6,English,9,woman,height,6,0.10582010582
+4,M,35,6,English,9,woman,height,6.5,0.010582010582
+4,M,35,6,English,9,woman,height,7,0.0
+4,M,35,6,English,9,woman,height,15,0.0
+4,M,35,6,English,10,woman,weight,0,0.0
+4,M,35,6,English,10,woman,weight,10,0.030612244898
+4,M,35,6,English,10,woman,weight,100,0.173469387755
+4,M,35,6,English,10,woman,weight,120,0.387755102041
+4,M,35,6,English,10,woman,weight,140,0.224489795918
+4,M,35,6,English,10,woman,weight,160,0.0867346938776
+4,M,35,6,English,10,woman,weight,180,0.0510204081633
+4,M,35,6,English,10,woman,weight,200,0.0255102040816
+4,M,35,6,English,10,woman,weight,220,0.0204081632653
+4,M,35,6,English,10,woman,weight,10000,0.0
+4,M,35,6,English,11,woman,speed,0,0.307692307692
+4,M,35,6,English,11,woman,speed,1,0.301003344482
+4,M,35,6,English,11,woman,speed,5,0.294314381271
+4,M,35,6,English,11,woman,speed,10,0.0735785953177
+4,M,35,6,English,11,woman,speed,12,0.0066889632107
+4,M,35,6,English,11,woman,speed,14,0.0066889632107
+4,M,35,6,English,11,woman,speed,16,0.0066889632107
+4,M,35,6,English,11,woman,speed,18,0.0
+4,M,35,6,English,11,woman,speed,20,0.0
+4,M,35,6,English,11,woman,speed,60,0.00334448160535
+4,M,35,6,English,12,man,speed,0,0.248648648649
+4,M,35,6,English,12,man,speed,1,0.251351351351
+4,M,35,6,English,12,man,speed,5,0.251351351351
+4,M,35,6,English,12,man,speed,10,0.191891891892
+4,M,35,6,English,12,man,speed,12,0.0513513513514
+4,M,35,6,English,12,man,speed,14,0.0027027027027
+4,M,35,6,English,12,man,speed,16,0.0
+4,M,35,6,English,12,man,speed,18,0.0027027027027
+4,M,35,6,English,12,man,speed,20,0.0
+4,M,35,6,English,12,man,speed,60,0.0
+5,F,25,4,English,1,man,speed,0,0.366037735849
+5,F,25,4,English,1,man,speed,1,0.271698113208
+5,F,25,4,English,1,man,speed,5,0.203773584906
+5,F,25,4,English,1,man,speed,10,0.0452830188679
+5,F,25,4,English,1,man,speed,12,0.00754716981132
+5,F,25,4,English,1,man,speed,14,0.0377358490566
+5,F,25,4,English,1,man,speed,16,0.0301886792453
+5,F,25,4,English,1,man,speed,18,0.022641509434
+5,F,25,4,English,1,man,speed,20,0.011320754717
+5,F,25,4,English,1,man,speed,60,0.00377358490566
+5,F,25,4,English,2,bird,weight,0,0.584337349398
+5,F,25,4,English,2,bird,weight,10,0.21686746988
+5,F,25,4,English,2,bird,weight,100,0.102409638554
+5,F,25,4,English,2,bird,weight,120,0.0602409638554
+5,F,25,4,English,2,bird,weight,140,0.0
+5,F,25,4,English,2,bird,weight,160,0.00602409638554
+5,F,25,4,English,2,bird,weight,180,0.00602409638554
+5,F,25,4,English,2,bird,weight,200,0.0120481927711
+5,F,25,4,English,2,bird,weight,220,0.00602409638554
+5,F,25,4,English,2,bird,weight,10000,0.00602409638554
+5,F,25,4,English,3,woman,speed,0,0.473170731707
+5,F,25,4,English,3,woman,speed,1,0.317073170732
+5,F,25,4,English,3,woman,speed,5,0.151219512195
+5,F,25,4,English,3,woman,speed,10,0.0439024390244
+5,F,25,4,English,3,woman,speed,12,0.00975609756098
+5,F,25,4,English,3,woman,speed,14,0.00487804878049
+5,F,25,4,English,3,woman,speed,16,0.0
+5,F,25,4,English,3,woman,speed,18,0.0
+5,F,25,4,English,3,woman,speed,20,0.0
+5,F,25,4,English,3,woman,speed,60,0.0
+5,F,25,4,English,4,woman,weight,0,0.0
+5,F,25,4,English,4,woman,weight,10,0.157360406091
+5,F,25,4,English,4,woman,weight,100,0.150592216582
+5,F,25,4,English,4,woman,weight,120,0.162436548223
+5,F,25,4,English,4,woman,weight,140,0.159052453469
+5,F,25,4,English,4,woman,weight,160,0.126903553299
+5,F,25,4,English,4,woman,weight,180,0.113367174281
+5,F,25,4,English,4,woman,weight,200,0.123519458545
+5,F,25,4,English,4,woman,weight,220,0.00169204737733
+5,F,25,4,English,4,woman,weight,10000,0.00507614213198
+5,F,25,4,English,5,cheetah,speed,0,0.0668286755772
+5,F,25,4,English,5,cheetah,speed,1,0.0716889428919
+5,F,25,4,English,5,cheetah,speed,5,0.10085054678
+5,F,25,4,English,5,cheetah,speed,10,0.10085054678
+5,F,25,4,English,5,cheetah,speed,12,0.116646415553
+5,F,25,4,English,5,cheetah,speed,14,0.11907654921
+5,F,25,4,English,5,cheetah,speed,16,0.115431348724
+5,F,25,4,English,5,cheetah,speed,18,0.111786148238
+5,F,25,4,English,5,cheetah,speed,20,0.104495747266
+5,F,25,4,English,5,cheetah,speed,60,0.0923450789793
+5,F,25,4,English,6,woman,height,0,0.00558659217877
+5,F,25,4,English,6,woman,height,0.5,0.134078212291
+5,F,25,4,English,6,woman,height,4,0.148044692737
+5,F,25,4,English,6,woman,height,4.5,0.170391061453
+5,F,25,4,English,6,woman,height,5,0.234636871508
+5,F,25,4,English,6,woman,height,5.5,0.145251396648
+5,F,25,4,English,6,woman,height,6,0.0977653631285
+5,F,25,4,English,6,woman,height,6.5,0.0446927374302
+5,F,25,4,English,6,woman,height,7,0.0167597765363
+5,F,25,4,English,6,woman,height,15,0.00279329608939
+5,F,25,4,English,7,man,weight,0,0.0026525198939
+5,F,25,4,English,7,man,weight,10,0.0503978779841
+5,F,25,4,English,7,man,weight,100,0.0742705570292
+5,F,25,4,English,7,man,weight,120,0.116710875332
+5,F,25,4,English,7,man,weight,140,0.135278514589
+5,F,25,4,English,7,man,weight,160,0.16976127321
+5,F,25,4,English,7,man,weight,180,0.20424403183
+5,F,25,4,English,7,man,weight,200,0.201591511936
+5,F,25,4,English,7,man,weight,220,0.0397877984085
+5,F,25,4,English,7,man,weight,10000,0.0053050397878
+5,F,25,4,English,8,giraffe,height,0,0.00699300699301
+5,F,25,4,English,8,giraffe,height,0.5,0.0524475524476
+5,F,25,4,English,8,giraffe,height,4,0.0699300699301
+5,F,25,4,English,8,giraffe,height,4.5,0.0384615384615
+5,F,25,4,English,8,giraffe,height,5,0.034965034965
+5,F,25,4,English,8,giraffe,height,5.5,0.020979020979
+5,F,25,4,English,8,giraffe,height,6,0.020979020979
+5,F,25,4,English,8,giraffe,height,6.5,0.251748251748
+5,F,25,4,English,8,giraffe,height,7,0.153846153846
+5,F,25,4,English,8,giraffe,height,15,0.34965034965
+5,F,25,4,English,9,elephant,weight,0,0.0177514792899
+5,F,25,4,English,9,elephant,weight,10,0.0236686390533
+5,F,25,4,English,9,elephant,weight,100,0.0118343195266
+5,F,25,4,English,9,elephant,weight,120,0.0118343195266
+5,F,25,4,English,9,elephant,weight,140,0.0236686390533
+5,F,25,4,English,9,elephant,weight,160,0.0118343195266
+5,F,25,4,English,9,elephant,weight,180,0.12426035503
+5,F,25,4,English,9,elephant,weight,200,0.165680473373
+5,F,25,4,English,9,elephant,weight,220,0.514792899408
+5,F,25,4,English,9,elephant,weight,10000,0.094674556213
+5,F,25,4,English,10,turtle,speed,0,0.395
+5,F,25,4,English,10,turtle,speed,1,0.455
+5,F,25,4,English,10,turtle,speed,5,0.135
+5,F,25,4,English,10,turtle,speed,10,0.01
+5,F,25,4,English,10,turtle,speed,12,0.005
+5,F,25,4,English,10,turtle,speed,14,0.0
+5,F,25,4,English,10,turtle,speed,16,0.0
+5,F,25,4,English,10,turtle,speed,18,0.0
+5,F,25,4,English,10,turtle,speed,20,0.0
+5,F,25,4,English,10,turtle,speed,60,0.0
+5,F,25,4,English,11,man,height,0,0.00589970501475
+5,F,25,4,English,11,man,height,0.5,0.0737463126844
+5,F,25,4,English,11,man,height,4,0.0766961651917
+5,F,25,4,English,11,man,height,4.5,0.0648967551622
+5,F,25,4,English,11,man,height,5,0.150442477876
+5,F,25,4,English,11,man,height,5.5,0.194690265487
+5,F,25,4,English,11,man,height,6,0.241887905605
+5,F,25,4,English,11,man,height,6.5,0.182890855457
+5,F,25,4,English,11,man,height,7,0.00589970501475
+5,F,25,4,English,11,man,height,15,0.00294985250737
+5,F,25,4,English,12,hamster,height,0,0.881818181818
+5,F,25,4,English,12,hamster,height,0.5,0.118181818182
+5,F,25,4,English,12,hamster,height,4,0.0
+5,F,25,4,English,12,hamster,height,4.5,0.0
+5,F,25,4,English,12,hamster,height,5,0.0
+5,F,25,4,English,12,hamster,height,5.5,0.0
+5,F,25,4,English,12,hamster,height,6,0.0
+5,F,25,4,English,12,hamster,height,6.5,0.0
+5,F,25,4,English,12,hamster,height,7,0.0
+5,F,25,4,English,12,hamster,height,15,0.0
+6,F,35,6,English,1,hamster,height,0,0.404255319149
+6,F,35,6,English,1,hamster,height,0.5,0.417021276596
+6,F,35,6,English,1,hamster,height,4,0.106382978723
+6,F,35,6,English,1,hamster,height,4.5,0.0127659574468
+6,F,35,6,English,1,hamster,height,5,0.0127659574468
+6,F,35,6,English,1,hamster,height,5.5,0.00851063829787
+6,F,35,6,English,1,hamster,height,6,0.0170212765957
+6,F,35,6,English,1,hamster,height,6.5,0.0127659574468
+6,F,35,6,English,1,hamster,height,7,0.00425531914894
+6,F,35,6,English,1,hamster,height,15,0.00425531914894
+6,F,35,6,English,2,woman,weight,0,0.00485436893204
+6,F,35,6,English,2,woman,weight,10,0.0987055016181
+6,F,35,6,English,2,woman,weight,100,0.13430420712
+6,F,35,6,English,2,woman,weight,120,0.139158576052
+6,F,35,6,English,2,woman,weight,140,0.135922330097
+6,F,35,6,English,2,woman,weight,160,0.139158576052
+6,F,35,6,English,2,woman,weight,180,0.140776699029
+6,F,35,6,English,2,woman,weight,200,0.139158576052
+6,F,35,6,English,2,woman,weight,220,0.0663430420712
+6,F,35,6,English,2,woman,weight,10000,0.00161812297735
+6,F,35,6,English,3,man,height,0,0.00287356321839
+6,F,35,6,English,3,man,height,0.5,0.00574712643678
+6,F,35,6,English,3,man,height,4,0.109195402299
+6,F,35,6,English,3,man,height,4.5,0.10632183908
+6,F,35,6,English,3,man,height,5,0.169540229885
+6,F,35,6,English,3,man,height,5.5,0.221264367816
+6,F,35,6,English,3,man,height,6,0.227011494253
+6,F,35,6,English,3,man,height,6.5,0.0747126436782
+6,F,35,6,English,3,man,height,7,0.0775862068966
+6,F,35,6,English,3,man,height,15,0.00574712643678
+6,F,35,6,English,4,elephant,weight,0,0.0
+6,F,35,6,English,4,elephant,weight,10,0.00664451827243
+6,F,35,6,English,4,elephant,weight,100,0.0132890365449
+6,F,35,6,English,4,elephant,weight,120,0.0398671096346
+6,F,35,6,English,4,elephant,weight,140,0.0431893687708
+6,F,35,6,English,4,elephant,weight,160,0.046511627907
+6,F,35,6,English,4,elephant,weight,180,0.102990033223
+6,F,35,6,English,4,elephant,weight,200,0.176079734219
+6,F,35,6,English,4,elephant,weight,220,0.285714285714
+6,F,35,6,English,4,elephant,weight,10000,0.285714285714
+6,F,35,6,English,5,man,speed,0,0.305295950156
+6,F,35,6,English,5,man,speed,1,0.305295950156
+6,F,35,6,English,5,man,speed,5,0.233644859813
+6,F,35,6,English,5,man,speed,10,0.0872274143302
+6,F,35,6,English,5,man,speed,12,0.0280373831776
+6,F,35,6,English,5,man,speed,14,0.01246105919
+6,F,35,6,English,5,man,speed,16,0.00934579439252
+6,F,35,6,English,5,man,speed,18,0.00934579439252
+6,F,35,6,English,5,man,speed,20,0.00623052959502
+6,F,35,6,English,5,man,speed,60,0.00311526479751
+6,F,35,6,English,6,bird,weight,0,0.603658536585
+6,F,35,6,English,6,bird,weight,10,0.292682926829
+6,F,35,6,English,6,bird,weight,100,0.0182926829268
+6,F,35,6,English,6,bird,weight,120,0.0121951219512
+6,F,35,6,English,6,bird,weight,140,0.0121951219512
+6,F,35,6,English,6,bird,weight,160,0.0182926829268
+6,F,35,6,English,6,bird,weight,180,0.0182926829268
+6,F,35,6,English,6,bird,weight,200,0.0121951219512
+6,F,35,6,English,6,bird,weight,220,0.0
+6,F,35,6,English,6,bird,weight,10000,0.0121951219512
+6,F,35,6,English,7,cheetah,speed,0,0.117283950617
+6,F,35,6,English,7,cheetah,speed,1,0.118518518519
+6,F,35,6,English,7,cheetah,speed,5,0.11975308642
+6,F,35,6,English,7,cheetah,speed,10,0.120987654321
+6,F,35,6,English,7,cheetah,speed,12,0.11975308642
+6,F,35,6,English,7,cheetah,speed,14,0.0962962962963
+6,F,35,6,English,7,cheetah,speed,16,0.0925925925926
+6,F,35,6,English,7,cheetah,speed,18,0.0950617283951
+6,F,35,6,English,7,cheetah,speed,20,0.0950617283951
+6,F,35,6,English,7,cheetah,speed,60,0.0246913580247
+6,F,35,6,English,8,giraffe,height,0,0.00459770114943
+6,F,35,6,English,8,giraffe,height,0.5,0.0183908045977
+6,F,35,6,English,8,giraffe,height,4,0.048275862069
+6,F,35,6,English,8,giraffe,height,4.5,0.0505747126437
+6,F,35,6,English,8,giraffe,height,5,0.0528735632184
+6,F,35,6,English,8,giraffe,height,5.5,0.0827586206897
+6,F,35,6,English,8,giraffe,height,6,0.131034482759
+6,F,35,6,English,8,giraffe,height,6.5,0.170114942529
+6,F,35,6,English,8,giraffe,height,7,0.220689655172
+6,F,35,6,English,8,giraffe,height,15,0.220689655172
+6,F,35,6,English,9,woman,height,0,0.0028901734104
+6,F,35,6,English,9,woman,height,0.5,0.0578034682081
+6,F,35,6,English,9,woman,height,4,0.0895953757225
+6,F,35,6,English,9,woman,height,4.5,0.179190751445
+6,F,35,6,English,9,woman,height,5,0.257225433526
+6,F,35,6,English,9,woman,height,5.5,0.251445086705
+6,F,35,6,English,9,woman,height,6,0.0722543352601
+6,F,35,6,English,9,woman,height,6.5,0.0433526011561
+6,F,35,6,English,9,woman,height,7,0.0433526011561
+6,F,35,6,English,9,woman,height,15,0.0028901734104
+6,F,35,6,English,10,woman,speed,0,0.347368421053
+6,F,35,6,English,10,woman,speed,1,0.263157894737
+6,F,35,6,English,10,woman,speed,5,0.259649122807
+6,F,35,6,English,10,woman,speed,10,0.0947368421053
+6,F,35,6,English,10,woman,speed,12,0.00350877192982
+6,F,35,6,English,10,woman,speed,14,0.00350877192982
+6,F,35,6,English,10,woman,speed,16,0.00701754385965
+6,F,35,6,English,10,woman,speed,18,0.0105263157895
+6,F,35,6,English,10,woman,speed,20,0.00350877192982
+6,F,35,6,English,10,woman,speed,60,0.00701754385965
+6,F,35,6,English,11,turtle,speed,0,0.582352941176
+6,F,35,6,English,11,turtle,speed,1,0.311764705882
+6,F,35,6,English,11,turtle,speed,5,0.0176470588235
+6,F,35,6,English,11,turtle,speed,10,0.00588235294118
+6,F,35,6,English,11,turtle,speed,12,0.0117647058824
+6,F,35,6,English,11,turtle,speed,14,0.0176470588235
+6,F,35,6,English,11,turtle,speed,16,0.0176470588235
+6,F,35,6,English,11,turtle,speed,18,0.0117647058824
+6,F,35,6,English,11,turtle,speed,20,0.0117647058824
+6,F,35,6,English,11,turtle,speed,60,0.0117647058824
+6,F,35,6,English,12,man,weight,0,0.0081799591002
+6,F,35,6,English,12,man,weight,10,0.00204498977505
+6,F,35,6,English,12,man,weight,100,0.0531697341513
+6,F,35,6,English,12,man,weight,120,0.102249488753
+6,F,35,6,English,12,man,weight,140,0.126789366053
+6,F,35,6,English,12,man,weight,160,0.153374233129
+6,F,35,6,English,12,man,weight,180,0.155419222904
+6,F,35,6,English,12,man,weight,200,0.151329243354
+6,F,35,6,English,12,man,weight,220,0.0429447852761
+6,F,35,6,English,12,man,weight,10000,0.204498977505
+7,M,25,4,english,1,giraffe,height,0,0.0969696969697
+7,M,25,4,english,1,giraffe,height,0.5,0.0969696969697
+7,M,25,4,english,1,giraffe,height,4,0.129292929293
+7,M,25,4,english,1,giraffe,height,4.5,0.0828282828283
+7,M,25,4,english,1,giraffe,height,5,0.107070707071
+7,M,25,4,english,1,giraffe,height,5.5,0.119191919192
+7,M,25,4,english,1,giraffe,height,6,0.0888888888889
+7,M,25,4,english,1,giraffe,height,6.5,0.0747474747475
+7,M,25,4,english,1,giraffe,height,7,0.109090909091
+7,M,25,4,english,1,giraffe,height,15,0.0949494949495
+7,M,25,4,english,2,hamster,height,0,0.432203389831
+7,M,25,4,english,2,hamster,height,0.5,0.449152542373
+7,M,25,4,english,2,hamster,height,4,0.118644067797
+7,M,25,4,english,2,hamster,height,4.5,0.0
+7,M,25,4,english,2,hamster,height,5,0.0
+7,M,25,4,english,2,hamster,height,5.5,0.0
+7,M,25,4,english,2,hamster,height,6,0.0
+7,M,25,4,english,2,hamster,height,6.5,0.0
+7,M,25,4,english,2,hamster,height,7,0.0
+7,M,25,4,english,2,hamster,height,15,0.0
+7,M,25,4,english,3,cheetah,speed,0,0.262068965517
+7,M,25,4,english,3,cheetah,speed,1,0.379310344828
+7,M,25,4,english,3,cheetah,speed,5,0.268965517241
+7,M,25,4,english,3,cheetah,speed,10,0.0896551724138
+7,M,25,4,english,3,cheetah,speed,12,0.0
+7,M,25,4,english,3,cheetah,speed,14,0.0
+7,M,25,4,english,3,cheetah,speed,16,0.0
+7,M,25,4,english,3,cheetah,speed,18,0.0
+7,M,25,4,english,3,cheetah,speed,20,0.0
+7,M,25,4,english,3,cheetah,speed,60,0.0
+7,M,25,4,english,4,man,speed,0,0.248226950355
+7,M,25,4,english,4,man,speed,1,0.354609929078
+7,M,25,4,english,4,man,speed,5,0.31914893617
+7,M,25,4,english,4,man,speed,10,0.0780141843972
+7,M,25,4,english,4,man,speed,12,0.0
+7,M,25,4,english,4,man,speed,14,0.0
+7,M,25,4,english,4,man,speed,16,0.0
+7,M,25,4,english,4,man,speed,18,0.0
+7,M,25,4,english,4,man,speed,20,0.0
+7,M,25,4,english,4,man,speed,60,0.0
+7,M,25,4,english,5,woman,weight,0,0.168421052632
+7,M,25,4,english,5,woman,weight,10,0.147368421053
+7,M,25,4,english,5,woman,weight,100,0.110526315789
+7,M,25,4,english,5,woman,weight,120,0.136842105263
+7,M,25,4,english,5,woman,weight,140,0.173684210526
+7,M,25,4,english,5,woman,weight,160,0.142105263158
+7,M,25,4,english,5,woman,weight,180,0.121052631579
+7,M,25,4,english,5,woman,weight,200,0.0
+7,M,25,4,english,5,woman,weight,220,0.0
+7,M,25,4,english,5,woman,weight,10000,0.0
+7,M,25,4,english,6,man,weight,0,0.0125786163522
+7,M,25,4,english,6,man,weight,10,0.141509433962
+7,M,25,4,english,6,man,weight,100,0.12893081761
+7,M,25,4,english,6,man,weight,120,0.119496855346
+7,M,25,4,english,6,man,weight,140,0.12893081761
+7,M,25,4,english,6,man,weight,160,0.132075471698
+7,M,25,4,english,6,man,weight,180,0.0911949685535
+7,M,25,4,english,6,man,weight,200,0.0943396226415
+7,M,25,4,english,6,man,weight,220,0.150943396226
+7,M,25,4,english,6,man,weight,10000,0.0
+7,M,25,4,english,7,woman,speed,0,0.213414634146
+7,M,25,4,english,7,woman,speed,1,0.286585365854
+7,M,25,4,english,7,woman,speed,5,0.237804878049
+7,M,25,4,english,7,woman,speed,10,0.164634146341
+7,M,25,4,english,7,woman,speed,12,0.0
+7,M,25,4,english,7,woman,speed,14,0.00609756097561
+7,M,25,4,english,7,woman,speed,16,0.00609756097561
+7,M,25,4,english,7,woman,speed,18,0.0182926829268
+7,M,25,4,english,7,woman,speed,20,0.0182926829268
+7,M,25,4,english,7,woman,speed,60,0.0487804878049
+7,M,25,4,english,8,elephant,weight,0,0.0589887640449
+7,M,25,4,english,8,elephant,weight,10,0.0758426966292
+7,M,25,4,english,8,elephant,weight,100,0.123595505618
+7,M,25,4,english,8,elephant,weight,120,0.126404494382
+7,M,25,4,english,8,elephant,weight,140,0.112359550562
+7,M,25,4,english,8,elephant,weight,160,0.112359550562
+7,M,25,4,english,8,elephant,weight,180,0.134831460674
+7,M,25,4,english,8,elephant,weight,200,0.120786516854
+7,M,25,4,english,8,elephant,weight,220,0.126404494382
+7,M,25,4,english,8,elephant,weight,10000,0.00842696629213
+7,M,25,4,english,9,man,height,0,0.0
+7,M,25,4,english,9,man,height,0.5,0.0141843971631
+7,M,25,4,english,9,man,height,4,0.127659574468
+7,M,25,4,english,9,man,height,4.5,0.141843971631
+7,M,25,4,english,9,man,height,5,0.145390070922
+7,M,25,4,english,9,man,height,5.5,0.145390070922
+7,M,25,4,english,9,man,height,6,0.141843971631
+7,M,25,4,english,9,man,height,6.5,0.141843971631
+7,M,25,4,english,9,man,height,7,0.141843971631
+7,M,25,4,english,9,man,height,15,0.0
+7,M,25,4,english,10,woman,height,0,0.0
+7,M,25,4,english,10,woman,height,0.5,0.0
+7,M,25,4,english,10,woman,height,4,0.190721649485
+7,M,25,4,english,10,woman,height,4.5,0.221649484536
+7,M,25,4,english,10,woman,height,5,0.20618556701
+7,M,25,4,english,10,woman,height,5.5,0.144329896907
+7,M,25,4,english,10,woman,height,6,0.0979381443299
+7,M,25,4,english,10,woman,height,6.5,0.139175257732
+7,M,25,4,english,10,woman,height,7,0.0
+7,M,25,4,english,10,woman,height,15,0.0
+7,M,25,4,english,11,turtle,speed,0,0.497512437811
+7,M,25,4,english,11,turtle,speed,1,0.497512437811
+7,M,25,4,english,11,turtle,speed,5,0.0
+7,M,25,4,english,11,turtle,speed,10,0.0
+7,M,25,4,english,11,turtle,speed,12,0.0
+7,M,25,4,english,11,turtle,speed,14,0.00497512437811
+7,M,25,4,english,11,turtle,speed,16,0.0
+7,M,25,4,english,11,turtle,speed,18,0.0
+7,M,25,4,english,11,turtle,speed,20,0.0
+7,M,25,4,english,11,turtle,speed,60,0.0
+7,M,25,4,english,12,bird,weight,0,0.297297297297
+7,M,25,4,english,12,bird,weight,10,0.621621621622
+7,M,25,4,english,12,bird,weight,100,0.0810810810811
+7,M,25,4,english,12,bird,weight,120,0.0
+7,M,25,4,english,12,bird,weight,140,0.0
+7,M,25,4,english,12,bird,weight,160,0.0
+7,M,25,4,english,12,bird,weight,180,0.0
+7,M,25,4,english,12,bird,weight,200,0.0
+7,M,25,4,english,12,bird,weight,220,0.0
+7,M,25,4,english,12,bird,weight,10000,0.0
+8,M,35,0,Spanish_ English,1,man,speed,0,0.271002710027
+8,M,35,0,Spanish_ English,1,man,speed,1,0.271002710027
+8,M,35,0,Spanish_ English,1,man,speed,5,0.271002710027
+8,M,35,0,Spanish_ English,1,man,speed,10,0.116531165312
+8,M,35,0,Spanish_ English,1,man,speed,12,0.059620596206
+8,M,35,0,Spanish_ English,1,man,speed,14,0.0
+8,M,35,0,Spanish_ English,1,man,speed,16,0.00271002710027
+8,M,35,0,Spanish_ English,1,man,speed,18,0.00542005420054
+8,M,35,0,Spanish_ English,1,man,speed,20,0.00271002710027
+8,M,35,0,Spanish_ English,1,man,speed,60,0.0
+8,M,35,0,Spanish_ English,2,bird,weight,0,0.782258064516
+8,M,35,0,Spanish_ English,2,bird,weight,10,0.104838709677
+8,M,35,0,Spanish_ English,2,bird,weight,100,0.0
+8,M,35,0,Spanish_ English,2,bird,weight,120,0.00806451612903
+8,M,35,0,Spanish_ English,2,bird,weight,140,0.0241935483871
+8,M,35,0,Spanish_ English,2,bird,weight,160,0.0241935483871
+8,M,35,0,Spanish_ English,2,bird,weight,180,0.0241935483871
+8,M,35,0,Spanish_ English,2,bird,weight,200,0.00806451612903
+8,M,35,0,Spanish_ English,2,bird,weight,220,0.00806451612903
+8,M,35,0,Spanish_ English,2,bird,weight,10000,0.0161290322581
+8,M,35,0,Spanish_ English,3,cheetah,speed,0,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,1,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,5,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,10,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,12,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,14,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,16,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,18,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,20,0.1
+8,M,35,0,Spanish_ English,3,cheetah,speed,60,0.1
+8,M,35,0,Spanish_ English,4,elephant,weight,0,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,10,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,100,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,120,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,140,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,160,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,180,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,200,0.0
+8,M,35,0,Spanish_ English,4,elephant,weight,220,0.5
+8,M,35,0,Spanish_ English,4,elephant,weight,10000,0.5
+8,M,35,0,Spanish_ English,5,hamster,height,0,0.259067357513
+8,M,35,0,Spanish_ English,5,hamster,height,0.5,0.259067357513
+8,M,35,0,Spanish_ English,5,hamster,height,4,0.259067357513
+8,M,35,0,Spanish_ English,5,hamster,height,4.5,0.132124352332
+8,M,35,0,Spanish_ English,5,hamster,height,5,0.0388601036269
+8,M,35,0,Spanish_ English,5,hamster,height,5.5,0.0284974093264
+8,M,35,0,Spanish_ English,5,hamster,height,6,0.00777202072539
+8,M,35,0,Spanish_ English,5,hamster,height,6.5,0.00518134715026
+8,M,35,0,Spanish_ English,5,hamster,height,7,0.00518134715026
+8,M,35,0,Spanish_ English,5,hamster,height,15,0.00518134715026
+8,M,35,0,Spanish_ English,6,man,weight,0,0.0
+8,M,35,0,Spanish_ English,6,man,weight,10,0.0
+8,M,35,0,Spanish_ English,6,man,weight,100,0.164744645799
+8,M,35,0,Spanish_ English,6,man,weight,120,0.164744645799
+8,M,35,0,Spanish_ English,6,man,weight,140,0.164744645799
+8,M,35,0,Spanish_ English,6,man,weight,160,0.161449752883
+8,M,35,0,Spanish_ English,6,man,weight,180,0.164744645799
+8,M,35,0,Spanish_ English,6,man,weight,200,0.164744645799
+8,M,35,0,Spanish_ English,6,man,weight,220,0.0148270181219
+8,M,35,0,Spanish_ English,6,man,weight,10000,0.0
+8,M,35,0,Spanish_ English,7,woman,weight,0,0.0
+8,M,35,0,Spanish_ English,7,woman,weight,10,0.145348837209
+8,M,35,0,Spanish_ English,7,woman,weight,100,0.142441860465
+8,M,35,0,Spanish_ English,7,woman,weight,120,0.142441860465
+8,M,35,0,Spanish_ English,7,woman,weight,140,0.143895348837
+8,M,35,0,Spanish_ English,7,woman,weight,160,0.140988372093
+8,M,35,0,Spanish_ English,7,woman,weight,180,0.140988372093
+8,M,35,0,Spanish_ English,7,woman,weight,200,0.143895348837
+8,M,35,0,Spanish_ English,7,woman,weight,220,0.0
+8,M,35,0,Spanish_ English,7,woman,weight,10000,0.0
+8,M,35,0,Spanish_ English,8,woman,speed,0,0.19801980198
+8,M,35,0,Spanish_ English,8,woman,speed,1,0.19801980198
+8,M,35,0,Spanish_ English,8,woman,speed,5,0.192079207921
+8,M,35,0,Spanish_ English,8,woman,speed,10,0.19801980198
+8,M,35,0,Spanish_ English,8,woman,speed,12,0.19801980198
+8,M,35,0,Spanish_ English,8,woman,speed,14,0.00594059405941
+8,M,35,0,Spanish_ English,8,woman,speed,16,0.0019801980198
+8,M,35,0,Spanish_ English,8,woman,speed,18,0.0019801980198
+8,M,35,0,Spanish_ English,8,woman,speed,20,0.0039603960396
+8,M,35,0,Spanish_ English,8,woman,speed,60,0.0019801980198
+8,M,35,0,Spanish_ English,9,giraffe,height,0,0.00952380952381
+8,M,35,0,Spanish_ English,9,giraffe,height,0.5,0.0031746031746
+8,M,35,0,Spanish_ English,9,giraffe,height,4,0.0
+8,M,35,0,Spanish_ English,9,giraffe,height,4.5,0.00952380952381
+8,M,35,0,Spanish_ English,9,giraffe,height,5,0.0031746031746
+8,M,35,0,Spanish_ English,9,giraffe,height,5.5,0.00634920634921
+8,M,35,0,Spanish_ English,9,giraffe,height,6,0.174603174603
+8,M,35,0,Spanish_ English,9,giraffe,height,6.5,0.212698412698
+8,M,35,0,Spanish_ English,9,giraffe,height,7,0.263492063492
+8,M,35,0,Spanish_ English,9,giraffe,height,15,0.31746031746
+8,M,35,0,Spanish_ English,10,woman,height,0,0.0
+8,M,35,0,Spanish_ English,10,woman,height,0.5,0.0
+8,M,35,0,Spanish_ English,10,woman,height,4,0.192207792208
+8,M,35,0,Spanish_ English,10,woman,height,4.5,0.21038961039
+8,M,35,0,Spanish_ English,10,woman,height,5,0.241558441558
+8,M,35,0,Spanish_ English,10,woman,height,5.5,0.25974025974
+8,M,35,0,Spanish_ English,10,woman,height,6,0.0779220779221
+8,M,35,0,Spanish_ English,10,woman,height,6.5,0.0181818181818
+8,M,35,0,Spanish_ English,10,woman,height,7,0.0
+8,M,35,0,Spanish_ English,10,woman,height,15,0.0
+8,M,35,0,Spanish_ English,11,man,height,0,0.0
+8,M,35,0,Spanish_ English,11,man,height,0.5,0.00254452926209
+8,M,35,0,Spanish_ English,11,man,height,4,0.00508905852417
+8,M,35,0,Spanish_ English,11,man,height,4.5,0.0330788804071
+8,M,35,0,Spanish_ English,11,man,height,5,0.178117048346
+8,M,35,0,Spanish_ English,11,man,height,5.5,0.254452926209
+8,M,35,0,Spanish_ English,11,man,height,6,0.251908396947
+8,M,35,0,Spanish_ English,11,man,height,6.5,0.249363867684
+8,M,35,0,Spanish_ English,11,man,height,7,0.0254452926209
+8,M,35,0,Spanish_ English,11,man,height,15,0.0
+8,M,35,0,Spanish_ English,12,turtle,speed,0,0.840336134454
+8,M,35,0,Spanish_ English,12,turtle,speed,1,0.0588235294118
+8,M,35,0,Spanish_ English,12,turtle,speed,5,0.0168067226891
+8,M,35,0,Spanish_ English,12,turtle,speed,10,0.0168067226891
+8,M,35,0,Spanish_ English,12,turtle,speed,12,0.00840336134454
+8,M,35,0,Spanish_ English,12,turtle,speed,14,0.0168067226891
+8,M,35,0,Spanish_ English,12,turtle,speed,16,0.00840336134454
+8,M,35,0,Spanish_ English,12,turtle,speed,18,0.0168067226891
+8,M,35,0,Spanish_ English,12,turtle,speed,20,0.00840336134454
+8,M,35,0,Spanish_ English,12,turtle,speed,60,0.00840336134454
+9,F,25,4,English,1,woman,speed,0,0.23950617284
+9,F,25,4,English,1,woman,speed,1,0.22962962963
+9,F,25,4,English,1,woman,speed,5,0.172839506173
+9,F,25,4,English,1,woman,speed,10,0.106172839506
+9,F,25,4,English,1,woman,speed,12,0.0814814814815
+9,F,25,4,English,1,woman,speed,14,0.0666666666667
+9,F,25,4,English,1,woman,speed,16,0.0567901234568
+9,F,25,4,English,1,woman,speed,18,0.0395061728395
+9,F,25,4,English,1,woman,speed,20,0.00246913580247
+9,F,25,4,English,1,woman,speed,60,0.00493827160494
+9,F,25,4,English,2,hamster,height,0,0.990099009901
+9,F,25,4,English,2,hamster,height,0.5,0.0
+9,F,25,4,English,2,hamster,height,4,0.0
+9,F,25,4,English,2,hamster,height,4.5,0.0
+9,F,25,4,English,2,hamster,height,5,0.0
+9,F,25,4,English,2,hamster,height,5.5,0.0
+9,F,25,4,English,2,hamster,height,6,0.0
+9,F,25,4,English,2,hamster,height,6.5,0.0
+9,F,25,4,English,2,hamster,height,7,0.0
+9,F,25,4,English,2,hamster,height,15,0.00990099009901
+9,F,25,4,English,3,giraffe,height,0,0.0197628458498
+9,F,25,4,English,3,giraffe,height,0.5,0.0652173913043
+9,F,25,4,English,3,giraffe,height,4,0.0750988142292
+9,F,25,4,English,3,giraffe,height,4.5,0.0790513833992
+9,F,25,4,English,3,giraffe,height,5,0.0948616600791
+9,F,25,4,English,3,giraffe,height,5.5,0.096837944664
+9,F,25,4,English,3,giraffe,height,6,0.100790513834
+9,F,25,4,English,3,giraffe,height,6.5,0.110671936759
+9,F,25,4,English,3,giraffe,height,7,0.169960474308
+9,F,25,4,English,3,giraffe,height,15,0.187747035573
+9,F,25,4,English,4,elephant,weight,0,0.008
+9,F,25,4,English,4,elephant,weight,10,0.012
+9,F,25,4,English,4,elephant,weight,100,0.02
+9,F,25,4,English,4,elephant,weight,120,0.032
+9,F,25,4,English,4,elephant,weight,140,0.032
+9,F,25,4,English,4,elephant,weight,160,0.044
+9,F,25,4,English,4,elephant,weight,180,0.056
+9,F,25,4,English,4,elephant,weight,200,0.056
+9,F,25,4,English,4,elephant,weight,220,0.368
+9,F,25,4,English,4,elephant,weight,10000,0.372
+9,F,25,4,English,5,man,weight,0,0.00516351118761
+9,F,25,4,English,5,man,weight,10,0.0292598967298
+9,F,25,4,English,5,man,weight,100,0.149741824441
+9,F,25,4,English,5,man,weight,120,0.15834767642
+9,F,25,4,English,5,man,weight,140,0.15834767642
+9,F,25,4,English,5,man,weight,160,0.146299483649
+9,F,25,4,English,5,man,weight,180,0.141135972461
+9,F,25,4,English,5,man,weight,200,0.13769363167
+9,F,25,4,English,5,man,weight,220,0.0740103270224
+9,F,25,4,English,5,man,weight,10000,0.0
+9,F,25,4,English,6,woman,weight,0,0.0
+9,F,25,4,English,6,woman,weight,10,0.0434782608696
+9,F,25,4,English,6,woman,weight,100,0.148550724638
+9,F,25,4,English,6,woman,weight,120,0.157608695652
+9,F,25,4,English,6,woman,weight,140,0.157608695652
+9,F,25,4,English,6,woman,weight,160,0.143115942029
+9,F,25,4,English,6,woman,weight,180,0.135869565217
+9,F,25,4,English,6,woman,weight,200,0.134057971014
+9,F,25,4,English,6,woman,weight,220,0.0797101449275
+9,F,25,4,English,6,woman,weight,10000,0.0
+9,F,25,4,English,7,woman,height,0,0.0
+9,F,25,4,English,7,woman,height,0.5,0.0350404312668
+9,F,25,4,English,7,woman,height,4,0.0350404312668
+9,F,25,4,English,7,woman,height,4.5,0.142857142857
+9,F,25,4,English,7,woman,height,5,0.234501347709
+9,F,25,4,English,7,woman,height,5.5,0.22102425876
+9,F,25,4,English,7,woman,height,6,0.207547169811
+9,F,25,4,English,7,woman,height,6.5,0.118598382749
+9,F,25,4,English,7,woman,height,7,0.00269541778976
+9,F,25,4,English,7,woman,height,15,0.00269541778976
+9,F,25,4,English,8,cheetah,speed,0,0.063829787234
+9,F,25,4,English,8,cheetah,speed,1,0.106382978723
+9,F,25,4,English,8,cheetah,speed,5,0.106382978723
+9,F,25,4,English,8,cheetah,speed,10,0.106382978723
+9,F,25,4,English,8,cheetah,speed,12,0.105319148936
+9,F,25,4,English,8,cheetah,speed,14,0.106382978723
+9,F,25,4,English,8,cheetah,speed,16,0.106382978723
+9,F,25,4,English,8,cheetah,speed,18,0.106382978723
+9,F,25,4,English,8,cheetah,speed,20,0.0989361702128
+9,F,25,4,English,8,cheetah,speed,60,0.0936170212766
+9,F,25,4,English,9,man,height,0,0.011961722488
+9,F,25,4,English,9,man,height,0.5,0.0526315789474
+9,F,25,4,English,9,man,height,4,0.0526315789474
+9,F,25,4,English,9,man,height,4.5,0.0909090909091
+9,F,25,4,English,9,man,height,5,0.162679425837
+9,F,25,4,English,9,man,height,5.5,0.224880382775
+9,F,25,4,English,9,man,height,6,0.212918660287
+9,F,25,4,English,9,man,height,6.5,0.16028708134
+9,F,25,4,English,9,man,height,7,0.0263157894737
+9,F,25,4,English,9,man,height,15,0.00478468899522
+9,F,25,4,English,10,bird,weight,0,0.803738317757
+9,F,25,4,English,10,bird,weight,10,0.0747663551402
+9,F,25,4,English,10,bird,weight,100,0.0373831775701
+9,F,25,4,English,10,bird,weight,120,0.0373831775701
+9,F,25,4,English,10,bird,weight,140,0.00934579439252
+9,F,25,4,English,10,bird,weight,160,0.00934579439252
+9,F,25,4,English,10,bird,weight,180,0.00934579439252
+9,F,25,4,English,10,bird,weight,200,0.00934579439252
+9,F,25,4,English,10,bird,weight,220,0.0
+9,F,25,4,English,10,bird,weight,10000,0.00934579439252
+9,F,25,4,English,11,turtle,speed,0,0.688524590164
+9,F,25,4,English,11,turtle,speed,1,0.27868852459
+9,F,25,4,English,11,turtle,speed,5,0.0
+9,F,25,4,English,11,turtle,speed,10,0.00819672131148
+9,F,25,4,English,11,turtle,speed,12,0.0
+9,F,25,4,English,11,turtle,speed,14,0.00819672131148
+9,F,25,4,English,11,turtle,speed,16,0.0
+9,F,25,4,English,11,turtle,speed,18,0.00819672131148
+9,F,25,4,English,11,turtle,speed,20,0.0
+9,F,25,4,English,11,turtle,speed,60,0.00819672131148
+9,F,25,4,English,12,man,speed,0,0.194029850746
+9,F,25,4,English,12,man,speed,1,0.185501066098
+9,F,25,4,English,12,man,speed,5,0.164179104478
+9,F,25,4,English,12,man,speed,10,0.147121535181
+9,F,25,4,English,12,man,speed,12,0.127931769723
+9,F,25,4,English,12,man,speed,14,0.0831556503198
+9,F,25,4,English,12,man,speed,16,0.0575692963753
+9,F,25,4,English,12,man,speed,18,0.0341151385928
+9,F,25,4,English,12,man,speed,20,0.00639658848614
+9,F,25,4,English,12,man,speed,60,0.0
+10,F,45,4,English,1,woman,speed,0,0.271002710027
+10,F,45,4,English,1,woman,speed,1,0.271002710027
+10,F,45,4,English,1,woman,speed,5,0.271002710027
+10,F,45,4,English,1,woman,speed,10,0.0975609756098
+10,F,45,4,English,1,woman,speed,12,0.0487804878049
+10,F,45,4,English,1,woman,speed,14,0.0271002710027
+10,F,45,4,English,1,woman,speed,16,0.0135501355014
+10,F,45,4,English,1,woman,speed,18,0.0
+10,F,45,4,English,1,woman,speed,20,0.0
+10,F,45,4,English,1,woman,speed,60,0.0
+10,F,45,4,English,2,man,height,0,0.0
+10,F,45,4,English,2,man,height,0.5,0.0577777777778
+10,F,45,4,English,2,man,height,4,0.104444444444
+10,F,45,4,English,2,man,height,4.5,0.137777777778
+10,F,45,4,English,2,man,height,5,0.177777777778
+10,F,45,4,English,2,man,height,5.5,0.215555555556
+10,F,45,4,English,2,man,height,6,0.18
+10,F,45,4,English,2,man,height,6.5,0.102222222222
+10,F,45,4,English,2,man,height,7,0.0244444444444
+10,F,45,4,English,2,man,height,15,0.0
+10,F,45,4,English,3,woman,weight,0,0.0
+10,F,45,4,English,3,woman,weight,10,0.0506993006993
+10,F,45,4,English,3,woman,weight,100,0.0944055944056
+10,F,45,4,English,3,woman,weight,120,0.132867132867
+10,F,45,4,English,3,woman,weight,140,0.157342657343
+10,F,45,4,English,3,woman,weight,160,0.174825174825
+10,F,45,4,English,3,woman,weight,180,0.157342657343
+10,F,45,4,English,3,woman,weight,200,0.136363636364
+10,F,45,4,English,3,woman,weight,220,0.0961538461538
+10,F,45,4,English,3,woman,weight,10000,0.0
+10,F,45,4,English,4,bird,weight,0,0.606060606061
+10,F,45,4,English,4,bird,weight,10,0.133333333333
+10,F,45,4,English,4,bird,weight,100,0.0727272727273
+10,F,45,4,English,4,bird,weight,120,0.0666666666667
+10,F,45,4,English,4,bird,weight,140,0.0606060606061
+10,F,45,4,English,4,bird,weight,160,0.0606060606061
+10,F,45,4,English,4,bird,weight,180,0.0
+10,F,45,4,English,4,bird,weight,200,0.0
+10,F,45,4,English,4,bird,weight,220,0.0
+10,F,45,4,English,4,bird,weight,10000,0.0
+10,F,45,4,English,5,man,weight,0,0.0
+10,F,45,4,English,5,man,weight,10,0.0
+10,F,45,4,English,5,man,weight,100,0.0267379679144
+10,F,45,4,English,5,man,weight,120,0.0534759358289
+10,F,45,4,English,5,man,weight,140,0.131016042781
+10,F,45,4,English,5,man,weight,160,0.173796791444
+10,F,45,4,English,5,man,weight,180,0.235294117647
+10,F,45,4,English,5,man,weight,200,0.208556149733
+10,F,45,4,English,5,man,weight,220,0.171122994652
+10,F,45,4,English,5,man,weight,10000,0.0
+10,F,45,4,English,6,giraffe,height,0,0.0
+10,F,45,4,English,6,giraffe,height,0.5,0.0
+10,F,45,4,English,6,giraffe,height,4,0.0
+10,F,45,4,English,6,giraffe,height,4.5,0.0
+10,F,45,4,English,6,giraffe,height,5,0.0
+10,F,45,4,English,6,giraffe,height,5.5,0.0805084745763
+10,F,45,4,English,6,giraffe,height,6,0.10593220339
+10,F,45,4,English,6,giraffe,height,6.5,0.118644067797
+10,F,45,4,English,6,giraffe,height,7,0.271186440678
+10,F,45,4,English,6,giraffe,height,15,0.423728813559
+10,F,45,4,English,7,man,speed,0,0.207039337474
+10,F,45,4,English,7,man,speed,1,0.207039337474
+10,F,45,4,English,7,man,speed,5,0.207039337474
+10,F,45,4,English,7,man,speed,10,0.165631469979
+10,F,45,4,English,7,man,speed,12,0.113871635611
+10,F,45,4,English,7,man,speed,14,0.0662525879917
+10,F,45,4,English,7,man,speed,16,0.0227743271222
+10,F,45,4,English,7,man,speed,18,0.0103519668737
+10,F,45,4,English,7,man,speed,20,0.0
+10,F,45,4,English,7,man,speed,60,0.0
+10,F,45,4,English,8,elephant,weight,0,0.0
+10,F,45,4,English,8,elephant,weight,10,0.0
+10,F,45,4,English,8,elephant,weight,100,0.0
+10,F,45,4,English,8,elephant,weight,120,0.02
+10,F,45,4,English,8,elephant,weight,140,0.0
+10,F,45,4,English,8,elephant,weight,160,0.0
+10,F,45,4,English,8,elephant,weight,180,0.0
+10,F,45,4,English,8,elephant,weight,200,0.0
+10,F,45,4,English,8,elephant,weight,220,0.89
+10,F,45,4,English,8,elephant,weight,10000,0.09
+10,F,45,4,English,9,woman,height,0,0.0
+10,F,45,4,English,9,woman,height,0.5,0.0654205607477
+10,F,45,4,English,9,woman,height,4,0.109034267913
+10,F,45,4,English,9,woman,height,4.5,0.165109034268
+10,F,45,4,English,9,woman,height,5,0.274143302181
+10,F,45,4,English,9,woman,height,5.5,0.274143302181
+10,F,45,4,English,9,woman,height,6,0.0778816199377
+10,F,45,4,English,9,woman,height,6.5,0.0218068535826
+10,F,45,4,English,9,woman,height,7,0.01246105919
+10,F,45,4,English,9,woman,height,15,0.0
+10,F,45,4,English,10,cheetah,speed,0,0.11013215859
+10,F,45,4,English,10,cheetah,speed,1,0.11013215859
+10,F,45,4,English,10,cheetah,speed,5,0.11013215859
+10,F,45,4,English,10,cheetah,speed,10,0.11013215859
+10,F,45,4,English,10,cheetah,speed,12,0.11013215859
+10,F,45,4,English,10,cheetah,speed,14,0.11013215859
+10,F,45,4,English,10,cheetah,speed,16,0.11013215859
+10,F,45,4,English,10,cheetah,speed,18,0.11013215859
+10,F,45,4,English,10,cheetah,speed,20,0.11013215859
+10,F,45,4,English,10,cheetah,speed,60,0.00881057268722
+10,F,45,4,English,11,turtle,speed,0,0.326797385621
+10,F,45,4,English,11,turtle,speed,1,0.326797385621
+10,F,45,4,English,11,turtle,speed,5,0.326797385621
+10,F,45,4,English,11,turtle,speed,10,0.0196078431373
+10,F,45,4,English,11,turtle,speed,12,0.0
+10,F,45,4,English,11,turtle,speed,14,0.0
+10,F,45,4,English,11,turtle,speed,16,0.0
+10,F,45,4,English,11,turtle,speed,18,0.0
+10,F,45,4,English,11,turtle,speed,20,0.0
+10,F,45,4,English,11,turtle,speed,60,0.0
+10,F,45,4,English,12,hamster,height,0,1.0
+10,F,45,4,English,12,hamster,height,0.5,0.0
+10,F,45,4,English,12,hamster,height,4,0.0
+10,F,45,4,English,12,hamster,height,4.5,0.0
+10,F,45,4,English,12,hamster,height,5,0.0
+10,F,45,4,English,12,hamster,height,5.5,0.0
+10,F,45,4,English,12,hamster,height,6,0.0
+10,F,45,4,English,12,hamster,height,6.5,0.0
+10,F,45,4,English,12,hamster,height,7,0.0
+10,F,45,4,English,12,hamster,height,15,0.0
+11,M,45,4,English,1,cheetah,speed,0,0.105485232068
+11,M,45,4,English,1,cheetah,speed,1,0.105485232068
+11,M,45,4,English,1,cheetah,speed,5,0.105485232068
+11,M,45,4,English,1,cheetah,speed,10,0.105485232068
+11,M,45,4,English,1,cheetah,speed,12,0.105485232068
+11,M,45,4,English,1,cheetah,speed,14,0.105485232068
+11,M,45,4,English,1,cheetah,speed,16,0.105485232068
+11,M,45,4,English,1,cheetah,speed,18,0.104430379747
+11,M,45,4,English,1,cheetah,speed,20,0.105485232068
+11,M,45,4,English,1,cheetah,speed,60,0.0516877637131
+11,M,45,4,English,2,woman,weight,0,0.0
+11,M,45,4,English,2,woman,weight,10,0.00309119010819
+11,M,45,4,English,2,woman,weight,100,0.15455950541
+11,M,45,4,English,2,woman,weight,120,0.15455950541
+11,M,45,4,English,2,woman,weight,140,0.15455950541
+11,M,45,4,English,2,woman,weight,160,0.15455950541
+11,M,45,4,English,2,woman,weight,180,0.15455950541
+11,M,45,4,English,2,woman,weight,200,0.151468315301
+11,M,45,4,English,2,woman,weight,220,0.0726429675425
+11,M,45,4,English,2,woman,weight,10000,0.0
+11,M,45,4,English,3,man,weight,0,0.0
+11,M,45,4,English,3,man,weight,10,0.0
+11,M,45,4,English,3,man,weight,100,0.0377019748654
+11,M,45,4,English,3,man,weight,120,0.179533213645
+11,M,45,4,English,3,man,weight,140,0.179533213645
+11,M,45,4,English,3,man,weight,160,0.179533213645
+11,M,45,4,English,3,man,weight,180,0.179533213645
+11,M,45,4,English,3,man,weight,200,0.179533213645
+11,M,45,4,English,3,man,weight,220,0.064631956912
+11,M,45,4,English,3,man,weight,10000,0.0
+11,M,45,4,English,4,hamster,height,0,0.943396226415
+11,M,45,4,English,4,hamster,height,0.5,0.0188679245283
+11,M,45,4,English,4,hamster,height,4,0.0
+11,M,45,4,English,4,hamster,height,4.5,0.0
+11,M,45,4,English,4,hamster,height,5,0.0188679245283
+11,M,45,4,English,4,hamster,height,5.5,0.0
+11,M,45,4,English,4,hamster,height,6,0.0
+11,M,45,4,English,4,hamster,height,6.5,0.0188679245283
+11,M,45,4,English,4,hamster,height,7,0.0
+11,M,45,4,English,4,hamster,height,15,0.0
+11,M,45,4,English,5,bird,weight,0,0.990099009901
+11,M,45,4,English,5,bird,weight,10,0.0
+11,M,45,4,English,5,bird,weight,100,0.0
+11,M,45,4,English,5,bird,weight,120,0.0
+11,M,45,4,English,5,bird,weight,140,0.0
+11,M,45,4,English,5,bird,weight,160,0.0
+11,M,45,4,English,5,bird,weight,180,0.0
+11,M,45,4,English,5,bird,weight,200,0.0
+11,M,45,4,English,5,bird,weight,220,0.0
+11,M,45,4,English,5,bird,weight,10000,0.00990099009901
+11,M,45,4,English,6,elephant,weight,0,0.0
+11,M,45,4,English,6,elephant,weight,10,0.0
+11,M,45,4,English,6,elephant,weight,100,0.0
+11,M,45,4,English,6,elephant,weight,120,0.0
+11,M,45,4,English,6,elephant,weight,140,0.0
+11,M,45,4,English,6,elephant,weight,160,0.0
+11,M,45,4,English,6,elephant,weight,180,0.0
+11,M,45,4,English,6,elephant,weight,200,0.0
+11,M,45,4,English,6,elephant,weight,220,0.476439790576
+11,M,45,4,English,6,elephant,weight,10000,0.523560209424
+11,M,45,4,English,7,turtle,speed,0,0.952380952381
+11,M,45,4,English,7,turtle,speed,1,0.047619047619
+11,M,45,4,English,7,turtle,speed,5,0.0
+11,M,45,4,English,7,turtle,speed,10,0.0
+11,M,45,4,English,7,turtle,speed,12,0.0
+11,M,45,4,English,7,turtle,speed,14,0.0
+11,M,45,4,English,7,turtle,speed,16,0.0
+11,M,45,4,English,7,turtle,speed,18,0.0
+11,M,45,4,English,7,turtle,speed,20,0.0
+11,M,45,4,English,7,turtle,speed,60,0.0
+11,M,45,4,English,8,man,speed,0,0.289855072464
+11,M,45,4,English,8,man,speed,1,0.289855072464
+11,M,45,4,English,8,man,speed,5,0.289855072464
+11,M,45,4,English,8,man,speed,10,0.130434782609
+11,M,45,4,English,8,man,speed,12,0.0
+11,M,45,4,English,8,man,speed,14,0.0
+11,M,45,4,English,8,man,speed,16,0.0
+11,M,45,4,English,8,man,speed,18,0.0
+11,M,45,4,English,8,man,speed,20,0.0
+11,M,45,4,English,8,man,speed,60,0.0
+11,M,45,4,English,9,woman,speed,0,0.487684729064
+11,M,45,4,English,9,woman,speed,1,0.487684729064
+11,M,45,4,English,9,woman,speed,5,0.0246305418719
+11,M,45,4,English,9,woman,speed,10,0.0
+11,M,45,4,English,9,woman,speed,12,0.0
+11,M,45,4,English,9,woman,speed,14,0.0
+11,M,45,4,English,9,woman,speed,16,0.0
+11,M,45,4,English,9,woman,speed,18,0.0
+11,M,45,4,English,9,woman,speed,20,0.0
+11,M,45,4,English,9,woman,speed,60,0.0
+11,M,45,4,English,10,giraffe,height,0,0.0
+11,M,45,4,English,10,giraffe,height,0.5,0.0
+11,M,45,4,English,10,giraffe,height,4,0.0
+11,M,45,4,English,10,giraffe,height,4.5,0.0
+11,M,45,4,English,10,giraffe,height,5,0.0
+11,M,45,4,English,10,giraffe,height,5.5,0.0
+11,M,45,4,English,10,giraffe,height,6,0.0
+11,M,45,4,English,10,giraffe,height,6.5,0.0
+11,M,45,4,English,10,giraffe,height,7,0.5
+11,M,45,4,English,10,giraffe,height,15,0.5
+11,M,45,4,English,11,man,height,0,0.0
+11,M,45,4,English,11,man,height,0.5,0.0
+11,M,45,4,English,11,man,height,4,0.0379403794038
+11,M,45,4,English,11,man,height,4.5,0.143631436314
+11,M,45,4,English,11,man,height,5,0.149051490515
+11,M,45,4,English,11,man,height,5.5,0.271002710027
+11,M,45,4,English,11,man,height,6,0.205962059621
+11,M,45,4,English,11,man,height,6.5,0.186991869919
+11,M,45,4,English,11,man,height,7,0.00542005420054
+11,M,45,4,English,11,man,height,15,0.0
+11,M,45,4,English,12,woman,height,0,0.0
+11,M,45,4,English,12,woman,height,0.5,0.0
+11,M,45,4,English,12,woman,height,4,0.0537634408602
+11,M,45,4,English,12,woman,height,4.5,0.268817204301
+11,M,45,4,English,12,woman,height,5,0.318996415771
+11,M,45,4,English,12,woman,height,5.5,0.358422939068
+11,M,45,4,English,12,woman,height,6,0.0
+11,M,45,4,English,12,woman,height,6.5,0.0
+11,M,45,4,English,12,woman,height,7,0.0
+11,M,45,4,English,12,woman,height,15,0.0
+12,M,35,4,English,1,woman,height,0,0.0
+12,M,35,4,English,1,woman,height,0.5,0.0
+12,M,35,4,English,1,woman,height,4,0.0
+12,M,35,4,English,1,woman,height,4.5,0.283464566929
+12,M,35,4,English,1,woman,height,5,0.389763779528
+12,M,35,4,English,1,woman,height,5.5,0.275590551181
+12,M,35,4,English,1,woman,height,6,0.0511811023622
+12,M,35,4,English,1,woman,height,6.5,0.0
+12,M,35,4,English,1,woman,height,7,0.0
+12,M,35,4,English,1,woman,height,15,0.0
+12,M,35,4,English,2,turtle,speed,0,0.0
+12,M,35,4,English,2,turtle,speed,1,0.898148148148
+12,M,35,4,English,2,turtle,speed,5,0.0740740740741
+12,M,35,4,English,2,turtle,speed,10,0.0
+12,M,35,4,English,2,turtle,speed,12,0.0
+12,M,35,4,English,2,turtle,speed,14,0.0
+12,M,35,4,English,2,turtle,speed,16,0.0
+12,M,35,4,English,2,turtle,speed,18,0.0
+12,M,35,4,English,2,turtle,speed,20,0.00925925925926
+12,M,35,4,English,2,turtle,speed,60,0.0185185185185
+12,M,35,4,English,3,giraffe,height,0,0.0
+12,M,35,4,English,3,giraffe,height,0.5,0.0
+12,M,35,4,English,3,giraffe,height,4,0.0
+12,M,35,4,English,3,giraffe,height,4.5,0.0
+12,M,35,4,English,3,giraffe,height,5,0.0
+12,M,35,4,English,3,giraffe,height,5.5,0.12972972973
+12,M,35,4,English,3,giraffe,height,6,0.172972972973
+12,M,35,4,English,3,giraffe,height,6.5,0.172972972973
+12,M,35,4,English,3,giraffe,height,7,0.256756756757
+12,M,35,4,English,3,giraffe,height,15,0.267567567568
+12,M,35,4,English,4,man,speed,0,0.00398406374502
+12,M,35,4,English,4,man,speed,1,0.0737051792829
+12,M,35,4,English,4,man,speed,5,0.189243027888
+12,M,35,4,English,4,man,speed,10,0.197211155378
+12,M,35,4,English,4,man,speed,12,0.199203187251
+12,M,35,4,English,4,man,speed,14,0.135458167331
+12,M,35,4,English,4,man,speed,16,0.133466135458
+12,M,35,4,English,4,man,speed,18,0.0577689243028
+12,M,35,4,English,4,man,speed,20,0.00398406374502
+12,M,35,4,English,4,man,speed,60,0.00597609561753
+12,M,35,4,English,5,cheetah,speed,0,0.0056258790436
+12,M,35,4,English,5,cheetah,speed,1,0.0056258790436
+12,M,35,4,English,5,cheetah,speed,5,0.0618846694796
+12,M,35,4,English,5,cheetah,speed,10,0.0886075949367
+12,M,35,4,English,5,cheetah,speed,12,0.14064697609
+12,M,35,4,English,5,cheetah,speed,14,0.139240506329
+12,M,35,4,English,5,cheetah,speed,16,0.14064697609
+12,M,35,4,English,5,cheetah,speed,18,0.14064697609
+12,M,35,4,English,5,cheetah,speed,20,0.139240506329
+12,M,35,4,English,5,cheetah,speed,60,0.137834036568
+12,M,35,4,English,6,woman,speed,0,0.0036231884058
+12,M,35,4,English,6,woman,speed,1,0.0036231884058
+12,M,35,4,English,6,woman,speed,5,0.177536231884
+12,M,35,4,English,6,woman,speed,10,0.175724637681
+12,M,35,4,English,6,woman,speed,12,0.173913043478
+12,M,35,4,English,6,woman,speed,14,0.179347826087
+12,M,35,4,English,6,woman,speed,16,0.18115942029
+12,M,35,4,English,6,woman,speed,18,0.101449275362
+12,M,35,4,English,6,woman,speed,20,0.0018115942029
+12,M,35,4,English,6,woman,speed,60,0.0018115942029
+12,M,35,4,English,7,elephant,weight,0,0.0168776371308
+12,M,35,4,English,7,elephant,weight,10,0.0126582278481
+12,M,35,4,English,7,elephant,weight,100,0.0126582278481
+12,M,35,4,English,7,elephant,weight,120,0.0126582278481
+12,M,35,4,English,7,elephant,weight,140,0.0
+12,M,35,4,English,7,elephant,weight,160,0.0
+12,M,35,4,English,7,elephant,weight,180,0.0084388185654
+12,M,35,4,English,7,elephant,weight,200,0.105485232068
+12,M,35,4,English,7,elephant,weight,220,0.417721518987
+12,M,35,4,English,7,elephant,weight,10000,0.413502109705
+12,M,35,4,English,8,man,height,0,0.0
+12,M,35,4,English,8,man,height,0.5,0.0
+12,M,35,4,English,8,man,height,4,0.0477386934673
+12,M,35,4,English,8,man,height,4.5,0.170854271357
+12,M,35,4,English,8,man,height,5,0.238693467337
+12,M,35,4,English,8,man,height,5.5,0.238693467337
+12,M,35,4,English,8,man,height,6,0.218592964824
+12,M,35,4,English,8,man,height,6.5,0.0753768844221
+12,M,35,4,English,8,man,height,7,0.00753768844221
+12,M,35,4,English,8,man,height,15,0.00251256281407
+12,M,35,4,English,9,woman,weight,0,0.0
+12,M,35,4,English,9,woman,weight,10,0.0202702702703
+12,M,35,4,English,9,woman,weight,100,0.166666666667
+12,M,35,4,English,9,woman,weight,120,0.222972972973
+12,M,35,4,English,9,woman,weight,140,0.220720720721
+12,M,35,4,English,9,woman,weight,160,0.211711711712
+12,M,35,4,English,9,woman,weight,180,0.0990990990991
+12,M,35,4,English,9,woman,weight,200,0.0540540540541
+12,M,35,4,English,9,woman,weight,220,0.00225225225225
+12,M,35,4,English,9,woman,weight,10000,0.00225225225225
+12,M,35,4,English,10,man,weight,0,0.0040733197556
+12,M,35,4,English,10,man,weight,10,0.0020366598778
+12,M,35,4,English,10,man,weight,100,0.0183299389002
+12,M,35,4,English,10,man,weight,120,0.0977596741344
+12,M,35,4,English,10,man,weight,140,0.201629327902
+12,M,35,4,English,10,man,weight,160,0.199592668024
+12,M,35,4,English,10,man,weight,180,0.195519348269
+12,M,35,4,English,10,man,weight,200,0.20366598778
+12,M,35,4,English,10,man,weight,220,0.071283095723
+12,M,35,4,English,10,man,weight,10000,0.0061099796334
+12,M,35,4,English,11,hamster,height,0,0.0291262135922
+12,M,35,4,English,11,hamster,height,0.5,0.961165048544
+12,M,35,4,English,11,hamster,height,4,0.0
+12,M,35,4,English,11,hamster,height,4.5,0.0
+12,M,35,4,English,11,hamster,height,5,0.00970873786408
+12,M,35,4,English,11,hamster,height,5.5,0.0
+12,M,35,4,English,11,hamster,height,6,0.0
+12,M,35,4,English,11,hamster,height,6.5,0.0
+12,M,35,4,English,11,hamster,height,7,0.0
+12,M,35,4,English,11,hamster,height,15,0.0
+12,M,35,4,English,12,bird,weight,0,0.0
+12,M,35,4,English,12,bird,weight,10,1.0
+12,M,35,4,English,12,bird,weight,100,0.0
+12,M,35,4,English,12,bird,weight,120,0.0
+12,M,35,4,English,12,bird,weight,140,0.0
+12,M,35,4,English,12,bird,weight,160,0.0
+12,M,35,4,English,12,bird,weight,180,0.0
+12,M,35,4,English,12,bird,weight,200,0.0
+12,M,35,4,English,12,bird,weight,220,0.0
+12,M,35,4,English,12,bird,weight,10000,0.0
+13,M,35,6,english,1,giraffe,height,0,0.016393442623
+13,M,35,6,english,1,giraffe,height,0.5,0.00546448087432
+13,M,35,6,english,1,giraffe,height,4,0.00546448087432
+13,M,35,6,english,1,giraffe,height,4.5,0.0109289617486
+13,M,35,6,english,1,giraffe,height,5,0.0
+13,M,35,6,english,1,giraffe,height,5.5,0.0109289617486
+13,M,35,6,english,1,giraffe,height,6,0.016393442623
+13,M,35,6,english,1,giraffe,height,6.5,0.0218579234973
+13,M,35,6,english,1,giraffe,height,7,0.393442622951
+13,M,35,6,english,1,giraffe,height,15,0.51912568306
+13,M,35,6,english,2,man,height,0,0.008
+13,M,35,6,english,2,man,height,0.5,0.0533333333333
+13,M,35,6,english,2,man,height,4,0.0933333333333
+13,M,35,6,english,2,man,height,4.5,0.133333333333
+13,M,35,6,english,2,man,height,5,0.16
+13,M,35,6,english,2,man,height,5.5,0.264
+13,M,35,6,english,2,man,height,6,0.266666666667
+13,M,35,6,english,2,man,height,6.5,0.0186666666667
+13,M,35,6,english,2,man,height,7,0.0
+13,M,35,6,english,2,man,height,15,0.00266666666667
+13,M,35,6,english,3,elephant,weight,0,0.00724637681159
+13,M,35,6,english,3,elephant,weight,10,0.0
+13,M,35,6,english,3,elephant,weight,100,0.0144927536232
+13,M,35,6,english,3,elephant,weight,120,0.00724637681159
+13,M,35,6,english,3,elephant,weight,140,0.0144927536232
+13,M,35,6,english,3,elephant,weight,160,0.0144927536232
+13,M,35,6,english,3,elephant,weight,180,0.0
+13,M,35,6,english,3,elephant,weight,200,0.0144927536232
+13,M,35,6,english,3,elephant,weight,220,0.710144927536
+13,M,35,6,english,3,elephant,weight,10000,0.217391304348
+13,M,35,6,english,4,hamster,height,0,0.109375
+13,M,35,6,english,4,hamster,height,0.5,0.7734375
+13,M,35,6,english,4,hamster,height,4,0.0078125
+13,M,35,6,english,4,hamster,height,4.5,0.0
+13,M,35,6,english,4,hamster,height,5,0.015625
+13,M,35,6,english,4,hamster,height,5.5,0.015625
+13,M,35,6,english,4,hamster,height,6,0.015625
+13,M,35,6,english,4,hamster,height,6.5,0.0078125
+13,M,35,6,english,4,hamster,height,7,0.015625
+13,M,35,6,english,4,hamster,height,15,0.0390625
+13,M,35,6,english,5,turtle,speed,0,0.51871657754
+13,M,35,6,english,5,turtle,speed,1,0.395721925134
+13,M,35,6,english,5,turtle,speed,5,0.0106951871658
+13,M,35,6,english,5,turtle,speed,10,0.00534759358289
+13,M,35,6,english,5,turtle,speed,12,0.0106951871658
+13,M,35,6,english,5,turtle,speed,14,0.0160427807487
+13,M,35,6,english,5,turtle,speed,16,0.0106951871658
+13,M,35,6,english,5,turtle,speed,18,0.00534759358289
+13,M,35,6,english,5,turtle,speed,20,0.0106951871658
+13,M,35,6,english,5,turtle,speed,60,0.0160427807487
+13,M,35,6,english,6,woman,height,0,0.00576368876081
+13,M,35,6,english,6,woman,height,0.5,0.0518731988473
+13,M,35,6,english,6,woman,height,4,0.103746397695
+13,M,35,6,english,6,woman,height,4.5,0.14409221902
+13,M,35,6,english,6,woman,height,5,0.273775216138
+13,M,35,6,english,6,woman,height,5.5,0.250720461095
+13,M,35,6,english,6,woman,height,6,0.135446685879
+13,M,35,6,english,6,woman,height,6.5,0.0259365994236
+13,M,35,6,english,6,woman,height,7,0.00576368876081
+13,M,35,6,english,6,woman,height,15,0.0028818443804
+13,M,35,6,english,7,man,weight,0,0.00189035916824
+13,M,35,6,english,7,man,weight,10,0.0491493383743
+13,M,35,6,english,7,man,weight,100,0.0964083175803
+13,M,35,6,english,7,man,weight,120,0.120982986767
+13,M,35,6,english,7,man,weight,140,0.158790170132
+13,M,35,6,english,7,man,weight,160,0.183364839319
+13,M,35,6,english,7,man,weight,180,0.189035916824
+13,M,35,6,english,7,man,weight,200,0.141776937618
+13,M,35,6,english,7,man,weight,220,0.0586011342155
+13,M,35,6,english,7,man,weight,10000,0.0
+13,M,35,6,english,8,woman,weight,0,0.00215982721382
+13,M,35,6,english,8,woman,weight,10,0.10151187905
+13,M,35,6,english,8,woman,weight,100,0.142548596112
+13,M,35,6,english,8,woman,weight,120,0.183585313175
+13,M,35,6,english,8,woman,weight,140,0.172786177106
+13,M,35,6,english,8,woman,weight,160,0.159827213823
+13,M,35,6,english,8,woman,weight,180,0.105831533477
+13,M,35,6,english,8,woman,weight,200,0.0820734341253
+13,M,35,6,english,8,woman,weight,220,0.0475161987041
+13,M,35,6,english,8,woman,weight,10000,0.00215982721382
+13,M,35,6,english,9,cheetah,speed,0,0.00316455696203
+13,M,35,6,english,9,cheetah,speed,1,0.00316455696203
+13,M,35,6,english,9,cheetah,speed,5,0.00949367088608
+13,M,35,6,english,9,cheetah,speed,10,0.00632911392405
+13,M,35,6,english,9,cheetah,speed,12,0.101265822785
+13,M,35,6,english,9,cheetah,speed,14,0.129746835443
+13,M,35,6,english,9,cheetah,speed,16,0.177215189873
+13,M,35,6,english,9,cheetah,speed,18,0.253164556962
+13,M,35,6,english,9,cheetah,speed,20,0.310126582278
+13,M,35,6,english,9,cheetah,speed,60,0.00632911392405
+13,M,35,6,english,10,man,speed,0,0.0625
+13,M,35,6,english,10,man,speed,1,0.128472222222
+13,M,35,6,english,10,man,speed,5,0.201388888889
+13,M,35,6,english,10,man,speed,10,0.291666666667
+13,M,35,6,english,10,man,speed,12,0.15625
+13,M,35,6,english,10,man,speed,14,0.118055555556
+13,M,35,6,english,10,man,speed,16,0.0208333333333
+13,M,35,6,english,10,man,speed,18,0.00694444444444
+13,M,35,6,english,10,man,speed,20,0.00694444444444
+13,M,35,6,english,10,man,speed,60,0.00694444444444
+13,M,35,6,english,11,bird,weight,0,0.526315789474
+13,M,35,6,english,11,bird,weight,10,0.373684210526
+13,M,35,6,english,11,bird,weight,100,0.0157894736842
+13,M,35,6,english,11,bird,weight,120,0.0210526315789
+13,M,35,6,english,11,bird,weight,140,0.0105263157895
+13,M,35,6,english,11,bird,weight,160,0.0157894736842
+13,M,35,6,english,11,bird,weight,180,0.0105263157895
+13,M,35,6,english,11,bird,weight,200,0.00526315789474
+13,M,35,6,english,11,bird,weight,220,0.0157894736842
+13,M,35,6,english,11,bird,weight,10000,0.00526315789474
+13,M,35,6,english,12,woman,speed,0,0.010989010989
+13,M,35,6,english,12,woman,speed,1,0.148351648352
+13,M,35,6,english,12,woman,speed,5,0.285714285714
+13,M,35,6,english,12,woman,speed,10,0.379120879121
+13,M,35,6,english,12,woman,speed,12,0.126373626374
+13,M,35,6,english,12,woman,speed,14,0.010989010989
+13,M,35,6,english,12,woman,speed,16,0.00549450549451
+13,M,35,6,english,12,woman,speed,18,0.021978021978
+13,M,35,6,english,12,woman,speed,20,0.0
+13,M,35,6,english,12,woman,speed,60,0.010989010989
+14,F,35,4,english,1,woman,speed,0,0.153488372093
+14,F,35,4,english,1,woman,speed,1,0.325581395349
+14,F,35,4,english,1,woman,speed,5,0.339534883721
+14,F,35,4,english,1,woman,speed,10,0.120930232558
+14,F,35,4,english,1,woman,speed,12,0.0604651162791
+14,F,35,4,english,1,woman,speed,14,0.0
+14,F,35,4,english,1,woman,speed,16,0.0
+14,F,35,4,english,1,woman,speed,18,0.0
+14,F,35,4,english,1,woman,speed,20,0.0
+14,F,35,4,english,1,woman,speed,60,0.0
+14,F,35,4,english,2,woman,height,0,0.0
+14,F,35,4,english,2,woman,height,0.5,0.0188679245283
+14,F,35,4,english,2,woman,height,4,0.0603773584906
+14,F,35,4,english,2,woman,height,4.5,0.143396226415
+14,F,35,4,english,2,woman,height,5,0.256603773585
+14,F,35,4,english,2,woman,height,5.5,0.256603773585
+14,F,35,4,english,2,woman,height,6,0.181132075472
+14,F,35,4,english,2,woman,height,6.5,0.0603773584906
+14,F,35,4,english,2,woman,height,7,0.022641509434
+14,F,35,4,english,2,woman,height,15,0.0
+14,F,35,4,english,3,giraffe,height,0,0.0
+14,F,35,4,english,3,giraffe,height,0.5,0.0066889632107
+14,F,35,4,english,3,giraffe,height,4,0.0501672240803
+14,F,35,4,english,3,giraffe,height,4.5,0.0869565217391
+14,F,35,4,english,3,giraffe,height,5,0.103678929766
+14,F,35,4,english,3,giraffe,height,5.5,0.110367892977
+14,F,35,4,english,3,giraffe,height,6,0.133779264214
+14,F,35,4,english,3,giraffe,height,6.5,0.210702341137
+14,F,35,4,english,3,giraffe,height,7,0.264214046823
+14,F,35,4,english,3,giraffe,height,15,0.0334448160535
+14,F,35,4,english,4,woman,weight,0,0.0
+14,F,35,4,english,4,woman,weight,10,0.0398773006135
+14,F,35,4,english,4,woman,weight,100,0.113496932515
+14,F,35,4,english,4,woman,weight,120,0.162576687117
+14,F,35,4,english,4,woman,weight,140,0.193251533742
+14,F,35,4,english,4,woman,weight,160,0.193251533742
+14,F,35,4,english,4,woman,weight,180,0.153374233129
+14,F,35,4,english,4,woman,weight,200,0.110429447853
+14,F,35,4,english,4,woman,weight,220,0.0337423312883
+14,F,35,4,english,4,woman,weight,10000,0.0
+14,F,35,4,english,5,elephant,weight,0,0.0
+14,F,35,4,english,5,elephant,weight,10,0.0227272727273
+14,F,35,4,english,5,elephant,weight,100,0.0511363636364
+14,F,35,4,english,5,elephant,weight,120,0.0625
+14,F,35,4,english,5,elephant,weight,140,0.0681818181818
+14,F,35,4,english,5,elephant,weight,160,0.0681818181818
+14,F,35,4,english,5,elephant,weight,180,0.0795454545455
+14,F,35,4,english,5,elephant,weight,200,0.0909090909091
+14,F,35,4,english,5,elephant,weight,220,0.556818181818
+14,F,35,4,english,5,elephant,weight,10000,0.0
+14,F,35,4,english,6,hamster,height,0,1.0
+14,F,35,4,english,6,hamster,height,0.5,0.0
+14,F,35,4,english,6,hamster,height,4,0.0
+14,F,35,4,english,6,hamster,height,4.5,0.0
+14,F,35,4,english,6,hamster,height,5,0.0
+14,F,35,4,english,6,hamster,height,5.5,0.0
+14,F,35,4,english,6,hamster,height,6,0.0
+14,F,35,4,english,6,hamster,height,6.5,0.0
+14,F,35,4,english,6,hamster,height,7,0.0
+14,F,35,4,english,6,hamster,height,15,0.0
+14,F,35,4,english,7,man,weight,0,0.0
+14,F,35,4,english,7,man,weight,10,0.0185758513932
+14,F,35,4,english,7,man,weight,100,0.0278637770898
+14,F,35,4,english,7,man,weight,120,0.0712074303406
+14,F,35,4,english,7,man,weight,140,0.136222910217
+14,F,35,4,english,7,man,weight,160,0.201238390093
+14,F,35,4,english,7,man,weight,180,0.232198142415
+14,F,35,4,english,7,man,weight,200,0.207430340557
+14,F,35,4,english,7,man,weight,220,0.105263157895
+14,F,35,4,english,7,man,weight,10000,0.0
+14,F,35,4,english,8,bird,weight,0,0.819672131148
+14,F,35,4,english,8,bird,weight,10,0.0491803278689
+14,F,35,4,english,8,bird,weight,100,0.0409836065574
+14,F,35,4,english,8,bird,weight,120,0.0327868852459
+14,F,35,4,english,8,bird,weight,140,0.0245901639344
+14,F,35,4,english,8,bird,weight,160,0.0327868852459
+14,F,35,4,english,8,bird,weight,180,0.0
+14,F,35,4,english,8,bird,weight,200,0.0
+14,F,35,4,english,8,bird,weight,220,0.0
+14,F,35,4,english,8,bird,weight,10000,0.0
+14,F,35,4,english,9,cheetah,speed,0,0.0077519379845
+14,F,35,4,english,9,cheetah,speed,1,0.0116279069767
+14,F,35,4,english,9,cheetah,speed,5,0.0290697674419
+14,F,35,4,english,9,cheetah,speed,10,0.0794573643411
+14,F,35,4,english,9,cheetah,speed,12,0.139534883721
+14,F,35,4,english,9,cheetah,speed,14,0.170542635659
+14,F,35,4,english,9,cheetah,speed,16,0.176356589147
+14,F,35,4,english,9,cheetah,speed,18,0.184108527132
+14,F,35,4,english,9,cheetah,speed,20,0.184108527132
+14,F,35,4,english,9,cheetah,speed,60,0.0174418604651
+14,F,35,4,english,10,man,height,0,0.0
+14,F,35,4,english,10,man,height,0.5,0.0309278350515
+14,F,35,4,english,10,man,height,4,0.0378006872852
+14,F,35,4,english,10,man,height,4.5,0.085910652921
+14,F,35,4,english,10,man,height,5,0.240549828179
+14,F,35,4,english,10,man,height,5.5,0.257731958763
+14,F,35,4,english,10,man,height,6,0.19587628866
+14,F,35,4,english,10,man,height,6.5,0.134020618557
+14,F,35,4,english,10,man,height,7,0.0171821305842
+14,F,35,4,english,10,man,height,15,0.0
+14,F,35,4,english,11,man,speed,0,0.315254237288
+14,F,35,4,english,11,man,speed,1,0.308474576271
+14,F,35,4,english,11,man,speed,5,0.250847457627
+14,F,35,4,english,11,man,speed,10,0.071186440678
+14,F,35,4,english,11,man,speed,12,0.0372881355932
+14,F,35,4,english,11,man,speed,14,0.0169491525424
+14,F,35,4,english,11,man,speed,16,0.0
+14,F,35,4,english,11,man,speed,18,0.0
+14,F,35,4,english,11,man,speed,20,0.0
+14,F,35,4,english,11,man,speed,60,0.0
+14,F,35,4,english,12,turtle,speed,0,1.0
+14,F,35,4,english,12,turtle,speed,1,0.0
+14,F,35,4,english,12,turtle,speed,5,0.0
+14,F,35,4,english,12,turtle,speed,10,0.0
+14,F,35,4,english,12,turtle,speed,12,0.0
+14,F,35,4,english,12,turtle,speed,14,0.0
+14,F,35,4,english,12,turtle,speed,16,0.0
+14,F,35,4,english,12,turtle,speed,18,0.0
+14,F,35,4,english,12,turtle,speed,20,0.0
+14,F,35,4,english,12,turtle,speed,60,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,0,0.625
+15,F,25,4,English and Spanish,1,turtle,speed,1,0.375
+15,F,25,4,English and Spanish,1,turtle,speed,5,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,10,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,12,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,14,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,16,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,18,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,20,0.0
+15,F,25,4,English and Spanish,1,turtle,speed,60,0.0
+15,F,25,4,English and Spanish,2,woman,height,0,0.0
+15,F,25,4,English and Spanish,2,woman,height,0.5,0.064308681672
+15,F,25,4,English and Spanish,2,woman,height,4,0.11575562701
+15,F,25,4,English and Spanish,2,woman,height,4.5,0.173633440514
+15,F,25,4,English and Spanish,2,woman,height,5,0.263665594855
+15,F,25,4,English and Spanish,2,woman,height,5.5,0.266881028939
+15,F,25,4,English and Spanish,2,woman,height,6,0.064308681672
+15,F,25,4,English and Spanish,2,woman,height,6.5,0.0385852090032
+15,F,25,4,English and Spanish,2,woman,height,7,0.0128617363344
+15,F,25,4,English and Spanish,2,woman,height,15,0.0
+15,F,25,4,English and Spanish,3,man,weight,0,0.0
+15,F,25,4,English and Spanish,3,man,weight,10,0.023178807947
+15,F,25,4,English and Spanish,3,man,weight,100,0.0430463576159
+15,F,25,4,English and Spanish,3,man,weight,120,0.0827814569536
+15,F,25,4,English and Spanish,3,man,weight,140,0.17880794702
+15,F,25,4,English and Spanish,3,man,weight,160,0.278145695364
+15,F,25,4,English and Spanish,3,man,weight,180,0.264900662252
+15,F,25,4,English and Spanish,3,man,weight,200,0.109271523179
+15,F,25,4,English and Spanish,3,man,weight,220,0.0198675496689
+15,F,25,4,English and Spanish,3,man,weight,10000,0.0
+15,F,25,4,English and Spanish,4,giraffe,height,0,0.0
+15,F,25,4,English and Spanish,4,giraffe,height,0.5,0.0
+15,F,25,4,English and Spanish,4,giraffe,height,4,0.0177777777778
+15,F,25,4,English and Spanish,4,giraffe,height,4.5,0.0266666666667
+15,F,25,4,English and Spanish,4,giraffe,height,5,0.0311111111111
+15,F,25,4,English and Spanish,4,giraffe,height,5.5,0.0533333333333
+15,F,25,4,English and Spanish,4,giraffe,height,6,0.0444444444444
+15,F,25,4,English and Spanish,4,giraffe,height,6.5,0.195555555556
+15,F,25,4,English and Spanish,4,giraffe,height,7,0.306666666667
+15,F,25,4,English and Spanish,4,giraffe,height,15,0.324444444444
+15,F,25,4,English and Spanish,5,bird,weight,0,0.505617977528
+15,F,25,4,English and Spanish,5,bird,weight,10,0.494382022472
+15,F,25,4,English and Spanish,5,bird,weight,100,0.0
+15,F,25,4,English and Spanish,5,bird,weight,120,0.0
+15,F,25,4,English and Spanish,5,bird,weight,140,0.0
+15,F,25,4,English and Spanish,5,bird,weight,160,0.0
+15,F,25,4,English and Spanish,5,bird,weight,180,0.0
+15,F,25,4,English and Spanish,5,bird,weight,200,0.0
+15,F,25,4,English and Spanish,5,bird,weight,220,0.0
+15,F,25,4,English and Spanish,5,bird,weight,10000,0.0
+15,F,25,4,English and Spanish,6,man,height,0,0.0
+15,F,25,4,English and Spanish,6,man,height,0.5,0.0486891385768
+15,F,25,4,English and Spanish,6,man,height,4,0.0561797752809
+15,F,25,4,English and Spanish,6,man,height,4.5,0.10861423221
+15,F,25,4,English and Spanish,6,man,height,5,0.187265917603
+15,F,25,4,English and Spanish,6,man,height,5.5,0.325842696629
+15,F,25,4,English and Spanish,6,man,height,6,0.153558052434
+15,F,25,4,English and Spanish,6,man,height,6.5,0.0973782771536
+15,F,25,4,English and Spanish,6,man,height,7,0.0224719101124
+15,F,25,4,English and Spanish,6,man,height,15,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,0,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,10,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,100,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,120,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,140,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,160,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,180,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,200,0.0
+15,F,25,4,English and Spanish,7,elephant,weight,220,1.0
+15,F,25,4,English and Spanish,7,elephant,weight,10000,0.0
+15,F,25,4,English and Spanish,8,man,speed,0,0.287356321839
+15,F,25,4,English and Spanish,8,man,speed,1,0.287356321839
+15,F,25,4,English and Spanish,8,man,speed,5,0.287356321839
+15,F,25,4,English and Spanish,8,man,speed,10,0.0862068965517
+15,F,25,4,English and Spanish,8,man,speed,12,0.0316091954023
+15,F,25,4,English and Spanish,8,man,speed,14,0.0201149425287
+15,F,25,4,English and Spanish,8,man,speed,16,0.0
+15,F,25,4,English and Spanish,8,man,speed,18,0.0
+15,F,25,4,English and Spanish,8,man,speed,20,0.0
+15,F,25,4,English and Spanish,8,man,speed,60,0.0
+15,F,25,4,English and Spanish,9,woman,speed,0,0.266666666667
+15,F,25,4,English and Spanish,9,woman,speed,1,0.266666666667
+15,F,25,4,English and Spanish,9,woman,speed,5,0.266666666667
+15,F,25,4,English and Spanish,9,woman,speed,10,0.16
+15,F,25,4,English and Spanish,9,woman,speed,12,0.04
+15,F,25,4,English and Spanish,9,woman,speed,14,0.0
+15,F,25,4,English and Spanish,9,woman,speed,16,0.0
+15,F,25,4,English and Spanish,9,woman,speed,18,0.0
+15,F,25,4,English and Spanish,9,woman,speed,20,0.0
+15,F,25,4,English and Spanish,9,woman,speed,60,0.0
+15,F,25,4,English and Spanish,10,cheetah,speed,0,0.110122358176
+15,F,25,4,English and Spanish,10,cheetah,speed,1,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,5,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,10,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,12,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,14,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,16,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,18,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,20,0.111234705228
+15,F,25,4,English and Spanish,10,cheetah,speed,60,0.0
+15,F,25,4,English and Spanish,11,woman,weight,0,0.0
+15,F,25,4,English and Spanish,11,woman,weight,10,0.0696517412935
+15,F,25,4,English and Spanish,11,woman,weight,100,0.139303482587
+15,F,25,4,English and Spanish,11,woman,weight,120,0.203980099502
+15,F,25,4,English and Spanish,11,woman,weight,140,0.203980099502
+15,F,25,4,English and Spanish,11,woman,weight,160,0.21144278607
+15,F,25,4,English and Spanish,11,woman,weight,180,0.109452736318
+15,F,25,4,English and Spanish,11,woman,weight,200,0.0373134328358
+15,F,25,4,English and Spanish,11,woman,weight,220,0.0248756218905
+15,F,25,4,English and Spanish,11,woman,weight,10000,0.0
+15,F,25,4,English and Spanish,12,hamster,height,0,1.0
+15,F,25,4,English and Spanish,12,hamster,height,0.5,0.0
+15,F,25,4,English and Spanish,12,hamster,height,4,0.0
+15,F,25,4,English and Spanish,12,hamster,height,4.5,0.0
+15,F,25,4,English and Spanish,12,hamster,height,5,0.0
+15,F,25,4,English and Spanish,12,hamster,height,5.5,0.0
+15,F,25,4,English and Spanish,12,hamster,height,6,0.0
+15,F,25,4,English and Spanish,12,hamster,height,6.5,0.0
+15,F,25,4,English and Spanish,12,hamster,height,7,0.0
+15,F,25,4,English and Spanish,12,hamster,height,15,0.0
+16,F,65,8,English,1,elephant,weight,0,0.0104166666667
+16,F,65,8,English,1,elephant,weight,10,0.00520833333333
+16,F,65,8,English,1,elephant,weight,100,0.0104166666667
+16,F,65,8,English,1,elephant,weight,120,0.0104166666667
+16,F,65,8,English,1,elephant,weight,140,0.0104166666667
+16,F,65,8,English,1,elephant,weight,160,0.0104166666667
+16,F,65,8,English,1,elephant,weight,180,0.00520833333333
+16,F,65,8,English,1,elephant,weight,200,0.0104166666667
+16,F,65,8,English,1,elephant,weight,220,0.463541666667
+16,F,65,8,English,1,elephant,weight,10000,0.463541666667
+16,F,65,8,English,2,hamster,height,0,0.759259259259
+16,F,65,8,English,2,hamster,height,0.5,0.037037037037
+16,F,65,8,English,2,hamster,height,4,0.037037037037
+16,F,65,8,English,2,hamster,height,4.5,0.0
+16,F,65,8,English,2,hamster,height,5,0.037037037037
+16,F,65,8,English,2,hamster,height,5.5,0.037037037037
+16,F,65,8,English,2,hamster,height,6,0.037037037037
+16,F,65,8,English,2,hamster,height,6.5,0.0185185185185
+16,F,65,8,English,2,hamster,height,7,0.0185185185185
+16,F,65,8,English,2,hamster,height,15,0.0185185185185
+16,F,65,8,English,3,man,speed,0,0.103991596639
+16,F,65,8,English,3,man,speed,1,0.102941176471
+16,F,65,8,English,3,man,speed,5,0.102941176471
+16,F,65,8,English,3,man,speed,10,0.100840336134
+16,F,65,8,English,3,man,speed,12,0.105042016807
+16,F,65,8,English,3,man,speed,14,0.101890756303
+16,F,65,8,English,3,man,speed,16,0.100840336134
+16,F,65,8,English,3,man,speed,18,0.101890756303
+16,F,65,8,English,3,man,speed,20,0.0745798319328
+16,F,65,8,English,3,man,speed,60,0.105042016807
+16,F,65,8,English,4,man,weight,0,0.0040899795501
+16,F,65,8,English,4,man,weight,10,0.0470347648262
+16,F,65,8,English,4,man,weight,100,0.0961145194274
+16,F,65,8,English,4,man,weight,120,0.122699386503
+16,F,65,8,English,4,man,weight,140,0.147239263804
+16,F,65,8,English,4,man,weight,160,0.153374233129
+16,F,65,8,English,4,man,weight,180,0.159509202454
+16,F,65,8,English,4,man,weight,200,0.161554192229
+16,F,65,8,English,4,man,weight,220,0.106339468303
+16,F,65,8,English,4,man,weight,10000,0.00204498977505
+16,F,65,8,English,5,turtle,speed,0,0.61935483871
+16,F,65,8,English,5,turtle,speed,1,0.296774193548
+16,F,65,8,English,5,turtle,speed,5,0.0129032258065
+16,F,65,8,English,5,turtle,speed,10,0.0129032258065
+16,F,65,8,English,5,turtle,speed,12,0.00645161290323
+16,F,65,8,English,5,turtle,speed,14,0.00645161290323
+16,F,65,8,English,5,turtle,speed,16,0.00645161290323
+16,F,65,8,English,5,turtle,speed,18,0.0193548387097
+16,F,65,8,English,5,turtle,speed,20,0.0129032258065
+16,F,65,8,English,5,turtle,speed,60,0.00645161290323
+16,F,65,8,English,6,woman,height,0,0.00639658848614
+16,F,65,8,English,6,woman,height,0.5,0.113006396588
+16,F,65,8,English,6,woman,height,4,0.136460554371
+16,F,65,8,English,6,woman,height,4.5,0.16631130064
+16,F,65,8,English,6,woman,height,5,0.174840085288
+16,F,65,8,English,6,woman,height,5.5,0.174840085288
+16,F,65,8,English,6,woman,height,6,0.147121535181
+16,F,65,8,English,6,woman,height,6.5,0.0639658848614
+16,F,65,8,English,6,woman,height,7,0.0170575692964
+16,F,65,8,English,6,woman,height,15,0.0
+16,F,65,8,English,7,woman,weight,0,0.00372439478585
+16,F,65,8,English,7,woman,weight,10,0.106145251397
+16,F,65,8,English,7,woman,weight,100,0.139664804469
+16,F,65,8,English,7,woman,weight,120,0.154562383613
+16,F,65,8,English,7,woman,weight,140,0.15270018622
+16,F,65,8,English,7,woman,weight,160,0.15270018622
+16,F,65,8,English,7,woman,weight,180,0.124767225326
+16,F,65,8,English,7,woman,weight,200,0.117318435754
+16,F,65,8,English,7,woman,weight,220,0.0465549348231
+16,F,65,8,English,7,woman,weight,10000,0.00186219739292
+16,F,65,8,English,8,woman,speed,0,0.00431965442765
+16,F,65,8,English,8,woman,speed,1,0.0928725701944
+16,F,65,8,English,8,woman,speed,5,0.107991360691
+16,F,65,8,English,8,woman,speed,10,0.125269978402
+16,F,65,8,English,8,woman,speed,12,0.133909287257
+16,F,65,8,English,8,woman,speed,14,0.142548596112
+16,F,65,8,English,8,woman,speed,16,0.149028077754
+16,F,65,8,English,8,woman,speed,18,0.144708423326
+16,F,65,8,English,8,woman,speed,20,0.0950323974082
+16,F,65,8,English,8,woman,speed,60,0.00431965442765
+16,F,65,8,English,9,bird,weight,0,0.342222222222
+16,F,65,8,English,9,bird,weight,10,0.342222222222
+16,F,65,8,English,9,bird,weight,100,0.231111111111
+16,F,65,8,English,9,bird,weight,120,0.00888888888889
+16,F,65,8,English,9,bird,weight,140,0.0177777777778
+16,F,65,8,English,9,bird,weight,160,0.0177777777778
+16,F,65,8,English,9,bird,weight,180,0.0133333333333
+16,F,65,8,English,9,bird,weight,200,0.00888888888889
+16,F,65,8,English,9,bird,weight,220,0.0133333333333
+16,F,65,8,English,9,bird,weight,10000,0.00444444444444
+16,F,65,8,English,10,man,height,0,0.00987654320988
+16,F,65,8,English,10,man,height,0.5,0.0617283950617
+16,F,65,8,English,10,man,height,4,0.0765432098765
+16,F,65,8,English,10,man,height,4.5,0.0987654320988
+16,F,65,8,English,10,man,height,5,0.120987654321
+16,F,65,8,English,10,man,height,5.5,0.20987654321
+16,F,65,8,English,10,man,height,6,0.19012345679
+16,F,65,8,English,10,man,height,6.5,0.19012345679
+16,F,65,8,English,10,man,height,7,0.0320987654321
+16,F,65,8,English,10,man,height,15,0.00987654320988
+16,F,65,8,English,11,giraffe,height,0,0.00647249190939
+16,F,65,8,English,11,giraffe,height,0.5,0.00323624595469
+16,F,65,8,English,11,giraffe,height,4,0.00647249190939
+16,F,65,8,English,11,giraffe,height,4.5,0.0550161812298
+16,F,65,8,English,11,giraffe,height,5,0.0647249190939
+16,F,65,8,English,11,giraffe,height,5.5,0.0776699029126
+16,F,65,8,English,11,giraffe,height,6,0.10355987055
+16,F,65,8,English,11,giraffe,height,6.5,0.148867313916
+16,F,65,8,English,11,giraffe,height,7,0.216828478964
+16,F,65,8,English,11,giraffe,height,15,0.31715210356
+16,F,65,8,English,12,cheetah,speed,0,0.0100502512563
+16,F,65,8,English,12,cheetah,speed,1,0.00502512562814
+16,F,65,8,English,12,cheetah,speed,5,0.0201005025126
+16,F,65,8,English,12,cheetah,speed,10,0.0201005025126
+16,F,65,8,English,12,cheetah,speed,12,0.0100502512563
+16,F,65,8,English,12,cheetah,speed,14,0.0201005025126
+16,F,65,8,English,12,cheetah,speed,16,0.0251256281407
+16,F,65,8,English,12,cheetah,speed,18,0.100502512563
+16,F,65,8,English,12,cheetah,speed,20,0.396984924623
+16,F,65,8,English,12,cheetah,speed,60,0.391959798995
+17,F,35,4,English,1,elephant,weight,0,0.0
+17,F,35,4,English,1,elephant,weight,10,0.0172413793103
+17,F,35,4,English,1,elephant,weight,100,0.00574712643678
+17,F,35,4,English,1,elephant,weight,120,0.0114942528736
+17,F,35,4,English,1,elephant,weight,140,0.0172413793103
+17,F,35,4,English,1,elephant,weight,160,0.0287356321839
+17,F,35,4,English,1,elephant,weight,180,0.0
+17,F,35,4,English,1,elephant,weight,200,0.0
+17,F,35,4,English,1,elephant,weight,220,0.545977011494
+17,F,35,4,English,1,elephant,weight,10000,0.373563218391
+17,F,35,4,English,2,man,weight,0,0.00497512437811
+17,F,35,4,English,2,man,weight,10,0.0149253731343
+17,F,35,4,English,2,man,weight,100,0.044776119403
+17,F,35,4,English,2,man,weight,120,0.0870646766169
+17,F,35,4,English,2,man,weight,140,0.121890547264
+17,F,35,4,English,2,man,weight,160,0.179104477612
+17,F,35,4,English,2,man,weight,180,0.18407960199
+17,F,35,4,English,2,man,weight,200,0.181592039801
+17,F,35,4,English,2,man,weight,220,0.181592039801
+17,F,35,4,English,2,man,weight,10000,0.0
+17,F,35,4,English,3,bird,weight,0,0.446327683616
+17,F,35,4,English,3,bird,weight,10,0.237288135593
+17,F,35,4,English,3,bird,weight,100,0.0790960451977
+17,F,35,4,English,3,bird,weight,120,0.0395480225989
+17,F,35,4,English,3,bird,weight,140,0.045197740113
+17,F,35,4,English,3,bird,weight,160,0.0564971751412
+17,F,35,4,English,3,bird,weight,180,0.045197740113
+17,F,35,4,English,3,bird,weight,200,0.0282485875706
+17,F,35,4,English,3,bird,weight,220,0.0225988700565
+17,F,35,4,English,3,bird,weight,10000,0.0
+17,F,35,4,English,4,woman,height,0,0.0157068062827
+17,F,35,4,English,4,woman,height,0.5,0.0418848167539
+17,F,35,4,English,4,woman,height,4,0.0366492146597
+17,F,35,4,English,4,woman,height,4.5,0.0785340314136
+17,F,35,4,English,4,woman,height,5,0.439790575916
+17,F,35,4,English,4,woman,height,5.5,0.329842931937
+17,F,35,4,English,4,woman,height,6,0.020942408377
+17,F,35,4,English,4,woman,height,6.5,0.0261780104712
+17,F,35,4,English,4,woman,height,7,0.0104712041885
+17,F,35,4,English,4,woman,height,15,0.0
+17,F,35,4,English,5,man,speed,0,0.343642611684
+17,F,35,4,English,5,man,speed,1,0.343642611684
+17,F,35,4,English,5,man,speed,5,0.116838487973
+17,F,35,4,English,5,man,speed,10,0.116838487973
+17,F,35,4,English,5,man,speed,12,0.0446735395189
+17,F,35,4,English,5,man,speed,14,0.0240549828179
+17,F,35,4,English,5,man,speed,16,0.00687285223368
+17,F,35,4,English,5,man,speed,18,0.0
+17,F,35,4,English,5,man,speed,20,0.00343642611684
+17,F,35,4,English,5,man,speed,60,0.0
+17,F,35,4,English,6,hamster,height,0,0.567567567568
+17,F,35,4,English,6,hamster,height,0.5,0.432432432432
+17,F,35,4,English,6,hamster,height,4,0.0
+17,F,35,4,English,6,hamster,height,4.5,0.0
+17,F,35,4,English,6,hamster,height,5,0.0
+17,F,35,4,English,6,hamster,height,5.5,0.0
+17,F,35,4,English,6,hamster,height,6,0.0
+17,F,35,4,English,6,hamster,height,6.5,0.0
+17,F,35,4,English,6,hamster,height,7,0.0
+17,F,35,4,English,6,hamster,height,15,0.0
+17,F,35,4,English,7,cheetah,speed,0,0.134952766532
+17,F,35,4,English,7,cheetah,speed,1,0.134952766532
+17,F,35,4,English,7,cheetah,speed,5,0.134952766532
+17,F,35,4,English,7,cheetah,speed,10,0.134952766532
+17,F,35,4,English,7,cheetah,speed,12,0.134952766532
+17,F,35,4,English,7,cheetah,speed,14,0.134952766532
+17,F,35,4,English,7,cheetah,speed,16,0.0998650472335
+17,F,35,4,English,7,cheetah,speed,18,0.080971659919
+17,F,35,4,English,7,cheetah,speed,20,0.00944669365722
+17,F,35,4,English,7,cheetah,speed,60,0.0
+17,F,35,4,English,8,giraffe,height,0,0.0
+17,F,35,4,English,8,giraffe,height,0.5,0.0
+17,F,35,4,English,8,giraffe,height,4,0.0
+17,F,35,4,English,8,giraffe,height,4.5,0.0
+17,F,35,4,English,8,giraffe,height,5,0.0
+17,F,35,4,English,8,giraffe,height,5.5,0.0
+17,F,35,4,English,8,giraffe,height,6,0.240356083086
+17,F,35,4,English,8,giraffe,height,6.5,0.234421364985
+17,F,35,4,English,8,giraffe,height,7,0.228486646884
+17,F,35,4,English,8,giraffe,height,15,0.296735905045
+17,F,35,4,English,9,woman,weight,0,0.0
+17,F,35,4,English,9,woman,weight,10,0.0470588235294
+17,F,35,4,English,9,woman,weight,100,0.108235294118
+17,F,35,4,English,9,woman,weight,120,0.167058823529
+17,F,35,4,English,9,woman,weight,140,0.167058823529
+17,F,35,4,English,9,woman,weight,160,0.164705882353
+17,F,35,4,English,9,woman,weight,180,0.171764705882
+17,F,35,4,English,9,woman,weight,200,0.0847058823529
+17,F,35,4,English,9,woman,weight,220,0.0894117647059
+17,F,35,4,English,9,woman,weight,10000,0.0
+17,F,35,4,English,10,turtle,speed,0,0.0
+17,F,35,4,English,10,turtle,speed,1,1.0
+17,F,35,4,English,10,turtle,speed,5,0.0
+17,F,35,4,English,10,turtle,speed,10,0.0
+17,F,35,4,English,10,turtle,speed,12,0.0
+17,F,35,4,English,10,turtle,speed,14,0.0
+17,F,35,4,English,10,turtle,speed,16,0.0
+17,F,35,4,English,10,turtle,speed,18,0.0
+17,F,35,4,English,10,turtle,speed,20,0.0
+17,F,35,4,English,10,turtle,speed,60,0.0
+17,F,35,4,English,11,woman,speed,0,0.0
+17,F,35,4,English,11,woman,speed,1,0.284345047923
+17,F,35,4,English,11,woman,speed,5,0.281150159744
+17,F,35,4,English,11,woman,speed,10,0.188498402556
+17,F,35,4,English,11,woman,speed,12,0.115015974441
+17,F,35,4,English,11,woman,speed,14,0.0638977635783
+17,F,35,4,English,11,woman,speed,16,0.0670926517572
+17,F,35,4,English,11,woman,speed,18,0.0
+17,F,35,4,English,11,woman,speed,20,0.0
+17,F,35,4,English,11,woman,speed,60,0.0
+17,F,35,4,English,12,man,height,0,0.0
+17,F,35,4,English,12,man,height,0.5,0.0265486725664
+17,F,35,4,English,12,man,height,4,0.0265486725664
+17,F,35,4,English,12,man,height,4.5,0.0265486725664
+17,F,35,4,English,12,man,height,5,0.115044247788
+17,F,35,4,English,12,man,height,5.5,0.389380530973
+17,F,35,4,English,12,man,height,6,0.314159292035
+17,F,35,4,English,12,man,height,6.5,0.0840707964602
+17,F,35,4,English,12,man,height,7,0.0176991150442
+17,F,35,4,English,12,man,height,15,0.0
+18,M,25,4,English,1,woman,speed,0,0.325732899023
+18,M,25,4,English,1,woman,speed,1,0.325732899023
+18,M,25,4,English,1,woman,speed,5,0.14657980456
+18,M,25,4,English,1,woman,speed,10,0.0846905537459
+18,M,25,4,English,1,woman,speed,12,0.071661237785
+18,M,25,4,English,1,woman,speed,14,0.0325732899023
+18,M,25,4,English,1,woman,speed,16,0.0130293159609
+18,M,25,4,English,1,woman,speed,18,0.0
+18,M,25,4,English,1,woman,speed,20,0.0
+18,M,25,4,English,1,woman,speed,60,0.0
+18,M,25,4,English,2,man,height,0,0.168067226891
+18,M,25,4,English,2,man,height,0.5,0.168067226891
+18,M,25,4,English,2,man,height,4,0.168067226891
+18,M,25,4,English,2,man,height,4.5,0.168067226891
+18,M,25,4,English,2,man,height,5,0.146218487395
+18,M,25,4,English,2,man,height,5.5,0.10756302521
+18,M,25,4,English,2,man,height,6,0.0571428571429
+18,M,25,4,English,2,man,height,6.5,0.0151260504202
+18,M,25,4,English,2,man,height,7,0.00168067226891
+18,M,25,4,English,2,man,height,15,0.0
+18,M,25,4,English,3,hamster,height,0,1.0
+18,M,25,4,English,3,hamster,height,0.5,0.0
+18,M,25,4,English,3,hamster,height,4,0.0
+18,M,25,4,English,3,hamster,height,4.5,0.0
+18,M,25,4,English,3,hamster,height,5,0.0
+18,M,25,4,English,3,hamster,height,5.5,0.0
+18,M,25,4,English,3,hamster,height,6,0.0
+18,M,25,4,English,3,hamster,height,6.5,0.0
+18,M,25,4,English,3,hamster,height,7,0.0
+18,M,25,4,English,3,hamster,height,15,0.0
+18,M,25,4,English,4,man,speed,0,0.235849056604
+18,M,25,4,English,4,man,speed,1,0.235849056604
+18,M,25,4,English,4,man,speed,5,0.191037735849
+18,M,25,4,English,4,man,speed,10,0.153301886792
+18,M,25,4,English,4,man,speed,12,0.0872641509434
+18,M,25,4,English,4,man,speed,14,0.0495283018868
+18,M,25,4,English,4,man,speed,16,0.0259433962264
+18,M,25,4,English,4,man,speed,18,0.0165094339623
+18,M,25,4,English,4,man,speed,20,0.00471698113208
+18,M,25,4,English,4,man,speed,60,0.0
+18,M,25,4,English,5,woman,height,0,0.0
+18,M,25,4,English,5,woman,height,0.5,0.0
+18,M,25,4,English,5,woman,height,4,0.038961038961
+18,M,25,4,English,5,woman,height,4.5,0.103896103896
+18,M,25,4,English,5,woman,height,5,0.422077922078
+18,M,25,4,English,5,woman,height,5.5,0.337662337662
+18,M,25,4,English,5,woman,height,6,0.0649350649351
+18,M,25,4,English,5,woman,height,6.5,0.0324675324675
+18,M,25,4,English,5,woman,height,7,0.0
+18,M,25,4,English,5,woman,height,15,0.0
+18,M,25,4,English,6,elephant,weight,0,0.0232558139535
+18,M,25,4,English,6,elephant,weight,10,0.0077519379845
+18,M,25,4,English,6,elephant,weight,100,0.0
+18,M,25,4,English,6,elephant,weight,120,0.0232558139535
+18,M,25,4,English,6,elephant,weight,140,0.031007751938
+18,M,25,4,English,6,elephant,weight,160,0.015503875969
+18,M,25,4,English,6,elephant,weight,180,0.0232558139535
+18,M,25,4,English,6,elephant,weight,200,0.0232558139535
+18,M,25,4,English,6,elephant,weight,220,0.68992248062
+18,M,25,4,English,6,elephant,weight,10000,0.162790697674
+18,M,25,4,English,7,woman,weight,0,0.0
+18,M,25,4,English,7,woman,weight,10,0.112359550562
+18,M,25,4,English,7,woman,weight,100,0.280898876404
+18,M,25,4,English,7,woman,weight,120,0.228464419476
+18,M,25,4,English,7,woman,weight,140,0.183520599251
+18,M,25,4,English,7,woman,weight,160,0.0973782771536
+18,M,25,4,English,7,woman,weight,180,0.0524344569288
+18,M,25,4,English,7,woman,weight,200,0.0299625468165
+18,M,25,4,English,7,woman,weight,220,0.0149812734082
+18,M,25,4,English,7,woman,weight,10000,0.0
+18,M,25,4,English,8,man,weight,0,0.0
+18,M,25,4,English,8,man,weight,10,0.0
+18,M,25,4,English,8,man,weight,100,0.0340557275542
+18,M,25,4,English,8,man,weight,120,0.0866873065015
+18,M,25,4,English,8,man,weight,140,0.133126934985
+18,M,25,4,English,8,man,weight,160,0.266253869969
+18,M,25,4,English,8,man,weight,180,0.222910216718
+18,M,25,4,English,8,man,weight,200,0.198142414861
+18,M,25,4,English,8,man,weight,220,0.0588235294118
+18,M,25,4,English,8,man,weight,10000,0.0
+18,M,25,4,English,9,giraffe,height,0,0.0
+18,M,25,4,English,9,giraffe,height,0.5,0.0
+18,M,25,4,English,9,giraffe,height,4,0.0
+18,M,25,4,English,9,giraffe,height,4.5,0.0
+18,M,25,4,English,9,giraffe,height,5,0.0
+18,M,25,4,English,9,giraffe,height,5.5,0.00806451612903
+18,M,25,4,English,9,giraffe,height,6,0.0322580645161
+18,M,25,4,English,9,giraffe,height,6.5,0.0403225806452
+18,M,25,4,English,9,giraffe,height,7,0.177419354839
+18,M,25,4,English,9,giraffe,height,15,0.741935483871
+18,M,25,4,English,10,cheetah,speed,0,0.1
+18,M,25,4,English,10,cheetah,speed,1,0.1
+18,M,25,4,English,10,cheetah,speed,5,0.1
+18,M,25,4,English,10,cheetah,speed,10,0.1
+18,M,25,4,English,10,cheetah,speed,12,0.1
+18,M,25,4,English,10,cheetah,speed,14,0.1
+18,M,25,4,English,10,cheetah,speed,16,0.1
+18,M,25,4,English,10,cheetah,speed,18,0.1
+18,M,25,4,English,10,cheetah,speed,20,0.1
+18,M,25,4,English,10,cheetah,speed,60,0.1
+18,M,25,4,English,11,bird,weight,0,0.537572254335
+18,M,25,4,English,11,bird,weight,10,0.416184971098
+18,M,25,4,English,11,bird,weight,100,0.0462427745665
+18,M,25,4,English,11,bird,weight,120,0.0
+18,M,25,4,English,11,bird,weight,140,0.0
+18,M,25,4,English,11,bird,weight,160,0.0
+18,M,25,4,English,11,bird,weight,180,0.0
+18,M,25,4,English,11,bird,weight,200,0.0
+18,M,25,4,English,11,bird,weight,220,0.0
+18,M,25,4,English,11,bird,weight,10000,0.0
+18,M,25,4,English,12,turtle,speed,0,0.566037735849
+18,M,25,4,English,12,turtle,speed,1,0.421383647799
+18,M,25,4,English,12,turtle,speed,5,0.0
+18,M,25,4,English,12,turtle,speed,10,0.0
+18,M,25,4,English,12,turtle,speed,12,0.0
+18,M,25,4,English,12,turtle,speed,14,0.0
+18,M,25,4,English,12,turtle,speed,16,0.0125786163522
+18,M,25,4,English,12,turtle,speed,18,0.0
+18,M,25,4,English,12,turtle,speed,20,0.0
+18,M,25,4,English,12,turtle,speed,60,0.0
+19,M,35,4,English,1,woman,height,0,0.0
+19,M,35,4,English,1,woman,height,0.5,0.0564516129032
+19,M,35,4,English,1,woman,height,4,0.0860215053763
+19,M,35,4,English,1,woman,height,4.5,0.131720430108
+19,M,35,4,English,1,woman,height,5,0.166666666667
+19,M,35,4,English,1,woman,height,5.5,0.193548387097
+19,M,35,4,English,1,woman,height,6,0.174731182796
+19,M,35,4,English,1,woman,height,6.5,0.118279569892
+19,M,35,4,English,1,woman,height,7,0.0725806451613
+19,M,35,4,English,1,woman,height,15,0.0
+19,M,35,4,English,2,woman,weight,0,0.0
+19,M,35,4,English,2,woman,weight,10,0.0945945945946
+19,M,35,4,English,2,woman,weight,100,0.119369369369
+19,M,35,4,English,2,woman,weight,120,0.137387387387
+19,M,35,4,English,2,woman,weight,140,0.13963963964
+19,M,35,4,English,2,woman,weight,160,0.148648648649
+19,M,35,4,English,2,woman,weight,180,0.135135135135
+19,M,35,4,English,2,woman,weight,200,0.126126126126
+19,M,35,4,English,2,woman,weight,220,0.0990990990991
+19,M,35,4,English,2,woman,weight,10000,0.0
+19,M,35,4,English,3,turtle,speed,0,0.443113772455
+19,M,35,4,English,3,turtle,speed,1,0.377245508982
+19,M,35,4,English,3,turtle,speed,5,0.14371257485
+19,M,35,4,English,3,turtle,speed,10,0.0359281437126
+19,M,35,4,English,3,turtle,speed,12,0.0
+19,M,35,4,English,3,turtle,speed,14,0.0
+19,M,35,4,English,3,turtle,speed,16,0.0
+19,M,35,4,English,3,turtle,speed,18,0.0
+19,M,35,4,English,3,turtle,speed,20,0.0
+19,M,35,4,English,3,turtle,speed,60,0.0
+19,M,35,4,English,4,hamster,height,0,1.0
+19,M,35,4,English,4,hamster,height,0.5,0.0
+19,M,35,4,English,4,hamster,height,4,0.0
+19,M,35,4,English,4,hamster,height,4.5,0.0
+19,M,35,4,English,4,hamster,height,5,0.0
+19,M,35,4,English,4,hamster,height,5.5,0.0
+19,M,35,4,English,4,hamster,height,6,0.0
+19,M,35,4,English,4,hamster,height,6.5,0.0
+19,M,35,4,English,4,hamster,height,7,0.0
+19,M,35,4,English,4,hamster,height,15,0.0
+19,M,35,4,English,5,man,speed,0,0.0742857142857
+19,M,35,4,English,5,man,speed,1,0.0971428571429
+19,M,35,4,English,5,man,speed,5,0.133333333333
+19,M,35,4,English,5,man,speed,10,0.154285714286
+19,M,35,4,English,5,man,speed,12,0.142857142857
+19,M,35,4,English,5,man,speed,14,0.125714285714
+19,M,35,4,English,5,man,speed,16,0.108571428571
+19,M,35,4,English,5,man,speed,18,0.0952380952381
+19,M,35,4,English,5,man,speed,20,0.0685714285714
+19,M,35,4,English,5,man,speed,60,0.0
+19,M,35,4,English,6,elephant,weight,0,0.0
+19,M,35,4,English,6,elephant,weight,10,0.0
+19,M,35,4,English,6,elephant,weight,100,0.0
+19,M,35,4,English,6,elephant,weight,120,0.0
+19,M,35,4,English,6,elephant,weight,140,0.0
+19,M,35,4,English,6,elephant,weight,160,0.0
+19,M,35,4,English,6,elephant,weight,180,0.0
+19,M,35,4,English,6,elephant,weight,200,0.0
+19,M,35,4,English,6,elephant,weight,220,1.0
+19,M,35,4,English,6,elephant,weight,10000,0.0
+19,M,35,4,English,7,man,weight,0,0.0
+19,M,35,4,English,7,man,weight,10,0.0477223427332
+19,M,35,4,English,7,man,weight,100,0.0997830802603
+19,M,35,4,English,7,man,weight,120,0.140997830803
+19,M,35,4,English,7,man,weight,140,0.154013015184
+19,M,35,4,English,7,man,weight,160,0.158351409978
+19,M,35,4,English,7,man,weight,180,0.14967462039
+19,M,35,4,English,7,man,weight,200,0.130151843818
+19,M,35,4,English,7,man,weight,220,0.119305856833
+19,M,35,4,English,7,man,weight,10000,0.0
+19,M,35,4,English,8,cheetah,speed,0,0.030612244898
+19,M,35,4,English,8,cheetah,speed,1,0.0527210884354
+19,M,35,4,English,8,cheetah,speed,5,0.0748299319728
+19,M,35,4,English,8,cheetah,speed,10,0.102040816327
+19,M,35,4,English,8,cheetah,speed,12,0.115646258503
+19,M,35,4,English,8,cheetah,speed,14,0.124149659864
+19,M,35,4,English,8,cheetah,speed,16,0.130952380952
+19,M,35,4,English,8,cheetah,speed,18,0.12074829932
+19,M,35,4,English,8,cheetah,speed,20,0.122448979592
+19,M,35,4,English,8,cheetah,speed,60,0.125850340136
+19,M,35,4,English,9,man,height,0,0.0
+19,M,35,4,English,9,man,height,0.5,0.0
+19,M,35,4,English,9,man,height,4,0.0344827586207
+19,M,35,4,English,9,man,height,4.5,0.0793103448276
+19,M,35,4,English,9,man,height,5,0.137931034483
+19,M,35,4,English,9,man,height,5.5,0.220689655172
+19,M,35,4,English,9,man,height,6,0.210344827586
+19,M,35,4,English,9,man,height,6.5,0.168965517241
+19,M,35,4,English,9,man,height,7,0.134482758621
+19,M,35,4,English,9,man,height,15,0.0137931034483
+19,M,35,4,English,10,giraffe,height,0,0.0
+19,M,35,4,English,10,giraffe,height,0.5,0.0
+19,M,35,4,English,10,giraffe,height,4,0.0
+19,M,35,4,English,10,giraffe,height,4.5,0.0
+19,M,35,4,English,10,giraffe,height,5,0.0
+19,M,35,4,English,10,giraffe,height,5.5,0.0
+19,M,35,4,English,10,giraffe,height,6,0.0
+19,M,35,4,English,10,giraffe,height,6.5,0.0
+19,M,35,4,English,10,giraffe,height,7,0.574712643678
+19,M,35,4,English,10,giraffe,height,15,0.425287356322
+19,M,35,4,English,11,bird,weight,0,0.746268656716
+19,M,35,4,English,11,bird,weight,10,0.253731343284
+19,M,35,4,English,11,bird,weight,100,0.0
+19,M,35,4,English,11,bird,weight,120,0.0
+19,M,35,4,English,11,bird,weight,140,0.0
+19,M,35,4,English,11,bird,weight,160,0.0
+19,M,35,4,English,11,bird,weight,180,0.0
+19,M,35,4,English,11,bird,weight,200,0.0
+19,M,35,4,English,11,bird,weight,220,0.0
+19,M,35,4,English,11,bird,weight,10000,0.0
+19,M,35,4,English,12,woman,speed,0,0.0833333333333
+19,M,35,4,English,12,woman,speed,1,0.0990990990991
+19,M,35,4,English,12,woman,speed,5,0.11036036036
+19,M,35,4,English,12,woman,speed,10,0.130630630631
+19,M,35,4,English,12,woman,speed,12,0.135135135135
+19,M,35,4,English,12,woman,speed,14,0.144144144144
+19,M,35,4,English,12,woman,speed,16,0.130630630631
+19,M,35,4,English,12,woman,speed,18,0.0990990990991
+19,M,35,4,English,12,woman,speed,20,0.0675675675676
+19,M,35,4,English,12,woman,speed,60,0.0
+20,F,35,4,English,1,hamster,height,0,0.79347826087
+20,F,35,4,English,1,hamster,height,0.5,0.119565217391
+20,F,35,4,English,1,hamster,height,4,0.0326086956522
+20,F,35,4,English,1,hamster,height,4.5,0.0217391304348
+20,F,35,4,English,1,hamster,height,5,0.0217391304348
+20,F,35,4,English,1,hamster,height,5.5,0.0
+20,F,35,4,English,1,hamster,height,6,0.0
+20,F,35,4,English,1,hamster,height,6.5,0.0
+20,F,35,4,English,1,hamster,height,7,0.0
+20,F,35,4,English,1,hamster,height,15,0.0108695652174
+20,F,35,4,English,2,man,weight,0,0.00366972477064
+20,F,35,4,English,2,man,weight,10,0.0623853211009
+20,F,35,4,English,2,man,weight,100,0.097247706422
+20,F,35,4,English,2,man,weight,120,0.0935779816514
+20,F,35,4,English,2,man,weight,140,0.148623853211
+20,F,35,4,English,2,man,weight,160,0.150458715596
+20,F,35,4,English,2,man,weight,180,0.148623853211
+20,F,35,4,English,2,man,weight,200,0.146788990826
+20,F,35,4,English,2,man,weight,220,0.146788990826
+20,F,35,4,English,2,man,weight,10000,0.00183486238532
+20,F,35,4,English,3,man,height,0,0.0
+20,F,35,4,English,3,man,height,0.5,0.0564705882353
+20,F,35,4,English,3,man,height,4,0.0941176470588
+20,F,35,4,English,3,man,height,4.5,0.134117647059
+20,F,35,4,English,3,man,height,5,0.167058823529
+20,F,35,4,English,3,man,height,5.5,0.190588235294
+20,F,35,4,English,3,man,height,6,0.176470588235
+20,F,35,4,English,3,man,height,6.5,0.0964705882353
+20,F,35,4,English,3,man,height,7,0.0847058823529
+20,F,35,4,English,3,man,height,15,0.0
+20,F,35,4,English,4,woman,speed,0,0.25974025974
+20,F,35,4,English,4,woman,speed,1,0.266233766234
+20,F,35,4,English,4,woman,speed,5,0.214285714286
+20,F,35,4,English,4,woman,speed,10,0.0909090909091
+20,F,35,4,English,4,woman,speed,12,0.0844155844156
+20,F,35,4,English,4,woman,speed,14,0.0454545454545
+20,F,35,4,English,4,woman,speed,16,0.0227272727273
+20,F,35,4,English,4,woman,speed,18,0.00649350649351
+20,F,35,4,English,4,woman,speed,20,0.00649350649351
+20,F,35,4,English,4,woman,speed,60,0.00324675324675
+20,F,35,4,English,5,elephant,weight,0,0.0134228187919
+20,F,35,4,English,5,elephant,weight,10,0.010067114094
+20,F,35,4,English,5,elephant,weight,100,0.0
+20,F,35,4,English,5,elephant,weight,120,0.0335570469799
+20,F,35,4,English,5,elephant,weight,140,0.0838926174497
+20,F,35,4,English,5,elephant,weight,160,0.107382550336
+20,F,35,4,English,5,elephant,weight,180,0.10067114094
+20,F,35,4,English,5,elephant,weight,200,0.10067114094
+20,F,35,4,English,5,elephant,weight,220,0.332214765101
+20,F,35,4,English,5,elephant,weight,10000,0.218120805369
+20,F,35,4,English,6,woman,height,0,0.0028328611898
+20,F,35,4,English,6,woman,height,0.5,0.0538243626062
+20,F,35,4,English,6,woman,height,4,0.118980169972
+20,F,35,4,English,6,woman,height,4.5,0.164305949008
+20,F,35,4,English,6,woman,height,5,0.271954674221
+20,F,35,4,English,6,woman,height,5.5,0.240793201133
+20,F,35,4,English,6,woman,height,6,0.13597733711
+20,F,35,4,English,6,woman,height,6.5,0.00849858356941
+20,F,35,4,English,6,woman,height,7,0.0028328611898
+20,F,35,4,English,6,woman,height,15,0.0
+20,F,35,4,English,7,giraffe,height,0,0.0105263157895
+20,F,35,4,English,7,giraffe,height,0.5,0.0105263157895
+20,F,35,4,English,7,giraffe,height,4,0.00526315789474
+20,F,35,4,English,7,giraffe,height,4.5,0.00526315789474
+20,F,35,4,English,7,giraffe,height,5,0.00526315789474
+20,F,35,4,English,7,giraffe,height,5.5,0.0105263157895
+20,F,35,4,English,7,giraffe,height,6,0.178947368421
+20,F,35,4,English,7,giraffe,height,6.5,0.252631578947
+20,F,35,4,English,7,giraffe,height,7,0.510526315789
+20,F,35,4,English,7,giraffe,height,15,0.0105263157895
+20,F,35,4,English,8,cheetah,speed,0,0.0615835777126
+20,F,35,4,English,8,cheetah,speed,1,0.0703812316716
+20,F,35,4,English,8,cheetah,speed,5,0.0821114369501
+20,F,35,4,English,8,cheetah,speed,10,0.0703812316716
+20,F,35,4,English,8,cheetah,speed,12,0.0762463343109
+20,F,35,4,English,8,cheetah,speed,14,0.0762463343109
+20,F,35,4,English,8,cheetah,speed,16,0.0821114369501
+20,F,35,4,English,8,cheetah,speed,18,0.17008797654
+20,F,35,4,English,8,cheetah,speed,20,0.266862170088
+20,F,35,4,English,8,cheetah,speed,60,0.0439882697947
+20,F,35,4,English,9,turtle,speed,0,0.539772727273
+20,F,35,4,English,9,turtle,speed,1,0.409090909091
+20,F,35,4,English,9,turtle,speed,5,0.0
+20,F,35,4,English,9,turtle,speed,10,0.00568181818182
+20,F,35,4,English,9,turtle,speed,12,0.0113636363636
+20,F,35,4,English,9,turtle,speed,14,0.0
+20,F,35,4,English,9,turtle,speed,16,0.00568181818182
+20,F,35,4,English,9,turtle,speed,18,0.0113636363636
+20,F,35,4,English,9,turtle,speed,20,0.0113636363636
+20,F,35,4,English,9,turtle,speed,60,0.00568181818182
+20,F,35,4,English,10,man,speed,0,0.175257731959
+20,F,35,4,English,10,man,speed,1,0.179381443299
+20,F,35,4,English,10,man,speed,5,0.169072164948
+20,F,35,4,English,10,man,speed,10,0.162886597938
+20,F,35,4,English,10,man,speed,12,0.160824742268
+20,F,35,4,English,10,man,speed,14,0.109278350515
+20,F,35,4,English,10,man,speed,16,0.0350515463918
+20,F,35,4,English,10,man,speed,18,0.00412371134021
+20,F,35,4,English,10,man,speed,20,0.0020618556701
+20,F,35,4,English,10,man,speed,60,0.0020618556701
+20,F,35,4,English,11,woman,weight,0,0.0
+20,F,35,4,English,11,woman,weight,10,0.0281690140845
+20,F,35,4,English,11,woman,weight,100,0.146126760563
+20,F,35,4,English,11,woman,weight,120,0.144366197183
+20,F,35,4,English,11,woman,weight,140,0.146126760563
+20,F,35,4,English,11,woman,weight,160,0.139084507042
+20,F,35,4,English,11,woman,weight,180,0.142605633803
+20,F,35,4,English,11,woman,weight,200,0.142605633803
+20,F,35,4,English,11,woman,weight,220,0.107394366197
+20,F,35,4,English,11,woman,weight,10000,0.00352112676056
+20,F,35,4,English,12,bird,weight,0,0.491712707182
+20,F,35,4,English,12,bird,weight,10,0.337016574586
+20,F,35,4,English,12,bird,weight,100,0.0994475138122
+20,F,35,4,English,12,bird,weight,120,0.0110497237569
+20,F,35,4,English,12,bird,weight,140,0.0110497237569
+20,F,35,4,English,12,bird,weight,160,0.00552486187845
+20,F,35,4,English,12,bird,weight,180,0.0110497237569
+20,F,35,4,English,12,bird,weight,200,0.0110497237569
+20,F,35,4,English,12,bird,weight,220,0.0165745856354
+20,F,35,4,English,12,bird,weight,10000,0.00552486187845
