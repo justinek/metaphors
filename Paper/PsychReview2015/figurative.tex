@@ -426,14 +426,14 @@ Even more dramatically, an utterance such as ``It's 1000 degrees outside'' is li
 
 \begin{figure}[t]
 \centering
-\scalebox{0.33}{\includegraphics{figure2a-revised.pdf}}
+\scalebox{0.33}{\includegraphics{Plots/figure2a-revised.pdf}}
 \caption{Model predictions v.s. average human interpretations. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the empirical probability. Correlation between model and human interpretations is $0.968$.}
 \label{model_fit}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\scalebox{0.33}{\includegraphics{figure4a-revised.pdf}}
+\scalebox{0.33}{\includegraphics{Plots/figure4a-revised.pdf}}
 \caption{Model predictions of affect v.s. human ratings. Each point represents an utterance and price state pair $(u, s)$. For pairs where $u = s$, the utterance is literal; for $u > s$, the utterance is hyperbolic. The x-coordinate of each point is the model's prediction of the probability that the utterance/price state pair conveys affect; the y-coordinate is participants' affect ratings (error bars are standard error). Correlation between model and humans is $0.775$.}
 \label{affect}
 \end{figure}
@@ -503,7 +503,7 @@ $$
 The resulting distribution over world states and speaker affects is an interpretation of the utterance. 
 \begin{figure}
 \centering
-\scalebox{0.6}{\includegraphics{sim12}}
+\scalebox{0.6}{\includegraphics{Plots/sim12.pdf}}
 \caption{Model interpretations of ``The weather is terrible'' given different prior beliefs about the weather state and affect dimensions. Gray dotted lines indicate prior beliefs about weather states given a weather context; blue lines indicate interpretations when reasoning only about the speaker's valence; orange lines indicate interpretations when reasoning about both valence and arousal.}
 \label{sim12}
 \end{figure}
@@ -531,7 +531,7 @@ These simulations suggest that a more psychologically realistic, two-dimensional
     %\centering
     %\begin{minipage}{0.45\textwidth}
         %\centering
-        \includegraphics[width=320pt, height=250pt]{image-grid}
+        \includegraphics[width=320pt, height=250pt]{Plots/image-grid}
         \caption{Weather images shown to participants in Experiments 1 and 2.}
         \label{images}
     %\end{minipage}
@@ -539,7 +539,7 @@ These simulations suggest that a more psychologically realistic, two-dimensional
     %\begin{minipage}{0.45\textwidth}
        % \centering
   \begin{figure}
-        \includegraphics[width=350pt, height=250pt]{priors}
+        \includegraphics[width=350pt, height=250pt]{Plots/priors.pdf}
         \caption{Proportion of participants who rated each weather context as each weather state. 
      %Each panel represents a weather context; each line represents the distribution over weather states for a weather context prior to any linguistic input. For example, the vast majority of participants rated weather context 1 as \emph{amazing}, suggesting that the prior probability of someone believing weather context 1 to be \emph{amazing} is extremely high.
      }
@@ -556,14 +556,14 @@ We conducted Experiment 1a to measure prior beliefs over weather states ($P(s)$)
 In Experiment 1b, we collected people's ratings of how a speaker perceives and feels about the weather given what she says in a weather context (e.g. ``The weather is terrible!'' when the context clearly depicts sunny weather).
 
 \begin{figure}
-        \includegraphics[width=320pt, height=280pt]{biplot.pdf}
+        \includegraphics[width=320pt, height=280pt]{Plots/biplot.pdf}
         \caption{Biplot of the first two principle components of the seven emotion ratings, which roughly correspond to valence and arousal.}
         \label{pca}
 \end{figure}
     
 \begin{figure}
     %\begin{minipage}{0.45\textwidth}
-       \includegraphics[width=350pt, height=220pt]{affect-prior.pdf}
+       \includegraphics[width=350pt, height=220pt]{Plots/affect-prior.pdf}
        \caption{Average probabilities of positive valence and high arousal associated with each weather state; error bars are $95\%$ confidence intervals.}        
         \label{affect-prior}
     %\end{minipage}
@@ -601,7 +601,7 @@ By calculating the average probabilities of positive valence and high arousal gi
 %\end{figure}
 
 \begin{figure}[t]
-\scalebox{0.5}{\includegraphics{model-state.pdf}}
+\scalebox{0.5}{\includegraphics{Plots/model-state.pdf}}
 \caption{Model's and participants' inferences about the weather state (x-axis) given a weather context (row) and an utterance (column). Each panel represents interpretations of an utterance in a weather context. The solid lines are participants' ratings; the dotted lines are model's posterior distributions over weather states.}
 \label{model-state}
 \end{figure}
@@ -640,7 +640,7 @@ Finally, we examine participants' inferences about the speaker's affect given ut
 \begin{figure}[t]
 \centering
 %\begin{subfigure}{0.7\textwidth}
-\includegraphics[width=340pt, height=170pt]{scatter.pdf}
+\includegraphics[width=340pt, height=170pt]{Plots/scatter_irony.pdf}
 \caption{Scatter plot showing correlations between model predictions and human ratings for weather state, speaker valence, and speaker affect. Colors indicate utterances.}
 \label{scatter}
 %\end{subfigure}
