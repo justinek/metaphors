@@ -24,7 +24,7 @@ if qud == 0:
 else:
     qudPriors = makeParemsByInc(0.5, 1, 0.1)
 
-alphaPriors = makeParemsByInc(1, 3, 0.5)
+alphaPriors = makeParemsByInc(3.5, 7, 0.5)
 categoryPriors = range(2, 5) 
 
 #print qudPriors
@@ -48,7 +48,7 @@ for qP in qudPriors:
                 filename = paremStr + "-ID-" + str(i) + ".church"
                 #print filename
                 f = open("WithPriors/ID-" + str(i) + ".church", "r")
-                writeF = open("WithParems/" + filename, "w")
+                writeF = open("TempParems/" + filename, "w")
                 writeF.write(qParem + "\n" + aParem + "\n" + cParem + "\n")
                 for l in f:
                     writeF.write(l)

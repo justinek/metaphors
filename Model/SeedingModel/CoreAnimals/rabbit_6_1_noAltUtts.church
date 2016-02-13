@@ -1,0 +1,54 @@
+(define categories (list 'man 'rabbit))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define fast (list 0 1 2 3 4 5))
+(define (fast-prior category)
+(case category
+	(('man) (multinomial fast (list 0.105263157894737 0.263157894736842 0.157894736842105 0.157894736842105 0.263157894736842 0.0526315789473684)))
+	(('rabbit) (multinomial fast (list 0.0526315789473684 0.105263157894737 0.210526315789474 0.421052631578947 0.105263157894737 0.105263157894737)))
+))
+(define cute (list 0 1 2 3 4 5))
+(define (cute-prior category)
+(case category
+	(('man) (multinomial cute (list 0.130434782608696 0.173913043478261 0.217391304347826 0.173913043478261 0.173913043478261 0.130434782608696)))
+	(('rabbit) (multinomial cute (list 0.130434782608696 0.0869565217391304 0.0869565217391304 0.217391304347826 0.217391304347826 0.260869565217391)))
+))
+(define goals (list 'category? 'fast? 'cute?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('fast?) (fast-prior category))
+		(('cute?) (cute-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category fast cute goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('fast?) fast)
+		(('cute?) cute)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define fast (fast-prior category))
+(define cute (cute-prior category))
+(define speaker-goal (goal-prior))
+(list category fast cute)
+(equal? utterance (apply multinomial (raise-to-power (speaker category fast cute speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'rabbit))
+(write-csv (append (list (list 'category 'fast 'cute 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/rabbit_6_1_noAltUtts.csv)

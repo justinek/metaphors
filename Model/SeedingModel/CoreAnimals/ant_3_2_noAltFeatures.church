@@ -1,0 +1,60 @@
+(define categories (list 'ant 'beaver 'mouse 'monkey 'man))
+(define (categories-prior) (multinomial categories '(0.0025 0.0025 0.0025 0.0025 0.99)))
+(define utterances categories)
+(define costs '(1 1 1 1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define small (list 0 1 2))
+(define (small-prior category)
+(case category
+	(('ant) (multinomial small (list 0.111111111111111 0.0555555555555556 0.833333333333333)))
+	(('beaver) (multinomial small (list 0.0555555555555556 0.277777777777778 0.666666666666667)))
+	(('mouse) (multinomial small (list 0.0555555555555556 0.0555555555555556 0.888888888888889)))
+	(('monkey) (multinomial small (list 0.0555555555555556 0.666666666666667 0.277777777777778)))
+	(('man) (multinomial small (list 0.222222222222222 0.611111111111111 0.166666666666667)))
+))
+(define industrious (list 0 1 2))
+(define (industrious-prior category)
+(case category
+	(('ant) (multinomial industrious (list 0.136363636363636 0.272727272727273 0.590909090909091)))
+	(('beaver) (multinomial industrious (list 0.181818181818182 0.318181818181818 0.5)))
+	(('mouse) (multinomial industrious (list 0.454545454545455 0.318181818181818 0.227272727272727)))
+	(('monkey) (multinomial industrious (list 0.136363636363636 0.636363636363636 0.227272727272727)))
+	(('man) (multinomial industrious (list 0.0454545454545455 0.227272727272727 0.727272727272727)))
+))
+(define goals (list 'category? 'small? 'industrious?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('small?) (small-prior category))
+		(('industrious?) (industrious-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category small industrious goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('small?) small)
+		(('industrious?) industrious)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define small (small-prior category))
+(define industrious (industrious-prior category))
+(define speaker-goal (goal-prior))
+(list category small industrious)
+(equal? utterance (apply multinomial (raise-to-power (speaker category small industrious speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 2)
+(define interpretation (listener 'ant))
+(write-csv (append (list (list 'category 'small 'industrious 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/ant_3_2_noAltFeatures.csv)

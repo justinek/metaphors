@@ -1,0 +1,64 @@
+(define categories (list 'horse 'bear 'tiger 'gorilla 'lion 'elephant 'man))
+(define (categories-prior) (multinomial categories '(0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.99)))
+(define utterances categories)
+(define costs '(1 1 1 1 1 1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define fierce (list 0 1 2 3 4 5))
+(define (fierce-prior category)
+(case category
+	(('horse) (multinomial fierce (list 0.210526315789474 0.421052631578947 0.157894736842105 0.105263157894737 0.0526315789473684 0.0526315789473684)))
+	(('bear) (multinomial fierce (list 0.0526315789473684 0.0526315789473684 0.105263157894737 0.105263157894737 0.263157894736842 0.421052631578947)))
+	(('tiger) (multinomial fierce (list 0.0526315789473684 0.0526315789473684 0.105263157894737 0.0526315789473684 0.157894736842105 0.578947368421053)))
+	(('gorilla) (multinomial fierce (list 0.157894736842105 0.0526315789473684 0.105263157894737 0.263157894736842 0.210526315789474 0.210526315789474)))
+	(('lion) (multinomial fierce (list 0.0526315789473684 0.0526315789473684 0.105263157894737 0.105263157894737 0.157894736842105 0.526315789473684)))
+	(('elephant) (multinomial fierce (list 0.315789473684211 0.157894736842105 0.263157894736842 0.0526315789473684 0.105263157894737 0.105263157894737)))
+	(('man) (multinomial fierce (list 0.105263157894737 0.157894736842105 0.210526315789474 0.157894736842105 0.210526315789474 0.157894736842105)))
+))
+(define strong (list 0 1 2 3 4 5))
+(define (strong-prior category)
+(case category
+	(('horse) (multinomial strong (list 0.0952380952380952 0.0952380952380952 0.238095238095238 0.19047619047619 0.238095238095238 0.142857142857143)))
+	(('bear) (multinomial strong (list 0.0476190476190476 0.0476190476190476 0.142857142857143 0.142857142857143 0.476190476190476 0.142857142857143)))
+	(('tiger) (multinomial strong (list 0.0476190476190476 0.0952380952380952 0.142857142857143 0.285714285714286 0.285714285714286 0.142857142857143)))
+	(('gorilla) (multinomial strong (list 0.0476190476190476 0.0476190476190476 0.142857142857143 0.285714285714286 0.142857142857143 0.333333333333333)))
+	(('lion) (multinomial strong (list 0.0476190476190476 0.142857142857143 0.0952380952380952 0.285714285714286 0.19047619047619 0.238095238095238)))
+	(('elephant) (multinomial strong (list 0.0952380952380952 0.0476190476190476 0.0952380952380952 0.142857142857143 0.0476190476190476 0.571428571428571)))
+	(('man) (multinomial strong (list 0.142857142857143 0.19047619047619 0.238095238095238 0.19047619047619 0.142857142857143 0.0952380952380952)))
+))
+(define goals (list 'category? 'fierce? 'strong?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('fierce?) (fierce-prior category))
+		(('strong?) (strong-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category fierce strong goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('fierce?) fierce)
+		(('strong?) strong)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define fierce (fierce-prior category))
+(define strong (strong-prior category))
+(define speaker-goal (goal-prior))
+(list category fierce strong)
+(equal? utterance (apply multinomial (raise-to-power (speaker category fierce strong speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'lion))
+(write-csv (append (list (list 'category 'fierce 'strong 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/lion_6_1_noAltFeatures.csv)

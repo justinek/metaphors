@@ -1,0 +1,64 @@
+(define categories (list 'turtle 'sloth 'horse 'bear 'gorilla 'elephant 'man))
+(define (categories-prior) (multinomial categories '(0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.00166666666667 0.99)))
+(define utterances categories)
+(define costs '(1 1 1 1 1 1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define slow (list 0 1 2))
+(define (slow-prior category)
+(case category
+	(('turtle) (multinomial slow (list 0.105263157894737 0.0526315789473684 0.842105263157895)))
+	(('sloth) (multinomial slow (list 0.0526315789473684 0.105263157894737 0.842105263157895)))
+	(('horse) (multinomial slow (list 0.684210526315789 0.210526315789474 0.105263157894737)))
+	(('bear) (multinomial slow (list 0.315789473684211 0.631578947368421 0.0526315789473684)))
+	(('gorilla) (multinomial slow (list 0.263157894736842 0.578947368421053 0.157894736842105)))
+	(('elephant) (multinomial slow (list 0.0526315789473684 0.421052631578947 0.526315789473684)))
+	(('man) (multinomial slow (list 0.421052631578947 0.368421052631579 0.210526315789474)))
+))
+(define strong (list 0 1 2))
+(define (strong-prior category)
+(case category
+	(('turtle) (multinomial strong (list 0.833333333333333 0.0555555555555556 0.111111111111111)))
+	(('sloth) (multinomial strong (list 0.777777777777778 0.166666666666667 0.0555555555555556)))
+	(('horse) (multinomial strong (list 0.166666666666667 0.444444444444444 0.388888888888889)))
+	(('bear) (multinomial strong (list 0.0555555555555556 0.277777777777778 0.666666666666667)))
+	(('gorilla) (multinomial strong (list 0.0555555555555556 0.444444444444444 0.5)))
+	(('elephant) (multinomial strong (list 0.111111111111111 0.222222222222222 0.666666666666667)))
+	(('man) (multinomial strong (list 0.333333333333333 0.444444444444444 0.222222222222222)))
+))
+(define goals (list 'category? 'slow? 'strong?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('slow?) (slow-prior category))
+		(('strong?) (strong-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category slow strong goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('slow?) slow)
+		(('strong?) strong)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define slow (slow-prior category))
+(define strong (strong-prior category))
+(define speaker-goal (goal-prior))
+(list category slow strong)
+(equal? utterance (apply multinomial (raise-to-power (speaker category slow strong speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 3)
+(define interpretation (listener 'turtle))
+(write-csv (append (list (list 'category 'slow 'strong 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/turtle_3_3_noAltFeatures.csv)

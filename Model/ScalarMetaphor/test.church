@@ -1,0 +1,65 @@
+(define alpha 5)
+(define cost-diff 0.2)
+
+(define lit-cost 1)
+
+(define folder '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/ScalarMetaphor/Outputs/)
+
+(define fig-cost (+ lit-cost cost-diff))
+
+;; It is extremely unlikely that John is actually a giraffe.
+(define (categories-prior gender)
+  (case gender
+    (('man) (multinomial (list 'man 'animalA 'animalB) (list 0.99 0.05 0.05)))
+    (('woman) (multinomial (list 'woman 'animalA 'animalB) (list 0.99 0.05 0.05)))))
+
+(define utterances (list 'animalA 'animalB 'litA 'litB 'null))
+
+;(define utterances (list 'tall 'short 'null))
+(define costs (list fig-cost fig-cost lit-cost lit-cost 0))
+
+;(define theta-prior (uniform-draw heights))
+
+(define (utterance-prior)
+  (multinomial utterances
+               (map (lambda (utterance-cost) (exp (- utterance-cost)))
+                    costs)))
+
+(define bins (list 0 1 2 3 4 5 6 7 8 9))
+
+(define height-priors 
+  (map (lambda (x) 
+    (map string->number x)) 
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_height.csv))))))
+
+(define speed-priors
+  (map (lambda (x)
+    (map string->number x))
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_speed.csv))))))
+
+(define weight-priors 
+  (map (lambda (x)
+    (map string->number x))
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_weight.csv))))))
+
+(define (priors dimension)
+  (case dimension
+    (('height) height-priors)
+    (('speed) speed-priors)
+    (('weight) weight-priors)))
+
+;(priors 'height)
+
+(define (value-prior dimension category)
+  (case category
+    (('animalA) (multinomial bins (first (priors dimension))))
+    (('animalB) (multinomial bins (second (priors dimension))))
+    (('man) (multinomial bins (third (priors dimension))))
+    (('woman) (multinomial bins (fourth (priors dimension))))
+    ))
+
+(value-prior 'weight 'woman)
+

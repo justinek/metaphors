@@ -1,0 +1,281 @@
+(define alpha 4)
+(define cost-diff 0.5)
+
+(define lit-cost 1)
+
+(define folder '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/ScalarMetaphor/Outputs/)
+
+(define fig-cost (+ lit-cost cost-diff))
+
+;; It is extremely unlikely that John is actually a giraffe.
+(define (categories-prior gender)
+  (case gender
+    (('man) (multinomial (list 'man 'animalA 'animalB) (list 0.99 0.05 0.05)))
+    (('woman) (multinomial (list 'woman 'animalA 'animalB) (list 0.99 0.05 0.05)))))
+
+(define utterances (list 'animalA 'animalB 'litA 'litB 'null))
+
+;(define utterances (list 'tall 'short 'null))
+(define costs (list fig-cost fig-cost lit-cost lit-cost 0))
+
+;(define theta-prior (uniform-draw heights))
+
+(define (utterance-prior)
+  (multinomial utterances
+               (map (lambda (utterance-cost) (exp (- utterance-cost)))
+                    costs)))
+
+(define bins (list 0 1 2 3 4 5 6 7 8 9))
+
+(define height-priors 
+  (map (lambda (x) 
+    (map string->number x)) 
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_height.csv))))))
+
+(define speed-priors
+  (map (lambda (x)
+    (map string->number x))
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_speed.csv))))))
+
+(define weight-priors 
+  (map (lambda (x)
+    (map string->number x))
+    (map rest (map rest (rest 
+      (read-csv '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Data/ScalarPriorExp/priors_weight.csv))))))
+
+(define (priors dimension)
+  (case dimension
+    (('height) height-priors)
+    (('speed) speed-priors)
+    (('weight) weight-priors)))
+
+;(priors 'height)
+
+(define (value-prior dimension category)
+  (case category
+    (('animalA) (multinomial bins (first (priors dimension))))
+    (('animalB) (multinomial bins (second (priors dimension))))
+    (('man) (multinomial bins (third (priors dimension))))
+    (('woman) (multinomial bins (fourth (priors dimension))))
+    ))
+
+(define goals (list 'high? 'low? 'category?))
+
+(define (theta-prior) (uniform-draw bins))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (uniform-draw goals))
+
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category value theta-high theta-low)
+  (case utterance
+        (('animalA) (equal? utterance category))
+        (('animalB) (equal? utterance category))
+        (('litA) (<= value theta-low))
+        (('litB) (>= value theta-high))
+        (('null) #t)
+        ))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-category-value speaker-category-value 
+                         theta-high theta-low)
+  (case goal
+    (('category?) (equal? (first listener-category-value) 
+                          (first speaker-category-value)))
+    (('high?) (equal? (>= (second listener-category-value) theta-high) 
+                      (>= (second speaker-category-value) theta-high)))
+    (('low?) (equal? (<= (second listener-category-value) theta-low)
+                       (<= (second speaker-category-value) theta-low)))
+        ))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category value goal theta-high theta-low dimension gender)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (lit-listener utterance dimension gender))
+                       (list category value) theta-high theta-low)))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance dimension gender)
+     (enumeration-query
+      (define category (categories-prior gender))
+      (define value (value-prior dimension category))
+      (define speaker-goal (goal-prior))
+      (define theta-high (theta-prior))
+      (define theta-low (theta-prior))
+      value
+      (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category value speaker-goal 
+                                                  theta-high theta-low dimension gender)
+                                         alpha)))))))
+
+
+;; Listener model
+(define lit-listener
+  (mem 
+   (lambda (utterance dimension gender)
+     (enumeration-query
+      (define category (categories-prior gender))
+      (define value (value-prior dimension category))
+      (define speaker-goal (goal-prior))
+      (define theta-high (theta-prior))
+      (define theta-low (theta-prior))
+      (list category value)
+      (literal-interpretation utterance category value theta-high theta-low)))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+
+(define (interpret dimension gender utterance)
+  (listener utterance dimension gender depth))
+;; (barplot (sample-one 'giraffe) "giraffe")
+;; (barplot (sample-one 'tall) "tall")
+;; (barplot (sample-one 'hamster) "hamster")
+;; (barplot (sample-one 'short) "short")
+
+;(list (interpret 'height 'man 'animalA) (interpret 'height 'man 'animalB) 
+;  (interpret 'height 'man 'litA) (interpret 'height 'man'litB))
+
+;(categories-prior 'woman)
+;(write-csv (map flatten (zip (first (prag-listener 'watch 10001)) 
+;                (second (prag-listener 'watch 10001)))) (string-append folder 'watch-10001.csv))
+(define height-man-litA (interpret 'height 'man 'litA))
+(define height-man-litB (interpret 'height 'man 'litB))
+(define height-man-animalA (interpret 'height 'man 'animalA))
+(define height-man-animalB (interpret 'height 'man 'animalB))
+(define height-woman-litA (interpret 'height 'woman 'litA))
+(define height-woman-litB (interpret 'height 'woman 'litB))
+(define height-woman-animalA (interpret 'height 'woman 'animalA))
+(define height-woman-animalB (interpret 'height 'woman 'animalB))
+
+(define speed-man-litA (interpret 'speed 'man 'litA))
+(define speed-man-litB (interpret 'speed 'man 'litB))
+(define speed-man-animalA (interpret 'speed 'man 'animalA))
+(define speed-man-animalB (interpret 'speed 'man 'animalB))
+(define speed-woman-litA (interpret 'speed 'woman 'litA))
+(define speed-woman-litB (interpret 'speed 'woman 'litB))
+(define speed-woman-animalA (interpret 'speed 'woman 'animalA))
+(define speed-woman-animalB (interpret 'speed 'woman 'animalB))
+
+(define weight-man-litA (interpret 'weight 'man 'litA))
+(define weight-man-litB (interpret 'weight 'man 'litB))
+(define weight-man-animalA (interpret 'weight 'man 'animalA))
+(define weight-man-animalB (interpret 'weight 'man 'animalB))
+(define weight-woman-litA (interpret 'weight 'woman 'litA))
+(define weight-woman-litB (interpret 'weight 'woman 'litB))
+(define weight-woman-animalA (interpret 'weight 'woman 'animalA))
+(define weight-woman-animalB (interpret 'weight 'woman 'animalB))
+
+
+
+(write-csv
+  (zip
+    (make-list 80 'height)
+    (append
+      (make-list 40 'man)
+      (make-list 40 'woman))
+    (append
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      )
+    (append
+      bins bins bins bins bins bins bins bins)
+    (append 
+      (second height-man-litA) 
+      (second height-man-litB)
+      (second height-man-animalA)
+      (second height-man-animalB)
+      (second height-woman-litA) 
+      (second height-woman-litB)
+      (second height-woman-animalA)
+      (second height-woman-animalB)
+
+      )
+    ) 
+  (string-append folder 'height- (number->string alpha) '- (number->string cost-diff) '.csv))
+
+(write-csv
+  (zip
+    (make-list 80 'speed)
+    (append
+      (make-list 40 'man)
+      (make-list 40 'woman))
+    (append
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      )
+    (append
+      bins bins bins bins bins bins bins bins)
+    (append 
+      (second speed-man-litA) 
+      (second speed-man-litB)
+      (second speed-man-animalA)
+      (second speed-man-animalB)
+      (second speed-woman-litA) 
+      (second speed-woman-litB)
+      (second speed-woman-animalA)
+      (second speed-woman-animalB)
+
+      )
+    ) 
+  (string-append folder 'speed- (number->string alpha) '- (number->string cost-diff) '.csv))
+
+(write-csv
+  (zip
+    (make-list 80 'weight)
+    (append
+      (make-list 40 'man)
+      (make-list 40 'woman))
+    (append
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      (make-list 10 'litA)
+      (make-list 10 'litB)
+      (make-list 10 'animalA)
+      (make-list 10 'animalB)
+      )
+    (append
+      bins bins bins bins bins bins bins bins)
+    (append 
+      (second weight-man-litA) 
+      (second weight-man-litB)
+      (second weight-man-animalA)
+      (second weight-man-animalB)
+      (second weight-woman-litA) 
+      (second weight-woman-litB)
+      (second weight-woman-animalA)
+      (second weight-woman-animalB)
+
+      )
+    ) 
+  (string-append folder 'weight- (number->string alpha) '- (number->string cost-diff) '.csv))
+

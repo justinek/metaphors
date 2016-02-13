@@ -1,0 +1,74 @@
+(define (goal-prior) (multinomial goals '(0.6 0.2 0.2)))
+(define alpha 6.0)
+(define categories (list 'target 'bear 'cat 'person 'lion 'snake 'bull))
+(define utterances (list 'target 'bear 'cat 'person 'lion 'snake 'bull))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1 0.1 0.1 0.1 0.1 0.1)))
+(define (categories-prior) (multinomial categories '(0.00166666666667 0.00166666666667 0.00166666666667 0.99 0.00166666666667 0.00166666666667 0.00166666666667)))
+(define featureSet-prior (list(list '0.267846046 '0.12427729 '0.108568898 '0.119646182 '0.113212353 '0.074880311 '0.076252611 '0.115316309)(list '0.320407479 '0.169706542 '0.11854919 '0.139563584 '0.080038599 '0.062688075 '0.05088599 '0.05816054)(list '0.115895845 '0.070606265 '0.0958409 '0.081601267 '0.10477784 '0.108776708 '0.132723059 '0.289778116)(list '0.172207937 '0.116378649 '0.084766842 '0.121804129 '0.14331456 '0.103270674 '0.096580138 '0.16167707)(list '0.235214519 '0.175282116 '0.077852069 '0.146814124 '0.138970979 '0.072229507 '0.07453221 '0.079104477)(list '0.186639104 '0.133074893 '0.09647347 '0.196454887 '0.114292263 '0.090234338 '0.073658543 '0.109172501)(list '0.178539835 '0.141492834 '0.130683194 '0.100830253 '0.151191529 '0.092009108 '0.097340625 '0.107912622)))
+;; This model will not run as the feature priors are not defined.
+;; We will define the parameters separately and concatenate with this code.
+
+;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+
+(define featureSets (list '(1 1 1) '(1 1 0) '(1 0 1) '(1 0 0) '(0 1 1) '(0 1 0) '(0 0 1) '(0 0 0)))
+
+;; Parameters
+(define depth 1)
+
+;; Define communicative goals as wanting to communicate something about John's category vs his fierceness
+(define goals (list 'goal-feature1 'goal-feature2 'goal-feature3))
+
+(define (sample-featureSet category prior all-categories)
+(if (equal? category (first all-categories))
+(multinomial featureSets (first prior))
+(sample-featureSet category (rest prior) (rest all-categories))
+)
+)
+
+(define (literal-interpretation utterance category)
+(equal? utterance category))
+
+
+(define (goal-satisfied? goal listener-category-feature1-feature2-feature3 speaker-category speaker-feature1 speaker-feature2 speaker-feature3)
+(case goal
+(('goal-feature1) (equal? (second listener-category-feature1-feature2-feature3) speaker-feature1))
+(('goal-feature2) (equal? (third listener-category-feature1-feature2-feature3) speaker-feature2))
+(('goal-feature3) (equal? (fourth listener-category-feature1-feature2-feature3) speaker-feature3))
+))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+(mem (lambda (category feature1 feature2 feature3 goal depth)
+(enumeration-query
+(define utterance (utterance-prior))
+utterance
+(goal-satisfied? goal (apply multinomial (listener utterance depth)) category feature1 feature2 feature3)
+))))
+
+(define listener
+(mem (lambda (utterance depth)
+(enumeration-query
+(define category (categories-prior))
+(define featureSet (sample-featureSet category featureSet-prior categories))
+(define feature1 (first featureSet))
+(define feature2 (second featureSet))
+(define feature3 (third featureSet))
+(define speaker-goal (goal-prior))
+
+;(list category fierceness skinniness)
+(list category feature1 feature2 feature3)
+
+(if (equal? depth 0)
+(literal-interpretation utterance category)
+(equal? utterance
+(apply multinomial (raise-to-power (speaker category feature1 feature2 feature3 speaker-goal (- depth 1)) alpha))))
+))))
+
+(define (raise-to-power speaker-dist alpha)
+(list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+(define (sample-one utterance)
+(listener utterance depth))
+
+(sample-one 'target)

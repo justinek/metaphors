@@ -1,0 +1,128 @@
+;; John could either be a giraffe or a person.
+(define categories (list 'giraffe 'hamster 'man))
+
+;; It is extremely unlikely that John is actually a giraffe.
+(define (categories-prior) (multinomial categories '(0.005 0.005 0.99)))
+
+(define utterances (list 'giraffe 'hamster 'tall 'short))
+
+(define costs '(2 2 1 1))
+
+;(define theta-prior (uniform-draw heights))
+
+(define (utterance-prior)
+  (multinomial utterances
+               (map (lambda (utterance-cost) (exp (- utterance-cost)))
+                    costs)))
+
+
+;The only feature being considered is size
+(define heights (list 0 0.5 4 4.5 5 5.5 6 6.5 7 15)) 
+(define (height-prior category)
+  (case category
+        (('giraffe) 
+         (multinomial heights 
+                      (list 0.0138362271 0.0183800643 0.0279155004 0.0351081171
+                            0.0382478927 0.0549833120 0.1056852106 0.1447289164
+                            0.2692007459 0.2919140135)))
+        (('hamster) 
+         (multinomial heights 
+                      (list 0.7162615765 0.2201861534 0.0285878359 0.0083314720
+                            0.0082403986 0.0044835042 0.0038727667 0.0031573124
+                            0.0024895682 0.0043894120)))
+        (('man) 
+         (multinomial heights
+                      (list 0.0216138276 0.0468508669 0.0758444574 0.1104008965
+                            0.1649360884 0.2279885591 0.1903082647 0.1197732696
+                            0.0400658227 0.0022179471)))
+        (('woman) 
+         (multinomial heights
+                      (list 0.0129237478 0.0470786419 0.0955854215 0.1692791725
+                            0.2721860432 0.2374238320 0.1021941695 0.0491389584
+                            0.0136269767 0.0005630366)))
+        ))
+
+
+(define goals (list 'tall? 'height?))
+
+(define (theta-prior) (uniform-draw (list 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 
+                                          6 6.5 7 7.5 8 8.5 9 9.5 10 10.5
+                                          11 11.5 12 12.5 13 13.5 14 14.5
+                                          15)))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (uniform-draw goals))
+
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category height theta)
+  (case utterance
+        (('giraffe) (equal? utterance category))
+        (('hamster) (equal? utterance category))
+        (('tall) (> height theta))
+        (('short) (<= height theta))))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-category-height speaker-category-height theta)
+  (case goal
+    (('category?) (equal? (first listener-category-height) (first speaker-category-height)))
+    (('tall?) (equal? (> (second listener-category-height) theta) 
+                       (> (second speaker-category-height) theta)))
+    (('height?) (equal? (second listener-category-height) (second speaker-category-height)))
+        ))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category height goal theta)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (lit-listener utterance))
+                       (list category height) theta)))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance)
+     (enumeration-query
+      (define category (categories-prior))
+      (define height (height-prior category))
+      (define speaker-goal (goal-prior))
+      (define theta (theta-prior))
+      height
+      (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category height speaker-goal theta)
+                                         alpha)))))))
+
+
+;; Listener model
+(define lit-listener
+  (mem 
+   (lambda (utterance)
+     (enumeration-query
+      (define category (categories-prior))
+      (define height (height-prior category))
+      (define speaker-goal (goal-prior))
+      (define theta (theta-prior))
+      (list category height)
+      (literal-interpretation utterance category height theta)))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+(define alpha 1)
+(define (interpret utterance)
+  (listener utterance depth))
+;; (barplot (sample-one 'giraffe) "giraffe")
+;; (barplot (sample-one 'tall) "tall")
+;; (barplot (sample-one 'hamster) "hamster")
+;; (barplot (sample-one 'short) "short")
+
+(list (interpret 'giraffe) (interpret 'tall) (interpret 'hamster) (interpret 'short))

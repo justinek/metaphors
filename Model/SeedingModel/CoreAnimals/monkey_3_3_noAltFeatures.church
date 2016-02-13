@@ -1,0 +1,62 @@
+(define categories (list 'hyena 'dog 'dolphin 'monkey 'cat 'man))
+(define (categories-prior) (multinomial categories '(0.002 0.002 0.002 0.002 0.002 0.99)))
+(define utterances categories)
+(define costs '(1 1 1 1 1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define funny (list 0 1 2))
+(define (funny-prior category)
+(case category
+	(('hyena) (multinomial funny (list 0.411764705882353 0.352941176470588 0.235294117647059)))
+	(('dog) (multinomial funny (list 0.117647058823529 0.411764705882353 0.470588235294118)))
+	(('dolphin) (multinomial funny (list 0.352941176470588 0.235294117647059 0.411764705882353)))
+	(('monkey) (multinomial funny (list 0.235294117647059 0.352941176470588 0.411764705882353)))
+	(('cat) (multinomial funny (list 0.235294117647059 0.352941176470588 0.411764705882353)))
+	(('man) (multinomial funny (list 0.117647058823529 0.352941176470588 0.529411764705882)))
+))
+(define smart (list 0 1 2))
+(define (smart-prior category)
+(case category
+	(('hyena) (multinomial smart (list 0.19047619047619 0.714285714285714 0.0952380952380952)))
+	(('dog) (multinomial smart (list 0.19047619047619 0.380952380952381 0.428571428571429)))
+	(('dolphin) (multinomial smart (list 0.0952380952380952 0.19047619047619 0.714285714285714)))
+	(('monkey) (multinomial smart (list 0.0476190476190476 0.476190476190476 0.476190476190476)))
+	(('cat) (multinomial smart (list 0.19047619047619 0.380952380952381 0.428571428571429)))
+	(('man) (multinomial smart (list 0.0476190476190476 0.19047619047619 0.761904761904762)))
+))
+(define goals (list 'category? 'funny? 'smart?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('funny?) (funny-prior category))
+		(('smart?) (smart-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category funny smart goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('funny?) funny)
+		(('smart?) smart)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define funny (funny-prior category))
+(define smart (smart-prior category))
+(define speaker-goal (goal-prior))
+(list category funny smart)
+(equal? utterance (apply multinomial (raise-to-power (speaker category funny smart speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 3)
+(define interpretation (listener 'monkey))
+(write-csv (append (list (list 'category 'funny 'smart 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/monkey_3_3_noAltFeatures.csv)

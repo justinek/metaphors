@@ -1,0 +1,54 @@
+(define categories (list 'man 'cheetah))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define fast (list 0 1 2 3 4 5))
+(define (fast-prior category)
+(case category
+	(('man) (multinomial fast (list 0.105263157894737 0.263157894736842 0.157894736842105 0.157894736842105 0.263157894736842 0.0526315789473684)))
+	(('cheetah) (multinomial fast (list 0.0526315789473684 0.0526315789473684 0.0526315789473684 0.105263157894737 0.157894736842105 0.578947368421053)))
+))
+(define agile (list 0 1 2 3 4 5))
+(define (agile-prior category)
+(case category
+	(('man) (multinomial agile (list 0.105263157894737 0.105263157894737 0.263157894736842 0.263157894736842 0.157894736842105 0.105263157894737)))
+	(('cheetah) (multinomial agile (list 0.0526315789473684 0.0526315789473684 0.210526315789474 0.105263157894737 0.157894736842105 0.421052631578947)))
+))
+(define goals (list 'category? 'fast? 'agile?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('fast?) (fast-prior category))
+		(('agile?) (agile-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category fast agile goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('fast?) fast)
+		(('agile?) agile)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define fast (fast-prior category))
+(define agile (agile-prior category))
+(define speaker-goal (goal-prior))
+(list category fast agile)
+(equal? utterance (apply multinomial (raise-to-power (speaker category fast agile speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'cheetah))
+(write-csv (append (list (list 'category 'fast 'agile 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/cheetah_6_1_noAltUtts.csv)

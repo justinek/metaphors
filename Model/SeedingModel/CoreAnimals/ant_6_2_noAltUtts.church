@@ -1,0 +1,54 @@
+(define categories (list 'man 'ant))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define small (list 0 1 2 3 4 5))
+(define (small-prior category)
+(case category
+	(('man) (multinomial small (list 0.0952380952380952 0.142857142857143 0.238095238095238 0.333333333333333 0.0952380952380952 0.0952380952380952)))
+	(('ant) (multinomial small (list 0.0952380952380952 0.0476190476190476 0.0476190476190476 0.0476190476190476 0.0476190476190476 0.714285714285714)))
+))
+(define industrious (list 0 1 2 3 4 5))
+(define (industrious-prior category)
+(case category
+	(('man) (multinomial industrious (list 0.04 0.04 0.12 0.12 0.16 0.52)))
+	(('ant) (multinomial industrious (list 0.04 0.12 0.16 0.12 0.2 0.36)))
+))
+(define goals (list 'category? 'small? 'industrious?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('small?) (small-prior category))
+		(('industrious?) (industrious-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category small industrious goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('small?) small)
+		(('industrious?) industrious)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define small (small-prior category))
+(define industrious (industrious-prior category))
+(define speaker-goal (goal-prior))
+(list category small industrious)
+(equal? utterance (apply multinomial (raise-to-power (speaker category small industrious speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 2)
+(define interpretation (listener 'ant))
+(write-csv (append (list (list 'category 'small 'industrious 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/ant_6_2_noAltUtts.csv)

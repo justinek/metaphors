@@ -1,0 +1,6 @@
+g0.1-a1.csv
+g0.1-a3.csv
+g0.5-a1.csv
+g0.5-a3.csv
+noQud-a1.csv
+noQud-a3.csv

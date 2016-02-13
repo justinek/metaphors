@@ -1,0 +1,54 @@
+(define categories (list 'man 'penguin))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define funny (list 0 1 2 3 4 5))
+(define (funny-prior category)
+(case category
+	(('man) (multinomial funny (list 0.1 0.05 0.15 0.2 0.2 0.3)))
+	(('penguin) (multinomial funny (list 0.15 0.1 0.1 0.2 0.3 0.15)))
+))
+(define cute (list 0 1 2 3 4 5))
+(define (cute-prior category)
+(case category
+	(('man) (multinomial cute (list 0.130434782608696 0.173913043478261 0.217391304347826 0.173913043478261 0.173913043478261 0.130434782608696)))
+	(('penguin) (multinomial cute (list 0.0869565217391304 0.0869565217391304 0.173913043478261 0.130434782608696 0.304347826086957 0.217391304347826)))
+))
+(define goals (list 'category? 'funny? 'cute?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('funny?) (funny-prior category))
+		(('cute?) (cute-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category funny cute goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('funny?) funny)
+		(('cute?) cute)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define funny (funny-prior category))
+(define cute (cute-prior category))
+(define speaker-goal (goal-prior))
+(list category funny cute)
+(equal? utterance (apply multinomial (raise-to-power (speaker category funny cute speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 3)
+(define interpretation (listener 'penguin))
+(write-csv (append (list (list 'category 'funny 'cute 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/penguin_6_3_noAltUtts.csv)

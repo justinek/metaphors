@@ -1,0 +1,177 @@
+
+(define alpha 10)
+(define lit-cost 1)
+(define cost-diff 0.2)
+(define fig-cost (+ lit-cost cost-diff))
+
+;; John could either be a giraffe or a person.
+(define categories (list 'giraffe 'hamster 'man))
+
+;; It is extremely unlikely that John is actually a giraffe.
+(define (categories-prior) (multinomial categories '(0.005 0.005 0.99)))
+
+(define utterances (list 'giraffe 'hamster 'tall 'short 'null))
+
+;(define utterances (list 'tall 'short 'null))
+(define costs (list fig-cost fig-cost lit-cost lit-cost 0))
+
+;(define theta-prior (uniform-draw heights))
+
+(define (utterance-prior)
+  (multinomial utterances
+               (map (lambda (utterance-cost) (exp (- utterance-cost)))
+                    costs)))
+
+
+;The only feature being considered is size
+(define heights (list 0 1 5 10 12 14 16 18 20 60)) 
+(define (height-prior category)
+  (case category
+        (('giraffe) 
+         (multinomial heights 
+                      (list 
+                        0.08525308 
+                        0.095150488
+                        0.097429545
+                        0.093167808
+                        0.100124165
+                        0.103076727
+                        0.104573982
+                        0.115360299
+                        0.132323197
+                        0.073540708
+                        )))
+        (('hamster) 
+         (multinomial heights 
+                      (list 
+                        0.56894955
+                        0.352652504
+                        0.052048715
+                        0.006017721
+                        0.002683925
+                        0.003506001
+                        0.003527428
+                        0.003641711
+                        0.003219469
+                        0.003752976
+                        )))
+        (('man) 
+         (multinomial heights
+                      (list 
+                        0.223972228
+                        0.232025297
+                        0.209342451
+                        0.129931668
+                        0.0800854
+                        0.054779022
+                        0.033360048
+                        0.020610576
+                        0.009547647
+                        0.006345663
+                        )))
+        (('woman) 
+         (multinomial heights
+                      (list 
+                        0.226155993
+                        0.252201495
+                        0.205132475
+                        0.126295856
+                        0.073592483
+                        0.042512272
+                        0.035781711
+                        0.024049511
+                        0.009956803
+                        0.0043214)))
+        ))
+
+
+(define goals (list 'tall? 'short? 'category?))
+
+(define (theta-prior) (uniform-draw heights))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (uniform-draw goals))
+
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category height theta-tall theta-short)
+  (case utterance
+        (('giraffe) (equal? utterance category))
+        (('hamster) (equal? utterance category))
+        (('tall) (>= height theta-tall))
+        (('short) (<= height theta-short))
+        (('null) #t)
+        ))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-category-height speaker-category-height 
+                         theta-tall theta-short)
+  (case goal
+    (('category?) (equal? (first listener-category-height) 
+                          (first speaker-category-height)))
+    (('tall?) (equal? (>= (second listener-category-height) theta-tall) 
+                      (>= (second speaker-category-height) theta-tall)))
+    (('short?) (equal? (<= (second listener-category-height) theta-short)
+                       (<= (second speaker-category-height) theta-short)))
+    (('height?) (equal? (second listener-category-height) 
+                        (second speaker-category-height)))
+        ))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category height goal theta-tall theta-short)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (lit-listener utterance))
+                       (list category height) theta-tall theta-short)))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance)
+     (enumeration-query
+      (define category (categories-prior))
+      (define height (height-prior category))
+      (define speaker-goal (goal-prior))
+      (define theta-tall (theta-prior))
+      (define theta-short (theta-prior))
+      height
+      (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category height speaker-goal 
+                                                  theta-tall theta-short)
+                                         alpha)))))))
+
+
+;; Listener model
+(define lit-listener
+  (mem 
+   (lambda (utterance)
+     (enumeration-query
+      (define category (categories-prior))
+      (define height (height-prior category))
+      (define speaker-goal (goal-prior))
+      (define theta-tall (theta-prior))
+      (define theta-short (theta-prior))
+      (list category height)
+      (literal-interpretation utterance category height theta-tall theta-short)))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+
+(define (interpret utterance)
+  (listener utterance depth))
+;; (barplot (sample-one 'giraffe) "giraffe")
+;; (barplot (sample-one 'tall) "tall")
+;; (barplot (sample-one 'hamster) "hamster")
+;; (barplot (sample-one 'short) "short")
+
+(list (interpret 'giraffe) (interpret 'tall) (interpret 'hamster) (interpret 'short))

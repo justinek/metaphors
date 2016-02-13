@@ -1,0 +1,54 @@
+(define categories (list 'man 'panda))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define cute (list 0 1 2 3 4 5))
+(define (cute-prior category)
+(case category
+	(('man) (multinomial cute (list 0.130434782608696 0.173913043478261 0.217391304347826 0.173913043478261 0.173913043478261 0.130434782608696)))
+	(('panda) (multinomial cute (list 0.0434782608695652 0.0434782608695652 0.217391304347826 0.130434782608696 0.304347826086957 0.260869565217391)))
+))
+(define big (list 0 1 2 3 4 5))
+(define (big-prior category)
+(case category
+	(('man) (multinomial big (list 0.117647058823529 0.176470588235294 0.470588235294118 0.117647058823529 0.0588235294117647 0.0588235294117647)))
+	(('panda) (multinomial big (list 0.117647058823529 0.0588235294117647 0.235294117647059 0.411764705882353 0.117647058823529 0.0588235294117647)))
+))
+(define goals (list 'category? 'cute? 'big?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('cute?) (cute-prior category))
+		(('big?) (big-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category cute big goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('cute?) cute)
+		(('big?) big)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define cute (cute-prior category))
+(define big (big-prior category))
+(define speaker-goal (goal-prior))
+(list category cute big)
+(equal? utterance (apply multinomial (raise-to-power (speaker category cute big speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'panda))
+(write-csv (append (list (list 'category 'cute 'big 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/panda_6_1_noAltUtts.csv)

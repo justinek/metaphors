@@ -1,0 +1,62 @@
+(define categories (list 'eagle 'whale 'horse 'lion 'elephant 'man))
+(define (categories-prior) (multinomial categories '(0.002 0.002 0.002 0.002 0.002 0.99)))
+(define utterances categories)
+(define costs '(1 1 1 1 1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define big (list 0 1 2))
+(define (big-prior category)
+(case category
+	(('eagle) (multinomial big (list 0.642857142857143 0.285714285714286 0.0714285714285714)))
+	(('whale) (multinomial big (list 0.0714285714285714 0.142857142857143 0.785714285714286)))
+	(('horse) (multinomial big (list 0.0714285714285714 0.714285714285714 0.214285714285714)))
+	(('lion) (multinomial big (list 0.285714285714286 0.428571428571429 0.285714285714286)))
+	(('elephant) (multinomial big (list 0.0714285714285714 0.0714285714285714 0.857142857142857)))
+	(('man) (multinomial big (list 0.285714285714286 0.642857142857143 0.0714285714285714)))
+))
+(define majestic (list 0 1 2))
+(define (majestic-prior category)
+(case category
+	(('eagle) (multinomial majestic (list 0.176470588235294 0.352941176470588 0.470588235294118)))
+	(('whale) (multinomial majestic (list 0.117647058823529 0.411764705882353 0.470588235294118)))
+	(('horse) (multinomial majestic (list 0.117647058823529 0.411764705882353 0.470588235294118)))
+	(('lion) (multinomial majestic (list 0.117647058823529 0.176470588235294 0.705882352941177)))
+	(('elephant) (multinomial majestic (list 0.0588235294117647 0.294117647058824 0.647058823529412)))
+	(('man) (multinomial majestic (list 0.411764705882353 0.294117647058824 0.294117647058824)))
+))
+(define goals (list 'category? 'big? 'majestic?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('big?) (big-prior category))
+		(('majestic?) (majestic-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category big majestic goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('big?) big)
+		(('majestic?) majestic)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define big (big-prior category))
+(define majestic (majestic-prior category))
+(define speaker-goal (goal-prior))
+(list category big majestic)
+(equal? utterance (apply multinomial (raise-to-power (speaker category big majestic speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'whale))
+(write-csv (append (list (list 'category 'big 'majestic 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/whale_3_1_noAltFeatures.csv)

@@ -1,0 +1,54 @@
+(define categories (list 'man 'elephant))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define big (list 0 1 2))
+(define (big-prior category)
+(case category
+	(('man) (multinomial big (list 0.285714285714286 0.642857142857143 0.0714285714285714)))
+	(('elephant) (multinomial big (list 0.0714285714285714 0.0714285714285714 0.857142857142857)))
+))
+(define hard (list 0 1 2))
+(define (hard-prior category)
+(case category
+	(('man) (multinomial hard (list 0.571428571428571 0.333333333333333 0.0952380952380952)))
+	(('elephant) (multinomial hard (list 0.333333333333333 0.333333333333333 0.333333333333333)))
+))
+(define goals (list 'category? 'big? 'hard?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('big?) (big-prior category))
+		(('hard?) (hard-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category big hard goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('big?) big)
+		(('hard?) hard)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define big (big-prior category))
+(define hard (hard-prior category))
+(define speaker-goal (goal-prior))
+(list category big hard)
+(equal? utterance (apply multinomial (raise-to-power (speaker category big hard speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 1)
+(define interpretation (listener 'elephant))
+(write-csv (append (list (list 'category 'big 'hard 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/elephant_3_1_noAltUtts.csv)

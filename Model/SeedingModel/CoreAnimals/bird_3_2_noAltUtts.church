@@ -1,0 +1,54 @@
+(define categories (list 'man 'bird))
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define utterances categories)
+(define costs '(1 1))
+(define (utterance-prior) (multinomial utterances (map (lambda (utterance-cost) (exp (- utterance-cost))) costs)))
+(define fast (list 0 1 2))
+(define (fast-prior category)
+(case category
+	(('man) (multinomial fast (list 0.375 0.3125 0.3125)))
+	(('bird) (multinomial fast (list 0.3125 0.4375 0.25)))
+))
+(define small (list 0 1 2))
+(define (small-prior category)
+(case category
+	(('man) (multinomial small (list 0.222222222222222 0.611111111111111 0.166666666666667)))
+	(('bird) (multinomial small (list 0.111111111111111 0.0555555555555556 0.833333333333333)))
+))
+(define goals (list 'category? 'fast? 'small?))
+(define (goal-prior) (uniform-draw goals))
+(define lit-listener (mem (lambda (utterance goal)
+(enumeration-query
+(define category utterance)
+(define feature
+	(case goal
+		(('category?) category)
+		(('fast?) (fast-prior category))
+		(('small?) (small-prior category))
+))
+feature
+#t))))
+(define speaker (mem (lambda 
+(category fast small goal)
+(enumeration-query
+(define utterance (utterance-prior))
+(define dimension
+	(case goal
+		(('category?) category)
+		(('fast?) fast)
+		(('small?) small)
+))
+utterance
+(equal? (apply multinomial (lit-listener utterance goal)) dimension)))))
+(define listener (mem (lambda (utterance)
+(enumeration-query
+(define category (categories-prior))
+(define fast (fast-prior category))
+(define small (small-prior category))
+(define speaker-goal (goal-prior))
+(list category fast small)
+(equal? utterance (apply multinomial (raise-to-power (speaker category fast small speaker-goal) alpha)))))))
+(define (raise-to-power speaker-dist alpha) (list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+(define alpha 2)
+(define interpretation (listener 'bird))
+(write-csv (append (list (list 'category 'fast 'small 'prob)) (map flatten (zip (first interpretation) (second interpretation)))) '/Users/justinek/Dropbox/Work/Grad_school/Research/Metaphor/metaphors/Model/SeedingModel/CoreAnimalsOutput/bird_3_2_noAltUtts.csv)

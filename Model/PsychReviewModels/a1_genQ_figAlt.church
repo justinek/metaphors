@@ -1,0 +1,182 @@
+
+;(define animal 'ant)
+(define alpha 5)
+(define depth 1)
+
+(define featureSets (list '(1 1) '(1 0) '(0 1) '(0 0)))
+
+(define priors-folder '/Users/justinekao/Dropbox/Work/Grad_school/Research/Metaphor/metaphors1/Data/PsychReviewExps/Priors/priors_mean_)
+
+(define (goal-prior) (multinomial goals '(0.5 0.5 0.5)))
+
+(define (featureSet-prior animal)
+  (rest  ; gets rid of first line (column names)
+    (read-csv (string-append priors-folder animal '.csv))))
+
+;(define categories (map first featureSet-prior))
+;(define categories (list 'man animal))
+;(define utterances (list animal 'f1 'f2))
+(define utterance-prior '(0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1))
+(define categories-prior '(0.99 0.002 0.002 0.002 0.002 0.002))
+
+; Read all of the relevant priors for this particular animal
+
+
+; Sample feature priors for an animal (includes target, man, and alternatives)
+(define (sample-featureSet animal category)
+  (define priors (rest (assoc category (featureSet-prior animal))))
+  (multinomial featureSets 
+    (map string->number priors)
+  ))
+
+; Goals: f1, f2, or both
+(define goals (list 'goal-f1 'goal-f2 'goal-all))
+
+; Literal meanings
+(define (literal-interpretation utterance category feature1 feature2)
+(case utterance
+    (('f1-1) (equal? feature1 1))
+    (('f1-0) (equal? feature1 0))
+    (('f2-1) (equal? feature2 1))
+    (('f2-0) (equal? feature2 0))
+    ((utterance) (equal? utterance category))))
+
+
+(define (goal-satisfied? goal listener-category-feature1-feature2 speaker-category speaker-feature1 speaker-feature2)
+(case goal
+(('goal-f1) (equal? (second listener-category-feature1-feature2) speaker-feature1))
+(('goal-f2) (equal? (third listener-category-feature1-feature2) speaker-feature2))
+(('goal-all) (and (equal? (second listener-category-feature1-feature2) speaker-feature1)
+  (equal? (third listener-category-feature1-feature2) speaker-feature2)))
+))
+
+
+(define speaker
+  (mem (lambda (animal category feature1 feature2 goal depth)
+  (enumeration-query
+  (define utterances (append (filter (lambda(x) (not (equal? 'man x))) (map first (featureSet-prior animal))) (list 'f1-1 'f1-0 'f2-1 'f2-0)))
+  (define utterance (multinomial utterances utterance-prior))
+  utterance
+  (goal-satisfied? goal (apply multinomial (listener animal utterance depth)) category feature1 feature2)
+))))
+
+(define listener
+  (mem (lambda (animal utterance depth)
+  (enumeration-query
+    ;(define animal-type 
+    ;  (if (or (equal? utterance 'f1) (equal? utterance 'f2)) animal utterance))
+    (define categories (append (list 'man) (filter (lambda(x) (not (equal? 'man x))) (map first (featureSet-prior animal)))))
+
+    ;(filter (lambda(x) (not (equal? 'man x))) (map first (featureSet-prior 'ant)))
+    ;(define categories (list 'man animal-type))
+    (define category (multinomial categories categories-prior))
+    (define featureSet (sample-featureSet animal category))
+    (define feature1 (first featureSet))
+    (define feature2 (second featureSet))
+    (define speaker-goal (goal-prior))
+
+;(list category fierceness skinniness)
+    (list category feature1 feature2 speaker-goal)
+
+    (if (equal? depth 0)
+    (literal-interpretation utterance category feature1 feature2)
+    (equal? utterance
+    (apply multinomial (raise-to-power (speaker animal category feature1 feature2 speaker-goal (- depth 1)) alpha))))
+    ))))
+
+(define (raise-to-power speaker-dist alpha)
+(list (first speaker-dist) (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+(define (interpret animal utterance) (listener animal utterance depth))
+                          
+
+; (write-csv
+;   (zip
+;     (make-list 80 'speed)
+;     (append
+;       (make-list 40 'man)
+;       (make-list 40 'woman))
+;     (append
+;       (make-list 10 'litA)
+;       (make-list 10 'litB)
+;       (make-list 10 'animalA)
+;       (make-list 10 'animalB)
+;       (make-list 10 'litA)
+;       (make-list 10 'litB)
+;       (make-list 10 'animalA)
+;       (make-list 10 'animalB)
+;       )
+;     (append
+;       bins bins bins bins bins bins bins bins)
+;     (append 
+;       (second speed-man-litA) 
+;       (second speed-man-litB)
+;       (second speed-man-animalA)
+;       (second speed-man-animalB)
+;       (second speed-woman-litA) 
+;       (second speed-woman-litB)
+;       (second speed-woman-animalA)
+;       (second speed-woman-animalB)
+
+;       )
+;     ) 
+;   (string-append folder 'test_ animal '.csv))
+;(interpret 'f1)
+;(interpret 'f2)
+(define output-folder '/Users/justinekao/Dropbox/Work/Grad_school/Research/Metaphor/metaphors1/Model/PsychReviewModels/Output)
+
+(define (print-results animal target)
+  (define int-fig (interpret animal target))
+  (define int-f1 (interpret animal 'f1-1))
+  (define int-f2 (interpret animal 'f2-1))
+  (write-csv
+  (append
+    (zip (make-list 72 animal)
+      (make-list 72 target)
+      (first (interpret animal target))
+      (second (interpret animal target)))
+
+       (zip (make-list 48 animal)
+       (make-list 48 'f1)
+       (first (interpret animal 'f1-1))
+       (second (interpret animal 'f1-1)))
+      
+       (zip (make-list 48 animal)
+       (make-list 48 'f2)
+       (first (interpret animal 'f2-1))
+       (second (interpret animal 'f2-1)))
+
+        )
+       (string-append output-folder '/a (number->string alpha) '_genQ_figAlt_ animal '_ target '.csv)))
+
+
+;(append (list 'man) (filter (lambda(x) (not (equal? 'man x))) (map first (featureSet-prior 'ant))))
+
+
+ (print-results 'ant 'ant)
+(print-results 'bird 'bird)
+(print-results 'cheetah 'cheetah)
+(print-results 'elephant 'elephant)
+(print-results 'giraffe 'giraffe)
+(print-results 'lion 'lion)
+(print-results 'monkey 'monkey)
+(print-results 'panda 'panda)
+(print-results 'penguin 'penguin)
+(print-results 'rabbit 'rabbit)
+(print-results 'turtle 'turtle)
+(print-results 'whale 'whale)
+
+(print-results 'penguin 'monkey)
+(print-results 'panda 'dog)
+(print-results 'elephant 'turtle)
+(print-results 'bird 'jaguar)
+(print-results 'cheetah 'jaguar)
+(print-results 'whale 'hippo)
+(print-results 'rabbit 'jaguar)
+(print-results 'ant 'monkey)
+(print-results 'giraffe 'horse)
+(print-results 'lion 'horse)
+
+
+
+

@@ -24,7 +24,7 @@ if qud == 0:
 else:
     qudPriors = makeParemsByInc(0.5, 1, 0.1)
 
-alphaPriors = makeParemsByInc(1, 3, 0.5)
+alphaPriors = makeParemsByInc(2, 7, 0.5)
 #categoryPriors = range(2, 5) 
 
 #print qudPriors
