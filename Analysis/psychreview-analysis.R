@@ -21,6 +21,11 @@ p$f1 <- ifelse(p$setNum %in% c(1, 2), 1, 0)
 p$f2 <- ifelse(p$setNum %in% c(1, 3), 1, 0)
 p$setNum <- factor(p$setNum, labels=c("1,1", "1,0", "0,1", "0,0"))
 
+ggplot(p, aes(x=categoryID, y=prior, color=categoryID)) +
+  geom_point() +
+  facet_wrap(~workerid) +
+  theme_bw()
+
 # Summarize
 p.summary <- summarySE(p, measurevar="prior", 
                        groupvars=c("animal", "alternative", "setNum", "featureSet"))

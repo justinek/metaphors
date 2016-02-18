@@ -1,0 +1,102 @@
+;; John could either be a lion or a person.
+(define categories (list 'lion 'person))
+
+;; It is extremely unlikely that John is actually a whale.
+(define (categories-prior) (multinomial categories '(0.01 0.99)))
+
+;; The speaker could either say "John is a lion" or "John is a person."
+(define utterances (list 'lion 'person))
+
+;; The utterances are equally costly.
+(define (utterance-prior) (multinomial utterances '(0.1 0.1)))
+
+;; The features of John being considered are "ferocious", "scary",
+;; "strong." Features are binary.
+(define featureSets
+  (list '(1 1 1)
+        '(1 1 0)
+        '(1 0 1)
+        '(1 0 0)
+        '(0 1 1)
+        '(0 1 0)
+        '(0 0 1)
+        '(0 0 0)))
+
+(define featureSet-prior 
+  (list
+   (list '0.300926613 '0.039467175 '0.174481485 '0.04261183 
+         '0.194008374 '0.056321108 '0.119008374 '0.073175041)
+   (list '0.130179728 '0.118432252 '0.107588218 '0.105232506 
+         '0.128847842 '0.130306399 '0.145415366 '0.133997687)))
+
+;; Speaker's possible goals are to communicate feature 1, 2, or 3
+(define goals (list 'goal-f1 'goal-f2 'goal-f3))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+
+;; Speaker optimality parameter
+(define alpha 3.0)
+
+;; Recursive depth
+(define depth 1)
+
+;; Sample John's features given that he is a member of category
+(define (sample-featureSet category prior all-categories)
+  (if (equal? category (first all-categories))
+      (multinomial featureSets (first prior))
+      (sample-featureSet category (rest prior) (rest all-categories))))
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-category-f1-f2-f3 speaker-category
+                         speaker-f1 speaker-f2 speaker-f3)
+  (case goal
+    (('goal-f1) (equal? (second listener-category-f1-f2-f3) speaker-f1))
+    (('goal-f2) (equal? (third listener-category-f1-f2-f3) speaker-f2))
+    (('goal-f3) (equal? (fourth listener-category-f1-f2-f3) speaker-f3))))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category f1 f2 f3 goal depth)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (listener utterance depth))
+                       category f1 f2 f3)))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance depth)
+     (enumeration-query
+      (define category (categories-prior))
+      (define featureSet (sample-featureSet category featureSet-prior categories))
+      (define f1 (first featureSet))
+      (define f2 (second featureSet))
+      (define f3 (third featureSet))
+      (define speaker-goal (goal-prior))
+      (list category f1 f2 f3)
+      (if (equal? depth 0)
+          (literal-interpretation utterance category)
+          (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category f1 f2 f3 speaker-goal (- depth 1))
+                                         alpha))))))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+(define (sample-one utterance)
+  (listener utterance depth))
+
+;; Probability of John's category and features given the utterance
+;; "John is lion."
+(barplot (sample-one 'lion))
