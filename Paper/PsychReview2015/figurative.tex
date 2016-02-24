@@ -426,19 +426,19 @@ Even more dramatically, an utterance such as ``It's 1000 degrees outside'' is li
 %%\citeA{norrick1982semantics} proposed that hyperbole is characterized by three properties: its affective dimension, its pragmatic nature, and its function as a vertical-scale metaphor where the comparison is between different positions on a scale rather than between discrete concepts. For a hyperbolic statement to be interpreted successfully, the listener must recognize the non-veridicality of the statement, thus entering an activity of joint pretense \cite{clark1996using}.  Hyperbolic statements often include extreme case formulations (e.g. ``It was the biggest storm in the history of the universe'') or implausible descriptions (e.g. ``It was a thousand degrees outside.'') These demonstrations of non-veridicality then require the listener to produce what \citeA{fogelin2011figuratively} called a ``corrective'' response that is more in line with reality.
 %Our first attempt , we focus on the nonliteral interpretation of number words. We chose number words be- cause they have precise literal meanings that can be easily modeled, and apply to domains (such as prices) that lend themselves to quantitative measurement. 
 
-\begin{figure}[t]
-\centering
-\scalebox{0.33}{\includegraphics{Plots/figure2a-revised.pdf}}
-\caption{Model predictions v.s. average human interpretations. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the empirical probability. Correlation between model and human interpretations is $0.968$.}
-\label{model_fit}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\scalebox{0.33}{\includegraphics{Plots/figure4a-revised.pdf}}
-\caption{Model predictions of affect v.s. human ratings. Each point represents an utterance and price state pair $(u, s)$. For pairs where $u = s$, the utterance is literal; for $u > s$, the utterance is hyperbolic. The x-coordinate of each point is the model's prediction of the probability that the utterance/price state pair conveys affect; the y-coordinate is participants' affect ratings (error bars are standard error). Correlation between model and humans is $0.775$.}
-\label{affect}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%\scalebox{0.33}{\includegraphics{Plots/figure2a-revised.pdf}}
+%\caption{Model predictions v.s. average human interpretations. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the empirical probability. Correlation between model and human interpretations is $0.968$.}
+%\label{model_fit}
+%\end{figure}
+%
+%\begin{figure}[t]
+%\centering
+%\scalebox{0.33}{\includegraphics{Plots/figure4a-revised.pdf}}
+%\caption{Model predictions of affect v.s. human ratings. Each point represents an utterance and price state pair $(u, s)$. For pairs where $u = s$, the utterance is literal; for $u > s$, the utterance is hyperbolic. The x-coordinate of each point is the model's prediction of the probability that the utterance/price state pair conveys affect; the y-coordinate is participants' affect ratings (error bars are standard error). Correlation between model and humans is $0.775$.}
+%\label{affect}
+%\end{figure}
 
 
 In \citeA{kao2014nonliteral}, we examined how people arrive at the appropriate interpretations and affective subtexts of numeric utterances about prices.
@@ -447,7 +447,8 @@ To empirically measure people's prior beliefs,
 we asked participants to rate the probabilities that different items (electric kettles, watches, and laptops) cost various amounts of money (e.g. \$50, \$51, \$1,000, \$10,000). To measure people's encyclopedic knowledge in this domain, we asked participants to rate the probability that someone would think an item that costs \$$x$ is expensive (e.g., a watch that costs \$1,000). We chose expensiveness as the associated dimension of interest, because utterances about cost seem to naturally evoke judgments of expensiveness \todo{explain this more}.   
 Using the empirically measured prior beliefs and background knowledge, we used the qRSA model to obtain predicted interpretations for each utterance. The model reasons about different types of QUDs that the speaker may wish to address, including a QUD concerning affect about the price of the item. By reasoning about relevance to a set of QUDs, the model captures a basic feature of hyperbole: utterances whose literal meanings are less likely given the price prior are more likely to be interpreted hyperbolically. For example, ``The watch cost 1000 dollars'' is more likely to be interpreted hyperbolically than ``The  laptop cost 1000 dollars.'' 
 
-To quantitatively evaluate the model's predictions, we asked participants to interpret potentially hyperbolic utterances. For example, given that Sam said: ``The watch cost 1000 dollars,'' how likely is it that the watch cost $x$ dollars? For all utterances, we then compared the model's and participants' interpretations. The model predictions are highly correlated with people's interpretations ($r=0.968, p<0.0001$) (Figure \ref{model_fit}), suggesting that the qRSA model is able to combine linguistic information, background knowledge, and reasoning about the speaker's goals to interpret hyperbolic utterances. 
+To quantitatively evaluate the model's predictions, we asked participants to interpret potentially hyperbolic utterances. For example, given that Sam said: ``The watch cost 1000 dollars,'' how likely is it that the watch cost $x$ dollars? For all utterances, we then compared the model's and participants' interpretations. The model predictions are highly correlated with people's interpretations ($r=0.968, p<0.0001$), %(Figure \ref{model_fit}), 
+suggesting that the qRSA model is able to combine linguistic information, background knowledge, and reasoning about the speaker's goals to interpret hyperbolic utterances. 
 
 %\begin{figure}
 %\centering
@@ -457,7 +458,7 @@ To quantitatively evaluate the model's predictions, we asked participants to int
 %\label{goals}
 %\end{figure}
 
-In addition to producing the appropriate corrective response to hyperbolic utterances, the model also captures the affective subtext of hyperbole. We conducted a separate experiment to examine peoples' interpretation of affect in hyperbolic versus literal utterances. Participants read scenarios in which a speaker bought an item that cost $s$ dollars and says it cost $u$ dollars, where $u \geq s$. They then rated how likely it is that the buyer thinks the item was too expensive. Results showed that utterances $u$ where $u > s$ (hyperbolic utterances) are rated as significantly more likely to convey affect than utterances where $u {=} s$ (literal utterances) ($F(1, 25)=12.57, p < 0.005$). Moreover, if a watch actually cost $100$ dollars and Sam produces a hyperbolic utterance such as ``The watch cost $1000$ dollars,'' participants are more likely to believe that Sam thinks the watch is expensive than if the watch \emph{actually} cost $1000$ dollars and Sam produces an identical (but in this case literal) utterance: ``The watch cost $1000$ dollars.'' This suggests that listeners infer affect from hyperbolic utterances above and beyond the affect associated  with a given price state. Quantitatively, we compared model and human interpretations of affect for each of the 45 utterance and price state pairs $(u, s)$ where $u \geq s$. While there is a significant amount of noise in the human judgments (average split-half correlation is $0.833$), the model predicts human interpretations of the utterances' affective subtext significantly better than chance ($r=0.775, p < 0.00001$), capturing most of the reliable variation in these data (Figure \ref{affect}).
+In addition to producing the appropriate corrective response to hyperbolic utterances, the model also captures the affective subtext of hyperbole. We conducted a separate experiment to examine peoples' interpretation of affect in hyperbolic versus literal utterances. Participants read scenarios in which a speaker bought an item that cost $s$ dollars and says it cost $u$ dollars, where $u \geq s$. They then rated how likely it is that the buyer thinks the item was too expensive. Results showed that utterances $u$ where $u > s$ (hyperbolic utterances) are rated as significantly more likely to convey affect than utterances where $u {=} s$ (literal utterances) ($F(1, 25)=12.57, p < 0.005$). Moreover, if a watch actually cost $100$ dollars and Sam produces a hyperbolic utterance such as ``The watch cost $1000$ dollars,'' participants are more likely to believe that Sam thinks the watch is expensive than if the watch \emph{actually} cost $1000$ dollars and Sam produces an identical (but in this case literal) utterance: ``The watch cost $1000$ dollars.'' This suggests that listeners infer affect from hyperbolic utterances above and beyond the affect associated  with a given price state. Quantitatively, we compared model and human interpretations of affect for each of the 45 utterance and price state pairs $(u, s)$ where $u \geq s$. While there is a significant amount of noise in the human judgments (average split-half correlation is $0.833$), the model predicts human interpretations of the utterances' affective subtext significantly better than chance ($r=0.775, p < 0.00001$), capturing most of the reliable variation in these data. %(Figure \ref{affect}).
  
 Results from \cite{kao2014nonliteral} suggest that by incorporating inferences about the speaker's communicative goals, the qRSA model successfully interprets hyperbolic utterances and appropriately recovers the affective subtext. 
 However, in this initial exploration of applying the qRSA model to figurative language, we only considered a very simple space of affect, namely the presence or absence of negative feeling. 
@@ -615,7 +616,16 @@ By calculating the average probabilities of positive valence and high arousal gi
 \caption{Model's and participants' inferences about the probability of valence and arousal (row) given a weather context (column) and an utterance (x-axis). The dark lines are participants' ratings; the light lines are the model's posterior probabilities of positive valence and high arousal given an utterance in a weather context. The dotted lines are prior probabilities of positive valence and high arousal for each weather context. Error bars are $95\%$ confidence intervals on the participants' ratings.}
 \label{model-state}
 \end{figure}
-
+\todo{Is this figure useful?}
+\begin{figure}
+    %\begin{minipage}{0.45\textwidth}
+       \scalebox{0.55}{\includegraphics{Plots/irony-goal-model.pdf}}
+       \caption{Model's posterior distributions over QUDs given an utterance (row) in a weather context (column). The darkness of the bars indicate participants' irony ratings for the utterances. }        
+        \label{irony-goal-model}
+    %\end{minipage}
+    %\caption{Nine weather contexts and their empirically measured priors over weather states.}
+    %\label{fig:three graphs}
+\end{figure}
 
 \subsubsection{Experiment 1b: Interpreting verbal irony}
 %In Experiment 1, we obtained the prior distribution over weather states for each weather context as well as the prior probabilities of positive valence and high arousal given each weather state. 
@@ -650,9 +660,9 @@ Finally, we examine participants' inferences about the speaker's affect given ut
 \begin{figure}[t]
 \centering
 %\begin{subfigure}{0.7\textwidth}
-\scalebox{0.5}{\includegraphics{Plots/irony-scatter-all.pdf}}
-\caption{Scatter plot showing correlations between model predictions and human ratings for weather state, speaker valence, and speaker affect. Colors indicate utterances.}
-\label{scatter}
+\scalebox{0.55}{\includegraphics{Plots/irony-human-model-scatter-cropped.pdf}}
+\caption{Scatter plot showing correlations between model predictions and human ratings for weather state, speaker valence, and speaker affect. Each dot in a panel represents the interpretation of an utterance in a weather situation, along the dimensions of weather state, valence, and arousal. The darkness of the dots indicate participants' irony ratings for the utterances.}
+\label{irony-scatter}
 %\end{subfigure}
 %\begin{subfigure}{0.43\textwidth}
 %\includegraphics[width=220pt, height=140pt]{model-arousal.pdf}
@@ -672,13 +682,14 @@ From Experiment 1a, we obtained the prior probability of a weather state given a
 For each of the $45$ utterance and weather context pairs, the model produced an interpretation consisting of the joint posterior distribution $P(s, A | u)$, where $A$ can be further broken down into valence and arousal dimensions. We will examine the model's performance on each of these state and affect dimensions by marginalizing over the other dimensions.
 
 %\todo[inline]{NDG: for each of these correlations also report percent of explainable variance captured with CI (footnote can explain what that is) JTK: still need to do this.}
-Figure ~\ref{scatter} shows scatter plots correlating model predictions with human interpretation data for each of the dimensions: weather state, valence, and arousal. %Figure ~\ref{model-state} shows participants' and the model's inferences about the actual weather state given an utterance and a weather context. 
+Figure ~\ref{irony-scatter} shows scatter plots correlating model predictions with human interpretation data for each of the dimensions: weather state, valence, and arousal. %Figure ~\ref{model-state} shows participants' and the model's inferences about the actual weather state given an utterance and a weather context. 
 The model predictions of weather state given utterance match humans' interpretations, with a correlation of $0.86$. Since the split-half correlation for the human data is $\rho=0.898$ ($95\%$CI $= [0.892, 0.903]$)\footnote{Split-half correlations $\rho$ were calculated by repeatedly bootstrapping samples from the data (sample each participant with replacement), computing correlation between two halves of the bootstrapped samples, and using the Spearman-Brown prediction formula to estimate predicted reliability with full sample size. Confidence intervals are $95\%$ CI over $1000$ iterations of bootstrap sampling.\label{splithalf}}  we find that our model captures much of the explainable variance in human judgements. The model predicts humans' interpretations of valence extremely well, with a correlation of $0.96$, capturing essentially all of the explainable variance in the data ($\rho = 0.948\pm0.001$).
 %Figure ~\ref{valence} shows participants' and the models' inference about the speaker's valence given an utterance and a weather context. From the tight correspondence between model and human interpretations of valence ($r=0.96$), we see that the model is able to incorporate the valence associated with the utterance's literal meaning (e.g. ``The weather is terrible'') and the valence associated with the weather context (e.g. weather context 1) to interpret the probability of the speaker feeling positive valence. 
-Importantly, the model infers the appropriate valence even when it is inconsistent with the valence of the utterance's literal meaning.
+Importantly, the model infers the appropriate valence even for utterances that are judged as highly ironic (the darker dots in Figure~\ref{irony-scatter}). Thus, the model is able to to recover the intended valence even when it is inconsistent with the valence of the utterance's literal meaning.
 %\todo{note that this is the case even when interpreted valence mismatches the prior expected valence given literal meaning -- i.e. the model captures irony in valence.}
-The model's predictions for emotional arousal match humans' with a correlation of $0.66$, capturing a substantial amount of the explainable variance ($\rho = 0.763\pm0.005$). Furthermore, the absolute difference between the model's inferred valence and the valence of the utterance's literal meaning correlates significantly with people's irony ratings ($r = 0.86$, $\rho=0.94 \pm 0.005$), suggesting that the model is able to use inconsistencies between literal and interpreted meanings to identify ironic uses.
-\todo[inline]{Do we need a figure showing correlations for irony ratings? Not as good as straight-up lm with weather context and utterance as predictors}
+The model's predictions for emotional arousal match humans' with a correlation of $0.66$, capturing a substantial amount of the explainable variance ($\rho = 0.763\pm0.005$). %Furthermore, the absolute difference between the model's inferred valence and the valence of the utterance's literal meaning correlates significantly with people's irony ratings ($r = 0.86$, $\rho=0.94 \pm 0.005$), suggesting that the model is able to use inconsistencies between literal and interpreted meanings to identify ironic uses.
+Finally, the model's inferences about the QUD varies systematically across the utterances and weather contexts (Figure~\ref{irony-goal-model}. For utterances with high irony ratings (e.g. ``terrible'' uttered in WC1 and ``amazing'' uttered in WC9), the model infers that the QUD is most likely the speaker's emotional arousal, whereas for utterances with low irony ratings (e.g. ``terrible'' uttered in WC9 and ``amazing'' uttered in WC1), the model infers that the QUD is most likely the  weather state. In fact, the model's posterior probability of an arousal QUD captures participants' graded judgments of irony and is highly correlated with irony ratings ($r = 0.88$, $\rho=0.94 \pm 0.005$). This suggests that the model may be able to use inferences about the QUD to identify ironic uses, and also that the degree of perceived irony may be associated with the probability of affective QUDs such as emotional arousal.
+%\todo[inline]{Do we need a figure showing correlations for irony ratings? Not as good as straight-up lm with weather context and utterance as predictors}
 %\todo[inline]{JTK: still need to do stats for this}
 %Figure~\ref{arousal} shows participants' and the model's inferences about the speaker's arousal. 
 %\todo{why is this correlation low? is it because of the terrible-bad inversion i asked about above?}
@@ -830,39 +841,39 @@ In our first exploration of the model's behavior, we made a number of simplifyin
 \begin{tabular}{|a |c c c | c c c|}\hline
 %\toprule
 \textbf{Animal} & $f_1=1$ & $f_2=1$ & $f_3=1$ & $f_1=0$ & $f_2=0$ & $f_3=0$ \\\hline
-ant & small & strong & busy & large & weak & idle \\
-bat & scary & blind & nocturnal & unalarming & sighted & diurnal \\
-bear & scary & big & fierce & unalarming & small & nonviolent  \\
-bee & busy & small & angry & idle & large & unangry \\
-bird & free & graceful & small & unfree & awkward & large \\
-buffalo & big & strong & wild & small & weak & tame \\
-cat & independent & lazy & soft & dependent & fast & hard \\
-cow & fat & dumb & lazy & thin & smart & fast \\
-dog & loyal & friendly & happy & disloyal & unfriendly & unhappy \\
-dolphin & smart & friendly & playful & stupid & unfriendly & unplayful\\
-duck & loud & cute & quacking & quiet & unattractive & non-quacking \\
-elephant & huge & smart & heavy & small & stupid & light \\
-fish & scaly & wet & smelly & smooth & dry & fragrant \\
-fox & sly & smart & pretty & artless & stupid & ugly \\
-frog & slimy & noisy & jumpy & nonslippery & quiet & relaxed \\
-goat & funny & hungry & loud & humorless & full & quiet \\
+ANT & small & strong & busy & large & weak & idle \\
+BAT & scary & blind & nocturnal & unalarming & sighted & diurnal \\
+BEAR & scary & big & fierce & unalarming & small & nonviolent  \\
+BEE & busy & small & angry & idle & large & unangry \\
+BIRD & free & graceful & small & unfree & awkward & large \\
+BUFFALO & big & strong & wild & small & weak & tame \\
+CAT & independent & lazy & soft & dependent & fast & hard \\
+COW & fat & dumb & lazy & thin & smart & fast \\
+DOG & loyal & friendly & happy & disloyal & unfriendly & unhappy \\
+DOLPHIN & smart & friendly & playful & stupid & unfriendly & unplayful\\
+DUCK & loud & cute & quacking & quiet & unattractive & non-quacking \\
+ELEPHANT & huge & smart & heavy & small & stupid & light \\
+FISH & scaly & wet & smelly & smooth & dry & fragrant \\
+FOX & sly & smart & pretty & artless & stupid & ugly \\
+FROG & slimy & noisy & jumpy & nonslippery & quiet & relaxed \\
+GOAT & funny & hungry & loud & humorless & full & quiet \\
 %%%%
-goose & loud & mean & annoying & quiet & nice & agreeable \\
-horse & fast & strong & beautiful & slow & weak & ugly \\
-kangaroo & jumpy & bouncy & cute & relaxed & inelastic & unattractive \\
-lion & ferocious & scary & strong & nonviolent & unalarming & weak \\
-monkey & funny & smart & playful & humorless & stupid & unplayful \\
-owl & wise & quiet & nocturnal & foolish & loud & diurnal \\
-ox & strong & big & slow & weak & small & fast\\
-penguin & cold & cute & funny & hot & unattractive & humorless \\
-pig & dirty & fat & smelly & clean & thin & fragrant \\
-rabbit & fast & furry & cute & slow & hairless & unattractive \\
-shark & scary & dangerous & mean & unalarming & safe & nice \\
-sheep & wooly & fluffy & dumb & hairless & hard & smart\\
-tiger & striped & fierce & scary & unpatterned & nonviolent & unalarming  \\
-whale & large & graceful & majestic & small & awkward & inferior \\
-wolf & scary & mean & angry & unalarming & nice & unangry \\
-zebra & striped & exotic & fast & unpatterned & native & slow\\
+GOOSE & loud & mean & annoying & quiet & nice & agreeable \\
+HORSE & fast & strong & beautiful & slow & weak & ugly \\
+KANGAROO & jumpy & bouncy & cute & relaxed & inelastic & unattractive \\
+LION & ferocious & scary & strong & nonviolent & unalarming & weak \\
+MONKEY & funny & smart & playful & humorless & stupid & unplayful \\
+OWL & wise & quiet & nocturnal & foolish & loud & diurnal \\
+OX & strong & big & slow & weak & small & fast\\
+PENGUIN & cold & cute & funny & hot & unattractive & humorless \\
+PIG & dirty & fat & smelly & clean & thin & fragrant \\
+RABBIT & fast & furry & cute & slow & hairless & unattractive \\
+SHARK & scary & dangerous & mean & unalarming & safe & nice \\
+SHEEP & wooly & fluffy & dumb & hairless & hard & smart\\
+TIGER & striped & fierce & scary & unpatterned & nonviolent & unalarming  \\
+WHALE & large & graceful & majestic & small & awkward & inferior \\
+WOLF & scary & mean & angry & unalarming & nice & unangry \\
+ZEBRA & striped & exotic & fast & unpatterned & native & slow\\
 \hline
 
 \end{tabular}
@@ -906,10 +917,10 @@ We created $32$ scenarios based on the animal categories and results from Experi
 
 \begin{figure}[t]
 \begin{center}
-\scalebox{0.55}{\includegraphics{Plots/human_bar.pdf}}
+\scalebox{0.55}{\includegraphics{Plots/metaphor-human-summary-byQUD-cropped.pdf}}
 \end{center}
-\caption{Average probability ratings for the three features given a vague/specific goal and a literal/metaphorical utterance. Error bars are standard error over the $32$ items.} 
-\label{human_bar}
+\caption{Average probability ratings for each of the three features given a vague/specific QUD and a literal/metaphorical utterance (Experiment 2c), subtracted by the average probabilities of a person having each of the features \emph{a priori} (Experiment 2b). Error bars are $95\%$ confidence intervals.} 
+\label{metaphor-human-summary}
 \end{figure}
 
 \begin{table}[h]
@@ -940,7 +951,7 @@ For each condition of each scenario, we obtained the average probability ratings
 We now analyze the effect of the speaker's communicative goal on the interpretation of literal or metaphorical utterances. When the speaker's utterance is literal, the probability ratings for $f_1$, $f_2$, and $f_3$ are not significantly different given a vague or a specific question ($(F(1, 62)= 2.73, p =0.1; F(1, 62)=0.0001, p = 0.99; F(1, 62) < 0.0001, p = 0.99$). For metaphorical utterances, however, the question type has an effect on participants' interpretations: participants rate the probability of $f_1$ as significantly higher when the question is specifically about $f_1$ than when it is vague ($F(1, 62) = 10.16$, $p < 0.005$). The probabilities of $f_2$ and $f_3$ are not significantly different given a vague question or a specific question about $f_1$ ($F(1, 62) = 0.04$, $p > 0.05$; $F(1, 62) = 0.8285$, $p > 0.05$). This suggests that people's interpretation of metaphor may be more sensitive to the communicative goals set up by context than their interpretation of literal utterances.
 
 \subsubsection{Metaphor model evaluation}
-We used the feature priors obtained in Experiment 2b to compute model interpretations of the $32$ metaphors. As discussed in the previous section, the behavioral results in Experiment 2c show evidence that the context set up by a question changes participants' interpretation of a metaphor. Our model naturally accounts for this using the speaker's prior over communicative goals $P(g)$. When a speaker is responding to a vague question, we set the prior distribution for $P(g)$ as uniform. When the speaker is responding to a question specifically about $f_1$, we assume that $P(g_1) > 0.5$ and equal between $P(g_2) = P(g_3)$. Fitting the goal prior parameter to data yields a prior of $P(g_1) = 0.6$ when responding to a specific question about $f_1$. We fit the category prior $P(c_a) = 0.01$ and the speaker optimality parameter $\lambda = 3$. %note that saying ''g_1'' is a slight abuse of notation given the model definitions above. 
+We used the feature priors obtained in Experiment 2b to compute model interpretations of the $32$ metaphors. As discussed in the previous section, the behavioral results in Experiment 2c show evidence that the context set up by a question changes participants' interpretation of a metaphor. Our model naturally accounts for this using the speaker's prior over communicative goals $P(g)$. When a speaker is responding to a vague question, we set the prior distribution for $P(g)$ as uniform. When the speaker is responding to a question specifically about $f_1$, we assume that $P(g_1) > 0.5$ and equal between $P(g_2) = P(g_3)$. Fitting the goal prior parameter to data yields a prior of $P(g_1) = 0.9$ when responding to a specific question about $f_1$. We fit the category prior $P(c_a) = 0.01$ and the speaker optimality parameter $\lambda = 4$. %note that saying ''g_1'' is a slight abuse of notation given the model definitions above. 
 
 Using these parameters, we obtained interpretation probabilities for each of the $32$ metaphors under both vague and specific goal conditions. For each metaphor and goal condition, the model produces a joint posterior distribution $P(c, \vec f | u)$. We first show a basic but important qualitative result, which is that the model is able to interpret utterances metaphorically. Marginalized over values of $\vec f$, the probability of the person category given the utterance is close to one ($P(c_p | u) = 0.994$), indicating that the pragmatic listener successfully infers that the person described as an animal is actually a person and not an animal. This shows that the model is able to combine prior knowledge and reason about the speaker's communicative goal to arrive at nonliteral interpretations of utterances.
 
@@ -954,7 +965,7 @@ Using these parameters, we obtained interpretation probabilities for each of the
 
 \begin{figure}[t]
 \begin{center}
-\scalebox{0.6}{\includegraphics{Plots/scatter_full.pdf}}
+\scalebox{0.6}{\includegraphics{Plots/metaphor-human-model-scatter-withWords.pdf}}
 \end{center}
 \caption{Model predictions ($x$ axis) vs participants' probability ratings ($y$ axis) for $192$ items ($32$ metaphors $\times$ $3$ features $\times$ $2$ goal conditions). Shape of points indicates goal condition and color indicates feature number.} 
 \label{scatter_full}
@@ -962,9 +973,9 @@ Using these parameters, we obtained interpretation probabilities for each of the
 
 We now turn to the second component of the interpretation, $P(\vec f | u)$. 
 %Figure X shows the average marginal feature probabilities given a vague or specific goal. The model's interpretations are shaped by the communicative goal set up by context, where $f_1$ receives significantly higher marginal probabilities when the speaker is responding to a specific question about $f_1$ ($F(1, 62) =17.92$, $p<0.0001$). This qualitatively matches behavioral results in Figure X. 
-To quantitatively evaluate the model's performance, we correlated model predictions with human interpretations of the metaphorical utterances. Given a metaphorical utterance and a vague or specific goal condition, we computed the model's marginal posterior probabilities for $f_1$, $f_2$, and $f_3$. We then correlate these posterior probabilities with participants' probability ratings from Experiment 2c. Figure~\ref{scatter_full} plots model interpretations for all metaphors, features, and goal conditions against human judgments. Correlation across the $192$ items ($32$ metaphors $\times$ $3$ features $\times$ $2$ goal conditions) is $0.6$ ($p < 0.001$). The predicted reliability of participants' ratings using the Spearman-Brown prediction formula is $0.828$ ($95\%$ CI $=[0.827, 0.829]$), suggesting first that people do not agree perfectly on metaphorical interpretations, and second that our model captures a significant amount of the reliable variance in the behavioral data. In particular, our model does especially well at predicting participants' judgments of $f_1$, which are the most salient features of the animal categories and were targeted by specific questions in Experiment 2. Correlation between model predictions and human judgments for $f_1$ is $0.7$ ($p < 0.0001$), while the predicted reliability of participants' ratings for $f_1$ is $0.82$ ($95\%$ CI $=[0.818, 0.823]$). 
+To quantitatively evaluate the model's performance, we correlated model predictions with human interpretations of the metaphorical utterances. Given a metaphorical utterance and a vague or specific goal condition, we computed the model's marginal posterior probabilities for $f_1$, $f_2$, and $f_3$. We then correlate these posterior probabilities with participants' probability ratings from Experiment 2c. Figure~\ref{scatter_full} plots model interpretations for all metaphors, features, and goal conditions against human judgments. Correlation across the $192$ items ($32$ metaphors $\times$ $3$ features $\times$ $2$ goal conditions) is $0.64$ ($p < 0.001$)\footnote{We also fit a free parameter that determines a power-law transformation of the feature priors. The power-law transformation was introduced based on analyses of the feature priors showing that participants tend to overestimate unlikely features and underestimate likely features, likely due to a tendency to avoid the extreme ends of the slider bars. Without performing the power-law transformation and using the raw normalized feature priors obtained in Experiment 2a, the model correlation is $0.6$ ($p < 0.001$)}. The predicted reliability of participants' ratings using the Spearman-Brown prediction formula is $0.828$ ($95\%$ CI $=[0.827, 0.829]$), suggesting first that people do not agree perfectly on metaphorical interpretations, and second that our model captures a significant amount of the reliable variance in the behavioral data. In particular, our model does especially well at predicting participants' judgments of $f_1$, which are the most salient features of the animal categories and were targeted by specific questions in Experiment 2. Correlation between model predictions and human judgments for $f_1$ is $0.77$ ($p < 0.0001$), while the predicted reliability of participants' ratings for $f_1$ is $0.82$ ($95\%$ CI $=[0.818, 0.823]$). 
 
-We now compare our model's performance to a baseline model that also considers the feature priors and the conversational context. We constructed a linear regression model that takes the marginal feature priors for the animal category, the marginal feature priors for the person category, and the vague or specific goal as predictors of participants' ratings. With four parameters, this model produced a fit of $r= 0.45$, which is significantly worse than our model ($p < 0.0001$ on a Cox test). This suggests that our computational model adequately combines people's prior knowledge as well as principles of pragmatics to produce metaphorical interpretations that closely fit behavioral data.
+We now compare our model's performance to a baseline model that also considers the feature priors and the conversational context. We constructed a linear regression model of participants' feature ratings that takes as predictors the marginal feature priors for the animal category, the marginal feature priors for the person category, whether the QUD is vague or specific, and their interactions. With eight parameters, this model produced a fit of $r= 0.48$, which is significantly worse than our model ($p < 0.0001$ on a Cox test). This suggests that our computational model adequately combines people's prior knowledge as well as principles of pragmatics to produce metaphorical interpretations that closely fit behavioral data.
 
 While our model predictions provide a reasonable fit to behavioral data and outperforms a linear regression model using fewer parameters, we observed residual variance that can be further addressed. Previous work has shown that alternative utterances---what the speaker could have said---can strongly affect listeners' interpretation of what the speaker \emph{did} say \cite{bergen2012s}. In this experiment, we did not take into account the range of alternative utterances (both literal and metaphorical) that a listener considers when interpreting a speaker's utterance. We posit that other plausible alternative utterances may account for some of the variance in the data that our model does not capture. Consider the metaphor ``He is an ant'' and the corresponding features \emph{small, strong}, and \emph{busy}. Our model currently assigns a high probability to the feature \emph{strong} given the metaphor, while participants assign it a lower probability. Indeed, this data point has the highest residual in our model fit. To test the idea that alternative utterances may account for this discrepancy, we construct a model that has ``He is an ox'' as an alternative utterance. ``Ox'' has features that roughly align with the features of ``ant'': \emph{strong, big}, and \emph{slow}. Since \emph{strong} is a higher probability feature for ``ox'' than for ``ant,'' the listener reasons that if the speaker had intended to communicate the feature \emph{strong}, she would have said ``He is an ox'' since it optimally satisfies that goal. Since the speaker did \emph{not} produce the utterance ``He is an ox,'' the listener infers that \emph{strong} is a less probable feature. Adding this alternative utterance to the model indeed lowers the marginal posterior probability of \emph{strong} given the utterance ``He is an ant.'' Based on this simple error analysis, we posit that adding alternative utterances across all animal categories may significantly improve our model's performance. 
 
