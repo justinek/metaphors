@@ -1,3 +1,29 @@
+
+var getCoordinates = function(matrix, element) {
+  var coordinates = [];
+  for (var i=0; i < matrix.length; i++) {
+    for (var j=0; j < matrix[i].length; j++) {
+      if (matrix[i][j] == element) {
+      	coordinates.push([i,j]);
+      }
+    }
+  }
+  return coordinates;
+}
+
+var getRelatedComponents = function(coords, ordering) {
+	var components = []
+	for (var i=0; i< coords.length; i++) {
+		var x = coords[i][0];
+		var y = coords[i][1];
+		var xComp = ordering[x];
+		var yComp = ordering[y];
+		components.push([xComp, yComp]);
+    }
+    return components
+}
+
+
 var makePairwiseRelations = function() {
 	relations = [];
 	for (var index1=0; index1 < 3; index1++) {
@@ -83,5 +109,7 @@ module.exports = {
   makePairwiseRelations: makePairwiseRelations,
   makeOrderedGraphs: makeOrderedGraphs,
   makePriors: makePriors,
+  getCoordinates: getCoordinates,
+  getRelatedComponents: getRelatedComponents,
 
 }

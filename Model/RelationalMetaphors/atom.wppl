@@ -2,6 +2,8 @@ var alpha = 5;
 
 var categories = ["atom", "solar system"];
 var utterances = ["atom", "solar system"];
+
+
 /* QUD is system of relations */
 var QUDs = ["relations?", "features?", "both?"];
 
@@ -99,9 +101,12 @@ var listener = cache(function(utterance) {
     var features = map(function(x) {getFeature(x)}, ordering);
     var qud = qudPrior();
     var S1 = speaker(structure, ordering, features, qud);
+    var coords = atomPackage.getCoordinates(structure, 1);
+    var related = atomPackage.getRelatedComponents(coords, ordering);
+
     factor(S1.score([], utterance));
     //return qud;
-    return [structure, ordering, features];
+    return related;
   })
 });
 
