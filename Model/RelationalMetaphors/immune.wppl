@@ -1,20 +1,32 @@
+/* Model for the interpretation of the analogy: "The immune system is an army."
+   Pragmatic listener should end up with an interpretation that includes the following relations:
+   the immune system protects the body; the immune system fights viruses; viruses harm the body
+*/ 
+
 var alpha = 5;
 
 var categories = ["immune system", "army"];
 var utterances = ["immune system", "army"];
-/* QUD is system of relations */
+/* QUD is system of relations, i.e., a directed labeled graph where the edge labels are relations */
 var QUDs = ["relations?"];
 
+/* Specify only 1 relation order to avoid generating isomorphic labeled graphs */
+/* Relations: 'f': fights, 'p': protects, 'h': harms */
+
 var relationOrders = [['f', 'p', 'h']];
+
+/* Labeled directed graphs are represented using adjacency matrices */
+/* Where each value in the 3 X 3 matrice represents a relationship between two components */
+/* Arrow orders indicate direcation of the relationship*/
                       
 var arrowOrders = [[1, 1, 1], [1, 1, 0], [1, 0, 1], [1, 0, 0],
                    [0, 1, 1], [0, 1, 0], [0, 0, 1], [0, 0, 0]];
 
+/* Pairwise indices list the three pairs of indices */
 var pairwiseIndices = [[0, 1], [0, 2], [1, 2]];
 
-/* All non-isomorphic labeled graphs
-   where 'f': fights, 'p': protects, 'h': harms
-   and 0: no relation
+/* makeLabeledGraphs generates all non-isomorphic labeled directed graphs where there are
+   3 nodes and 3 unique relations.
    */
 var graphs = immunePackage.makeLabeledGraphs(pairwiseIndices, arrowOrders, relationOrders);
 /*
@@ -45,7 +57,6 @@ var sourceOrders = [["army", "enemy", "country"],
                     ["country", "army", "enemy"]];
 
 /* All combinations of labeled graphs and node orderings for target domain */
-/* Made separately because variables are immutable in webppl */
 var targetOrderedGraphs = immunePackage.makeOrderedGraphs(graphs, targetOrders);
      
 /* All combinations of labeled graphs and node orderings for source domain */
@@ -129,5 +140,5 @@ var listener = cache(function(utterance) {
 
 //var interp = listener("army");
 console.log(listener("army"));
-console.log(listener("immune system"));
+//console.log(listener("immune system"));
 //vizPrint({"interp": interp,});
