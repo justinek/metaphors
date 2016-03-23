@@ -1,0 +1,151 @@
+///fold:
+var alpha = 5;
+var categories = ["immune system", "army"];
+var utterances = ["the immune system is an army", "the immune system is an immune system"];
+
+/* only consider labeled graphs where the relationship between 
+/* B (enemy, virus) and C (state, body) is 3 (harms) */
+
+var labeledGraphs = [[[0, 1, 2], //A->B, A->C
+                      [0, 0, 3], //B->C
+                      [0, 0, 0]],
+                     [[0, 2, 1], //A->B, A->C
+                      [0, 0, 3], //B->C
+                      [0, 0, 0]],
+                     //
+                     [[0, 1, 0],  //A->B
+                      [0, 0, 3],  //B->C
+                      [2, 0, 0]], //C->A
+                     [[0, 2, 0],  //A->B
+                      [0, 0, 3],  //B->C
+                      [1, 0, 0]], //C->A
+                     //
+                     [[0, 0, 1],  //A->C
+                      [2, 0, 3],  //B->A, B->C
+                      [0, 0, 0]],
+                     [[0, 0, 2],  //A->C
+                      [1, 0, 3],  //B->A, B->C
+                      [0, 0, 0]],
+                     //
+                     [[0, 0, 0],
+                      [1, 0, 3], //B->A, B->C
+                      [2, 0, 0]], //C->A
+                     [[0, 0, 0],
+                      [2, 0, 3], //B->A, B->C
+                      [1, 0, 0]], //C->A
+                     //
+                     ]
+                     ;
+var sourceComponents = ["soldier", "enemy", "state"];
+var targetComponents = ["WBC", "virus", "body"];
+
+var relations = ["F", "P", "H"];
+
+
+
+var sampleGraphWithRelations = function(category) {
+  if (category == "army") {
+    return labeledGraphs[0];
+  } else {
+    var plausibleGraphIndices = [0, 2, 4, 6];
+    var graphIndex = _.sample(plausibleGraphIndices);
+    return labeledGraphs[graphIndex];
+ }
+}
+
+// var relation = function(a, b) {
+//   if (a=="army" && b=="enemy") {
+//     return "F";
+//   } else if (a=="army" && b=="country") {
+//     return "P";
+//   } else if (a=="enemy" && b=="country") {
+//     return "H";
+//   } else if (a=="virus" && b=="body") {
+//     return "H";
+//   } else {
+//     return _.sample(relations);
+//   }
+// }
+
+
+var QUDs = ["graph?", "relations?"];
+
+var qudPrior = function() {
+  var i = randomInteger(QUDs.length);
+  return QUDs[i];
+}
+
+var categoryPrior = function() {
+      return sample(bernoulliERP, [0.999])? "immune system": "army";
+}
+
+// var graphPrior = function(cat) {
+//   return cat=="immune system"? _.sample(labeledGraphs) : "H->P<-F->";
+// }
+
+// var getRelations = function(cat) {
+//   if (cat=="army") {
+//     var components = ["army", "enemy", "state"];
+//   } else {
+//     var components = _.shuffle(["WBC", "virus", "body"]);
+//   }
+//   var c1 = components[0];
+//   var c2 = components[1];
+//   var c3 = components[2];
+//   var myRelations = [(c1, c2, relation(c1 c2)),
+//                  relation(components[0], components[2]),
+//                  relation(components[1], components[0]),
+//                  relation(components[1], components[2]),
+//                  relation(components[2], components[0]),
+//                  relation(components[2], components[1])];
+//   return myRelations;
+// }
+
+var utterancePrior = function() {
+  var i = randomInteger(utterances.length);
+  return utterances[i];
+}
+
+
+var meaning = function(utt,category) {
+  return utt=="the immune system is an army"? category=="army" :
+         utt=="the immune system is an immune system"? category=="immune system" :
+         true
+}
+
+var literalListener = cache(function(utterance, qud) {
+  Enumerate(function(){
+    var category = categoryPrior();
+    var graph = sampleGraphWithRelations(category);
+    //var relations = relationsPrior(category);
+    condition(meaning(utterance, category));
+    return graph;
+  })
+});
+
+
+
+///
+
+var speaker = cache(function(graph, relations, qud) {
+  Enumerate(function(){
+    var utterance = utterancePrior();
+    var dimension;
+    //qud == "graph?" dimension = graph : dimension = relations;
+    factor( alpha * literalListener(utterance, qud).score([], graph) );
+    return utterance;
+  })
+});
+
+var listener = cache(function(utterance) {
+  Enumerate(function(){
+    var category = categoryPrior();
+    var graph = sampleGraphWithRelations(category);
+    //var relations = relationsPrior(category);
+    var qud = qudPrior;
+    factor(utterance == sample(speaker(graph, qud)) ?0:-Infinity);
+    return [category, graph];
+  })
+});
+
+print(listener("the immune system is an army"))

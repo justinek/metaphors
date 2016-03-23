@@ -1,0 +1,93 @@
+(define categories (list 'atom 'solar-system))
+(define relations 'orbits)
+(define structures (list 'BA-CA 'AB-BC))
+(define (get-components category)
+  (case category
+        (('atom) (uniform-draw (list (list 'nucleus 'e1 'e2)
+                                     (list 'nucleus 'e2 'e1)
+                                     (list 'e1 'nucleus 'e2)
+                                     (list 'e1 'e2 'nucleus)
+                                     (list 'e2 'nucleus 'e1)
+                                     (list 'e2 'e1 'nucleus))))
+        (('solar-system) (uniform-draw (list (list 'sun 'p1 'p2)
+                                             (list 'sun 'p2 'p1))))))
+
+(define utterances (list 'atom 'solar-system))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1)))
+
+(define (categories-prior) (multinomial categories '(0.999 0.01)))
+
+(define (structures-prior category)
+  (case category
+        (('atom) (multinomial structures '(0.1 0.1)))
+        (('solar-system) 'BA-CA)
+        ))
+
+(define (get-attribute component)
+  (case component 
+        (('sun) 'big)
+        (('nucleus) 'big)
+        (('p1) 'small)
+        (('p2) 'small)
+        (('e1) 'small)
+        (('e2) 'small)
+       ))
+
+(define goals (list 'structure? 'attribute?))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (uniform-draw goals))
+
+;; Speaker optimality parameter
+(define alpha 5)
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-interp speaker-world)
+  (case goal
+    (('structure?) (equal? (second listener-interp) (second speaker-world)))
+        (('attribute?) (equal? (fourth listener-interp) (fourth speaker-world)))))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category structure components attributes goal depth)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (listener utterance depth))
+                       (list category structure components attributes))))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance depth)
+     (enumeration-query
+      (define category (categories-prior))
+      (define structure (structures-prior category))
+      (define components (get-components category))
+      (define attributes (list (get-attribute (first components))
+                               (get-attribute (second components))
+                               (get-attribute (third components))))
+      (define speaker-goal (goal-prior))
+      (list category structure components attributes)
+      (if (equal? depth 0)
+          (literal-interpretation utterance category)
+          (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category structure components attributes speaker-goal (- depth 1))
+                                         alpha))))))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+
+(barplot (listener 'solar-system depth))

@@ -1,0 +1,107 @@
+(define categories (list 'atom 'solar-system))
+(define relations (list 'orbits 'nothing))
+(define structures (list 'star-tree 'complete))
+
+(define utterances (list 'atom 'solar-system))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1)))
+
+(define (categories-prior) (multinomial categories '(0.99 0.01)))
+(define (relations-prior category)
+  (case category
+        (('atom) (multinomial relations '(0.1 0.1)))
+        (('solar-system) (multinomial relations '(0.9 0.1)))
+        ))
+
+(define (structures-prior category)
+  (case category
+        (('atom) (multinomial structures '(0.1 0.1)))
+        (('solar-system) (multinomial structures '(0.9 0.1)))
+        ))
+
+(define (get-attribute-1 component)
+  (case component 
+        (('sun) (if (flip 0.99) 'unique 'not-unique))
+        (('nucleus) (if (flip 0.8) 'unique 'not-unique))
+       ))
+
+(define (get-attribute-2 component)
+  (case component 
+        (('sun) (if (flip 0.99) 'gets-orbited 'orbits))
+        (('nucleus) (if (flip 0.5) 'gets-orbited 'orbits))
+       ))
+
+(define (get-attribute-3 component)
+  (case component
+        (('sun) (if (flip 0.99) 'large 'tiny))
+        (('nucleus) (if (flip 0.01) 'large 'tiny))))
+
+(define goals (list 'relation? 'structure? 'attribute-1? 'attribute-2? 'attribute-3?))
+
+;; Prior probability of speaker's goal is set to uniform but can
+;; change with context/QUD.
+(define (goal-prior) (uniform-draw goals))
+
+;; Speaker optimality parameter
+(define alpha 10)
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-interp speaker-world)
+  (case goal
+    (('relation?) (equal? (second listener-interp) 
+                           (second speaker-world)))
+    (('structure?) (equal? (third listener-interp) 
+                          (third speaker-world)))
+        (('attribute-1?) (equal? (fourth listener-interp)
+                                         (fourth speaker-world)))
+        (('attribute-2?) (equal? (fifth listener-interp)
+                                         (fifth speaker-world)))
+          (('attribute-3?) (equal? (sixth listener-interp)
+                                         (sixth speaker-world)))
+        ))
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category relation structure attribute-1 attribute-2 attribute-3 goal depth)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (listener utterance depth))
+                       (list category relation structure attribute-1 attribute-2 attribute-3))))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance depth)
+     (enumeration-query
+      (define category (categories-prior))
+      (define relation (relations-prior category))
+      (define structure (structures-prior category))
+      (define component (if (equal? category 'solar-system) 'sun 'nucleus))
+      (define attribute-1 (get-attribute-1 component))
+      (define attribute-2 (get-attribute-2 component))
+      (define attribute-3 (get-attribute-3 component))
+      (define speaker-goal (goal-prior))
+      (list category relation structure attribute-1 attribute-2 attribute-3)
+      (if (equal? depth 0)
+          (literal-interpretation utterance category)
+          (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category relation structure 
+                                                  attribute-1 attribute-2 attribute-3 speaker-goal (- depth 1))
+                                         alpha))))))))
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+
+(barplot (listener 'solar-system depth))
+;(barplot (listener 'social-network depth))

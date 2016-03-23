@@ -1,0 +1,170 @@
+;; This model infers an alignment between various components of two conepts,
+;; specifically the concept "immune system" and the concept "army". 
+;; It produces the alignment via qRSA, where the QUD can be the graph structure 
+;; of the components or the pairwise relationships connecting the components.
+;; Thus a successful alignment is achieved by inferring both the correct graph structure
+;; and the correct pairwise relationships.
+;; TODO: explore adding QUDs about features of the components.
+
+(define categories (list 'immune-system 'army))
+
+;; For simplicity, only assume two possible graph structures connecting the
+;; three components, A, B, C. AB means A->B, where -> denotes a relationship.
+(define structures (list 'AB-AC-BC 'AB-BC-CA))
+
+;; We consider only the following three relations between each component.
+(define relations (list 'fights 'harms 'protects))
+
+;; It's a priori very unlikely for the immune system to literally be an army
+(define (categories-prior) (multinomial categories '(0.999 0.001)))
+
+;; Each utterance is equally likely ("An immune system is an immune system" "An immune system is an army")
+(define utterances (list 'immune-system 'army))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1)))
+
+;; We assume the graph structure of the concept "army" is known.
+;; We assume an uninformative prior for the graph structure 
+;; of the concept "immune-system".
+(define (structures-prior category)
+  (case category
+        (('immune-system) (uniform-draw structures))
+        (('army) 'AB-AC-BC))) ;(multinomial structures (list 0.9 0.1)))))
+
+;; This function maps each component the concept to A, B, and C (where the
+;; order of a component in the list determines the symbol to which it is mapped).
+;; The components in "army" map deterministcally to A, B, and C, such that
+;; "soldier" is A, "enemy" is B, and "state" is C.
+;; We assume an uninformative prior for the mapping between the components of "immune system"
+;; and the symbols A, B, C.
+;; TODO: Is there a better/more efficient way to write this mapping?
+(define (components-prior category)
+  (case category
+        (('immune-system) (uniform-draw (list (list 'white-cell 'virus 'body)
+                                             (list 'white-cell 'body 'virus)
+                                             (list 'virus 'white-cell 'body)
+                                             (list 'virus 'body 'white-cell)
+                                             (list 'body 'white-cell 'virus)
+                                             (list 'body 'virus 'white-cell))))
+        (('army) (list 'soldier 'enemy 'state))))
+                                    
+;; This function returns a relation between each pair of components for each concept.
+;; The relations between components in the concept "army" are known,
+;; except for relations between components that are not connected in the concept.
+;; The relations between components in the concept "immue system" are mostly unknown,
+;; EXCEPT we assume prior knowledge that viruses harm bodies.
+;; This kind of prior knowledge is necessary to get the alignment started.
+(define (relate component-pair)
+  (case component-pair
+         (((list 'soldier 'enemy)) 'fights) ;(multinomial relations (list 0.9 0.033 0.033 0.033)))
+         (((list 'soldier 'state)) 'protects) ;(multinomial relations (list 0.033 0.033 0.9 0.033)))
+         (((list 'enemy 'state)) 'harms) ;(multinomial relations (list 0.033 0.9 0.033 0.033)))
+         (((list 'enemy 'soldier)) (uniform-draw relations)) ;'nothing) ;(multinomial relations (list 0.033 0.033 0.033 0.9)))
+         (((list 'state 'soldier)) (uniform-draw relations)) ;'nothing) ;(multinomial relations (list 0.033 0.033 0.033 0.9)))
+         (((list 'state 'enemy)) (uniform-draw relations)) ; 'nothing) ;(multinomial relations (list 0.033 0.033 0.033 0.9)))
+
+         (((list 'white-cell 'virus)) (uniform-draw relations))
+         (((list 'white-cell 'body)) (uniform-draw relations))
+         (((list 'virus 'body)) 'harms) ;(multinomial relations (list 0.033 0.9 0.033 0.033)))
+         (((list 'virus 'white-cell)) (uniform-draw relations))
+         (((list 'body 'white-cell)) (uniform-draw relations))
+         (((list 'body 'virus)) (uniform-draw relations))
+
+        ))
+
+;; TOOD: At some point we might want to add attributes/features of each component that
+;; are not relational.
+
+;; (define (get-attribute component)
+;;   (case component
+;;         (('soldier) (multinomial (list 'brave 'nothing) (list 0.9 0.1)))
+;;         (('enemy) (multinomial (list 'bad 'nothing) (list 0.9 0.1)))
+;;         (('society) (multinomial (list 'complex 'nothing) (list 0.9 0.1)))
+;;         (('white-cell) (multinomial (list 'small 'nothing) (list 0.9 0.1)))
+;;         (('virus) (multinomial (list 'bad 'nothing) (list 0.9 0.1)))
+;;         (('body) (multinomial (list 'complex 'nothing) (list 0.9 0.1)))))
+
+;; The QUD can be the graph structure of the concept or the set of relations
+;; connecting the components.
+;; TODO: explore effect of having joint QUD
+(define goals (list 'structure? 'relations?))
+
+;; Prior probability of speaker's goal is set to uniform.
+(define (goal-prior) (uniform-draw goals))
+
+;; Speaker optimality parameter
+(define alpha 10)
+
+;; Check if interpreted categroy is identical to utterance
+(define (literal-interpretation utterance category)
+  (equal? utterance category))
+
+;; Check if goal is satisfied
+(define (goal-satisfied? goal listener-interp speaker-world)
+  (case goal
+    (('structure?) (equal? (second listener-interp) (second speaker-world)))
+    (('relations?) (equal? (fourth listener-interp) (fourth speaker-world)))
+        ))
+
+;; Given a graph structure and a mapping from components to symbols,
+;; return the relations between the connected nodes of the graph by
+;; sampling from the relations distributions defined in the function "relate"
+
+(define (get-relations structure components)
+  (case structure
+        (('AB-AC-BC) (list (relate (list (first components) (second components)))
+                           (relate (list (first components) (third components)))
+                           (relate (list (second components) (third components)))))
+        (('AB-BC-CA) (list (relate (list (first components) (second components)))
+                           (relate (list (second components) (third components)))
+                           (relate (list (third components) (first components)))))))
+
+
+;; Speaker model
+(define speaker
+  (mem
+   (lambda (category structure components relations goal depth)
+     (enumeration-query
+      (define utterance (utterance-prior))
+      utterance
+      (goal-satisfied? goal
+                       (apply multinomial (listener utterance depth))
+                       (list category structure components relations))))))
+
+;; Listener model
+(define listener
+  (mem 
+   (lambda (utterance depth)
+     (enumeration-query
+      ;; Sample category
+      (define category (categories-prior))
+      ;; Sample structure
+      (define structure (structures-prior category))
+      ;; Sample mapping from components in the concept to symbols A, B, C
+      (define components (components-prior category))
+      ;; Sample relations between each of the components, given the graph structure
+      (define relations (get-relations structure components))
+      (define speaker-goal (goal-prior))
+      (list category structure components relations)
+      (if (equal? depth 0)
+          (literal-interpretation utterance category)
+          (equal? utterance
+                  (apply multinomial
+                         (raise-to-power (speaker category structure components relations speaker-goal (- depth 1))
+                                         alpha))))))))
+
+
+(define (raise-to-power speaker-dist alpha)
+  (list (first speaker-dist)
+        (map (lambda (x) (pow x alpha)) (second speaker-dist))))
+
+;; Recursive depth
+(define depth 1)
+
+; Outputs the category, the graph structure, the mapping from components to A, B, C,
+; and the relations between each component pair specified by the strucure.
+; For example, (immune-system AB-AC-BC (white-cell virus body) (fights protects harms))
+; means we're still talking about immune-systems and not literal armies; the graph structure
+; is AB-AC-BC; white-cell is A, virus is B, and body is C; white-cell fights virus, white-cell protect
+; body, and virus harms body.
+
+(barplot (listener 'army depth))

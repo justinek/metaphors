@@ -1,0 +1,112 @@
+var alpha = 5;
+
+var categories = ["atom", "solar system"];
+var utterances = ["atom", "solar system"];
+/* QUD is system of relations */
+var QUDs = ["relations?", "features?", "both?"];
+
+/* 1: orbits; 0: no relation */
+var graphs = atomPackage.makePairwiseRelations();
+
+/* All permutations of the three components in target domain */
+var targetOrders = [["nucleus", "e1", "e2"],
+                    //["nucleus", "e2", "e1"],
+                    ["e1", "nucleus", "e2"],
+                    ["e1", "e2", "nucleus"],
+                    //["e2", "nucleus", "e1"],
+                    //["e2", "e1", "nucleus"]
+                   ];
+
+/* All permutations of the three components in source domain */
+var sourceOrders = [["sun", "p1", "p2"],
+                    //["sun", "p2", "p1"],
+                    ["p1", "sun", "p2"],
+                    ["p1", "p2", "sun"],
+                    //["p2", "sun", "p1"],
+                    //["p2", "p1", "sun"]
+    ];
+
+var targetOrderedGraphs = atomPackage.makeOrderedGraphs(graphs, targetOrders);
+var sourceOrderedGraphs = atomPackage.makeOrderedGraphs(graphs, sourceOrders);
+
+var sourcePriors = atomPackage.makePriors(sourceOrderedGraphs, "solar system"); 
+
+var getFeature = function(component) {
+  return 
+    component=="nucleus"? (flip(0.9)? "big": "small"):
+    component=="e1"? (flip(0.9)? "small": "big"):
+  component=="e2"? (flip(0.9)? "small": "big"):
+  component=="sun"? (flip (0.9)? "big": "small"):
+  component=="p1" ? (flip (0.9)? "small": "big"):
+  component=="p2" ? (flip (0.9)? "small": "big"): "small";
+}
+  
+
+/* Sample category */
+var categoryPrior = function() {
+  return flip(0.99) ? "atom" : "solar system";
+}
+
+/* Sample QUD */
+var qudPrior = function() {
+  return uniformDraw(QUDs);
+}
+
+/* Sample utterance */
+var utterancePrior = function() {
+  return uniformDraw(utterances);
+}
+
+/* Determines whether literal semantics of utterance matches category */
+var meaning = function(utt,category) {
+  return 
+  utt=="atom"? category =="atom" :
+  utt=="solar system"? category=="solar system": true
+}
+
+/* Literal listener returns information about the graph given QUD */
+var literalListener = cache(function(utterance, qud) {
+  Enumerate(function(){
+    var category = categoryPrior();
+    var graph = category=="solar system"? sourceOrderedGraphs[discrete(sourcePriors)]: uniformDraw(targetOrderedGraphs);
+    var structure = graph[0]
+    var ordering = graph[1]
+    var features = map(function(x) {getFeature(x)}, ordering);
+    condition(meaning(utterance, category))
+    return qud=="relations?"? structure : 
+           qud=="features?"? features: [structure, features];
+  })
+});
+
+/* Speaker chooses utterance given graph and QUD */
+var speaker = cache(function(structure, ordering, features, qud) {
+  Enumerate(function(){
+    var utterance = utterancePrior();
+    var L0 = literalListener(utterance, qud);
+    qud == "relations?"? factor(alpha * L0.score([],structure)) : 
+    qud == "features?"? factor(alpha * L0.score([],features)) : factor(alpha * L0.score([],[structure, features])); 
+    return utterance;
+  })
+});
+
+/* Pragmatic listener returns full graph given utterance */
+var listener = cache(function(utterance) {
+  Enumerate(function(){
+    var category = categoryPrior();
+    var graph = category=="solar system"? sourceOrderedGraphs[discrete(sourcePriors)]: uniformDraw(targetOrderedGraphs);
+    var structure = graph[0];
+    var ordering = graph[1];
+    var features = map(function(x) {getFeature(x)}, ordering);
+    var qud = qudPrior();
+    var S1 = speaker(structure, ordering, features, qud);
+    factor(S1.score([], utterance));
+    //return qud;
+    return [structure, ordering, features];
+  })
+});
+
+var interp = listener("solar system")
+console.log(interp);
+//console.log(sourcePriors);
+//vizPrint({"interp": interp,})
+//print(interp)
