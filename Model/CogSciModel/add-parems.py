@@ -22,10 +22,11 @@ qud = int(sys.argv[1])
 if qud == 0:
     qudPriors = makeParemsByInc(0.33, 0.33, 1)
 else:
-    qudPriors = makeParemsByInc(0.5, 1, 0.1)
+    qudPriors = makeParemsByInc(0.7, 0.9, 0.1)
 
-alphaPriors = makeParemsByInc(3.5, 7, 0.5)
-categoryPriors = range(2, 5) 
+alphaPriors = makeParemsByInc(2, 5, 1)
+categoryPriors = range(2, 4)
+lambdaPriors = makeParemsByInc(4, 6, 1)
 
 #print qudPriors
 #print alphaPriors
@@ -37,19 +38,21 @@ for qP in qudPriors:
     for aP in alphaPriors:
         aParem = "(define alpha " + str(aP) + ")"
         for cP in categoryPriors:
-            cPanimal = math.pow(10, -cP)
-            cPperson = float(1) - cPanimal
-            cParem = "(define (categories-prior) (multinomial categories '(" + str(cPanimal) + " " + str(cPperson) + ")))"
-            if qud == 0:
-                paremStr = "noQud-a" + str(aP) + "-c" + str(cP)
-            else:
-                paremStr = "g" + str(qP) + "-a" + str(aP) + "-c" + str(cP)
-            for i in range(1, 33):
-                filename = paremStr + "-ID-" + str(i) + ".church"
-                #print filename
-                f = open("WithPriors/ID-" + str(i) + ".church", "r")
-                writeF = open("TempParems/" + filename, "w")
-                writeF.write(qParem + "\n" + aParem + "\n" + cParem + "\n")
-                for l in f:
-                    writeF.write(l)
+            	cPanimal = math.pow(10, -cP)
+            	cPperson = float(1) - cPanimal
+            	cParem = "(define (categories-prior) (multinomial categories '(" + str(cPanimal) + " " + str(cPperson) + ")))"
+            	for lP in lambdaPriors:
+			lParem = "(define power-param " + str(lP) + ")"
+			if qud == 0:
+                		paremStr = "noQud-a" + str(aP) + "-c" + str(cP) + "-l" + str(lP)
+            		else:
+                		paremStr = "g" + str(qP) + "-a" + str(aP) + "-c" + str(cP) + "-l" + str(lP)
+            		for i in range(1, 33):
+                		filename = paremStr + "-ID-" + str(i) + "-plaw-highlaw.church"
+                		#print filename
+                		f = open("WithPriors/ID-" + str(i) + "-plaw.church", "r")
+                		writeF = open("LambdaParems/" + filename, "w")
+                		writeF.write(qParem + "\n" + aParem + "\n" + cParem + "\n" + lParem + "\n")
+               			for l in f:
+                    			writeF.write(l)
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-for FILENAME in $(ls Output/) 
+for FILENAME in $(ls OutputLambdaParems/ | grep high) 
 do
-	python parseChurch.py Output/$FILENAME > ParsedOutput/$FILENAME 
+	python parseChurch.py OutputLambdaParems/$FILENAME > ParsedOutputLambdaParems/$FILENAME 
 done

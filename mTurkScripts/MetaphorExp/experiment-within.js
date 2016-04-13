@@ -149,7 +149,6 @@ var debugConditions =
 var allConditions = 
 [
 [
-/*
 {"categoryID":1,"det":"an","animal":"ant","f1":"small","f2":"strong","f3":"busy"},
 {"categoryID":2,"det":"a","animal":"bat","f1":"scary","f2":"blind","f3":"nocturnal"},
 {"categoryID":3,"det":"a","animal":"bear","f1":"scary","f2":"big","f3":"fierce"},
@@ -172,9 +171,7 @@ var allConditions =
 {"categoryID":20,"det":"a","animal":"lion","f1":"scary","f2":"strong","f3":"ferocious"},
 {"categoryID":21,"det":"a","animal":"monkey","f1":"funny","f2":"smart","f3":"playful"},
 {"categoryID":22,"det":"an","animal":"owl","f1":"wise","f2":"quiet","f3":"nocturnal"},
-*/
 {"categoryID":23,"det":"an","animal":"ox","f1":"strong","f2":"big","f3":"slow"},
-/*
 {"categoryID":24,"det":"a","animal":"penguin","f1":"cold","f2":"cute","f3":"funny"},
 {"categoryID":25,"det":"a","animal":"pig","f1":"dirty","f2":"fat","f3":"smelly"},
 {"categoryID":26,"det":"a","animal":"rabbit","f1":"fast","f2":"furry","f3":"cute"},
@@ -184,7 +181,6 @@ var allConditions =
 {"categoryID":30,"det":"a","animal":"whale","f1":"large","f2":"graceful","f3":"majestic"},
 {"categoryID":31,"det":"a","animal":"wolf","f1":"scary","f2":"mean","f3":"angry"},
 {"categoryID":32,"det":"a","animal":"zebra","f1":"striped","f2":"exotic","f3":"fast"},
-*/
 ]
 ];
 

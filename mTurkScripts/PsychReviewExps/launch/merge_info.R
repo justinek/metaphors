@@ -1,6 +1,6 @@
 library(plyr)
 library(tidyr)
-expt <- "scalarFree1"
+expt <- "prior2"
 n_rounds <- 4
 
 dirpath<-(paste(expt, '/', sep=""))
@@ -21,12 +21,12 @@ write.csv(invoice,
 num_round_dirs = 4
 df = do.call(rbind, lapply(1:num_round_dirs, function(i) {
   return (read.table(paste(dirpath,
-                         'round', i, '/',expt,'_anonymized.results', sep=''), sep="\t", header=TRUE) %>%
+                         'round', i, '/',expt,'-trials.csv', sep=''), sep=",", header=TRUE) %>%
             mutate(workerid = (workerid + (i-1)*9)))}))
 
 write.table(df,
-          paste("../../../Data/PsychReviewExps/",expt,"_raw.csv", sep=""),
-          row.names=F, sep="\t")
+          paste("../../../Data/PsychReviewExps/Priors/",expt,"-trials.csv", sep=""),
+          row.names=F, sep=",")
 
 
 ### merge subject info

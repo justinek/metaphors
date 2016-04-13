@@ -1,6 +1,9 @@
 *.results
+*.ttt
+*.fff
 *.gz
 *.aux
 *.bbl
 *.blg
 *.log
+*figurative.pdf

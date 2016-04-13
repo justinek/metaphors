@@ -23,7 +23,7 @@ interp.max <- aggregate(data=interp, prob ~ workerID + item + dimension + litera
 interp.max <- join(interp.max, interp, by=c("workerID", "item", "dimension", "literal",
                                             "quality", "speaker", "person", "prob"))
 
-ggplot(interp.max, aes(x=bin)) +
+ggplot(interp.max, aes(x=bin, fill=polarity)) +
   geom_bar(stat="count") +
   theme_bw() +
   facet_grid(dimension ~ literal)
@@ -123,45 +123,69 @@ p.all.people$utterance <- "prior"
 ##############
 # Model predictions for all
 ##############
+bestModel <- data.frame()
+bestParams = c()
+maxCor = 0
+for (alpha in seq(1, 5)) {
+  for (cost in seq(0, 0.2, 0.1)) {
+    suffix = paste("-", alpha, "-", cost, ".csv", sep="")
+    model.height <- read.csv(paste("../../Model/ScalarMetaphor/Outputs_YesNo/height", suffix, sep=""), header=FALSE, 
+                             col.names = c("dimension", "person", "utterance", "bin_num", "model"))
+    model.speed <- read.csv(paste("../../Model/ScalarMetaphor/Outputs_YesNo/speed", suffix, sep=""), header=FALSE, 
+                            col.names = c("dimension", "person", "utterance", "bin_num", "model"))
+    model.weight <- read.csv(paste("../../Model/ScalarMetaphor/Outputs_YesNo/weight", suffix, sep=""), header=FALSE, 
+                             col.names = c("dimension", "person", "utterance", "bin_num", "model"))
+    
+    model.all <- rbind(model.height, model.speed, model.weight)
+    model.all$bin_num <- factor(model.all$bin_num)
+    #model.prior <- rbind(model.all, p.all.people)
+    compare <- join(model.all, interp.summary, by=c("dimension", "person", "bin_num", "utterance"))
+#     ggplot(compare, aes(x=model, y=prob, color=utterance)) +
+#       geom_point() +
+#       #geom_text(aes(label=bin_num)) +
+#       facet_grid(utterance~dimension) +
+#       theme_bw()
+    thisCor <- cor(compare$prob, compare$model)
+    if (thisCor > maxCor) {
+      maxCor <- thisCor
+      bestParams <- suffix
+      bestModel <- model.all
+    }
+  }
+}
 
-model.height <- read.csv("../../Model/ScalarMetaphor/Outputs_test/height-3-0.csv", header=FALSE, 
-                         col.names = c("dimension", "person", "utterance", "bin_num", "model"))
-model.speed <- read.csv("../../Model/ScalarMetaphor/Outputs_test/speed-3-0.csv", header=FALSE, 
-                         col.names = c("dimension", "person", "utterance", "bin_num", "model"))
-model.weight <- read.csv("../../Model/ScalarMetaphor/Outputs_test/weight-3-0.csv", header=FALSE, 
-                         col.names = c("dimension", "person", "utterance", "bin_num", "model"))
 
-model.all <- rbind(model.height, model.speed, model.weight)
-
-model.all$bin_num <- factor(model.all$bin_num)
-
-ggplot(model.all, aes(x=bin_num, y=model, color=utterance)) +
-  geom_point() +
-  geom_line(aes(group=utterance)) +
-  facet_grid(person~dimension) +
-  theme_bw()
-
-model.prior <- rbind(model.all, p.all.people)
-
-ggplot(model.prior, aes(x=bin_num, y=model, color=utterance)) +
-  geom_point() +
-  geom_line(aes(group=utterance)) +
-  facet_grid(person~dimension) +
-  theme_bw()
+# model.all$bin_num <- factor(model.all$bin_num)
+# 
+# ggplot(model.all, aes(x=bin_num, y=model, color=utterance)) +
+#   geom_point() +
+#   geom_line(aes(group=utterance)) +
+#   facet_grid(person~dimension) +
+#   theme_bw()
+# 
+# model.prior <- rbind(model.all, p.all.people)
+# 
+# ggplot(model.prior, aes(x=bin_num, y=model, color=utterance)) +
+#   geom_point() +
+#   geom_line(aes(group=utterance)) +
+#   facet_grid(person~dimension) +
+#   theme_bw()
 
 
 ########################
 # Compare model and human
 ########################
 
-compare <- join(model.all, interp.summary, by=c("dimension", "person", "bin_num", "utterance"))
+compare <- join(bestModel, interp.summary, by=c("dimension", "person", "bin_num", "utterance"))
 ggplot(compare, aes(x=model, y=prob, color=utterance)) +
   geom_point() +
-  geom_text(aes(label=bin_num)) +
-  facet_grid(.~dimension) +
+  geom_errorbar(aes(ymin=prob-se, ymax=prob+se)) +
+  #geom_text(aes(label=bin_num)) +
+  #facet_grid(utterance~dimension) +
+  facet_grid(literal~.) +
   theme_bw()
 
-with(compare, cor.test(prob,model))
+with(subset(compare), cor.test(prob,model))
 with(subset(compare, utterance=="animalA"), cor.test(prob,model))
 with(subset(compare, utterance=="animalB"), cor.test(prob,model))
 with(subset(compare, literal=="fig"), cor.test(prob,model))

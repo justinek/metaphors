@@ -61,9 +61,9 @@ var makePriors = function(graphs, category) {
             var iVirus = ordering.indexOf("virus");
             var iBody = ordering.indexOf("body");
             if (structure[iVirus][iBody]=='h') {
-                probs.push(1);
+                probs.push(0.99);
             } else {
-                probs.push(0);
+                probs.push(0.01);
             }
         }
     }

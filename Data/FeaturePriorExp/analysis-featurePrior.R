@@ -174,7 +174,35 @@ for (t in seq(1, 1000)) {
 
 
 fp.set.long$normalizedProb <- fp.set.long$value / fp.set.long$normalizing
+nsubjs <- length(unique(fp.set.long$workerid))
+workerid.dict <- data.frame(workerid=unique(fp.set.long$workerid), anonym=c(0:(nsubjs -1)))
+fp.set.long <- join(workerid.dict, fp.set.long, by="workerid", type="right")
+fp.set.long$workerid <- NULL
+colnames(fp.set.long)[1] <- "workerid"
 
+#####
+# Compute marginals
+#####
+mapping <- read.csv("featureSetMapping.csv")
+mapping$featureSetNum <- factor(mapping$featureSetNum)
+
+fp.set.long <- join(fp.set.long, mapping, by="featureSetNum")
+fp.set.f1 <- aggregate(data=subset(fp.set.long, f1==1), 
+                        normalizedProb ~ workerid + animal + type, FUN=sum)
+fp.set.f1$featureNum <- 1
+fp.set.f2 <- aggregate(data=subset(fp.set.long, f2==1), 
+                       normalizedProb ~ workerid + animal + type, FUN=sum)
+fp.set.f2$featureNum <- 2
+
+fp.set.f3 <- aggregate(data=subset(fp.set.long, f3==1), 
+                       normalizedProb ~ workerid + animal + type, FUN=sum)
+fp.set.f3$featureNum <- 3
+
+fp.set.raw.marginal <- rbind(fp.set.f1, fp.set.f2, fp.set.f3)
+colnames(fp.set.raw.marginal)[4] <- "priorProb"
+write.csv(fp.set.raw.marginal, "~/Desktop/metaphor_prior.csv", row.names=FALSE, quote=FALSE)
+
+######################
 fp.set.long.summary <- summarySE(data=fp.set.long, measurevar="normalizedProb", 
                                  groupvars=c("categoryID", "type", "featureSetNum", "animal"))
 

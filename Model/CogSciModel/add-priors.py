@@ -39,7 +39,7 @@ for l in f:
 
 for i in range(1,33):
     churchF = open(sys.argv[2], "r")
-    writeFile = open("WithPriors/ID-" + str(i) + ".church", "w")
+    writeFile = open("WithPriors/ID-" + str(i) + "-plaw.church", "w")
     writeFile.write("(define featureSet-prior (list (list '" + " '".join(animalDict[i].values()) + ") (list '" + " '".join(peopleDict[i].values()) + ")))\n")
     for l in churchF:
         writeFile.write(l)

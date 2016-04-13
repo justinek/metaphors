@@ -351,6 +351,108 @@ ggplot(d.interp.fig.genQ.modelComp, aes(x=modelProb_alt, y=modelProb, color=setN
   geom_text(aes(label=utterance)) +
   theme_bw()
 
+#########################################
+# Worst fit alternative PRIORS
+#########################################
+
+p <- read.csv("../Data/PsychReviewExps/Priors/prior2-trials.csv")
+# Remove rows with NA
+p.na <- subset(p, is.na(response))
+p <- subset(p, !(workerid %in% p.na$workerid & featureSet %in% p.na$featureSet & alternative %in% p.na$alternative))
+
+# Calculate denominator for normalizing
+p.denom <- aggregate(data=p, response ~ workerid + animal + alternative, FUN=sum)
+colnames(p.denom)[4] <- "denom"
+p <- join(p, p.denom, by=c("workerid", "animal", "alternative"))
+
+# If the denominator is 0, remove
+p <- subset(p, denom > 0)
+p$prior <- p$response / p$denom
+lambda = 1
+p$prior <- p$prior ^ 1
+p.denom <- aggregate(data=p, prior ~ workerid + animal + alternative, FUN=sum)
+colnames(p.denom)[4] <- "denomPower"
+
+p <- join(p, p.denom, by=c("workerid", "animal", "alternative"))
+p$prior <- p$prior / p$denomPower
+# Summarize
+p.summary <- summarySE(p, measurevar="prior", 
+                       groupvars=c("animal", "alternative", "setNum", "featureSet"))
+
+ggplot(p.summary, aes(x=setNum, y=prior)) +
+  geom_bar(stat="identity", fill="gray", color="black") +
+  geom_errorbar(aes(ymin=prior-se, ymax=prior+se)) +
+  facet_wrap(animal~alternative, ncol=6) +
+  theme_bw()
+
+# Turn into wide form for printing
+p.summary.wide <- reshape(p.summary, 
+                          timevar = "setNum",
+                          idvar = c("animal", "alternative"),
+                          drop = c("featureSet", "N", "sd", "se", "ci"),
+                          direction = "wide")
+
+colnames(p.summary.wide)[3:10] <- c("set1", "set2", "set3", "set4", "set5", "set6", "set7", "set8")
+
+for (a in unique(p.summary.wide$animal)) {
+  p.subset <- subset(p.summary.wide, animal==a)
+  p.subset$animal <- NULL
+  write.csv(p.subset, paste("../Data/PsychReviewExps/Priors/priors2_mean_", a, ".csv", sep=""), 
+            quote=FALSE, row.names=FALSE)
+}
+
+
+# Get marginal of features
+p.f1.marginal <- aggregate(data=subset(p, f1==1), prior ~ workerid + animal +
+                             alternative, FUN=sum)
+p.f1.marginal$feature <- "f1"
+
+p.f2.marginal <- aggregate(data=subset(p, f2==1), prior ~ workerid + animal + 
+                             alternative, FUN=sum)
+p.f2.marginal$feature <- "f2"
+
+p.f3.marginal <- aggregate(data=subset(p, f3==1), prior ~ workerid + animal + 
+                             alternative, FUN=sum)
+p.f3.marginal$feature <- "f3"
+
+p.marginal <- rbind(p.f1.marginal, p.f2.marginal, p.f3.marginal)
+
+p.marginal.summary <- summarySE(p.marginal, measurevar="prior",
+                                groupvars=c("animal", 
+                                            "alternative", "feature"))
+
+ggplot(p.marginal.summary, aes(x=feature, y=prior)) +
+  geom_bar(stat="identity", fill="gray", color="black") +
+  geom_errorbar(aes(ymin=prior-se, ymax=prior+se), width=0.2) +
+  facet_wrap(animal~alternative) +
+  theme_bw()
+
+# Turn into wide format
+p.f1.marginal.summary <- summarySE(p.f1.marginal, measurevar="prior",
+                                   groupvars=c("animal", "categoryID",
+                                               "alternative"))
+
+p.f2.marginal.summary <- summarySE(p.f2.marginal, measurevar="prior",
+                                   groupvars=c("animal", "categoryID",
+                                               "alternative"))
+
+colnames(p.f1.marginal.summary)[5:8] <- c("f1", "f1.sd", "f1.se", "f1.ci")
+colnames(p.f2.marginal.summary)[5:8] <- c("f2", "f2.sd", "f2.se", "f2.ci")
+
+p.marginal.summary.wide <- join(p.f1.marginal.summary, p.f2.marginal.summary,
+                                by=c("animal", "categoryID", "alternative"))
+
+p.marginal.summary.wide$animalType <- 
+  ifelse(as.character(p.marginal.summary.wide$animal)==
+           as.character(p.marginal.summary.wide$alternative),
+         "orig", "alt")
+
+ggplot(p.marginal.summary.wide, aes(x=f1, y=f2, color=animalType)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=f2-f2.se, ymax=f2+f2.se), width=0.01) +
+  geom_errorbarh(aes(xmin=f1-f1.se, xmax=f1+f1.se), height=0.01) +
+  theme_bw()
+
 
 ###############################
 # Scalar free interp
